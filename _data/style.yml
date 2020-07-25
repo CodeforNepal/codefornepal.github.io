@@ -1,0 +1,8 @@
+#Color Customization
+highlight: "#54bfff"
+white: "#FFF"
+black: "#ff4040"
+
+#Image Customization
+header-image: "../img/header-bg.jpg"
+contact-image: "../img/map-image.png"
