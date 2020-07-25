@@ -2,16 +2,12 @@
 
 title: "Code for Nepal"
 email: contact@codefornepal.org
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   Community of volunteers helping address Nepal's challenges using civic tech
   to innovate, organize and advocate digital literacy
 baseurl: "/website20" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
+theme: jekyll-agency
 
 exclude:
   - .sass-cache/
