@@ -22,7 +22,7 @@ $sudo dnf install ruby-devel / $sudo apt-get install ruby-full
 $sudo dnf groupinstall development-tools rpm-development-tools c-development / $sudo apt-get install build-essential zlib1g-dev
 $gem install bundler
 
-$git clone https://github.com/<yourforkrepo>/website20.git
+$git clone https://github.com/<yourusername>/website20.git
 $cd website20/
 $git remote add upstream https://github.com/Code4Nepal/website20.git 
 
