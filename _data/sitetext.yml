@@ -1,22 +1,22 @@
 header:
-    title: Empower Nepal by increasing digital literacy
+    title: Empower Nepal by increasing digital literacy and the use of open data!
     text: 
     button: Get Involved
     buttonlink: "#services" # "#{section}" or "URL/page link"
 
 services:
-    title: "Services"
+    title: "Projects"
     text: "Lorem ipsum"
     section: services
     list:
-      - title: "E-Commerce"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+      - title: "[NepalMap](https://nepalmap.org/)"
+        desc: "Explore and understand Nepal using data"
         icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
-      - title: "Responsive Design"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+      - title: "[Sangraha](http://sangraha.org/)"
+        desc: "Access Nepali poems and literature"
         icon: fas fa-laptop       
-      - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
-        desc: "Your description here, full **Markdown** support"
+      - title: "[AskNepal](https://asknepal.info/en)"
+        desc: "sk Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
 
 portfolio:
