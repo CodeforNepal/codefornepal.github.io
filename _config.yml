@@ -5,7 +5,7 @@ email: contact@codefornepal.org
 description: >-
   Community of volunteers helping address Nepal's challenges using civic tech
   to innovate, organize and advocate digital literacy
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/website20" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 theme: jekyll-agency
 
