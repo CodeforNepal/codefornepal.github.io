@@ -30,31 +30,26 @@ timeline:
     text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
     section: timeline
     events:
-      - title: "Our Humble Beginnings"
+      - title: "Our humble beginnings"
         year: "2014"
         desc: "Founders Mia and Ravi organized their first digital literacy workshop for young women in Kathmandu and registered Code for Nepal, as a non-profit in the US."
         image: assets/img/timeline/1.jpg
         alt: 
         align: left
-      - title: "An Agency is Born"
-        year: "March 2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+      - title: "Responding to a historic crisis"
+        year: "2015"
+        desc: "When the devastating earthquakes struck Nepal, Code for Nepal community members mobilized a [digital response](http://www.nytimes.com/2015/05/02/world/asia/3-ways-nepalis-are-using-crowdsourcing-to-aid-in-quake-relief.html?_r=0) to help those in need and advocated for [data-driven](https://time.com/3845593/nepal-earthquake-response-data/) relief and recovery"
         image: assets/img/timeline/2.jpg
         alt: 
         align: right
-      - title: "Jekyll Theme is created"
-        year: "2019"
-        desc: "Ravi Riley converted Agency, a Bootstrap-based theme, into a Jekyll theme. The Jekyll theme can be installed as a Ruby gem, or remotely. For more information, visit the documentation."
+      - title: "Creating products and empowering aspiring tech professionals"
+        year: "2016-2019"
+        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/) and gave scholarships to young women and men. "
         image: assets/img/timeline/3.jpg
         alt: image alt text
         #align: #default is left       
-      - title: "Title"
-        year: "2009-2011"
-        desc: "Your description here, **Markdown** is fully supported."
-        image: assets/img/timeline/4.jpg
-        alt: 
         align: right
-    end: "Be Part <br> of Our <br> Story!"
+    end: "Join us <br> and shape <br> our story!"
 
 about:
     title: "About Us"
@@ -80,13 +75,13 @@ clients:
         logo: assets/img/clients/creative-market.jpg
     
 team:
-    title: "OUR AMAZING TEAM"
-    text: "Lorem ipsum dolor sit amet consectetur."
-    subtext: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported.
+    title: "Our team"
+    text: "Code for Nepal is built and run by volunteers. Join us! (Hyperlink “Get involved page.)."
+    subtext: TBD **Markdown** supported.
     section: team
     people:
-      - name: "Kay Garland"
-        role: "Lead Designer"
+      - name: "Pratima"
+        role: "TBD"
         image: assets/img/team/500x500.jpg
         social:
           - url: https://twitter.com
@@ -95,8 +90,8 @@ team:
             icon: fab fa-facebook-f
           - url: https://linkedin.com
             icon: fab fa-linkedin-in
-      - name: "Larry Parker"
-        role: "Lead Marketer"
+      - name: "David"
+        role: "TBD"
         image: assets/img/team/2.jpg
         social:
           - url: https://twitter.com
@@ -105,8 +100,8 @@ team:
             icon: fab fa-facebook-f
           - url: https://linkedin.com
             icon: fab fa-linkedin-in
-      - name: "Diana Perterson"
-        role: "Lead Developer"
+      - name: "Ishan"
+        role: "TBD"
         image: assets/img/team/500x500.jpg
         social:
           - url: https://twitter.com
@@ -118,7 +113,7 @@ team:
           
 contact:
     title: "Contact Us"
-    text: "Lorem ipsum or call 123456789"
+    text: "We would love to hear from you! Of course, you can submit the form below or chat with us on [Slack](https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg), [Twitter](https://twitter.com/codefornepal), and [Facebook](https://www.facebook.com/codefornepal)."
     section: contact
     
 footer:
