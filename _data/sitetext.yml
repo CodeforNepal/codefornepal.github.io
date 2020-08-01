@@ -11,13 +11,13 @@ services:
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
-        icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
+   
       - title: "[Sangraha](http://sangraha.org/)"
         desc: "Access Nepali poems and literature"
-        icon: fas fa-laptop       
+              
       - title: "[AskNepal](https://asknepal.info/en)"
-        desc: "sk Nepal helps you make a Freedom of Information request."
-        icon: fab fa-markdown
+        desc: "Request information from public authorities."
+      
 
 portfolio:
     title: "Portfolio"
