@@ -5,8 +5,8 @@ header:
     buttonlink: "#services" # "#{section}" or "URL/page link"
 
 services:
-    title: "Projects"
-    text: "Lorem ipsum"
+    title: "Our work"
+    text: "As a community of volunteers we believe in creating opublic goods. Use them or contribute to them."
     section: services
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
@@ -20,19 +20,19 @@ services:
       
 
 portfolio:
-    title: "Portfolio"
-    text: "Lorem ipsum dolor sit amet consectetur."
+    title: "Stories"
+    text: "This is a placeholder for blogs."
     section: portfolio
     
 
 timeline:
     title: "About" 
-    text: "Lorem ipsum timeline"
+    text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
     section: timeline
     events:
       - title: "Our Humble Beginnings"
-        year: "2009-2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+        year: "2014"
+        desc: "Founders Mia and Ravi organized their first digital literacy workshop for young women in Kathmandu and registered Code for Nepal, as a non-profit in the US."
         image: assets/img/timeline/1.jpg
         alt: 
         align: left
