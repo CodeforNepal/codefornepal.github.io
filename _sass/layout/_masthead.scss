@@ -2,8 +2,7 @@
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url("#{$header-image}");
-  background: rgba(0, 0, 0, 0.5);
+  background-image: url("#{$header-image}") ;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
