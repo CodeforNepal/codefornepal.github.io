@@ -13,3 +13,6 @@ nav:
 
   - title: "Contact"
     section: contact
+
+  - title: "Blog"
+    page: blog

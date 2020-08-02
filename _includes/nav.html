@@ -1,12 +1,12 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#212529">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="{{ site.baseurl }}/#">
-      {%- if site.logo -%}
+    <a class="navbar-brand js-scroll-trigger" href="{{ site.baseurl }}/">
+      {% if site.logo %}
       <img height="{{ site.logo.height | default: 52 }}" src="{{ site.baseurl }}/{{ site.logo.path }}" />
-      {%- else -%}
+      {% else %}
       {{ site.title }}
-      {%- endif -%}
+      {% endif %}
     </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -16,15 +16,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ml-auto">
-        {%- for link in site.data.navigation.nav -%}
+        {% for link in site.data.navigation.nav %}
         <li class="nav-item">
-          {%- if link.url -%}
+          {% if link.url %}
           <a class="nav-link js-scroll-trigger" href="{{ link.url }}">{{ link.title }}</a>
-          {%- else if link.section -%}
+          {% elsif link.section %}
           <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/#{{ link.section }}">{{ link.title }}</a>
-          {%- else -%}
+          {% elsif link.page %}
+          <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/{{ link.page }}">{{ link.title }}</a>
+          {% else %}
           <a class="nav-link js-scroll-trigger" href="#">{{ link.title }}</a>
-          {%- endif -%}
+          {% endif %}
         </li>
         {% endfor %}
         </li>
