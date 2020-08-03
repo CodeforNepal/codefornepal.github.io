@@ -1,8 +1,8 @@
 nav:
-  - title: "Services"
+  - title: "Our work"
     section: services
 
-  - title: "Portfolio"
+  - title: "Stories"
     section: portfolio
     
   - title: "About"
@@ -13,3 +13,6 @@ nav:
 
   - title: "Contact"
     section: contact
+
+  - title: "Blog"
+    page: blog
