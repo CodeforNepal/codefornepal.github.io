@@ -15,6 +15,9 @@
     margin-bottom: 0;
     text-transform: none;
     @include heading-font;
+    a {
+      color: $gray-900;
+    }
   }
 }
 
