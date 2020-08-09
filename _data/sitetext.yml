@@ -99,7 +99,9 @@ contact:
     section: contact
     
 footer:
-    legal: "Privacy Policy"
+    legal_title: Code of Conduct
+    legal:
+        url: https://github.com/Code4Nepal/website20/blob/master/CODE_OF_CONDUCT.md
     social:
       - url: https://twitter.com/codefornepal
         icon: "fab fa-twitter"  
