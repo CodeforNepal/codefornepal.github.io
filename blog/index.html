@@ -5,11 +5,11 @@ pagination:
   enabled: true
 ---
 
-<h1>Latest Posts</h1>
+<h1 class="text-center">Latest Posts</h1>
 
 <ul class="blog-list">
   {% for post in paginator.posts %}
-  <li class="blog-list-item">
+  <li class="blog-list-item shadow p-3 mb-5 bg-white rounded d-flex flex-column align-items-center">
     <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
     <small class="text-secondary">Published {{ post.date | date: '%B %d, %Y' }}</small>
     {{ post.excerpt }}
