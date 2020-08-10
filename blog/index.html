@@ -1,0 +1,33 @@
+---
+layout: page
+title: Blog
+pagination: 
+  enabled: true
+---
+
+<h1 class="text-center">Latest Posts</h1>
+
+<ul class="blog-list">
+  {% for post in paginator.posts %}
+  <li class="blog-list-item shadow p-3 mb-5 bg-white rounded d-flex flex-column align-items-center">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <small class="text-secondary">Published {{ post.date | date: '%B %d, %Y' }}</small>
+    {{ post.excerpt }}
+  </li>
+  {% endfor %}
+</ul>
+
+{% if paginator.total_pages > 1 %}
+<ul class="paginator-links-list d-flex justify-content-between">
+  {% if paginator.previous_page %}
+  <li>
+    <a class="paginator-link btn btn-primary" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
+  </li>
+  {% endif %}
+  {% if paginator.next_page %}
+  <li>
+    <a class="btn btn-primary" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
+  </li>
+  {% endif %}
+</ul>
+{% endif %}

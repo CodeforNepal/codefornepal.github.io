@@ -18,3 +18,9 @@ sass:
   sass_dir: _sass
 collections:
   portfolio:
+pagination:
+  enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 8
+  permalink: '/page/:num/'

@@ -69,3 +69,12 @@ img::selection {
 img::-moz-selection {
   background: transparent;
 }
+.blog-list {
+  list-style: none;
+  .blog-list-item {
+    margin: 3% 0 3% 0;
+  }
+}
+.paginator-links-list {
+  list-style: none;
+}
