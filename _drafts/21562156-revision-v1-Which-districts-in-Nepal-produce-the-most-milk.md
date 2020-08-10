@@ -1,0 +1,140 @@
+---
+id: 2164
+title: Which districts in Nepal produce the most milk?
+date: 2018-06-10T13:00:29-04:00
+author: codefornepal
+layout: revision
+guid: https://codefornepal.org/2018/06/2156-revision-v1/
+permalink: /2018/06/2156-revision-v1/
+---
+[<img class="size-full wp-image-2158" src="https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM.png" alt="" width="100%" height="100%" srcset="https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM.png 1231w, https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM-300x135.png 300w, https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM-768x346.png 768w, https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM-1024x462.png 1024w" sizes="(max-width: 1231px) 100vw, 1231px" />](https://codefornepal.org/wp-content/uploads/2017/12/Screen-Shot-2018-06-10-at-12.42.09-PM.png)
+
+<span style="font-weight: 400;">Do you use milk or yogurt? Have you thought about where that milk comes from? </span>
+
+<span style="font-weight: 400;">Nepal produced </span><span style="font-weight: 400;">1,854,249 metrics tons (1,854,249,000 liters) of milk in 2016, according to the <a href="http://moad.gov.np/">Ministry of Agriculture</a>. </span>
+
+<span style="font-weight: 400;">Curious about which districts produced the most milk? Here are the top 10 districts. </span>
+
+<table dir="ltr" border="1" cellspacing="0" cellpadding="0">
+  <colgroup> <col width="146" /> <col width="176" /></colgroup> <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;District&quot;}">
+      District
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Total Milk&quot;}">
+      Total Milk (Metric tons)
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Kavrepalanchok&quot;}">
+      <a href="https://nepalmap.org/profiles/district-24-kavrepalanchok/">Kavrepalanchok</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:83509}">
+      83509
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Morang&quot;}">
+      <a href="https://nepalmap.org/profiles/district-09-morang/">Morang</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:73207}">
+      73207
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Kailali&quot;}">
+      <a href="https://nepalmap.org/profiles/district-71-kailali/">Kailali</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:64582}">
+      64582
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Jhapa&quot;}">
+      <a href="https://nepalmap.org/profiles/district-04-jhapa/">Jhapa</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:62124}">
+      62124
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Syangja&quot;}">
+      <a href="https://nepalmap.org/profiles/district-41-syangja/">Syangja</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:56080}">
+      56080
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Nawalparasi&quot;}">
+      <a href="https://nepalmap.org/profiles/district-42-nawalparasi/">Nawalparasi</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:52047}">
+      52047
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Kanchanpur&quot;}">
+      <a href="https://nepalmap.org/profiles/district-75-kanchanpur/">Kanchanpur</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:49022}">
+      49022
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Chitwan&quot;}">
+      <a href="https://nepalmap.org/profiles/district-35-chitwan/">Chitwan</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:45177}">
+      45177
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Makwanpur&quot;}">
+      <a href="https://nepalmap.org/profiles/district-34-makwanpur/">Makwanpur</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:43214}">
+      43214
+    </td>
+  </tr>
+  
+  <tr>
+    <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sunsari&quot;}">
+      <a href="https://nepalmap.org/profiles/district-10-sunsari/">Sunsari</a>
+    </td>
+    
+    <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:42858}">
+      42858
+    </td>
+  </tr>
+</table>
+
+&nbsp;
+
+To learn how much milk your district produced, check out our [interactive map on NepalMap](https://nepalmap.org/data/map/?table=AGRICULTURE_MILK&geo_ids=district|country-NP&primary_geo_id=country-NP#column%7CBUFFALO_MILK%2Csumlev%7Cdistrict).
+
+Data source:
+
+[Ministry of Agriculture (PDF)](http://moad.gov.np/public/uploads/1142453195-STATISTIC%20AGRICULTURE%20BOOK_2016.pdf)
+
+or check out
+
+[Google doc by Code for Nepal](https://docs.google.com/spreadsheets/d/1yTGEJOZyhAgQhPRCP0QFFaBDK0RDN-Jc1agkg7-LdPA/edit?usp=sharing)

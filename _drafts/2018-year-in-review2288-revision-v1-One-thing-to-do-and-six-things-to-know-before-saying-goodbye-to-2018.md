@@ -1,0 +1,41 @@
+---
+id: 2291
+title: One thing to do and six things to know before saying goodbye to 2018
+date: 2018-12-24T03:44:09-05:00
+author: codefornepal
+layout: revision
+guid: https://codefornepal.org/2018/12/2288-revision-v1/
+permalink: /2018/12/2288-revision-v1/
+---
+<figure class="wp-block-image"><img src="https://codefornepal.org/wp-content/uploads/2016/03/IMG_4696-1024x1024.jpg" alt="Flowers. " class="wp-image-1102" srcset="https://codefornepal.org/wp-content/uploads/2016/03/IMG_4696-1024x1024.jpg 1024w, https://codefornepal.org/wp-content/uploads/2016/03/IMG_4696-150x150.jpg 150w, https://codefornepal.org/wp-content/uploads/2016/03/IMG_4696-300x300.jpg 300w, https://codefornepal.org/wp-content/uploads/2016/03/IMG_4696-768x768.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure> 
+
+<p class="has-drop-cap">
+  Happy Holidays! <br />
+</p>
+
+We hope you had a great year and are enjoying the holiday season. We have been grateful for your support. As 2018 comes to an end, we wanted to thank you for supporting Code for Nepal, seek [end of year donations](https://codefornepal.org/donate/), and share updates on our work over the past year.  
+
+
+Overview of what we were up to in 2018:  
+
+
+**Building the digital footprint of a city**: Janakpur is a historical and religious city in southern Nepal. By working with partners, we launched an initiative to digitize the city to attract more tourists, local businesses and people in Nepal: <https://www.visitjanakpur.com/>
+
+**Increasing digital and data literacy**: This year, as in the past, we continued to [analyze and visualize data](https://codefornepal.org/category/dataviz/) related to Nepal. We also organized an [event in Pokhara](https://codefornepal.org/2018/09/2194/) and supported a young teacher’s hope to buy a [projector](https://codefornepal.org/2018/05/postcard-janakpur-project-update/) to increase digital literacy in Janakpur and [computational linguistic competition](https://codefornepal.org/2018/04/computational-linguistic/) in Kathmandu. 
+
+**Supporting entrepreneurs:** In collaboration with [Open Knowledge Nepal](http://oknp.org/), we launched the [Hack for Nepal](http://hackfornepal.org) initiative and hosted [AngelHack Hackathon](http://angelhack.com/) for the first time in Nepal. This was our first experience of hosting an overnight hackathon, where more than 70 participants competed to build ‘Seamless Technology for Humanitarian Response’.
+
+**Increasing access to federal level data:** Nepal has new administrative boundaries. In 2016, we launched [NepalMap](https://nepalmap.org) to put Nepal’s data at your fingertips. Now we are working to create a new version of [NepalMap](https://nepalmap.org) to reflect the new administrative boundaries of Nepal. [Join us](https://github.com/Code4Nepal/nepalmap_federal/)! 
+
+[**Blankets4Nepal**](https://www.facebook.com/donate/149924182459167/)**:** In early 2018, extreme cold waves affected Nepal. Many lost their lives. Code for Nepal and partners raised over $1,500 to donate blankets to those affected. 
+
+**#KataNepali Video Competition**: After the grand success of #[KoNepali](https://www.facebook.com/pg/codefornepal/videos/?ref=page_internal) video and photo competition, in 2018, we organized “KataNepali” video competition asking Nepali youth all around the world their vision and aspiration for Nepal. In March, we distributed the award to the winners in <g class="gr_ gr\_16 gr-alert gr\_spell gr\_inline\_cards gr\_run\_anim ContextualSpelling ins-del multiReplace" id="16" data-gr-id="16">Kathamandu</g>. If you haven&#8217;t watched the [#KataNepali](https://www.facebook.com/codefornepal/posts/792856727590244) videos, please do and let&#8217;s continue to discuss the future of Nepal.
+
+
+
+Looking forward:  
+
+
+<p class="has-background has-light-green-cyan-background-color">
+  <strong>Scholarships for women:</strong> We are working to launch a scholarship initiative for young women to strengthen their coding skills and make them more competitive candidates for technology sector jobs in Nepal. Please donate to the <a href="https://www.facebook.com/donate/547669078978649/">scholarship fund</a>.
+</p>
