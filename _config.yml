@@ -8,13 +8,18 @@ description: >-
 baseurl: "/website20" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 theme: jekyll-agency
-
+gems:
+  - jekyll-paginate-v2
 logo:
   path: assets/img/c4n_logo.png
-
 analytics:
   google: UA-66983412-1
 sass:
   sass_dir: _sass
-collections:
-  portfolio:
+pagination:
+  enabled: true
+  debug: false
+  sort_reverse: true
+  collection: 'posts'
+  per_page: 8
+  permalink: '/page/:num/'
