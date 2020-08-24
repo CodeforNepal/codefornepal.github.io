@@ -100,8 +100,7 @@ contact:
     
 footer:
     legal_title: Code of Conduct
-    legal:
-        url: https://github.com/Code4Nepal/website20/blob/master/CODE_OF_CONDUCT.md
+    privacy: Privacy Policy
     social:
       - url: https://twitter.com/codefornepal
         icon: "fab fa-twitter"  
@@ -113,3 +112,5 @@ footer:
         icon: "fab fa-github"
       - url: http://instagram.com/codefornepal
         icon: "fab fa-instagram"
+    license: "This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! Code for Nepal is a registered 501(c)(3) nonprofit organization. EIN: 47-3620037"
+    

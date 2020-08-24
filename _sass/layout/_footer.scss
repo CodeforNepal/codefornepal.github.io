@@ -10,6 +10,13 @@
     color: white;
     @include heading-font;
   }
+  span.code{
+    font-size: 90%;
+    line-height: 40px;
+    white-space: nowrap;
+    color: white;
+    @include heading-font;
+  }
   ul.quicklinks {
     font-size: 90%;
     line-height: 40px;
@@ -20,6 +27,28 @@
       color: white;
     }
   }
+}
+
+@media only screen and (max-width: 765px) {
+  .footer {
+    height: 390px;
+    span.code{
+      white-space: pre-wrap;
+    }
+  }
+}
+
+@media only screen and (min-width: 765px) and (max-width: 1250px) {
+.col-md-5 {
+    flex: auto!important;
+    max-width: 100%!important;
+}
+.footer {
+  height: 250px;
+  span.code{
+    white-space: pre-wrap;
+  }
+}
 }
 
 ul.social-buttons {
