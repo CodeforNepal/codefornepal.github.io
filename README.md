@@ -16,29 +16,73 @@ Light gray: #FCFBFB
 
 ## Install in Linux Fedora / Ubuntu  
 
+### Step 1
+
+- Fedora
+
+```console
+$ sudo dnf install ruby-devel
 ```
 
-$sudo dnf install ruby-devel / $sudo apt-get install ruby-full
-$sudo dnf groupinstall development-tools rpm-development-tools c-development / $sudo apt-get install build-essential zlib1g-dev
-$gem install bundler
-
-$git clone https://github.com/<yourusername>/website20.git
-$cd website20/
-$git remote add upstream https://github.com/Code4Nepal/website20.git 
-
-$bundle install
-$bundle exec jekyll serve --> http://127.0.0.1:4000/website20/
-
+```console
+$ sudo dnf groupinstall development-tools rpm-development-tools c-development
 ```
 
-Keep Fork Updated 
+- Ubuntu
 
+```console
+$ sudo apt-get install ruby-full
 ```
-$git fetch upstream 
-$git pull upstream master
-$git push origin master 
- 
- ```
+
+```console
+$ sudo apt-get install build-essential zlib1g-dev
+```
+
+### Step 2
+
+```console
+$ gem install bundler
+```
+
+### Step 3
+
+- Fork **https://github.com/Code4Nepal/website20.git**
+- and then
+```console
+$ git clone https://github.com/<yourusername>/website20.git
+$ cd website20/
+$ git remote add upstream https://github.com/Code4Nepal/website20.git 
+```
+
+### Step 4
+
+```console
+$ bundle install
+```
+
+### Step 5
+
+```console
+$ bundle exec jekyll serve
+```
+Go to -> http://127.0.0.1:4000/website20/
+
+### Optional
+
+- To make server accessible in **Network** and in diffrent **port**
+
+```console
+$ bundle exec jekyll serve --host=0.0.0.0 --port=3000
+```
+Go to -> http://`<local_ip_of_machine>`:3000/website20/
+
+## Keep Fork Updated 
+
+```console
+$ git fetch upstream 
+$ git pull upstream master
+$ git push origin master 
+```
 
 
 
