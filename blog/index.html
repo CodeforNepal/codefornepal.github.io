@@ -10,7 +10,7 @@ pagination:
   </div>
 
   {% for post in paginator.posts %}
-  <div class="col-md-12">
+  <div class="col-md-8 offset-2">
     <div class="card mb-4">
       <div class="card-body">
         <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
