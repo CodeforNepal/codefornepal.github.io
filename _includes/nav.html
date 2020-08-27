@@ -15,7 +15,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav text-uppercase ml-auto">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
         {% for link in site.data.navigation.nav %}
         <li class="nav-item">
           {% if link.url %}
@@ -30,6 +30,7 @@
         </li>
         {% endfor %}
         </li>
+        {% include donations.html %}
       </ul>
     </div>
   </div>
