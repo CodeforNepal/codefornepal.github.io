@@ -9,7 +9,7 @@ nav:
     section: timeline
 
   - title: "Team"
-    section: team
+    page: team
 
   - title: "Contact"
     section: contact
