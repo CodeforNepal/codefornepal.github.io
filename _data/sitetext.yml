@@ -1,7 +1,7 @@
 header:
     title: Empower Nepal with civic techology
     text: Helping to increase digital literacy and use of open data in Nepal
-    button: Join us
+    button: Join us!
     buttonlink: "/joinus" # "#{section}" or "URL/page link"
 
 services:
