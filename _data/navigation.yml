@@ -1,12 +1,12 @@
 nav:
   - title: "Our work"
-    section: work
+    section: services
 
   - title: "Stories"
-    section: stories
+    section: portfolio
     
   - title: "About"
-    section: about
+    section: timeline
 
   - title: "Team"
     page: team

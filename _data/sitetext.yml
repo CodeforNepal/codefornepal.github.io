@@ -1,12 +1,12 @@
 header:
     title: Empower Nepal with civic techology
     text: Helping to increase digital literacy and use of open data in Nepal
-    button: Join us!
+    button: Get Involved
     buttonlink: "/joinus" # "#{section}" or "URL/page link"
 
 services:
     title: "Our work"
-    text: "As a community of volunteers we believe in creating opublic goods. Use them or contribute to them."
+    text: "As a community of volunteers we believe in creating public goods. Use them or contribute to them."
     section: services
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
@@ -18,8 +18,6 @@ services:
       - title: "[AskNepal](https://asknepal.info/en)"
         desc: "Ask Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
-        
-        Learn more about our work. 
 
 portfolio:
     title: "Stories"
@@ -46,7 +44,7 @@ timeline:
         align: right
       - title: "Creating products and empowering aspiring tech professionals"
         year: "2016-2019"
-        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/) and gave scholarships to young women and men. "
+        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), partnered with [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/, and gave scholarships to young women and men."
         image: assets/img/timeline/3.jpg
         alt: image alt text
         #align: #default is left       
