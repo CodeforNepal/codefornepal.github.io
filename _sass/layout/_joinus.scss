@@ -1,0 +1,12 @@
+#joinus{
+    strong{
+        color: $accent-color;
+    }
+    a{
+        &:hover{
+            em{
+                color:  $accent-color;
+            }
+        }
+    }
+}
