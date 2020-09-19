@@ -23,3 +23,5 @@ pagination:
   collection: 'posts'
   per_page: 8
   permalink: '/page/:num/'
+collections:
+  portfolio:
