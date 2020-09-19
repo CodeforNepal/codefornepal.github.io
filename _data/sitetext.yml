@@ -6,8 +6,8 @@ header:
 
 services:
     title: "Our work"
-    text: "As a community of volunteers we believe in creating opublic goods. Use them or contribute to them."
-    section: services
+    text: "As a community of volunteers we believe in creating public goods. Use them or contribute to them."
+    section: work
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
@@ -19,18 +19,18 @@ services:
         desc: "Ask Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
         
-        Learn more about our work. 
+        Learn more about our [work](#]. 
 
 portfolio:
     title: "Stories"
     text: "This is a placeholder for blogs."
-    section: portfolio
+    section: stories
     
 
 timeline:
     title: "About" 
     text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
-    section: timeline
+    section: about
     events:
       - title: "Our humble beginnings"
         year: "2014"
@@ -46,7 +46,7 @@ timeline:
         align: right
       - title: "Creating products and empowering aspiring tech professionals"
         year: "2016-2019"
-        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/) and gave scholarships to young women and men. "
+        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), partnered with [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/, and gave scholarships to young women and men. "
         image: assets/img/timeline/3.jpg
         alt: image alt text
         #align: #default is left       
