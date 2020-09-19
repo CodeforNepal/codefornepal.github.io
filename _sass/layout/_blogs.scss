@@ -24,11 +24,7 @@
             font-size: 14px;
         }
         p,span{
-            letter-spacing: -0.003em;
-            line-height: 32px;
-            font-size: 21px;
-            font-weight: 200 !important;
-            margin: 30px 0;
+            @extend .clean-text
         }
     }
 }
