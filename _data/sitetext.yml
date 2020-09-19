@@ -19,6 +19,12 @@ services:
         desc: "Ask Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
 
+portfolio:
+    title: "Stories"
+    text: "This is a placeholder for blogs."
+    section: portfolio
+    
+
 timeline:
     title: "About" 
     text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
