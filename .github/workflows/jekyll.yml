@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses:  helaili/jekyll-action@2.0.3
+
+    - uses: helaili/jekyll-action@2.0.4
       env:
         JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
       with:
