@@ -1,4 +1,4 @@
-# website20
+# codefornepal.github.io
 
 To build a new device agnostic and low bandwidth friendly website of Code for Nepal.
 
@@ -46,12 +46,12 @@ $ gem install bundler
 
 ### Step 3
 
-- Fork **https://github.com/Code4Nepal/website20.git**
+- Fork **https://github.com/Code4Nepal/codefornepal.github.io.git**
 - and then
 ```console
-$ git clone https://github.com/<yourusername>/website20.git
-$ cd website20/
-$ git remote add upstream https://github.com/Code4Nepal/website20.git 
+$ git clone https://github.com/<yourusername>/codefornepal.github.io.git
+$ cd codefornepal.github.io/
+$ git remote add upstream https://github.com/Code4Nepal/codefornepal.github.io.git 
 ```
 
 ### Step 4
@@ -65,7 +65,7 @@ $ bundle install
 ```console
 $ bundle exec jekyll serve
 ```
-Go to -> http://127.0.0.1:4000/website20/
+Go to -> http://127.0.0.1:4000/
 
 ### Optional
 
@@ -74,7 +74,7 @@ Go to -> http://127.0.0.1:4000/website20/
 ```console
 $ bundle exec jekyll serve --host=0.0.0.0 --port=3000
 ```
-Go to -> http://`<local_ip_of_machine>`:3000/website20/
+Go to -> http://`<local_ip_of_machine>`:3000/
 
 ## Keep Fork Updated 
 
