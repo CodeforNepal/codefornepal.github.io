@@ -19,7 +19,7 @@ tags:
   - Mapillary
   - Visit Janakpur
 ---
-<figure class="wp-block-image is-style-default">![](https://lh3.googleusercontent.com/L7Yvp87lqypDDd10waL9lQzp7Z-Wf3sDyjjZ8KD8JfUBG4ia05zh7zhIgy756jloWD-k7hFElbpkVFIxAB4GLIHHHt8nVWs2InicBBSNHfZaempvuOF80dYXh9FPm4J8nPejKJQU)</figure> 
+<figure class="wp-block-image is-style-default"><img src="https://lh3.googleusercontent.com/L7Yvp87lqypDDd10waL9lQzp7Z-Wf3sDyjjZ8KD8JfUBG4ia05zh7zhIgy756jloWD-k7hFElbpkVFIxAB4GLIHHHt8nVWs2InicBBSNHfZaempvuOF80dYXh9FPm4J8nPejKJQU"></figure> 
 
 [November 3, 2019] Spending holiday by volunteering is fun, especially in this digital world when you can help a group of youth digitize their town. With this aim of mobilizing the local volunteers to map the street of Janakpur on [OpenStreetMap](https://www.openstreetmap.org/); [Code for Nepal](https://codefornepal.org/) collaborated with [Internet Market Today](https://www.internetmarkettoday.com/), [Appan TV](https://www.appantv.com.np/) and Smartha Nepal to organize [2019 Digitizing Janakpur](https://www.facebook.com/events/399271194100112) Workshop. It was a followup event of 2018 workshop, where we launched [https://www.visitjanakpur.com/](https://www.visitjanakpur.com/?fbclid=IwAR24FeChtVJk4xb1E7hpr_ZZkrzynSNv80_iuOHgjGRHAPpy4EKoM5fomGk) by mapping businesses of the city, and publishing photos and videos.  
 
