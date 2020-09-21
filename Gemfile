@@ -3,7 +3,6 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.1.1"
 gem "jekyll-agency"
 gem "minima", "~> 2.5"
-gem "html-proofer"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
