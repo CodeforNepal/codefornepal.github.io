@@ -1,9 +1,9 @@
 <!-- Navigation -->
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="{{ site.baseurl }}/">
+    <a class="navbar-brand js-scroll-trigger" href="{{ absolute_url }}/">
       {% if site.logo %}
-      <img height="{{ site.logo.height | default: 52 }}" src="{{ site.baseurl }}/{{ site.logo.path }}" />
+      <img height="{{ site.logo.height | default: 52 }}" src="{{ site.logo.path | prepend: absolute_url }}" />
       {% else %}
       {{ site.title }}
       {% endif %}
