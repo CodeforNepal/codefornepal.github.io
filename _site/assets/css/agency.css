@@ -56,7 +56,7 @@ img::-moz-selection { background: transparent; }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover { color: #54bfff; }
 
-@media (min-width: 992px) { #mainNav { -webkit-transition: padding-top 0.3s, padding-bottom 0.3s; -moz-transition: padding-top 0.3s, padding-bottom 0.3s; transition: padding-top 0.3s, padding-bottom 0.3s; border: none; background-color: #212529a6; } #mainNav .navbar-brand { font-size: 1.75em; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; } #mainNav .navbar-nav .nav-item .nav-link { padding: 0em 1em !important; } #mainNav.navbar-shrink { padding-top: 0; padding-bottom: 0; background-color: #212529; } #mainNav.navbar-shrink .navbar-brand { font-size: 1.25em; padding: 2px 0; } #mainNav form { padding-left: 15px; } }
+@media (min-width: 992px) { #mainNav { -webkit-transition: padding-top 0.3s, padding-bottom 0.3s; -moz-transition: padding-top 0.3s, padding-bottom 0.3s; transition: padding-top 0.3s, padding-bottom 0.3s; border: none; background-color: #212529; } #mainNav .navbar-brand { font-size: 1.75em; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; } #mainNav .navbar-nav .nav-item .nav-link { padding: 0em 1em !important; } #mainNav.navbar-shrink { padding-top: 0; padding-bottom: 0; background-color: #212529; } #mainNav.navbar-shrink .navbar-brand { font-size: 1.25em; padding: 2px 0; } #mainNav form { padding-left: 15px; } }
 
 #scrolling-clients { display: flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
 
