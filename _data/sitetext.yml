@@ -19,7 +19,7 @@ services:
         desc: "Ask Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
         
-        Learn more about our work. 
+        # Learn more about our work. 
 
 portfolio:
     title: "Stories"
