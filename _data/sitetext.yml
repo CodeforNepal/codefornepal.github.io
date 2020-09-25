@@ -7,7 +7,7 @@ header:
 services:
     title: "Our work"
     text: "As a community of volunteers we believe in creating public goods. Use them or contribute to them."
-    section: services
+    section: work
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
@@ -22,13 +22,13 @@ services:
 portfolio:
     title: "Stories"
     text: "This is a placeholder for blogs."
-    section: portfolio
+    section: stories
     
 
 timeline:
     title: "About" 
     text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
-    section: timeline
+    section: about
     events:
       - title: "Our humble beginnings"
         year: "2014"
