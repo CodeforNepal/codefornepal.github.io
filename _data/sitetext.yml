@@ -2,7 +2,7 @@ header:
     title: Empower Nepal with civic techology
     text: Helping to increase digital literacy and use of open data in Nepal
     button: Get Involved
-    buttonlink: "/joinus" # "#{section}" or "URL/page link"
+    buttonlink: "joinus" # "#{section}" or "URL/page link"
 
 services:
     title: "Our work"
@@ -19,7 +19,7 @@ services:
         desc: "Ask Nepal helps you make a Freedom of Information request."
         icon: fab fa-markdown
         
-        Learn more about our work. 
+        # Learn more about our work. 
 
 portfolio:
     title: "Stories"
