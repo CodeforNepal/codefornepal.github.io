@@ -2,6 +2,7 @@
 body {
   overflow-x: hidden;
   @include body-font;
+  @extend %base-font-style;
 }
 
 p {
@@ -79,10 +80,13 @@ img::-moz-selection {
   list-style: none;
 }
 
-.clean-text {
+%base-font-style{
   letter-spacing: -0.003em;
-            line-height: 32px;
-            font-size: 21px;
-            font-weight: 200 !important;
-            margin: 30px 0;
+  line-height: 32px;
+  font-weight: 200 !important;
+}
+.clean-text {
+  @extend %base-font-style;
+  font-size: 21px;
+  margin: 30px 0;
 }
