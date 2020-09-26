@@ -17,7 +17,6 @@ $contact-image: "{{ site.data.style.contact-image }}";
 $theme-colors: (
   "primary": $primary,
 );
-@import 'bootstrap/scss/bootstrap.scss';
 
 // Global CSS
 @import "base/page.scss";
@@ -38,3 +37,4 @@ $theme-colors: (
 @import "layout/blogs.scss";
 @import "layout/joinus.scss";
 
+@import 'bootstrap/scss/bootstrap.scss';
