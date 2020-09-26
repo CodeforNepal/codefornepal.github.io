@@ -1,7 +1,8 @@
 // Global styling for this template
 body {
   overflow-x: hidden;
-  @include body-font;
+  // @include body-font;
+  @extend %base-font-style;
 }
 
 p {
@@ -26,7 +27,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  @include heading-font;
+  // @include heading-font;
 }
 
 .page-section {
@@ -42,7 +43,7 @@ h6 {
     font-style: italic;
     margin-bottom: 75px;
     text-transform: none;
-    @include serif-font;
+    // @include serif-font;
   }
 }
 @media(min-width:768px) {
@@ -79,10 +80,13 @@ img::-moz-selection {
   list-style: none;
 }
 
-.clean-text {
+%base-font-style{
   letter-spacing: -0.003em;
-            line-height: 32px;
-            font-size: 21px;
-            font-weight: 200 !important;
-            margin: 30px 0;
+  line-height: 32px;
+  font-weight: 200 !important;
+}
+.clean-text {
+  @extend %base-font-style;
+  font-size: 21px;
+  margin: 30px 0;
 }
