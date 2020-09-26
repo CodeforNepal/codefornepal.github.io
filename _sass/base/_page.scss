@@ -1,7 +1,7 @@
 // Global styling for this template
 body {
   overflow-x: hidden;
-  @include body-font;
+  // @include body-font;
   @extend %base-font-style;
 }
 
@@ -27,7 +27,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  @include heading-font;
+  // @include heading-font;
 }
 
 .page-section {
@@ -43,7 +43,7 @@ h6 {
     font-style: italic;
     margin-bottom: 75px;
     text-transform: none;
-    @include serif-font;
+    // @include serif-font;
   }
 }
 @media(min-width:768px) {
