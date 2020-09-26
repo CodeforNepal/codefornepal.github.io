@@ -3,3 +3,15 @@
   margin: 15px 0;
   text-transform: none;
 }
+
+.no-logo{
+  font-size: 55px;
+  color:#E00015;
+  font-weight: 400 !important;
+  span{
+      color: #00ADEF !important
+  }
+  &:hover{
+  color:#E00015;
+  }
+}

@@ -1,6 +1,6 @@
 nav:
   - title: "Our work"
-    section: work
+    page: projects
 
   - title: "Stories"
     section: stories
