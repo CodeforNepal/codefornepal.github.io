@@ -49,7 +49,7 @@ timeline:
         alt: image alt text
         #align: #default is left       
         align: right
-    end: "Join us <br> and shape <br> our story!"
+    end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
 
 about:
     title: "About Us"
