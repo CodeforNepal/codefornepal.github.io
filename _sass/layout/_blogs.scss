@@ -1,30 +1,35 @@
-.card{
+.card {
     // border:none;
-    img{
+    img {
         width: 100% !important;
     }
 }
 
-.container{
-    &.blog{
-        max-width: 800px;
-        @include mq(phablet,min){
-            padding: 0 64px;
-        }
-        img{
-            width: 100%;
-        }
-        .title{
-            font-weight: 400;
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-        figcaption{
-            margin-top: 8px;
-            font-size: 14px;
-        }
-        p,span{
-            @extend .clean-text
-        }
+.blog {
+    max-width: 800px;
+    @include mq(phablet, min) {
+        padding: 0 64px;
     }
+    img {
+        width: 100%;
+    }
+    .title {
+        font-weight: 400;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    figcaption {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+    p,
+    span {
+        @extend .clean-text;
+    }
+}
+
+.blog-card img {
+    height: 225px;
+    width: 100%;
+    display: block;
 }

@@ -21,7 +21,7 @@ services:
         
 portfolio:
     title: "Stories"
-    text: "This is a placeholder for blogs."
+    text: ""
     section: stories
     
 

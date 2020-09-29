@@ -46,7 +46,7 @@ h6 {
     // @include serif-font;
   }
 }
-@media(min-width:768px) {
+@media (min-width: 768px) {
   section {
     padding: 150px 0;
   }
@@ -80,7 +80,7 @@ img::-moz-selection {
   list-style: none;
 }
 
-%base-font-style{
+%base-font-style {
   letter-spacing: -0.003em;
   line-height: 32px;
   font-weight: 200 !important;

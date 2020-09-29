@@ -14,8 +14,6 @@ logo:
   path: assets/img/c4n_logo.png
 analytics:
   google: UA-66983412-1
-sass:
-  sass_dir: _sass
 pagination:
   enabled: true
   debug: false
