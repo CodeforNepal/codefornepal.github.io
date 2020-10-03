@@ -47,7 +47,6 @@ timeline:
         desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), collaborated with partners such as [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/) and gave scholarships to young women and men."
         image: assets/img/timeline/3.jpg
         alt: image alt text
-        #align: #default is left       
         align: right
     end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
 
