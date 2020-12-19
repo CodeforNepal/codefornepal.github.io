@@ -6,14 +6,14 @@ header:
 
 services:
     title: "Our work"
-    text: "As a community of volunteers we believe in creating public goods. Use them or contribute to them."
+    text: "As a community of volunteers we believe in creating opportunities and public goods. Use them or contribute to them."
     section: work
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
    
       - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
-        desc: "Fellowship for underprivliged youth"
+        desc: "Fellowship for underprivliged youths"
         
         - title: "[Sangraha](http://sangraha.org/)"
         desc: "Access Nepali poems and literature"
