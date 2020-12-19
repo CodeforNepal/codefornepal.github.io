@@ -12,7 +12,10 @@ services:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
    
-      - title: "[Sangraha](http://sangraha.org/)"
+      - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
+        desc: "Fellowship for underprivliged youth"
+        
+        - title: "[Sangraha](http://sangraha.org/)"
         desc: "Access Nepali poems and literature"
               
       - title: "[AskNepal](https://asknepal.info/en)"
