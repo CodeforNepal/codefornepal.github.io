@@ -13,3 +13,6 @@ nav:
 
   - title: "Blog"
     page: blog
+  
+  - title: "Fellowship"
+    url: https://codefornepal.org/fellowship
