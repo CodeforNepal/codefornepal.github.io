@@ -15,7 +15,7 @@ services:
       - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
         desc: "Fellowship for underprivliged youths"
         
-        - title: "[Sangraha](http://sangraha.org/)"
+      - title: "[Sangraha](http://sangraha.org/)"
         desc: "Access Nepali poems and literature"
               
       - title: "[AskNepal](https://asknepal.info/en)"

@@ -18,8 +18,6 @@ people:
     image: /assets/img/team/dipak_gautam.jpg
   - name: "Ishan Dongol"
     image: /assets/img/team/ishan_dongol.jpg
-  - name: "Laurence Hall"
-    image: /assets/img/team/500x500.jpg
   - name: "Mia Mitchell"
     image: /assets/img/team/mia_mitchell.jpg
   - name: "Nikesh Balami"
@@ -34,6 +32,8 @@ people:
     image: /assets/img/team/pratima_kandel.jpg
   - name: "Ravi Kumar"
     image: /assets/img/team/ravi_kumar.jpg
+  - name: "Robert Penner"
+    image: /assets/img/team/robert_penner.jpg
   - name: "Shreeya Khadka"
     image: /assets/img/team/500x500.jpg
   - name: "Shreyahsa Paudel"
