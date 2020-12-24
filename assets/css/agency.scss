@@ -14,6 +14,10 @@ $black: {{ site.data.style.black | default: "#000" }} !default;
 $header-image: "{{ site.data.style.header-image }}";
 $contact-image: "{{ site.data.style.contact-image }}";
 
+$theme-colors: (
+  "primary": $primary,
+);
+
 // Global CSS
 @import "base/page.scss";
 
@@ -32,3 +36,5 @@ $contact-image: "{{ site.data.style.contact-image }}";
 @import "layout/footer.scss";
 @import "layout/blogs.scss";
 @import "layout/joinus.scss";
+
+@import 'bootstrap/scss/bootstrap.scss';

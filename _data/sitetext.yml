@@ -1,18 +1,21 @@
 header:
-    title: Empower Nepal with civic techology
+    title: Empower Nepal with civic technology
     text: Helping to increase digital literacy and use of open data in Nepal
     button: Get Involved
     buttonlink: "joinus" # "#{section}" or "URL/page link"
 
 services:
     title: "Our work"
-    text: "As a community of volunteers we believe in creating public goods. Use them or contribute to them."
+    text: "As a community of volunteers we believe in creating opportunities and public goods. Use them or contribute to them."
     section: work
     list:
       - title: "[NepalMap](https://nepalmap.org/)"
         desc: "Explore and understand Nepal using data"
    
-      - title: "[Sangraha](http://sangraha.org/)"
+      - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
+        desc: "Fellowship for underprivliged youths"
+        
+        - title: "[Sangraha](http://sangraha.org/)"
         desc: "Access Nepali poems and literature"
               
       - title: "[AskNepal](https://asknepal.info/en)"
@@ -47,9 +50,8 @@ timeline:
         desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), collaborated with partners such as [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/) and gave scholarships to young women and men."
         image: assets/img/timeline/3.jpg
         alt: image alt text
-        #align: #default is left       
         align: right
-    end: "Join us <br> and shape <br> our story!"
+    end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
 
 about:
     title: "About Us"
