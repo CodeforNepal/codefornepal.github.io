@@ -19,6 +19,8 @@ tags:
   - NepalMap
   - NepalMap Federal
   - Open Data
+ 
+
 ---
 Code for Nepal has just launched the federal version of [NepalMap](https://nepalmap.org/), a web app that puts data about Nepal at your fingertips! Since 2016, this data portal has been the go-to source for many journalists, researchers, entrepreneurs and students; when they are looking for data or data visualizations. 
 

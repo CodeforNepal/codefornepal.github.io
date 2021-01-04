@@ -15,6 +15,8 @@ categories:
 tags:
   - dataviz
   - nepal
+  - highlight
+
 ---
 The [Government of Nepal](https://covid19.gov.np/) has reported over 350 COVID-19 positive cases and two deaths due to this novel coronavirus as of this writing. To prevent the mass spread, Nepal has been under a national lockdown since March 24.
 

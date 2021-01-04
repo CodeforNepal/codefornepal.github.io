@@ -10,6 +10,8 @@ sidebar:
   - choice
 categories:
   - General
+tags:
+  - highlight
 ---
 After being selected as one of the Hawkins fellow, I searched for Insight workshop’s further background, course curriculum outline and its location to make sure I am going to the right place. In my view, most of the Nepali students get internship experiences where they just come to complete the syllabus of internship or the internship becomes a phase where students begin to lose their zeal in technology. Often, interns do not learn anything due to lack of guidance. I had a slight skepticism whether the workshop would be as promising as it looked. But when I entered Insight Workshop, it was nothing like what I have encountered in the past. It was fairly disparate from any other technology companies in Nepal. It was an ecstatic moment for me when I could see the academy was professionally equipped, provided with well defined resources and supported by highly experienced mentors.
 

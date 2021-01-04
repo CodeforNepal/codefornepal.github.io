@@ -28,13 +28,13 @@ tags:
 ---
 by **<a title="Shashi Adhikari" href="https://codefornepal.org/staff/shashi-adhikari/" target="_blank">Shashi Adhikari</a>, <a href="https://twitter.com/AdhikariShashi" target="_blank">@AdhikariShashi</a>**
 
-<div style="width: 510px" class="wp-caption aligncenter">
-  <img src="https://31.media.tumblr.com/ba53f4787bd538b949f9451ea9d882e2/tumblr_inline_n8sccuVL0R1qb9ga0.jpg" alt="image" width="500" height="373" />
+
+<figure class="wp-block-image is-style-default">
+  <img src="https://31.media.tumblr.com/ba53f4787bd538b949f9451ea9d882e2/tumblr_inline_n8sccuVL0R1qb9ga0.jpg" alt="image"></figure>
   
   <p class="wp-caption-text">
     Students in Janakpur, Nepal, complete Code for Nepal’s survey on what they hope to learn about the Internet and computers. (Photo Credit: Shashi Adhikari)
   </p>
-</div>
 
 &nbsp;
 

@@ -1,0 +1,29 @@
+<div class = "container">
+    <div class="container-fluid">
+         <h1 class="text-center" style="margin-bottom: 5%; margin-top: -5%;"> RECENT POSTS</h1>   
+               <div class="row">  
+                 {% for post in site.tags.highlight limit: 3%} 
+                    <div class="col-sm d-flex">
+                        <div class = "card">  
+                            <div class = "card-title" style="margin-top: 5%; margin-left: 5%;" >
+                                 <h6><a href="{{ post.id }}" class="text-dark font-weight-bold">{{ post.title }}</a></h6>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                {% if post.content contains 'img src=' %}
+                                     <p> {{ post.content|safe|truncatewords: 35 }}</p>
+                                 {% else %}
+                                     <img src="/assets/img/placeholder.png" alt="">
+                                     <p> {{ post.content|safe|truncatewords: 35 }}</p>
+                                 {% endif %}                      
+                                 <div class="mt-auto text-center font-weight-bold">
+                                      <a href="{{ post.id }}" class="btn btn-link pl-0">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a>
+                                 </div>                           
+                           </div> 
+                         </div> 
+                   </div>    
+                {% endfor %}
+               </div>  
+    </div>
+</div>
+
+

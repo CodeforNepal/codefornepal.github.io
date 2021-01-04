@@ -11,7 +11,7 @@ sidebar:
 categories:
   - General
 ---
-<figure class="wp-block-image">![](https://lh3.googleusercontent.com/AnAP1vDQWqFNoZsPpo3mkCCCFQnsCz-J-D6rW1xiyCr4EGb7nQLoRgTS_c8mk3Z8dBBr0naS_2MQLhyyOgUgQtGzMSSOakM-kje8W_nF0HVZs3gCs6tJqlJfpeAD9W0GZQzIi0w)</figure> 
+![](https://lh3.googleusercontent.com/AnAP1vDQWqFNoZsPpo3mkCCCFQnsCz-J-D6rW1xiyCr4EGb7nQLoRgTS_c8mk3Z8dBBr0naS_2MQLhyyOgUgQtGzMSSOakM-kje8W_nF0HVZs3gCs6tJqlJfpeAD9W0GZQzIi0w)
 
 _Nikesh with Code for Nepal recipients of Tech Diversity Scholarship at Insight Workshop_  
 
