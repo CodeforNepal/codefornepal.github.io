@@ -3,6 +3,8 @@ title: Cumulative number of confirmed COVID-19 cases in Nepal has increased dram
 date: 2020-11-21
 author: codefornepal
 layout: post
+tags:
+ - highlight
 ---
 
 Just 6 months ago, Nepal had just 1,500 confirmed cases of COVID-19 in Nepal. Since then the number of confirmed cases has increased dramatically in the country. Globally, experts are warning that during winter COVID-19 cases will likely rise as gatherings move indoors. 
