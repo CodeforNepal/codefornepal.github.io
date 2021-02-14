@@ -7,6 +7,8 @@ tags:
  - highlight
 ---
 
+<img src="https://codefornepal.org/data-fellowship/assets/og-image.jpeg" alt="Launching a Fellowship program to build data skills of over 500 Nepalis globally">
+
 We are excited to launch [Data Fellowship](https://codefornepal.org/data-fellowship/) to build the data skills of over 500 Nepalis. There are only two criteria to apply for this fellowship. First, applicants must be able to commit at least 5-10 hours per week for the first 2-3 months. Second, they should be curious and interested in learning new skills.
 
 Applicants can be based anywhere. They can come from any background. They can be students, professionals, or unemployed. We highly encourage women and especially people from provinces 2 and 6 to apply.
