@@ -46,12 +46,12 @@ $ gem install bundler
 
 ### Step 3
 
-- Fork **https://github.com/Code4Nepal/codefornepal.github.io.git**
+- Fork **https://github.com/CodeforNepal/codefornepal.github.io.git**
 - and then
 ```console
 $ git clone https://github.com/<yourusername>/codefornepal.github.io.git
 $ cd codefornepal.github.io/
-$ git remote add upstream https://github.com/Code4Nepal/codefornepal.github.io.git 
+$ git remote add upstream https://github.com/CodeforNepal/codefornepal.github.io.git 
 ```
 
 ### Step 4
