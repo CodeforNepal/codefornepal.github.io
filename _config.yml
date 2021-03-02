@@ -20,7 +20,7 @@ pagination:
   enabled: true
   debug: false
   sort_reverse: true
-  collection: 'posts'
+  collection: "posts"
   per_page: 8
-  permalink: '/page/:num/'
+  permalink: "/page/:num/"
 exclude: [vendor]
