@@ -2,7 +2,7 @@
 
 To build a new device agnostic and low bandwidth friendly website of Code for Nepal.
 
-Jkelly instance of codefornepal.org
+Jekyll instance of codefornepal.org
 
 ## Design Guidelines
 
