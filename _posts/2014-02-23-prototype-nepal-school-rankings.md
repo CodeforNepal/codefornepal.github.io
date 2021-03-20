@@ -19,6 +19,9 @@ tags:
   - nepal
   - prototype
   - school
+photo:
+  - https://31.media.tumblr.com/89d76ef8efb2b10ff07b9f10b7577695/tumblr_inline_n1gohqvuxX1qb9ga0.png
+
 ---
 <a href="http://demo.skylinenet.net/nepal/" target="_blank"><img alt="image" src="https://31.media.tumblr.com/89d76ef8efb2b10ff07b9f10b7577695/tumblr_inline_n1gohqvuxX1qb9ga0.png" /></a>
 

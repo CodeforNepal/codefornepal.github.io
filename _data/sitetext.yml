@@ -62,7 +62,15 @@ contact:
     title: "Contact Us"
     text: "We would love to hear from you! Of course, you can submit the form below or chat with us on [Slack](https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg), [Twitter](https://twitter.com/codefornepal), and [Facebook](https://www.facebook.com/codefornepal)."
     section: contact
-    
+
+sponsors:
+    title: "Our Sponsors"
+    text: ""
+    list:
+      - url: https://datacamp.com
+        image: 'assets/img/dc-regular.png'
+    section: sponsors
+      
 footer:
     legal_title: Code of Conduct
     privacy: Privacy Policy

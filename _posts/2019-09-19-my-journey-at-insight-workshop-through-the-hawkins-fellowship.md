@@ -12,6 +12,8 @@ categories:
   - dataviz
   - Digital Literacy
   - General
+tags:
+  - highlight
 ---
 One morning I applied for an academy program in Insight Workshop (IW), a Software Company located in Naxal, Kathmandu. The deadline was just the night before. Luckily my application was counted. (Big thanks to my dearest friend Rachana for this). After a rigorous application process I was selected for the program. I also applied for this program from Hawkins Fellowship Program by Code for Nepal. I got selected as a Hawkins fellow from there too. I can’t express in words the feelings that I had that day. I was so excited and nervous about this journey.  
 
