@@ -4,46 +4,41 @@ text: ""
 subtext: 
 section: team
 people:
-  - name: "Aishraj Dahal"
-    image: /assets/img/team/aishraj_dahal.jpg
-  - name: "Anup Dhamala"
-    image: /assets/img/team/500x500.jpg
-  - name: "Asmita Gauchan"
-    image: /assets/img/team/500x500.jpg
-  - name: "Bidhi Mandal"
-    image: /assets/img/team/bidhi_mandal.jpg
-  - name: "David Shrestha"
-    image: /assets/img/team/david_shrestha.jpg
-  - name: "Dipak Gautam"
-    image: /assets/img/team/dipak_gautam.jpg
-  - name: "Ishan Dongol"
-    image: /assets/img/team/ishan_dongol.jpg
-  - name: "Mia Mitchell"
-    image: /assets/img/team/mia_mitchell.jpg
-  - name: "Nikesh Balami"
-    image: /assets/img/team/500x500.jpg
-  - name: "Nripesh Parajuli "
-    image: /assets/img/team/nripesh_parajuli.jpg
-  - name: "Pragya Tripathi "
-    image: /assets/img/team/500x500.jpg
-  - name: "Prasanna Suman"
-    image: /assets/img/team/500x500.jpg
-  - name: "Pratima Kandel"
-    image: /assets/img/team/pratima_kandel.jpg
-  - name: "Ravi Kumar"
-    image: /assets/img/team/ravi_kumar.jpg
-  - name: "Robert Penner"
-    image: /assets/img/team/robert_penner.jpg
-  - name: "Shreeya Khadka"
-    image: /assets/img/team/500x500.jpg
-  - name: "Shreyahsa Paudel"
-    image: /assets/img/team/500x500.jpg
-  - name: "Sukriti Adhikari"
-    image: /assets/img/team/500x500.jpg
-  - name: "Sweta Baniya"
-    image: /assets/img/team/500x500.jpg
-  - name: "Laurence Hall"
-    image: /assets/img/team/laurence_hall.jpg
-  - name: "Anshu Adhikari"
-    image: /assets/img/team/anshu_adhikari.jpg
+  - name: Aishraj Dahal
+    image: "/assets/img/team/aishraj_dahal.jpg"
+  - name: Anshu Adhikari
+    image: "/assets/img/team/anshu_adhikari.jpg"
+  - name: Anup Dhamala
+    image: "/assets/img/team/500x500.jpg"
+  - name: Bidhi Mandal
+    image: "/assets/img/team/bidhi_mandal.jpg"
+  - name: David Shrestha
+    image: "/assets/img/team/david_shrestha.jpg"
+  - name: Dipak Gautam
+    image: "/assets/img/team/dipak_gautam.jpg"
+  - name: Ishan Dongol
+    image: "/assets/img/team/ishan_dongol.jpg"
+  - name: Laurence Hall
+    image: "/assets/img/team/laurence_hall.jpg"
+  - name: Nikesh Balami
+    image: "/assets/img/team/500x500.jpg"
+  - name: 'Nripesh Parajuli '
+    image: "/assets/img/team/nripesh_parajuli.jpg"
+  - name: 'Pragya Tripathi '
+    image: "/assets/img/team/500x500.jpg"
+  - name: Prasanna Suman
+    image: "/assets/img/team/500x500.jpg"
+  - name: Pratima Kandel
+    image: "/assets/img/team/pratima_kandel.jpg"
+  - name: Ravi Kumar
+    image: "/assets/img/team/ravi_kumar.jpg"
+  - name: Shreeya Khadka
+    image: "/assets/img/team/500x500.jpg"
+  - name: Shreyahsa Paudel
+    image: "/assets/img/team/500x500.jpg"
+  - name: Sukriti Adhikari
+    image: "/assets/img/team/500x500.jpg"
+  - name: Sweta Baniya
+    image: "/assets/img/team/500x500.jpg"
+
       
