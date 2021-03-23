@@ -5,14 +5,16 @@ nav:
   - title: "About"
     section: about
 
+  - title: "Fellowship"
+    url: https://codefornepal.org/data-fellowship/
+  
+  - title: "Blog"
+    page: blog
+
   - title: "Team"
     page: team
 
   - title: "Contact"
     section: contact
   
-  - title: "Blog"
-    page: blog
-  
-  - title: "Fellowship"
-    url: https://codefornepal.org/data-fellowship/
+
