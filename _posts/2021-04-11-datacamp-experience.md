@@ -1,6 +1,6 @@
 ---
-title: 'How DataCamp is helping learn data science'
-date: 2021-02-14
+title: 'How DataCamp is helping me learn data science'
+date: 2021-04-11
 author: Anshu Adhikari
 layout: post
 tags:
@@ -31,3 +31,5 @@ Datacamp also has a section dedicated to getting real-life experience with proje
 Finally, let me share that when I finished my first-course introduction to python I was very proud of myself. After all, I managed to accomplish a significant step towards eventually becoming a data expert. I realized that becoming data fluent would require more time and dedication. I look forward to completing more courses, tracks, and projects that DataCamp has to offer. 
 
 This may be the fact that all our fellows at DataCamp have a positive experience with different courses like python, R, SQL, and Machine learning. In the era of the COVID-19 pandemic, as a high school student, I realized it is necessary to reinforce the various learning Opportunities that prioritizes strengthening my data skills and DataCamp was the best platform for it. 
+
+In the coming weeks, I will share how others in our community are using DataCamp. In the meantime, I would be curious to hear about your experience in coding. Please share your experiences or thoughts in the comment section below. 
