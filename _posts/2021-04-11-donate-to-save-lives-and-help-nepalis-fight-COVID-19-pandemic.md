@@ -13,7 +13,7 @@ tags:
 
 Nepal has run out of hospital beds due to rapidly rising COVID-19 cases. The Health Ministry has said that the situation is [“unmanageable”](https://www.nytimes.com/2021/05/01/world/nepal-india-covid.html). Just a few weeks ago, Nepal was recording fewer than 100 cases a day. On May 1, it recorded over 7,000 COVID-19 cases. Data suggests Nepal currently has one of the highest positivity rates in the world and is on track to double its COVID cases every five days.
 
-This fundraiser is intended to help bring much needed resources and potentially help run a vacant hospital in Kathmandu that will provide upto **300 general ward beds and 35 ICU beds.**
+This fundraiser is intended to help bring much needed resources and potentially help run a vacant hospital temporarily in Kathmandu that will provide upto **300 general ward beds and 35 ICU beds.**
 
 Our goal is to raise **USD 15,000**. All your donations are tax deductible in the US. We also encourage you to speak with your employer to explore the possibility of employer matching.
 
