@@ -35,7 +35,10 @@ We will publish complete details of donations every 15 days on our website: [htt
 
 Details and cost of every single item procured through this fundraiser will be published via our website.
 
-Use of fund
+## Use of funds
+
 We are partnering with [Samartha Nepal](http://samarthanepal.org/), [Janata clinic](http://janataclinic.org/) and other local groups to provide resources to help operationalize the facility for CoViD isolation and ICU wards for critical patients.
 
-We are also working to support families who have lost their sole breadwinners and are on the brink of poverty. At this rate, it is very likely that there will be scores of families without a source of income and in need of basic supplies to survive on a daily basis within and outside of Kathmandu Valley. With our network of partners all over the country, especially in the Southern border of Nepal that is being hit terribly, we aim to expand our support.
+We are also working to support families who have lost their sole breadwinners and have no source of income. At this rate, it is very likely that there will be scores of families without a source of income and in need of basic supplies to survive on a daily basis within and outside of Kathmandu Valley. With our network of partners all over the country, especially in the Southern border of Nepal that is being hit terribly, we aim to expand our support.
+
+## Join us in our mission to help Nepalis. Please share this with your friends and family. 
