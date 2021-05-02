@@ -19,7 +19,7 @@ Our goal is to raise **USD 15,000**. All your donations are tax deductible in th
 
 ## How to Donate
 
-- VIA FACEBOOK [COMING SOON]
+- [FACEBOOK](https://www.facebook.com/donate/517821549237041/)
 
 - [PAYPAL](https://www.paypal.com/donate?hosted_button_id=95R9GEGDABKK2)
 
