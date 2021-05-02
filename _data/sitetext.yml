@@ -1,89 +1,87 @@
 header:
-    title: Empower Nepal with civic technology
-    text: Helping to increase digital literacy and use of open data in Nepal
-    button: Get Involved
-    buttonlink: "joinus" # "#{section}" or "URL/page link"
+  title: Empower Nepal with civic technology
+  text: Helping to increase digital literacy and use of open data in Nepal
+  button: Help Nepal fight COVID-19
+  buttonlink: "2021/05/02/donate-to-save-lives-and-help-nepalis-fight-COVID-19-pandemic" # "#{section}" or "URL/page link"
 
 services:
-    title: "Our work"
-    text: "As a community of volunteers we believe in creating opportunities and public goods. Use them or contribute to them."
-    section: work
-    list:
-      - title: "[NepalMap](https://nepalmap.org/)"
-        desc: "Explore and understand Nepal using data"
-   
-      - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
-        desc: "Fellowship for underprivliged youths"
-        
-      - title: "[Sangraha](http://sangraha.org/)"
-        desc: "Access Nepali poems and literature"
-              
-      - title: "[AskNepal](https://asknepal.info/en)"
-        desc: "Ask Nepal helps you make a Freedom of Information request."
-        icon: fab fa-markdown
-        
+  title: "Our work"
+  text: "As a community of volunteers we believe in creating opportunities and public goods. Use them or contribute to them."
+  section: work
+  list:
+    - title: "[NepalMap](https://nepalmap.org/)"
+      desc: "Explore and understand Nepal using data"
+
+    - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
+      desc: "Fellowship for underprivliged youths"
+
+    - title: "[Sangraha](http://sangraha.org/)"
+      desc: "Access Nepali poems and literature"
+
+    - title: "[AskNepal](https://asknepal.info/en)"
+      desc: "Ask Nepal helps you make a Freedom of Information request."
+      icon: fab fa-markdown
+
 portfolio:
-    title: "Stories"
-    text: "This is a placeholder for blogs."
-    section: stories
-    
+  title: "Stories"
+  text: "This is a placeholder for blogs."
+  section: stories
 
 timeline:
-    title: "About" 
-    text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
-    section: about
-    events:
-      - title: "Our humble beginnings"
-        year: "2014"
-        desc: "Founders Mia and Ravi organized their first digital literacy workshop for young women in Kathmandu and registered Code for Nepal, as a non-profit in the US."
-        image: assets/img/timeline/1.jpg
-        alt: 
-        align: left
-      - title: "Responding to a historic crisis"
-        year: "2015"
-        desc: "When the devastating earthquakes struck Nepal, Code for Nepal community members mobilized a [digital response](http://www.nytimes.com/2015/05/02/world/asia/3-ways-nepalis-are-using-crowdsourcing-to-aid-in-quake-relief.html?_r=0) to help those in need and advocated for [data-driven](https://time.com/3845593/nepal-earthquake-response-data/) relief and recovery"
-        image: assets/img/timeline/2.jpg
-        alt: 
-        align: right
-      - title: "Creating products and empowering aspiring tech professionals"
-        year: "2016-2019"
-        desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), collaborated with partners such as [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/) and gave scholarships to young women and men."
-        image: assets/img/timeline/3.jpg
-        alt: image alt text
-        align: right
-    end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
+  title: "About"
+  text: "We hope to help create a digitally and data empowered Nepal together where everyone can thrive. Here is our story so far."
+  section: about
+  events:
+    - title: "Our humble beginnings"
+      year: "2014"
+      desc: "Founders Mia and Ravi organized their first digital literacy workshop for young women in Kathmandu and registered Code for Nepal, as a non-profit in the US."
+      image: assets/img/timeline/1.jpg
+      alt:
+      align: left
+    - title: "Responding to a historic crisis"
+      year: "2015"
+      desc: "When the devastating earthquakes struck Nepal, Code for Nepal community members mobilized a [digital response](http://www.nytimes.com/2015/05/02/world/asia/3-ways-nepalis-are-using-crowdsourcing-to-aid-in-quake-relief.html?_r=0) to help those in need and advocated for [data-driven](https://time.com/3845593/nepal-earthquake-response-data/) relief and recovery"
+      image: assets/img/timeline/2.jpg
+      alt:
+      align: right
+    - title: "Creating products and empowering aspiring tech professionals"
+      year: "2016-2019"
+      desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), collaborated with partners such as [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/) and gave scholarships to young women and men."
+      image: assets/img/timeline/3.jpg
+      alt: image alt text
+      align: right
+  end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
 
 about:
-    title: "About Us"
-    text: "our story"
-    section: about
-        
+  title: "About Us"
+  text: "our story"
+  section: about
+
 contact:
-    title: "Contact Us"
-    text: "We would love to hear from you! Of course, you can submit the form below or chat with us on [Slack](https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg), [Twitter](https://twitter.com/codefornepal), and [Facebook](https://www.facebook.com/codefornepal)."
-    section: contact
+  title: "Contact Us"
+  text: "We would love to hear from you! Of course, you can submit the form below or chat with us on [Slack](https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg), [Twitter](https://twitter.com/codefornepal), and [Facebook](https://www.facebook.com/codefornepal)."
+  section: contact
 
 sponsors:
-    title: "Our Sponsors"
-    text: ""
-    list:
-      - url: https://datacamp.com
-        image: 'assets/img/dc-regular.png'
-    section: sponsors
-      
+  title: "Our Sponsors"
+  text: ""
+  list:
+    - url: https://datacamp.com
+      image: "assets/img/dc-regular.png"
+  section: sponsors
+
 footer:
-    legal_title: Code of Conduct
-    privacy: Privacy Policy
-    social:
-      - url: https://twitter.com/codefornepal
-        icon: "fab fa-twitter"  
-      - url: https://www.facebook.com/codefornepal
-        icon: "fab fa-facebook-f"
-      - url: https://www.vimeo.com/codefornepal
-        icon: "fab fa-vimeo-square"
-      - url: https://github.com/code4Nepal
-        icon: "fab fa-github"
-      - url: http://instagram.com/codefornepal
-        icon: "fab fa-instagram"
-    license: "This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! Code for Nepal is a registered 501(c)(3) nonprofit organization. EIN: 47-3620037"
-    
+  legal_title: Code of Conduct
+  privacy: Privacy Policy
+  social:
+    - url: https://twitter.com/codefornepal
+      icon: "fab fa-twitter"
+    - url: https://www.facebook.com/codefornepal
+      icon: "fab fa-facebook-f"
+    - url: https://www.vimeo.com/codefornepal
+      icon: "fab fa-vimeo-square"
+    - url: https://github.com/code4Nepal
+      icon: "fab fa-github"
+    - url: http://instagram.com/codefornepal
+      icon: "fab fa-instagram"
+  license: "This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! Code for Nepal is a registered 501(c)(3) nonprofit organization. EIN: 47-3620037"
