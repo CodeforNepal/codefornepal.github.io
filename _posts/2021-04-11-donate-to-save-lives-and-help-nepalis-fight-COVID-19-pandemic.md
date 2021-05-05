@@ -11,9 +11,9 @@ tags:
 
 ## Why
 
-Nepal has run out of hospital beds due to rapidly rising COVID-19 cases. The Health Ministry has said that the situation is [“unmanageable”](https://www.nytimes.com/2021/05/01/world/nepal-india-covid.html). Just a few weeks ago, Nepal was recording fewer than 100 cases a day. On May 1, it recorded over 7,000 COVID-19 cases. Data suggests Nepal currently has one of the highest positivity rates in the world and is on track to double its COVID cases every five days.
+Nepal has run out of hospital beds due to rapidly rising COVID-19 cases. The Health Ministry has said that the situation is [“unmanageable”](https://www.nytimes.com/2021/05/01/world/nepal-india-covid.html). Just a few weeks ago, Nepal was recording fewer than 100 cases a day. On May 1, it recorded over 7,000 COVID-19 cases. Data suggests Nepal currently has one of the highest positivity rates in the world and is on track to double its COVID cases every five days. There are tons of people who have lost their daily income and are in need of immediate relief. 
 
-This fundraiser is intended to help bring much needed resources and potentially help run a vacant hospital temporarily in Kathmandu that will provide upto **300 general ward beds and 35 ICU beds.**
+This fundraiser is intended to help bring much needed resources to people within and outside of Kathmandu including but not limited to meals to those in need and medical professionals. 
 
 Our goal is to raise **USD 15,000**. All your donations are tax deductible in the US. We also encourage you to speak with your employer to explore the possibility of employer matching.
 
@@ -31,13 +31,13 @@ Our goal is to raise **USD 15,000**. All your donations are tax deductible in th
 
 ## Implementation and transparency
 
-We will publish complete details of donations every 15 days on our website: [https://codefornepal.org](https://codefornepal.org)
+We will publish complete details of donations every 30 days on our website: [https://codefornepal.org](https://codefornepal.org) and share via our social media channels. 
 
 Details and cost of every single item procured through this fundraiser will be published via our website.
 
 ## Use of funds
 
-We are partnering with [Samartha Nepal](http://samarthanepal.org/), [Janata clinic](http://janataclinic.org/) and other local groups to provide resources to help operationalize the facility for CoViD isolation and ICU wards for critical patients.
+We are partnering with [Samartha Nepal](http://samarthanepal.org/), [Janata clinic](http://janataclinic.org/) and other local groups to provide resources to help people who need imemdiate support. 
 
 We are also working to support families who have lost their sole breadwinners and have no source of income. At this rate, it is very likely that there will be scores of families without a source of income and in need of basic supplies to survive on a daily basis within and outside of Kathmandu Valley. With our network of partners all over the country, especially in the Southern border of Nepal that is being hit terribly, we aim to expand our support.
 
