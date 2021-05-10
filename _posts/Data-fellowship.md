@@ -3,7 +3,8 @@ title: 'Data Fellowship has allowed me to indulge myself with guided and self-st
 date: 2021-05-10
 author: Nigin Pun
 layout: post
-tags:DataCampDonates
+tags:
+- highlight
 
 ---
 
