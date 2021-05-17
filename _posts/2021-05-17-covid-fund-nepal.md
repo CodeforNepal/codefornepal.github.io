@@ -1,3 +1,4 @@
+---
 title: 'Running list of fundraisers to support Nepal to fight COVID-19'
 date: 2021-05-17
 author: Code for Nepal
@@ -5,6 +6,7 @@ layout: post
 tags:
 - highlight
 
+---
 
 Let us all help the volunteers and organizations who are helping Nepal by building a database of all the fundraisers and their expected goals. A database will help Nepalis identify funding gaps and take appropriate actions.
 
