@@ -1,0 +1,129 @@
+<html lang="en-US">
+<body>
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P3CVWR');
+</script><title> CLOSING GENDER PAY GAP WITH DATA SCIENCE </title>
+
+
+<div class="container pxl-padding-top-xl">
+<div class="row">
+<div class="col-md-12">
+<h2 class="pxl-padding-bottom-md pxl-header-xl section-title">Executive Summary</h2>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<p class="pxl-padding-bottom-md">The Second Wave of COVID-29 in Nepal started in mid-April and the daily infection rate has intensely increased to almost 10000 people per day from 300 people per day within a month. 
+The economic turmoil fueled by the COVID-19 pandemic and stay-at-home policies has disrupted various occupations and industries, many of them female-dominated.
+
+In 2021, women make $0.82 for every dollar a man makes which is one cent more than they made in 2020.
+
+</p>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-12 pxl-margin-bottom-md">
+<h2 class="pxl-header-xl section-title pxl-margin-bottom-lg">How much do women make compared to men?</h2>
+</div>
+</div>
+</div>
+<div class="container-fluid pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-6" style="background-color: #DA004C;">
+<div class="pxl-text-center pxl-padding-top-xl divided-section-left">
+<h3 class="section-title pxl-margin-bottom-md" style="color: #fff; font-size: 26px;">Uncontrolled gender pay gap</h3>
+<p class="pxl-margin-bottom-md pxl-text-reverse" style="color: #fff;">This &#8220;opportunity pay gap&#8221; measures median salary for all men and all women.</p>
+<p><img src="https://www.payscale.com/content/gender-pay-gap/2021/Uncontrolled-women-earn.svg" class="pxl-padding-bottom-xl" style="max-width: 100%;"/>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6" style="background-color: #15045B;">
+<div class="pxl-text-center pxl-padding-top-xl divided-section-right">
+<h3 class="section-title pxl-margin-bottom-md" style="color: #fff; font-size: 26px;">Controlled gender pay gap</h3>
+<p class="pxl-margin-bottom-md pxl-text-reverse" style="color: #fff;">This measures median salary for men and women with the same job and qualifications.</p>
+<p><img src="https://www.payscale.com/content/gender-pay-gap/2021/Controlled-women-earn.svg" class="pxl-padding-bottom-xl" style="max-width: 100%;"/>
+</div>
+</div>
+
+<div class="container pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl">
+<h2 class="pxl-header-md pxl-padding-top-xl pxl-margin-bottom-md section-title">The Gender Pay Gap Over Time</h2>
+<p class="pxl-margin-bottom-xl" style="font-weight: 600;"><i>Using PayScale&#8217;s compensation data sourced from online profiles</i></p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<svg id="line_Chart" class="pxl-text-center" viewBox="0 0 800 300"></svg>
+</div>
+</div>
+<p class="pxl-padding-top-lg"><span style="color: #DA004C; font-weight: 700;">Uncontrolled Gender Pay Gap (Opportunity Pay Gap):</span> <br />Measures median salary for all men and all women regardless of job type, seniority, location, industry, years of experience, etc.</p>
+<p class="pxl-padding-top-sm"><span style="color: #15054B; font-weight: 700;">Controlled Gender Pay Gap (Equal Pay for Equal Work):</span> <br />Measures pay for men and women with the same job and qualifications.</p>
+</div>
+</div>
+</div>
+<div class="container pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl">
+<h3 class="pxl-header-md section-subtitle">Why are women paid less than men?</h3>
+<h3 class="pxl-header-md pxl-margin-bottom-lg section-subtitle">Why is the uncontrolled pay gap so much larger?</h3>
+<p class="pxl-margin-bottom-md">The uncontrolled pay gap is an indicator of how gendered wealth and power is within a society and is driven by many forces. Occupational segregation is one large driver of the overall pay differences between men and women. For example, education and healthcare support are female-dominated occupational groups while architecture &#038; engineering is a male-dominated occupational group. Education occupations have much lower median pay than engineering occupations, which helps explain the large differences we see in average pay for men and women when data are uncontrolled</p>
+<p class="pxl-margin-bottom-md">Men and women choosing different careers doesn&#8217;t mean that the uncontrolled pay gap is less significant than the controlled pay gap. The uncontrolled pay gap reveals the overall economic power disparity between men and women in society. Even if the controlled pay gap disappeared &#8211; meaning women and men with the same qualifications were paid equally &#8211; the uncontrolled pay gap could persist if high paying positions were disproportionately accessible to men.</p>
+</div>
+</div>
+</div>
+<div class="container pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl">
+<h3 class="pxl-header-md section-subtitle">Women in tech are facing historic challenges in 2021.</h3>
+<p class="pxl-margin-bottom-md">TWe’ve now spent a full year under pandemic conditions in an industry marked by upheaval. We find ourselves at a crossroads, where progress toward gender equality is threatened by a crisis that disproportionately impacts women
+</p>
+<p class="pxl-margin-bottom-md">The fight for gender equality continues to be crucial, especially with this setback.
+The third annual TrustRadius Women in Tech Report offers insight into these issues.
+We surveyed over 450 tech professionals (66% who identified as women). In their words, we discovered the biggest challenges women in tech face in 2021. We also heard their suggestions for what can be done to fix them.
+</p>
+</div>
+</div>
+</div>
+				<div class="et_pb_code_inner"><iframe loading="lazy" src="https://docs.google.com/presentation/d/e/2PACX-1vR6OAcQuNemyb3EgldrlOltwy5lKEAe8QFLrSt1ikADV-thkGKniOjEYslcld5s5cu5t6hrhw0x--uT/embed?start=false&#038;loop=false&#038;delayms=10000" frameborder="0" width="750" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
+<div class="container-fluid pxl-margin-bottom-xl" style="background-color: #3880EE;">
+<div class="container pxl-margin-bottom-md">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl pxl-padding-top-xl">
+<h2 class="pxl-header-md pxl-padding-top-xl pxl-margin-bottom-md section-title" style="color: #fff">The Covid-19 impact on the racial and gender pay gap</h2>
+<p class="pxl-margin-bottom-md pxl-text-reversed">COVID-19 has had profound and unprecedented effects on the world. economy, which have disproportionately impacted women and people of color, highlighting the vulnerabilities and systemic injustices they have historically faced in the world.</p>
+<p class="pxl-margin-bottom-md pxl-text-reversed">The fight for gender quality continues to be crucial,especiall with ths setback. We have seen some progress toward gender quality in the tech industry over th epast decade, women are still castly outnumberd by men. </p>
+</div>
+<div class="container pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl">
+<h3 class="pxl-header-md section-subtitle">Closing the Gender Gap</h3>
+<img src="https://cdn.shortpixel.ai/client/q_lqip,ret_wait,w_600/https://www.betterbuys.com/wp-content/uploads/2016/06/Women-in-Data-Science_The-Benefits-of-Diversity.png">
+<p class="pxl-margin-bottom-md pxl-text-reversed"> We need more women in computing and data science to bring thier skills and perspectives to the table for better performance overall.However, closing the gende gap in technology shouldn't only be ablout reaching varetain ratio of women to men within the field.</p>
+<p class="pxl-margin-bottom-md pxl-text-reversed"> Women remain the kinority in technology and datta science,but its not necessarily a push to bring more in, Rather, its a movement to bring awareness to the current situation,highlight the growth opportunities availabel,and bring the benefits of gender diversity to light.</p>
+<p class="pxl-margin-bottom-md pxl-text-reversed">[DataCamp](https://www.datacamp.com/) as a member of Code for Nepal, a non-profit organization working to increase digital literacy and data literacy in Nepal. DataCamp as part of its [global effort](https://www.datacamp.com/community/blog/datacamp-donates-50-partners) to build data skills donated thousands of subscriptions to organizations and schools globally. 
+We at codefornepal are working to enhance the learning experiences of 100s of others who were selected as Code for Nepal's [Data Fellows](https://codefornepal.org/2021/02/14/launching-a-fellowship-program-to-build-data-skills-of-over-500-nepalis-globally),The courses on datacamp are developed to meet the expectations of learners at every level.</p>
+<img src="https://codefornepal.org/data-fellowship/assets/og-image.jpeg" alt="Launching a Fellowship program to build data skills of over 500 Nepalis globally">
+</div>
+<div class="container pxl-margin-bottom-xl">
+<div class="row">
+<div class="col-lg-12 pxl-padding-bottom-xl">
+<p><h3 style="text-align: center;">Helpful Resources</h3></p>
+<p>Read more at these prominent resources for female support in data science and computing below:</p>
+<a href="https://www.betterbuys.com/bi/women-in-data-science/">women-in-data-science</a>
+<a href="https://www.payscale.com/data/gender-pay-gap?tk=carousel-ps-rc-job#section03">The State of the Gender Pay Gap in 2021</a>
+<a href="https://www.trustradius.com/buyer-blog/women-in-tech-report">TrustRadius 2021 Women in Tech Report</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
