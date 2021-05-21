@@ -14,7 +14,7 @@ If you ask me if my gap year has taught me anything significant, I’d say that 
 
 And Code for Nepal came at the right time to act as a bridge when I was searching for ways to learn data science for free! How?
 
-Code for Nepal launched its fellowship program where fellows would get access to [DataCamp](https://www.datacamp.com/) for $0! 
+Code for Nepal launched its fellowship program where fellows would get access to [DataCamp](https://www.datacamp.com/donates) for $0! 
 
 I felt like I hit the jackpot and I didn’t think twice before applying because I knew it was the right fit for me. DataCamp as part of its [global effort](https://www.datacamp.com/community/blog/datacamp-donates-50-partners) to build data skills donated thousands of subscriptions to organizations and schools globally. 
 
