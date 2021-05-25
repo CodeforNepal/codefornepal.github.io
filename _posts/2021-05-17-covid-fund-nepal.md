@@ -15,4 +15,4 @@ See the running list of fundraisers gathered by Code for Nepal volunteers: [bit.
 
 Here is the running list of fundraisers curated by members of [Student Coalition for Nepal](https://www.facebook.com/scfornepal/) and Code for Nepal volunteers. 
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTsWt0xaT00Baw89FgfQehKLINzn-tfCaWGts5xmJHCrQxl1ENRCWMOmL6ToqwQk1e5eozKczgNYBI4/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe style="width: 100%; height: 100vh; border: 0;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTsWt0xaT00Baw89FgfQehKLINzn-tfCaWGts5xmJHCrQxl1ENRCWMOmL6ToqwQk1e5eozKczgNYBI4/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
