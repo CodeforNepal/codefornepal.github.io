@@ -1,7 +1,8 @@
 # config.yml
 
 backend:
-  name: git-gateway
+  name: github
+  repo: CodeforNepal/codefornepal.github.io
   branch: master
 media_folder: "assets/uploads"
 collections:
