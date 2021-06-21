@@ -31,6 +31,7 @@ Improving NepalMap portal - When I first joined Code for Nepal community; NepalM
 Launching fellowship - Helping with the launch and coordination of the different fellowship programs was also one of the memorable parts of the journey. Recent activities include the launch of the [Hawkins Fellowship](https://codefornepal.org/fellowship/) and [Data Fellowship program](https://codefornepal.org/2021/02/14/launching-a-fellowship-program-to-build-data-skills-of-over-500-nepalis-globally.html), where we aim to build data skills of over 500 Nepalis globally. If you are someone who is looking for any opportunity to kickstart the carrier in the field of data, feel free to apply.
 
 **Final note**
+
 As I previously mentioned, my focus will still be in the field of data and technology, so if you are someone who works in a similar field, we definitely have a higher chance of meeting and working again. In the end, I would like to thank Ravi Kumar for his mentorship; without him, this phase of life could have been boring.
 
 See you all on the other side 👋
