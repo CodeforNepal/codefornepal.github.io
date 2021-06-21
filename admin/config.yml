@@ -4,7 +4,6 @@ backend:
   name: github
   repo: CodeforNepal/codefornepal.github.io
   branch: master
-  base_url: https://code-for-nepal.netlify.app
 media_folder: "assets/uploads"
 collections:
   - name: 'blog'
