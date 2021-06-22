@@ -1,7 +1,7 @@
 ---
 title: 'Launching a Fellowship program to build data skills of over 500 Nepalis globally'
 date: 2021-02-14
-author: RaviNepal
+author: Ravi Kumar
 layout: post
 tags:
  - highlight
