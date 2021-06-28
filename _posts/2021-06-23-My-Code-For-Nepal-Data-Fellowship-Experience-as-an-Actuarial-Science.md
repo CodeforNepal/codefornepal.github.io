@@ -8,7 +8,6 @@ tags:
 - Data Fellowship 2021
 - CodeforNepal
 ---
-<meta name="description" content="This blogpost summarizes how data fellowship has changed my vision to explore the data and how I was able to generate innovative ideas from data"/>
 
 Everyone who is reading my blog, hello and Namaste. Hello, my name is [Krishna Kumar Shrestha](https://www.linkedin.com/in/krishna-kumar-shrestha-20a35b172/), and I am now studying for a bachelor's degree in Actuarial Science at Tribhuvan University. I was born in Banepa and currently reside in Kathmandu. My favorite subject has always been mathematics, and I've always wanted to work in disciplines linked to mathematics.
 
