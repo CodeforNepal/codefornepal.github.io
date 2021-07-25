@@ -4,7 +4,7 @@ date: 2021-06-18
 author: Nikesh Balami
 layout: post
 tags:
-- highlight
+ - highlight
 ---
 
 I remember the exact date, it's October 17th, 2016 - A day when I landed into the AskNepal initiative while doing random online research; a day when I casually message one of the founders of Code for Nepal, Ravi Kumar, expressing my interest in leading and contributing. Looking back, it's difficult for me to summarize the journey in words; almost 5 years went by within the blink of eyes.
