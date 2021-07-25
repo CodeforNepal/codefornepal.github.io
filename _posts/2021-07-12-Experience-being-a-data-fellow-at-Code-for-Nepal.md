@@ -4,9 +4,6 @@ date: 2021-07-11
 author: Binita Gyawali
 layout: post
 tags:
-- Datacampdonates 
-- Data Fellowship 2021
-- CodeforNepal
 ---
 
 **Binita Gyawali, a graduate of Computer Science and Information Technology from Butwal Multiple Campus, data Science journey with Code for Nepal and Open Knowledge Nepal.**
