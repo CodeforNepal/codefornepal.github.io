@@ -3,9 +3,9 @@ title: 'Experience being a data fellow at Code for Nepal  and intern at Open Kno
 date: 2021-07-25
 author: Binita Gyawali
 tags:
-    - Datacampdonates 
-    - Data Fellowship 2021
-    - CodeforNepal
+ - Datacampdonates 
+ - Data Fellowship 2021
+ - CodeforNepal
 ---
 
 **Binita Gyawali, a graduate of Computer Science and Information Technology from Butwal Multiple Campus, data Science journey with Code for Nepal and Open Knowledge Nepal.**
