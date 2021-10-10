@@ -6,12 +6,8 @@ section: team
 people:
   - name: Aishraj Dahal
     image: "/assets/img/team/aishraj_dahal.jpg"
-  - name: Anshu Adhikari
-    image: "/assets/img/team/anshu_adhikari.jpg"
   - name: Anup Dhamala
     image: "/assets/img/team/500x500.jpg"
-  - name: Bidhi Mandal
-    image: "/assets/img/team/bidhi_mandal.jpg"
   - name: David Shrestha
     image: "/assets/img/team/david_shrestha.jpg"
   - name: Dipak Gautam
@@ -20,13 +16,7 @@ people:
     image: "/assets/img/team/ishan_dongol.jpg"
   - name: Laurence Hall
     image: "/assets/img/team/laurence_hall.jpg"
-  - name: Nikesh Balami
-    image: "/assets/img/team/500x500.jpg"
-  - name: 'Nripesh Parajuli '
-    image: "/assets/img/team/nripesh_parajuli.jpg"
   - name: 'Pragya Tripathi '
-    image: "/assets/img/team/500x500.jpg"
-  - name: Prasanna Suman
     image: "/assets/img/team/500x500.jpg"
   - name: Pratima Kandel
     image: "/assets/img/team/pratima_kandel.jpg"
