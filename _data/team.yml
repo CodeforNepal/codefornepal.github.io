@@ -6,29 +6,53 @@ section: team
 people:
   - name: Aishraj Dahal
     image: "/assets/img/team/aishraj_dahal.jpg"
+    linkedin_url: 
+
   - name: Anup Dhamala
     image: "/assets/img/team/500x500.jpg"
+    linkedin_url: 
+
   - name: David Shrestha
     image: "/assets/img/team/david_shrestha.jpg"
+    linkedin_url: https://www.linkedin.com/in/davidsth/
+
   - name: Dipak Gautam
     image: "/assets/img/team/dipak_gautam.jpg"
+    linkedin_url: https://www.linkedin.com/in/dipak-g-a02664128/
+
   - name: Ishan Dongol
     image: "/assets/img/team/ishan_dongol.jpg"
+    linkedin_url: https://www.linkedin.com/in/lognod/
+
   - name: Laurence Hall
     image: "/assets/img/team/laurence_hall.jpg"
+    linkedin_url: https://www.linkedin.com/in/laurence-h-078704197/
+
   - name: 'Pragya Tripathi '
     image: "/assets/img/team/500x500.jpg"
+    linkedin_url: https://www.linkedin.com/in/pragyatripathi/
+
   - name: Pratima Kandel
     image: "/assets/img/team/pratima_kandel.jpg"
+    linkedin_url: https://www.linkedin.com/in/pratima-kandel-a37061156/
+
   - name: Ravi Kumar
     image: "/assets/img/team/ravi_kumar.jpg"
+    linkedin_url: https://www.linkedin.com/in/ravinepal/
+
   - name: Shreeya Khadka
     image: "/assets/img/team/500x500.jpg"
+    linkedin_url: 
+
   - name: Shreyahsa Paudel
     image: "/assets/img/team/500x500.jpg"
+    linkedin_url: 
+
   - name: Sukriti Adhikari
     image: "/assets/img/team/500x500.jpg"
+    linkedin_url: https://www.linkedin.com/in/sukriti-adhikari/
+    
   - name: Sweta Baniya
     image: "/assets/img/team/500x500.jpg"
-
+    linkedin_url: https://www.linkedin.com/in/sweta-baniya-phd-5892994b/
       
