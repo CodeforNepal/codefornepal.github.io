@@ -1,5 +1,5 @@
 ---
-title: 'How DataCamp and Code for Nepal helped me learn data engineering for free'
+title: 'Basics of Multiple Linear Regression using R'
 date: 2022-04-15
 author: Roshan Rai
 layout: post
