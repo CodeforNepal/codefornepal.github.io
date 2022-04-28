@@ -16,7 +16,9 @@ title: Team
       <div class="col-sm-4">
         <div class="team-member">
           <img class="mx-auto rounded-circle" src="{{ person.image | prepend: site.baseurl }}" alt="">
-          <h4>{{ person.name }}</h4>
+          <a href = "{{person.linkedin_url}}" class="text-decoration-none" target= "blank">
+            <h4>{{ person.name }}</h4>
+          </a>
           <p class="text-muted">{{ person.role }}</p>
           <ul class="list-inline social-buttons">
             {% for network in person.social %}
