@@ -1,5 +1,5 @@
 ---
-title: 'How DataCamp and Code for Nepal helped me learn data engineering for free'
+title: 'How Datacamp and Code for Nepal helped me learn data engineering for free'
 date: 2022-04-06
 author: Mala Deep Upadhaya
 layout: post
@@ -21,7 +21,7 @@ Data engineers are on the front lines of data strategy so that others don’t ne
 
 On my LinkedIn network, I have seen people talking about data engineering and how it shaped all projects in data science. Finally, I decided I should explore being a data engineer.
 Then, as with anything else in this digital era, I searched for an online program where I could learn data engineering, and because I'm from Nepal, one of the criteria we use when looking for something is that it must be available for free.
-As a result, I was looking for a free data engineering course. Coursera, edx, udemy, and DataCamp are all places where I frequently engage. While investigating, I came across a few data engineering bootcamps in the United States. They meet the first but not the second of my criteria: they should be free.
+As a result, I was looking for a free data engineering course. Coursera, edx, udemy, and [Datacamp](https://www.datacamp.com/)  are all places where I frequently engage. While investigating, I came across a few data engineering bootcamps in the United States. They meet the first but not the second of my criteria: they should be free.
  
 And then, after a few weeks, one day I came upon a Code for Nepal post on LinkedIn. I wasn't a stranger to Code for Nepal. Back in the day, I did some volunteer work. 
 My heart leapt with delight and the thirst to learn as soon as I noticed the data fellowship post partnering with data camp.
@@ -30,7 +30,7 @@ I applied for the fellowship with high hopes, and I was accepted.
 
 ![](https://c.tenor.com/hDZ1GpsJnDsAAAAM/amazing-dwight.gif)
 
-Finally, I began my three-month data fellowship with Code For Nepal and DataCamp after completing my orientation. I chose the data engineering career path and began my journey.
+Finally, I began my three-month data fellowship with Code For Nepal and [Datacamp](https://www.datacamp.com/) after completing my orientation. I chose the data engineering career path and began my journey.
 
 **How difficult was the fellowship journey?**
 
@@ -56,12 +56,12 @@ Lookout for the next cohort and apply without hesitation. As Code for Nepal is o
 > "The only source of knowledge is experience."
 
 He was right, but it does not have to be your experience. 
-You can leverage knowledge from other people’s lessons. You can stand on the shoulders of giants. Like Stand on the shoulders of DataCamp and Code for Nepal and pave your career the way you intended. 
+You can leverage knowledge from other people’s lessons. You can stand on the shoulders of giants. Like Stand on the shoulders of [Datacamp](https://www.datacamp.com/) and Code for Nepal and pave your career the way you intended. 
  
 **What are you doing right now?**
 
 At the moment, I'm working on a data engineering project and writing some blogs. If you enjoy reading, please have a look at my few blogs on [Medium](https://medium.com/@maladeep.upadhaya) and let me know what you think. (Oh, did I mention that if you haven't developed a love of reading, you should check out my blog; who knows, it might pique your interest.)
 
-Finally, I'd like to express my gratitude to Code for Nepal for providing a fantastic opportunity to the Nepali community, as well as DataCamp for believing in Code for Nepal.
+Finally, I'd like to express my gratitude to Code for Nepal for providing a fantastic opportunity to the Nepali community, as well as [Datacamp](https://www.datacamp.com/) for believing in Code for Nepal.
 
 If you have any queries regarding the article or want to work together on your next data engineering and data science project, ping me on [LinkedIn](https://www.linkedin.com/in/maladeep/).
