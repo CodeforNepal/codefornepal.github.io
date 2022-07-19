@@ -54,3 +54,6 @@ Data Science is a new field with new technologies and the use of new approaches.
 - Get comfortable with R or Python as both the languages can be/ are extensively used in environmental projects.
 - Learn about data analysis, manipulation, and visualization with pandas as these will significantly increase your efficiency when working with data.
 - Try your data science environmental project. For example, try extracting and analyzing data from the internet such as data related to air pollution or the maximum temperature of Nepal for the last 20 years. Use these data for analysis, visualization and try making the best out of them.
+
+
+Finally, I would also like to thank [Datacamp](https://www.datacamp.com/) and [Datacamp Donates](https://www.datacamp.com/donates) for the opportunity. 
