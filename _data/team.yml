@@ -11,10 +11,18 @@ people:
   - name: Anup Dhamala
     image: "/assets/img/team/placeholder.png"
     linkedin_url: 
+  
+  - name: Ayush Paudel
+    image: "/assets/img/team/ayush_paudel.jfif"
+    linkedin_url: 
 
   - name: Ayush Subedi
     image: "/assets/img/team/aayush.jpeg"
     linkedin_url: 
+
+  - name: Bikesh Bimali
+    image: "/assets/img/team/bikesh_bimali.jpg"
+    linkedin_url: https://www.linkedin.com/in/bikesh-bimali/
 
   - name: David Shrestha
     image: "/assets/img/team/david_shrestha.jpg"
@@ -38,15 +46,11 @@ people:
 
   - name: Pratima Kandel
     image: "/assets/img/team/pratima_kandel.jpg"
-    linkedin_url:
+    linkedin_url: https://www.linkedin.com/in/pratima-kandel-a37061156/
 
   - name: Prayatna Mishra
     image: "/assets/img/team/prayatna.jpeg"
     linkedin_url: https://www.linkedin.com/in/pragyatripathi/
-
-  - name: Pratima Kandel
-    image: "/assets/img/team/pratima_kandel.jpg"
-    linkedin_url: https://www.linkedin.com/in/pratima-kandel-a37061156/
 
   - name: Ravi Kumar
     image: "/assets/img/team/ravi_kumar.jpg"
@@ -62,21 +66,8 @@ people:
 
   - name: Sukriti Adhikari
     image: "/assets/img/team/placeholder.png"
-    linkedin_url:
-    
-  - name: Sweta Baniya
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url: 
-
-  - name: Shreyahsa Paudel
-    image: "/assets/img/team/500x500.jpg"
-    linkedin_url: 
-
-  - name: Sukriti Adhikari
-    image: "/assets/img/team/500x500.jpg"
     linkedin_url: https://www.linkedin.com/in/sukriti-adhikari/
     
   - name: Sweta Baniya
-    image: "/assets/img/team/500x500.jpg"
+    image: "/assets/img/team/placeholder.png"
     linkedin_url: https://www.linkedin.com/in/sweta-baniya-phd-5892994b/
-      
