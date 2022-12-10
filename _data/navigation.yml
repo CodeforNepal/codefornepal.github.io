@@ -5,8 +5,8 @@ nav:
   - title: "About"
     section: about
 
-  - title: "Fellowship"
-    page: fellowship
+  - title: "Data Fellowship"
+    page: fellowship2023
   
   - title: "Blog"
     page: blog
@@ -16,7 +16,6 @@ nav:
 
   -  title: "Join us"
      page: joinus
-
 
   - title: "Contact"
     section: contact
