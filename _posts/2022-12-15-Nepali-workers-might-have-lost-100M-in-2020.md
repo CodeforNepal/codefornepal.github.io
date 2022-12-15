@@ -5,6 +5,11 @@ author: CodeforNepal
 layout: post
 tags:
  - CodeforNepal
+ - Migrant Workers
+ - Qatar
+ - Digital Skills
+ - World Cup
+ - Nepal
 ---
 
 ![](https://www.ifad.org/documents/38714174/41495485/Migrant+workers+waiting+outside+departure+terminal+at+Tribhuvan+International+Airport+Kathmandu.jpg/83b5fc61-6a13-f678-dde1-9902d378bc2e?t=1592307540000)
