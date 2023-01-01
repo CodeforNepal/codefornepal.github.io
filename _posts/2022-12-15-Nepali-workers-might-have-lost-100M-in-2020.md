@@ -3,6 +3,7 @@ title: 'Nepali workers might have lost $100M in 2020 due to lack of digital skil
 date: 2022-12-15
 author: CodeforNepal
 layout: post
+bigimg: https://www.ifad.org/documents/38714174/41495485/Migrant+workers+waiting+outside+departure+terminal+at+Tribhuvan+International+Airport+Kathmandu.jpg/83b5fc61-6a13-f678-dde1-9902d378bc2e?t=1592307540000
 tags:
  - CodeforNepal
  - Migrant Workers
