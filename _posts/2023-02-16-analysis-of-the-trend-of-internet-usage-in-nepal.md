@@ -11,9 +11,6 @@ tags:
  - Datacamp Donates
 ---
 
-Analysis of the trend of internet usage in Nepal
-================================================
-
 Since the introduction of the Internet in 1993 in Nepal, the country has witnessed the exponential growth of the internet in the last decade, especially in the 2010s. With the increase in digitalization, the internet has become the most essential tool in diverse sectors all over Nepal. And especially after the proclamation of the Federal Democratic Constitution in 2015 AD, the Internet became vital for services in government and most of the commercial sectors. It was during this period that social media also became increasingly popular, and with the introduction of smartphones, the platform has exploded. One of the most prominent examples is that of the Tik Tok. In the last two years, the percentage of internet users who responded to using TikTok rose from 3% to 55%. Last but not least, according to Google Trends, Nepal is the second most searched country for "chatGPT" terms.
 
 So it becomes vital to analyze and interpret the data of the internet world in order to understand the current trends and predict the possible prospects of the internet in Nepal's growth and development. It is also a very significant challenge to keep the internet secure and stop the exploitation of the user's data, which seems to be a subject matter of far less concern in Nepal. In regards to the context, I have collected some data about the internet usage in Nepal and tried to perform a visual analysis of it using the concepts I learned during the data fellowship. The sources of data are The World Bank and Data Reportal. I have used Python and its libraries on a small set of data and attempted to derive some conclusions based on it.
