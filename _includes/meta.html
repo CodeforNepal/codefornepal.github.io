@@ -1,31 +1,14 @@
-  {% if page.title %}
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page.title }}">
-  <meta property="og:description" content="Code for Nepal works to increase digital literacy and use of open data.">
-  <meta property="og:url" content="{{ site.url | append: page.url }}">
-  <meta property="og:site_name" content="Code for Nepal">
-  <meta property="og:image"
-    content="{% if page.bigimg %}{{ page.bigimg }}{% else %}https://codefornepal.org/assests/img/c4n_logo.png{% endif %}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="Working to increase digital literacy and use of open data in Nepal.">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:site" content="@codefornepal">
-  <meta name="twitter:image"
-    content="{% if page.bigimg %}{{ page.bigimg }}{% else %}https://codefornepal.org/assests/img/c4n_logo.png{% endif %}">
-  <link rel="canonical" href="https://codefornepal.org/">
-  <link rel="icon" href="/assets/img/c4n-icon.jpg">
-  {% else %}
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Code for Nepal">
-  <meta property="og:description" content="Code for Nepal works to increase digital literacy and use of open data.">
-  <meta property="og:url" content="https://codefornepal.org">
-  <meta property="og:site_name" content="Code for Nepal">
-  <meta property="og:image" content="https://codefornepal.org/assets/img/c4n_logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="Working to increase digital literacy and use of open data in Nepal.">
-  <meta name="twitter:title" content="Code for Nepal">
-  <meta name="twitter:site" content="@codefornepal">
-  <meta name="twitter:image" content="https://codefornepal.org/assets/img/c4n_logo.png">
-  <link rel="canonical" href="https://codefornepal.org/">
-  <link rel="icon" href="/assets/img/c4n-icon.jpg">
-  {% endif %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description }}">
+<meta property="og:url" content="{{ site.url | append: page.url }}">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="{{ page.bigimg }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="{{ page.description }}">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="{{ page.bigimg }}">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
