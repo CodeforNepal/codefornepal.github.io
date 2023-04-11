@@ -8,7 +8,7 @@ tags:
  - Data Engineering
  - Python
  - AWS
- - Datacamp Donates
+ - DataCamp Donates
 ---
 
 **1.    Architecture Diagram:**\
@@ -156,4 +156,4 @@ Once the AWS Glue Jobs' task is completed, data can be queried and viewed in Red
 **Finally, this data can be used by Data Analyst and Data Scientist to derive insights and decision making.**
 
 
-Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Ravi, and several other fellows access to Datacamp, to learn and grow.
+Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Ravi, and several other fellows access to DataCamp, to learn and grow.

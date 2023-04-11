@@ -5,7 +5,7 @@ author: Prayatna Mishra
 layout: post
 tags:
  - highlight
- - Datacampdonates 
+ - DataCampdonates 
  - Data Fellowship 2021
  - CodeforNepal
 ---
@@ -27,4 +27,4 @@ One of the grateful moments that I realized was when I got a chance to review ap
 
 From that moment on , I have been working actively, assisting my team to manage and coordinate the Fellowship program. I plan to use my knowledge in the field of computer science and link it to make an impact in the field of education. Looking back, joining code for Nepal  has been really fruitful personally and professionally. I have leveled up , made connections and developed a work ethic. I am pumped up more than ever to contribute to the cause and to make a difference through Code for Nepal.
 
-I would also like to thank [Datacamp](https://www.datacamp.com/) and [Datacamp Donates](https://www.datacamp.com/donates) for the opportunity. 
+I would also like to thank [DataCamp](https://www.datacamp.com/) and [DataCamp Donates](https://www.datacamp.com/donates) for the opportunity. 

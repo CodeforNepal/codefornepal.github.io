@@ -5,7 +5,7 @@ author: Mala Deep Upadhaya
 layout: post
 tags:
  - highlight
- - Datacampdonates 
+ - DataCampdonates 
  - Data Fellowship 2021
  - CodeforNepal
 ---
@@ -197,7 +197,7 @@ In this manner, you can obtain data in a variety of formats.
 
 Of course, acquiring data is just the beginning. After this, you need to explore data and play with it before you get deep into a data science project. But if you need ideas on where to go next, go with  [exploratory data analysis for begineers.](https://medium.com/analytics-vidhya/exploratory-data-analysis-for-beginner-7488d587f1ec)
 
-PS: I was able to delve deeper into this because of the  [Data Fellowship](https://codefornepal.org/data-fellowship/) opportunity provided by  [Code For Nepal](https://codefornepal.org/).I’d like to express my gratitude to Code for Nepal for providing a fantastic opportunity to the Nepali community, as well as the [Datacamp](https://www.datacamp.com/)for believing in Code for Nepal.
+PS: I was able to delve deeper into this because of the  [Data Fellowship](https://codefornepal.org/data-fellowship/) opportunity provided by  [Code For Nepal](https://codefornepal.org/).I’d like to express my gratitude to Code for Nepal for providing a fantastic opportunity to the Nepali community, as well as the [DataCamp](https://www.datacamp.com/)for believing in Code for Nepal.
 
 _If you have any queries regarding the article or want to work together on your next data engineering or data science project, ping me on_ [_LinkedIn_](https://www.linkedin.com/in/maladeep/)_._
 

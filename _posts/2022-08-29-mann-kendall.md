@@ -5,7 +5,7 @@ author: Ashma Subedi
 layout: post
 tags:
  - highlight
- - Datacampdonates 
+ - DataCampdonates 
  - Data Fellowship 2021
  - CodeforNepal
 ---
@@ -114,4 +114,4 @@ I'm attempting to demonstrate how a trend can be tested using my blog. More data
 
 The Mann-Kendall test is a powerful trend test for analyzing seasonal and annual trends in environmental data and climate data, and this test is preferred over others because it can be used with time-series data that does not follow a statistical distribution.
 
-Despite the fact that the code appears simple and the data visualization appears appealing, I found it difficult to get there. This was only possible because of **Code for Nepal**, and I'd like to express my gratitude to them for giving me the opportunity to study Python through [Datacamp](https://www.datacamp.com/) and [DataCamp Donates](https://www.datacamp.com/donates).
+Despite the fact that the code appears simple and the data visualization appears appealing, I found it difficult to get there. This was only possible because of **Code for Nepal**, and I'd like to express my gratitude to them for giving me the opportunity to study Python through [DataCamp](https://www.datacamp.com/) and [DataCamp Donates](https://www.datacamp.com/donates).

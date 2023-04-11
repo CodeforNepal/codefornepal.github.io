@@ -7,7 +7,7 @@ tags:
  - CodeforNepal
  - AB Testing
  - Python
- - Datacamp Donates
+ - DataCamp Donates
 ---
 
 In the business domain, it's important to recognize the significance of using data to make informed decisions that can improve the efficacy of the product or marketing strategies. A/B testing or Bucket testing is a widely used and highly effective statistical method for optimizing digital assets such as web pages, emails, and ads. By testing different variations of these assets, businesses can gather valuable data on how each version performs and use that information to make data-driven decisions about which elements to include or remove. A/B testing can be used to optimize a variety of factors, including headlines, images, copy, calls-to-action, and more, and can lead to significant improvements in key metrics such as click-through rates, conversion rates, and revenue. This blog post will guide you through a detailed process for implementing A/B testing along with an example implementation using python.
@@ -148,4 +148,4 @@ REFERENCES
 -   <https://app.datacamp.com/learn/courses/ab-testing-in-python>
 -   <https://www.kaggle.com/code/sergylog/ab-test-data-analysis>
 
-Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Sakar, and several other fellows access to Datacamp, to learn and grow.
+Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Sakar, and several other fellows access to DataCamp, to learn and grow.
