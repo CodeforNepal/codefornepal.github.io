@@ -8,7 +8,7 @@ tags:
  - Machine Learning
  - Deep Learning
  - Transfer Learning
- - Datacamp Donates
+ - DataCamp Donates
 ---
 
 Transfer learning is a technique in machine learning where a pre-trained model is used as a starting point for a new task, rather than training a new model from scratch. It is beneficial for disease detection because it can leverage the features learned from a large dataset to improve the accuracy of smaller datasets, leading to faster and more efficient diagnosis.\
@@ -92,4 +92,4 @@ However, the model may still be improved using hyperparameter techniques to prev
 
 In conclusion, transfer learning makes life easier by enabling us to make our own customized model for wide variety of computer vision use cases. Computer aided diagnostics using DL models can assist doctors in early and accurate disease detection, aid human decision making, save time and resources or can even simplify complex procedures. Hence, the use of transfer learning in early disease detection is ample.
 
-Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Arisha, and several other fellows access to Datacamp, to learn and grow.
+Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Arisha, and several other fellows access to DataCamp, to learn and grow.

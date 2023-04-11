@@ -5,7 +5,7 @@ author: Ashma Subedi
 layout: post
 tags:
  - highlight
- - Datacampdonates 
+ - DataCampdonates 
  - Data Fellowship 2021
  - CodeforNepal
 ---
@@ -56,4 +56,4 @@ Data Science is a new field with new technologies and the use of new approaches.
 - Try your data science environmental project. For example, try extracting and analyzing data from the internet such as data related to air pollution or the maximum temperature of Nepal for the last 20 years. Use these data for analysis, visualization and try making the best out of them.
 
 
-Finally, I would also like to thank [Datacamp](https://www.datacamp.com/) and [Datacamp Donates](https://www.datacamp.com/donates) for the opportunity. 
+Finally, I would also like to thank [DataCamp](https://www.datacamp.com/) and [DataCamp Donates](https://www.datacamp.com/donates) for the opportunity. 

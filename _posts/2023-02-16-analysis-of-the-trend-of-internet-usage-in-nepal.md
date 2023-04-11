@@ -8,7 +8,7 @@ tags:
  - CodeforNepal
  - Internet Usage
  - Trends
- - Datacamp Donates
+ - DataCamp Donates
 ---
 
 Since the introduction of the Internet in 1993 in Nepal, the country has witnessed the exponential growth of the internet in the last decade, especially in the 2010s. With the increase in digitalization, the internet has become the most essential tool in diverse sectors all over Nepal. And especially after the proclamation of the Federal Democratic Constitution in 2015 AD, the Internet became vital for services in government and most of the commercial sectors. It was during this period that social media also became increasingly popular, and with the introduction of smartphones, the platform has exploded. One of the most prominent examples is that of the Tik Tok. In the last two years, the percentage of internet users who responded to using TikTok rose from 3% to 55%. Last but not least, according to Google Trends, Nepal is the second most searched country for "chatGPT" terms.
@@ -135,4 +135,4 @@ plt.show()
 ![](https://miro.medium.com/max/1280/0*CEvjVTv4K4_Hra97)
 
 
-Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Pujan, and several other fellows access to Datacamp, to learn and grow.
+Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Pujan, and several other fellows access to DataCamp, to learn and grow.

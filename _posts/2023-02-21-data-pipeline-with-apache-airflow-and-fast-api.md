@@ -9,7 +9,7 @@ tags:
  - Airflow
  - FastAPI
  - Data Pipelines
- - Datacamp Donates
+ - DataCamp Donates
 ---
 
 
@@ -113,4 +113,4 @@ Conclusion
 
 Hence this is simple datapipeline to extract data from the API endpoints. Well depending upon the needs of user many modifications can be made.
 
-Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Prashant, and several other fellows access to Datacamp, to learn and grow.
+Code for Nepal would like to thank [DataCamp Donates](https://www.datacamp.com/donates) for providing Prashant, and several other fellows access to DataCamp, to learn and grow.
