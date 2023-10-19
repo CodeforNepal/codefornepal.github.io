@@ -1,8 +1,8 @@
 ---
-id: 1429
-title: 'I Got the power #IWalkFreely'
-date: 2016-08-18T08:36:23-04:00
-author: codefornepal
+id: 1428
+title: 'I Got the Power #IWalkFreely'
+date: 2016-08-18T02:33:29-04:00
+author: Roshan Ghimire
 layout: revision
 guid: https://codefornepal.org/2016/08/1420-revision-v1/
 permalink: /2016/08/1420-revision-v1/

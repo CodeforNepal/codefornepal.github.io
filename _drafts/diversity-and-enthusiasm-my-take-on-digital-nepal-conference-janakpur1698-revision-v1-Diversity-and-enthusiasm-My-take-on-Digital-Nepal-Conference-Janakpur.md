@@ -1,8 +1,8 @@
 ---
-id: 1709
-title: 'Diversity and enthusiasm: My take on Digital Nepal Conference, Janakpur'
-date: 2017-04-29T21:59:53-04:00
-author: codefornepal
+id: 1707
+title: 'Diversity and Enthusiasm: My take on Digital Nepal Conference, Janakpur'
+date: 2017-04-27T12:57:12-04:00
+author: Nikesh Balami
 layout: revision
 guid: https://codefornepal.org/2017/04/1698-revision-v1/
 permalink: /2017/04/1698-revision-v1/
