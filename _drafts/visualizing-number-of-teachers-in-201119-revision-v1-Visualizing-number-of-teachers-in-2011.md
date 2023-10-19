@@ -1,7 +1,7 @@
 ---
-id: 140
-title: Visualizing number of teachers in 2011
-date: 2014-12-22T22:24:08-05:00
+id: 139
+title: Visualizing Number of Teachers in 2011
+date: 2014-12-22T22:23:20-05:00
 author: codefornepal
 layout: revision
 guid: https://codefornepal.org/2014/12/19-revision-v1/

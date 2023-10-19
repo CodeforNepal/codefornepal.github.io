@@ -1,12 +1,13 @@
 ---
-id: 762
-title: 'Code for Nepal launches #WhoisNepali video and photo competition, for 75,000 Rupees'
-date: 2016-02-25T20:36:24-05:00
+id: 794
+title: 'Code for Nepal launches #WhoIsNepali video and photo competition for 75,000 rupees'
+date: 2016-02-26T20:36:10-05:00
 author: codefornepal
 layout: revision
 guid: https://codefornepal.org/2016/02/718-revision-v1/
 permalink: /2016/02/718-revision-v1/
 ---
+  
 [sharify]
 
 * * *
@@ -20,7 +21,7 @@ permalink: /2016/02/718-revision-v1/
   </div>
 </div>
 
-<div id='contact-form-762'>
+<div id='contact-form-794'>
 </div>
 
 <span style="font-weight: 400;">Follow us on </span>[<span style="font-weight: 400;">Twitter</span>](https://twitter.com/codefornepal)<span style="font-weight: 400;">, </span>[<span style="font-weight: 400;">Facebook</span>](https://www.facebook.com/codefornepal/)<span style="font-weight: 400;">, </span>[<span style="font-weight: 400;">LinkedIn</span>](https://www.linkedin.com/company/code-for-nepal)<span style="font-weight: 400;">. </span>

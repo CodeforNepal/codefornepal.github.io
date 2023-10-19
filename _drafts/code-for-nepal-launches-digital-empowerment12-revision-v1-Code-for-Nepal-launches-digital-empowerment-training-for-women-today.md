@@ -1,14 +1,14 @@
 ---
-id: 128
-title: Code for Nepal launches digital empowerment training for women today
-date: 2014-12-22T21:28:25-05:00
+id: 47
+title: Code for Nepal Launches Digital Empowerment Training for Women Today
+date: 2014-12-15T03:20:15-05:00
 author: codefornepal
 layout: revision
 guid: https://codefornepal.org/2014/12/12-revision-v1/
 permalink: /2014/12/12-revision-v1/
 ---
 <p class="Normal1">
-  <img src="https://31.media.tumblr.com/0e9b5adf2c5f4790b48191cf3482df30/tumblr_inline_n935fnIsc11qb9ga0.jpg" alt="image" />
+  <img alt="image" src="https://31.media.tumblr.com/0e9b5adf2c5f4790b48191cf3482df30/tumblr_inline_n935fnIsc11qb9ga0.jpg" />
 </p>
 
 <p class="Normal1">
@@ -56,5 +56,5 @@ permalink: /2014/12/12-revision-v1/
 </p>
 
 <p class="Normal1">
-  For more information, you can reach Mia Mitchell at 9818751154, or <a href="mailto:codefornepal@gmail.com">codefornepal@gmail.com</a>
+  For more information, you can reach Mia Mitchell at 9818751154, or <a href="mailto:codefornepal@gmail.com">codefornepal@gmail.com</a> 
 </p>

@@ -1,11 +1,11 @@
 ---
-id: 279
-title: Visualizing district level poverty in Nepal
-date: 2015-02-27T04:06:32-05:00
+id: 135
+title: Visualizing District level poverty in Nepal
+date: 2014-12-22T22:08:56-05:00
 author: codefornepal
 layout: revision
-guid: https://codefornepal.org/2015/02/17-revision-v1/
-permalink: /2015/02/17-revision-v1/
+guid: https://codefornepal.org/2014/12/17-revision-v1/
+permalink: /2014/12/17-revision-v1/
 ---
 This map shows percentage of population living in poverty in districts in 2011.
 

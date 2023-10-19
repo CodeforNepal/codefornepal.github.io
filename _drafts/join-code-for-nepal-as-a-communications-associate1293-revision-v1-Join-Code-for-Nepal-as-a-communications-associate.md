@@ -1,7 +1,7 @@
 ---
-id: 1306
-title: Join Code for Nepal as a communications associate
-date: 2016-06-03T10:58:28-04:00
+id: 1302
+title: Join Code for Nepal as a Communications Associate
+date: 2016-06-02T18:36:22-04:00
 author: codefornepal
 layout: revision
 guid: https://codefornepal.org/2016/06/1293-revision-v1/
@@ -45,7 +45,7 @@ permalink: /2016/06/1293-revision-v1/
   Looking to network and mentorship
 </li>
 <li dir="ltr">
-  Bachelors , preferably graduate student.
+  Advanced college student, preferably graduate student.
 </li>
 
 <p dir="ltr">
