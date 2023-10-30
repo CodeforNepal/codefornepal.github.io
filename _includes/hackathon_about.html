@@ -1,0 +1,41 @@
+
+<!--About the program, 1st part-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="hackathon-heading text-uppercase" style="color: #00ADEF; margin-bottom: 40px;">{{ site.data.hackathon.about.title}}</h2>
+                <div class="hackathon-section" style="margin-bottom: 20px;">{{ site.data.hackathon.about.text | markdownify}}</div>
+            </div>
+        </div> 
+
+        <div style="display: flex; justify-content: center; margin-bottom: 20px; ">
+            <img src="/assets/img/fellow_main.svg" style="width: 400px;">
+        </div>
+        <div style="display: flex; justify-content: center; margin-bottom: 140px;">
+            <img src="/assets/img/c4n_logo.png" style="height: 4rem; margin-right: 1%;">
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 d-flex">
+                <div style=" padding: 8%; ">
+                    <img src="/assets/img/data.svg" class="img-fluid" >
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex" style="align-items: center">
+                <div class="align-self-center">
+                    <h2 class="hackathon-heading ">About the program</h2>
+                    <div class="hackathon-section">
+                        {{ site.data.hackathon.about.about_program}}
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>   
+        
+    </div>
+
+    

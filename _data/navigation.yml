@@ -1,12 +1,13 @@
 nav:
-  - title: "Our work"
-    page: projects
     
   - title: "About"
     section: about
 
   - title: "Data Fellowship"
     page: fellowship2023
+
+  - title: "Hackathon"
+    page: hackathon2023
   
   - title: "Blog"
     page: blog
