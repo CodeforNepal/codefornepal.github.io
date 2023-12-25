@@ -11,14 +11,10 @@ people:
   - name: Anup Dhamala
     image: "/assets/img/team/placeholder.png"
     linkedin_url: 
-  
-  - name: Ayush Paudel
-    image: "/assets/img/team/ayush_paudel.jfif"
-    linkedin_url: 
 
   - name: Ayush Subedi
     image: "/assets/img/team/aayush.jpeg"
-    linkedin_url: 
+    linkedin_url: https://www.linkedin.com/in/ayush-subedi/
 
   - name: Bikesh Bimali
     image: "/assets/img/team/bikesh_bimali.jpg"
