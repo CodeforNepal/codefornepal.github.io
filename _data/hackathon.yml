@@ -1,14 +1,15 @@
 about:
-  title: "Data Crunch 2023: A Code For Nepal Hackathon"
+  title: "Data Crunch 2024"
   image: "assets/about.svg"
   template: "default"
   text: "
-  Welcome to Data Crunch 2023! Join us for an exciting event where developers and tech enthusiasts come together to build something incredible.
+  Step into the world of Data Crunch 2024, an exhilarating hackathon proudly brought to you by Code For Nepal. Immerse yourself in this dynamic event, where creativity meets innovation. Join us in crafting a cutting-edge Prototype/MVP for a transformative data project centered around the rich and diverse data landscape of Nepal. Unleash your potential, connect with like-minded enthusiasts, and pave the way for data-driven solutions that can make a real impact. The future of data awaits, and it starts with you at Data Crunch 2024!
   "
   
   about_program: "
-Team up with 3-6 visionaries to transform Nepal's future across themes like environment, healthcare, and more. Dive into non-proprietary data to develop open-sourced, well-documented projects, from dynamic prototypes to actionable solutions, all showcased in CFN's repository. Make an impact where it truly matters!
-
+Assemble a dynamic team of 3-6 members to pioneer the transformation of Nepal's future through data exploration in diverse domains such as environment, healthcare, transportation, and more. Immerse yourselves in the wealth of non-proprietary data, crafting open-sourced and meticulously documented projects that range from dynamic prototypes to actionable solutions, all housed in Code For Nepal's repository.
+<br><br>
+During the hackathon, the emphasis is not on execution but on the creation of a Minimum Viable Product (MVP). Present a compelling argument showcasing your understanding of the problem, innovative approach, proposed solution, and potential impact. Following the event, you stand a chance to be awarded cash incentives, providing you with the means to advance and refine your ideas beyond the hackathon. This is an opportunity to not only ideate but to embark on a journey of continued development and real-world impact. Your vision for a data-driven Nepal begins here.
 
 
                         "

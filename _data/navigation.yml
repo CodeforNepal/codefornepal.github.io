@@ -6,8 +6,8 @@ nav:
   - title: "Data Fellowship"
     page: fellowship2023
 
-  - title: "Hackathon"
-    page: hackathon2023
+  - title: "Data Crunch 2024"
+    page: data_crunch_hackathon_2024
   
   - title: "Blog"
     page: blog
@@ -17,9 +17,6 @@ nav:
 
   -  title: "Join us"
      page: joinus
-
-  - title: "Contact"
-    section: contact
 
     
 
