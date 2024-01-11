@@ -1,16 +1,15 @@
-
 title: "OUR TEAM"
 text: ""
-subtext: 
+subtext:
 section: team
 people:
   - name: Aishraj Dahal
     image: "/assets/img/team/aishraj_dahal.jpg"
-    linkedin_url: 
+    linkedin_url:
 
   - name: Anup Dhamala
     image: "/assets/img/team/placeholder.png"
-    linkedin_url: 
+    linkedin_url:
 
   - name: Ayush Subedi
     image: "/assets/img/team/aayush.jpeg"
@@ -36,7 +35,7 @@ people:
     image: "/assets/img/team/laurence_hall.jpg"
     linkedin_url: https://www.linkedin.com/in/laurence-h-078704197/
 
-  - name: 'Pragya Tripathi '
+  - name: "Pragya Tripathi "
     image: "/assets/img/team/placeholder.png"
     linkedin_url:
 
@@ -63,7 +62,11 @@ people:
   - name: Sukriti Adhikari
     image: "/assets/img/team/placeholder.png"
     linkedin_url: https://www.linkedin.com/in/sukriti-adhikari/
-    
+
   - name: Sweta Baniya
     image: "/assets/img/team/placeholder.png"
     linkedin_url: https://www.linkedin.com/in/sweta-baniya-phd-5892994b/
+
+  - name: Aman Giri
+    image: "/assets/img/team/aman.jpg"
+    linkedin_url: https://www.linkedin.com/in/aman-giri-ag/
