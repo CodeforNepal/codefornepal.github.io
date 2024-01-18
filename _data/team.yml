@@ -7,6 +7,10 @@ people:
     image: "/assets/img/team/aishraj_dahal.jpg"
     linkedin_url:
 
+  - name: Aman Giri
+    image: "/assets/img/team/aman.jpg"
+    linkedin_url: https://www.linkedin.com/in/aman-giri-ag/
+
   - name: Anup Dhamala
     image: "/assets/img/team/placeholder.png"
     linkedin_url:
@@ -67,6 +71,3 @@ people:
     image: "/assets/img/team/placeholder.png"
     linkedin_url: https://www.linkedin.com/in/sweta-baniya-phd-5892994b/
 
-  - name: Aman Giri
-    image: "/assets/img/team/aman.jpg"
-    linkedin_url: https://www.linkedin.com/in/aman-giri-ag/
