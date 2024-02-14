@@ -55,6 +55,10 @@ people:
     image: "/assets/img/team/ravi_kumar.jpg"
     linkedin_url: https://www.linkedin.com/in/ravinepal/
 
+  - name: Sambidh Rai
+    image: "/assets/img/team/sambidh.png"
+    linkedin_url: https://www.linkedin.com/in/sambidhrai/
+
   - name: Shreeya Khadka
     image: "/assets/img/team/placeholder.png"
     linkedin_url:
