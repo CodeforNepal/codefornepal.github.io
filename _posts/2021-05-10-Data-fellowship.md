@@ -22,7 +22,7 @@ As a fellow at Code for Nepal, I got access to a multitude of courses and resour
 
 It was euphoric to re-learn courses interactively which I had learned via different online courses that were like traditional classes but on a computer! 
 
-But with Datacamp, I could code simultaneously while getting instructions. Subsequently, my learning time grew exponentially!
+But with DataCamp, I could code simultaneously while getting instructions. Subsequently, my learning time grew exponentially!
 
 I had the time of my life exploring Business Analytics courses during my gap year. 
 
@@ -32,9 +32,9 @@ Finding that dairy products and low water consumption was related to surged cong
 
 I also increased my yoga time after noticing a pattern between reduced toothache and increased yoga duration.
 
-Subsequently, my interest in Analytics grew even more. I plan to utilize the robust analytics program at Datacamp to shape solutions to people’s problems like I did for myself. 
+Subsequently, my interest in Analytics grew even more. I plan to utilize the robust analytics program at DataCamp to shape solutions to people’s problems like I did for myself. 
 
-Datacamp has courses that have helped me leverage data tools, maintaining databases, and creating and managing data analytics that helps me connect dots between marketing and analytics, improving my problem-solving skills.
+DataCamp has courses that have helped me leverage data tools, maintaining databases, and creating and managing data analytics that helps me connect dots between marketing and analytics, improving my problem-solving skills.
  
 Using the tools, I was able to identify students’ major issues (analysis) and address them in collaboration with our startup- TheVidhwan’s- student ambassadors by acquiring and analyzing 300 student data. 
 
@@ -44,7 +44,7 @@ And through marketing, I plan to shape creative ideas to connect and communicate
 
 The Data Fellowship has allowed me to indulge myself with guided and self-started projects which adds a whole new perspective to my experience as I tackle real-world scenarios.
 
-And Datacamp has made it easy enough for me to execute such projects at the comfort of my home sipping coffee! 
+And DataCamp has made it easy enough for me to execute such projects at the comfort of my home sipping coffee! 
 
 For my project, I collected, analyzed, and visualized company data of Pacific Human Resources Pvt. Ltd that is being used for the company’s marketing and its website. 
 

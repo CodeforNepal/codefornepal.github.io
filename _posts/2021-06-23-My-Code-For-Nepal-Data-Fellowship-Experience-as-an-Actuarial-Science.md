@@ -4,7 +4,7 @@ date: 2021-06-26
 author: Krishna kumar Shrestha
 layout: post
 tags:
- - Datacampdonates
+ - DataCampdonates
  - Data Fellowship 2021
  - CodeforNepal
 ---
