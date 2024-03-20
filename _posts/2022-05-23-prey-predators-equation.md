@@ -5,7 +5,7 @@ author: Ashma Subedi
 layout: post
 tags:
  - highlight
- - Datacampdonates 
+ - DataCampdonates 
  - Data Fellowship 2021
  - CodeforNepal
 ---
