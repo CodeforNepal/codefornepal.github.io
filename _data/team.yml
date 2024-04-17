@@ -39,6 +39,10 @@ people:
     image: "/assets/img/team/laurence_hall.jpg"
     linkedin_url: https://www.linkedin.com/in/laurence-h-078704197/
 
+  - name: Nitesh Rajbanshi
+    image: "/assets/img/team/nitesh_rajbanshi.jpg"
+    linkedin_url: https://www.linkedin.com/in/nitesh-rajbanshi-87a481231/
+
   - name: "Pragya Tripathi "
     image: "/assets/img/team/placeholder.png"
     linkedin_url:
