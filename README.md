@@ -4,6 +4,14 @@ To build a new device agnostic and low bandwidth friendly website of Code for Ne
 
 Jekyll instance of codefornepal.org
 
+## Admin page to easily publish blogs
+
+You need to be a blog publisher to access the following:
+
+https://codefornepal.org/admin
+
+
+
 ## Design Guidelines
 
 These are our brand color schemes.
