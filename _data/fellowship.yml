@@ -1,16 +1,16 @@
 about:
-  title: "Data Fellowship 2024"
+  title: "Data Fellowship 2025"
   image: "assets/about.svg"
   template: "default"
   text: "
   We are pleased to announce that applications are open for Code For Nepal Data Fellowship. The objective of this fellowship organized by Code for Nepal with support from **[DataCamp Donates](https://www.datacamp.com/donates)** is to help anyone, especially those who cannot afford DataCamp subscription, build their data skills and make progress in their lives.
   <br><br>
-  Eligibility: **Nepalis in and outside of Nepal.** Especially, Nepali women around the world, youths and professionals, from Provinces 2 and 6 are highly encouraged to apply.
-<br><br>
-We are grateful to DataCamp for donating access to their expert-led data skill training. DataCamp offers online training for all data skills and levels, from non-coding essentials for business to data science and machine learning, all taught by leading experts in the field. DataCamp is used by 1,600+ companies such as Google, Uber, PayPal and others to build skills of their employees.
-<br><br>
-**Every Nepali interested in learning new skills can apply. Interested candidates are encouraged to apply as soon as possible. See below for details about the Fellowship and apply!**
-
+  <strong>Applications open: April 15, 2024 (Rolling basis)</strong>
+  
+  <br><br>
+  We are grateful to DataCamp for donating access to their expert-led data skill training. DataCamp offers online training for all data skills and levels, from non-coding essentials for business to data science and machine learning, all taught by leading experts in the field. DataCamp is used by 1,600+ companies such as Google, Uber, PayPal and others to build skills of their employees.
+  <br><br>
+  **Every Nepali interested in learning new skills can apply. Apply using the form below!**
   "
   
   about_program: "
@@ -24,4 +24,8 @@ We are grateful to DataCamp for donating access to their expert-led data skill t
                         <li class='custom_li'>Opportunity to contribute to amazing open source data projects after completion of the program.</li>
                         <li class='custom_li'>Opportunity be part of Code For Nepal Community.</li>
                         </ol>
+                        <br>
+                        <div class='text-center'>
+                        <a href='https://docs.google.com/forms/d/e/1FAIpQLScmp_2drrZYjZmCdrB7FI92L4YwWQ74i1IwdihW5P8qNn48Hw/viewform' class='btn btn-primary' target='_blank'>Apply Now</a>
+                        </div>
                         "
