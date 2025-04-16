@@ -35,6 +35,10 @@ people:
     image: "/assets/img/team/ishan_dongol.jpg"
     linkedin_url: https://www.linkedin.com/in/lognod/
 
+  - name: Labbi Karmacharya
+    image: "/assets/img/team/labbi.png"
+    linkedin_url: https://www.linkedin.com/in/labbi-karmacharya/
+
   - name: Laurence Hall
     image: "/assets/img/team/laurence_hall.jpg"
     linkedin_url: https://www.linkedin.com/in/laurence-h-078704197/
