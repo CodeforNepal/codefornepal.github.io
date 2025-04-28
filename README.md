@@ -88,7 +88,7 @@ Go to -> http://`<local_ip_of_machine>`:3000/
 
 ```console
 $ git fetch upstream 
-$ git pull upstream master
+$ git merge upstream master
 $ git push origin master 
 ```
 
