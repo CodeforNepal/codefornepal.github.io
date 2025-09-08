@@ -6,21 +6,16 @@ header:
 
 services:
   title: "Our work"
-  text: "As a community of volunteers we believe in creating opportunities and public goods. Use them or contribute to them."
+  text: "As a community of volunteers we believe in creating opportunities and public goods."
   section: work
   list:
-    - title: "[NepalMap](https://nepalmap.org/)"
+    - title: "[NepalMap](https://github.com/CodeforNepal/nepalmap_federal)"
       desc: "Explore and understand Nepal using data"
+      icon: fas fa-map-marker-alt
 
-    - title: "[Hawkins Fellowship](https://codefornepal.org/fellowship/)"
-      desc: "Fellowship for underprivliged youths"
-
-    - title: "[Sangraha](http://sangraha.org/)"
+    - title: "[Sangraha](https://github.com/CodeforNepal/akshara-project)"
       desc: "Access Nepali poems and literature"
-
-    - title: "[AskNepal](https://asknepal.info/en)"
-      desc: "Ask Nepal helps you make a Freedom of Information request."
-      icon: fab fa-markdown
+      icon: fas fa-book-open
 
 portfolio:
   title: "Stories"
