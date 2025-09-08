@@ -11,6 +11,10 @@ people:
     image: "/assets/img/team/aman.jpg"
     linkedin_url: https://www.linkedin.com/in/aman-giri-ag/
 
+  - name: Animesh S. Basnet
+    image: "/assets/img/team/animesh.png"
+    linkedin_url: https://www.linkedin.com/in/animeshbasnet/
+  
   - name: Anup Dhamala
     image: "/assets/img/team/placeholder.png"
     linkedin_url:
