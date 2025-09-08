@@ -5,7 +5,7 @@ pagination:
   enabled: true
 ---
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 mb-4">
     <h1 class="text-center mb-4">Blog</h1>
   </div>
 
@@ -22,19 +22,25 @@ pagination:
   {% endfor %}
 </div>
 
-<div class="row">
-{% if paginator.total_pages > 1 %}
-<ul class="paginator-links-list d-flex justify-content-between">
-  {% if paginator.previous_page %}
-  <li>
-    <a class="paginator-link btn btn-primary" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
-  </li>
+<div class="row mb-4">
+  {% if paginator.total_pages > 1 %}
+  <div class="col-12">
+    <ul class="paginator-links-list d-flex justify-content-center list-unstyled">
+      {% if paginator.previous_page %}
+      <li>
+        <a class="paginator-link btn btn-primary" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
+          Previous
+        </a>
+      </li>
+      {% endif %}
+      {% if paginator.next_page %}
+      <li>
+        <a class="ml-4 btn btn-primary" href="{{ paginator.next_page_path | prepend: site.baseurl }}">
+          Next
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
   {% endif %}
-  {% if paginator.next_page %}
-  <li>
-    <a class="btn btn-primary" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %}
 </div>

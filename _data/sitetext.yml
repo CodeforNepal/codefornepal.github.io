@@ -44,7 +44,7 @@ timeline:
       desc: "We launched open data and civic tech products, [organized conferences](https://digitalnepal.org/), and [hackathon](http://hackfornepal.org/), collaborated with partners such as [Purdue University](https://sbaniya.com/2017/03/09/featured-content-2/) and gave scholarships to young women and men."
       image: assets/img/timeline/3.jpg
       alt: image alt text
-      align: right
+      align: left
   end: "[Join us](https://codefornepal.github.io/joinus/) <br> and shape <br> our story!"
 
 about:
@@ -79,4 +79,4 @@ footer:
       icon: "fab fa-github"
     - url: http://instagram.com/codefornepal
       icon: "fab fa-instagram"
-  license: "This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! Code for Nepal is a registered 501(c)(3) nonprofit organization. EIN: 47-3620037"
+  license: "This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037"
