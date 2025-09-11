@@ -1,58 +1,66 @@
-  <!-- Footer -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; {{ site.title }} {{ 'now' | date: "%Y" }}</span>
-        </div>
-		<!-- Social Media -->
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-		  {% for link in site.data.sitetext.footer.social  %}
-            <li class="list-inline-item">
-			  {% if link.url %}
-              <a href="{{ link.url }}">
-                {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
-              </a>
-			  {% endif %}
-            </li>
-      {% endfor %}
-      <div class="mt-2">
-        {% include donations.html %}
+<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; {{ site.title }} {{ 'now' | date: "%Y" }}</span
+        >
       </div>
-          </ul>
-        </div>
-		<!-- Legal -->
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="{{ site.baseurl }}/codeofconduct/" target="_blank">{{ site.data.sitetext.footer.legal_title }}</a>
-            </li>
-          </ul>
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="{{ site.baseurl }}/privacy/" target="_blank">{{ site.data.sitetext.footer.privacy }}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-11">
-          <span class="code">{{ site.data.sitetext.footer.license }}</span>
-        </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          {% for link in site.data.sitetext.footer.social %}
+          <li class="list-inline-item">
+            {% if link.url %}
+            <a href="{{ link.url }}">
+              {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
+            </a>
+            {% endif %}
+          </li>
+          {% endfor %}
+          <div class="mt-2">{% include donations.html %}</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="{{ site.baseurl }}/codeofconduct/" target="_blank"
+              >{{ site.data.sitetext.footer.legal_title }}</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="{{ site.baseurl }}/privacy/" target="_blank"
+              >{{ site.data.sitetext.footer.privacy }}</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">{{ site.data.sitetext.footer.license }}</span>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 {% if page.layout == "page" %}
 <script>
-fixPageShort();
-function fixPageShort() {
-  if(window.innerHeight > document.body.offsetHeight) {
-    document.getElementById("footer").style.position="fixed";
-    document.getElementById("footer").style.bottom=0;
-    document.getElementById("footer").style.right=0;
-    document.getElementById("footer").style.left=0;
-    document.getElementById("footer").style.width="100%";
+  fixPageShort();
+  function fixPageShort() {
+    if (window.innerHeight > document.body.offsetHeight) {
+      document.getElementById("footer").style.position = "fixed";
+      document.getElementById("footer").style.bottom = 0;
+      document.getElementById("footer").style.right = 0;
+      document.getElementById("footer").style.left = 0;
+      document.getElementById("footer").style.width = "100%";
+    }
   }
-}
 </script>
 {% endif %}
-  <!-- End Footer -->
+<!-- End Footer -->
