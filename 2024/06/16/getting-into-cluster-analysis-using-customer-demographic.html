@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Getting Into Cluster Analysis Using Customer Demographic Data">
+<meta property="og:description" content="Clustering or cluster analysis is an aspect of statistical data analysis where you segment the datasets into groups based on similarities.">
+<meta property="og:url" content="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Clustering or cluster analysis is an aspect of statistical data analysis where you segment the datasets into groups based on similarities.">
+<meta name="twitter:title" content="Getting Into Cluster Analysis Using Customer Demographic Data">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Getting Into Cluster Analysis Using Customer Demographic Data | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Getting Into Cluster Analysis Using Customer Demographic Data</h1>
+    <p>16 Jun 2024 - Sujan Gauchan</p>
+    <p>
+      <h2 id="what-is-cluster-analysis">What is cluster analysis?</h2>
+
+<p>Clustering or cluster analysis is an aspect of statistical data analysis where you segment the datasets into groups based on similarities. Here, the data points that are close to one another are grouped together to form clusters. Clustering is one of the core data mining techniques and comes under the umbrella of unsupervised Machine Learning. Clustering, being an unsupervised learning technique, does not require much human intervention and any pre-existing labels. This technique is generally used for exploratory data analysis.</p>
+
+<p>Let’s understand the use of cluster analysis with an example. Suppose the mayor of Kathmandu wants to plan an efficient allocation of the budget for road safety, but is unsure about which areas to focus on. Here, cluster analysis can be used to identify areas where incidents of road accidents are clustered within the city. This analysis can reveal that different clusters have specific causes of accidents, such as high speed, lack of road signs, unmaintained roads, and unorganized pedestrian crossings. By understanding these factors, the mayor can allocate the budget accordingly, prioritizing road repairs, traffic lights, signage, speed cameras, public awareness programs, and traffic personnel deployment. This data-driven approach can significantly reduce the number of accidents. Clustering can be a great way to find patterns and relationships within a large data set. There are various uses of clustering in various industries. Some common application of clustering are :</p>
+
+<ul>
+  <li>Customer segmenting for targeted marketing</li>
+  <li>Recommendation system to suggest songs, movies, contents to users with similar preferences</li>
+  <li>Detecting anomalities for fraud detection, predictive maintenance and network security</li>
+  <li>Image segmentation for tumor detection through medical imaging, land cover classification and computer vision for self driving cars</li>
+  <li>Spatial data analysis for city planning, disease survellience, crime analysis, etc.</li>
+</ul>
+
+<p>While there are numerous clustering techniques, the K-means clustering is used most widely. There is no best clustering technique and the most favorable technique is determined by the properties of data and the purpose of analysis. As of now there are more than 100 different types of algorithms used in clustering. However, the clustering techniques most commonly used can be divided in following categories:</p>
+
+<ul>
+  <li>Partitional clustering : K-means, K-medoids, Fuzzy C-means</li>
+  <li>Hieriarchial clustering : Agglomerative (Bottom-up approach), Divisive (Top-down approach)</li>
+  <li>Density-Based clustering : DBSCAN, OPTICS, DENCLUE</li>
+  <li>Grid-Based clustering : STING, WaveCluster</li>
+  <li>Model-Based clustering : EM, COBWEB, SOM</li>
+</ul>
+
+<h2 id="customer-segmentation-using-clustering-in-python">Customer segmentation using Clustering in Python</h2>
+
+<p>Dataset used — <a href="https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis/data">https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis/data</a></p>
+
+<p>We will be conducting Agglomerative and K-means clustering on customer demographic data to segment customers for targeted marketing. Major steps we will take in the project are :</p>
+
+<ol>
+  <li>Feature engineering and data cleaning</li>
+  <li>Data preprocessing</li>
+  <li>Using Elbow method to determine optimal no of clusters</li>
+  <li>Clustering using Agglomerative and K-means clustering</li>
+  <li>Checking the quality of the results using Silhoutte score</li>
+  <li>Checking the results of clustering</li>
+  <li>Interpreting the results of clustering</li>
+</ol>
+
+<h2 id="importing-the-necessary-libraries"><strong>Importing the necessary libraries</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd  
+import numpy as np  
+import matplotlib.pyplot as plt  
+import seaborn as sns  
+import datetime  
+from sklearn.preprocessing import StandardScaler  
+from sklearn.decomposition import PCA  
+from yellowbrick.cluster import KElbowVisualizer  
+import scipy.cluster.hierarchy as sch  
+from scipy.cluster.hierarchy import linkage, dendrogram  
+from sklearn.cluster import AgglomerativeClustering  
+from sklearn.cluster import KMeans  
+from sklearn.metrics import silhouette_score  
+import warnings  
+warnings.filterwarnings('ignore', category=FutureWarning)
+</code></pre></div></div>
+
+<h2 id="exploring-the-data">Exploring the data</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = pd.read_csv("marketing_campaign.csv", sep="t")  
+df.head()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*4v7ebUdLnpRhM2rIv4Ne3A.png" alt="Image 2: png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.shape(2240, 29)df.info()&lt;class 'pandas.core.frame.DataFrame'&gt;  
+RangeIndex: 2240 entries, 0 to 2239  
+Data columns (total 29 columns):  
+ #   Column               Non-Null Count  Dtype    
+---  ------               --------------  -----    
+ 0   ID                   2240 non-null   int64    
+ 1   Year_Birth           2240 non-null   int64    
+ 2   Education            2240 non-null   object   
+ 3   Marital_Status       2240 non-null   object   
+ 4   Income               2216 non-null   float64  
+ 5   Kidhome              2240 non-null   int64    
+ 6   Teenhome             2240 non-null   int64    
+ 7   Dt_Customer          2240 non-null   object   
+ 8   Recency              2240 non-null   int64    
+ 9   MntWines             2240 non-null   int64    
+ 10  MntFruits            2240 non-null   int64    
+ 11  MntMeatProducts      2240 non-null   int64    
+ 12  MntFishProducts      2240 non-null   int64    
+ 13  MntSweetProducts     2240 non-null   int64    
+ 14  MntGoldProds         2240 non-null   int64    
+ 15  NumDealsPurchases    2240 non-null   int64    
+ 16  NumWebPurchases      2240 non-null   int64    
+ 17  NumCatalogPurchases  2240 non-null   int64    
+ 18  NumStorePurchases    2240 non-null   int64    
+ 19  NumWebVisitsMonth    2240 non-null   int64    
+ 20  AcceptedCmp3         2240 non-null   int64    
+ 21  AcceptedCmp4         2240 non-null   int64    
+ 22  AcceptedCmp5         2240 non-null   int64    
+ 23  AcceptedCmp1         2240 non-null   int64    
+ 24  AcceptedCmp2         2240 non-null   int64    
+ 25  Complain             2240 non-null   int64    
+ 26  Z_CostContact        2240 non-null   int64    
+ 27  Z_Revenue            2240 non-null   int64    
+ 28  Response             2240 non-null   int64    
+dtypes: float64(1), int64(25), object(3)  
+memory usage: 507.6+ KB
+</code></pre></div></div>
+
+<p>There are some rows with missing values on income variable which we will be dropping as it is only a minor part of the whole dataset</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = df.dropna()df.describe()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*f_eyiKVerIfeMrZY0wmjWQ.png" alt="Image 3: png" /></p>
+
+<h2 id="feature-engineering-and-data-cleaning">Feature Engineering and data cleaning</h2>
+
+<p>Here we will be conducting basic feature engineering to calculate new features using existing variables. Features added are as follows:</p>
+
+<ul>
+  <li>Calculating Age from the Birth year column</li>
+  <li>Add total amount spent column by adding all the subcategories of amount spent</li>
+  <li>Get the total count of campains accepted by adding the count of all campaigns</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Calculating Age from the birth yeardf['Age'] = 2024 - df["Year_Birth"]
+
+# Get sum of all the spending columns for each customer
+
+
+col_names = ['MntWines', 'MntFruits',  
+       'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts',  
+       'MntGoldProds']
+
+df['Totalspent'] = df[col_names].sum(axis=1)
+
+
+
+# Get sum of all the accepted campaign columns for each customer
+
+col_names2 = ['AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1',  
+       'AcceptedCmp2']
+
+df['Cmp_accepted'] = df[col_names2].sum(axis=1)
+
+df.describe()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*WLsnHESRko2MLD80GiC1Zg.png" alt="Image 4: png" /></p>
+
+<p>We can see that the max value for age is 131. The data is definitely old and outdated. Hence, we will be dropping instances where age is greater than 90.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = df[(df["Age"]&lt;90)]
+
+Checking for outliers
+---------------------
+
+Since K-Means Clustering is sensitive to outliers, we are checking if there are any outliers using boxplot
+
+# Plot the processed dataset  
+def show_boxplot(df):  
+    plt.rcParams['figure.figsize'] = [14,6]  
+    sns.boxplot(data = df, orient="v")  
+    plt.title("Outliers Distribution", fontsize = 16)  
+    plt.ylabel("Range", fontweight = 'bold')  
+    plt.xlabel("Attributes", fontweight = 'bold')  
+    plt.xticks(rotation=90)show_boxplot(df)
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*9epgfC_crJrqyXzaTZ7zyQ.png" alt="Image 5: png" /></p>
+
+<p>We can see that the income column has a huge outlier hence we will be dropping the instances with income values above 600000</p>
+
+<h1 id="dropping-instances-where-income-is-greater-than-600000">Dropping instances where income is greater than 600000</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = df[(df["Income"]&lt;600000)]  
+print("Total remaining values after removing outliers =", len(df))Total remaining values after removing outliers = 2212
+</code></pre></div></div>
+
+<h2 id="preprocessing">Preprocessing</h2>
+
+<p>First we will be dropping variables with non numerical and irrevelant values.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df_main = df.drop(['ID', 'Year_Birth', 'Education', 'Dt_Customer', 'Marital_Status', 'MntWines', 'MntFruits',  
+       'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts',  
+       'MntGoldProds','AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1','Complain', 'Response',  
+       'AcceptedCmp2', 'Z_CostContact', 'Z_Revenue'], axis=1)  
+df_main
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*fUp9_Ep-FwQxX8yxmHM37A.png" alt="Image 6: png" /></p>
+
+<h2 id="scaling-the-data-to-standardize-all-variables">Scaling the data to standardize all variables</h2>
+
+<p>Scaling the data is a crucial step of data preprocessing in machine learning algorithms, especially if they rely on distance calculations. It helps in standardizing all the variables in a dataset. Within a dataset, some variables might contain values with very high ranges while some might contain values with small ranges. Feature scaling helps address this issue by transforming those varying ranges into a uniform range with a mean of zero and a standard deviation of one.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Create scaled DataFrame  
+scaler = StandardScaler()  
+df_scaled = scaler.fit_transform(df_main)  
+df_scaled.shape(2212, 12)
+</code></pre></div></div>
+
+<h2 id="checking-for-correlation">Checking for Correlation</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Plotting heatmap to find correlation  
+sns.heatmap(df_main.corr(), annot=True)# Add a title to the plot  
+plt.title("Correlation Heatmap")    
+plt.show()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*n--inYKxp-tx22qOIEgCEA.png" alt="Image 7: png" /></p>
+
+<h2 id="reducing-the-dimensionality-using-pca">Reducing the dimensionality using PCA</h2>
+
+<p>While conducting cluster analysis, variables that are correlated can significantly distort the clustering by giving more weight to certain correlated variables and give biased results. Also, high number of dimensions during clustering can cause other issues such as:</p>
+
+<ul>
+  <li>High computational requirement</li>
+  <li>Curse of dimensionality</li>
+  <li>Overfitting due to lot of noise in the data</li>
+  <li>Performance degradation</li>
+</ul>
+
+<p>PCA lowers the dimensions of the dataset by combining multiple variables while preserving majority of the variance in the data. This helps in boosting the performance of the algorithm, reduce overfitting and make it easier to visualize and interpret the data. Therefore It is necessary to use Dimensionality Reduction Technique such as PCA (Principal Component Analysis), especially while dealing with high-dimensional data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Initiating PCA to reduce dimentions to 3  
+pca = PCA(n_components=3)# Fitting the PCA Model:  
+pca.fit(df_scaled)
+
+
+# Transforming the Data and Creating a DataFrame:  
+PCA_df = pd.DataFrame(pca.transform(df_scaled), columns=(["Col1","Col2", "Col3"]))
+
+# Descriptive statistics  
+PCA_df.describe().T
+
+</code></pre></div></div>
+<p><img src="https://miro.medium.com/v2/1*xgtSB7dAkxRhgJWo4ychzw.png" alt="Image 8: png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Plotting the results#A 3D Projection Of Data In The Reduced Dimension  
+x =PCA_df["Col1"]  
+y =PCA_df["Col2"]  
+z =PCA_df["Col3"]  
+#To plot  
+fig = plt.figure(figsize=(8,6))  
+ax = fig.add_subplot(111, projection="3d")  
+ax.scatter(x,y,z, c="maroon", marker="o" )  
+ax.set_title("A 3D Projection Of Data In The Reduced Dimension")  
+plt.show()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*i9FgrwxgEuYqoWGYrzY65g.png" alt="Image 9: png" /></p>
+
+<h2 id="calculating-optimal-number-of-clusters-using-elbow-method">Calculating optimal number of clusters using elbow method</h2>
+
+<p>Elbow method is a widely recognized way to determine ideal no of clusters. It uses within-cluster sum of squares (WCSS) or inertia. While calculating WCSS, following steps are carried out:</p>
+
+<ul>
+  <li>Adding the distance between each datapoints and their cluster centroids (centre/mean of the cluster) in a cluster</li>
+  <li>Squaring the calculated sum of distances for each clusters</li>
+  <li>Adding the square of distances from all clusters</li>
+</ul>
+
+<p>In Elbow method, multiple no of clusters (Usually from 0 to 10 clusters) are created and WCSS is calculated in each cluster. As the no of cluster increases, the WCSS value starts to decline. This decline occurs because as the no of cluster increases the datapoints gets closer to the cluster centroids too. If we were to increase the no of clusters continuously, it would reach to a point where each data point acts as a single cluster and the value of WCSS becomes 0 as each data point acts as its own centroid. Here, the elbow point or the optimal no of clusters is at the point where adding futher clusters won’t reduce WCSS significantly.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># finding number of clusters using elbow method  
+Elbow_M = KElbowVisualizer(KMeans(), k=10)  
+Elbow_M.fit(PCA_df)Elbow_M.ax.set_xlabel('No of Clusters')  
+Elbow_M.ax.set_ylabel('WCSS')  
+plt.show()
+
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*ePp3TgxYlJh5uNzc66GHlw.png" alt="Image 10: png" /></p>
+
+<p>We can deduce from the figure that the optimal k is at 5 with elbow method. Hence, we will use 5 clusters as our optimal cluster value.</p>
+
+<h2 id="first-method--agglomerative-clustering">First Method : Agglomerative Clustering</h2>
+
+<p>First, we will be using agglomerative clustering, which is a type of hieriarchial clustering. Here, the clusters will be progressively merged upwards to form a larger cluster until all the clusters are merged into one. In agglomerative clustering the optimal number of clusters is obtained by cutting the dendogram at the level which matches our desired no of clusters. We will also plot a dendogram to see how the clusters are formed step by step upwards and how it is cut off at the desired no of clusters.</p>
+
+<h1 id="using-5-as-the-optimal-cluster-value">Using 5 as the optimal cluster value</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>optimal_k = 5# Perform hierarchical/agglomerative clustering  
+ac = AgglomerativeClustering(n_clusters=optimal_k,linkage='complete')  
+agg_prediction = ac.fit_predict(PCA_df)
+
+# Print the clusters and their count  
+cluster_counts = pd.Series(agg_prediction).value_counts()  
+print(cluster_counts)
+
+# Compute the linkage matrix using the complete linkage method  
+Linkage_matrix = sch.linkage(PCA_df, method='complete')
+
+# Plot the dendrogram  
+plt.figure(figsize=(10, 7))  
+sch.dendrogram(Linkage_matrix, truncate_mode='lastp', p=12, show_leaf_counts=True, leaf_rotation=90., leaf_font_size=12., show_contracted=True)  
+plt.title('Dendrogram of Agglomerative Clustering')  
+plt.xlabel('Data Points')  
+plt.ylabel('Distance')
+
+# Add a horizontal line to show the cut for the desired number of clusters  
+plt.axhline(y=Linkage_matrix[-optimal_k, 2], color='r', linestyle='--')
+
+plt.show()
+
+
+0    1038  
+1     813  
+2     248  
+4     110  
+3       3  
+Name: count, dtype: int64
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*vl_Rh3l11HVvabN0ffvSUQ.png" alt="Image 11: png" /></p>
+
+<p>In the above dendrogram we can see the visual representation of all the clusters and how they are merging upwards in different hieriarchial levels. We can also find a horizontal dotted line indicating where the clusters needs to be cut to get our optimal no of clusters which is 5.</p>
+
+<h2 id="second-method--k-means-clustering">Second Method : K-means Clustering</h2>
+
+<p>K-means is a type of Partitional clustering technique. It works by partitioning a dataset into a fixed no of clusters also referred as K. First it selects one cluster centroid for each cluster at random, then it iteratively forms a cluster by assigning each datapoints to its nearest cluster centroid, calculates the mean of the cluster and assigns it as the new cluster centroids and repeats the process until the centroids do not change significantly.</p>
+
+<h1 id="using-5-as-the-optimal-cluster-value-1">Using 5 as the optimal cluster value</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>optimal_k = 5# Performing the final clustering with the chosen optimal number of clusters  
+kmeans = KMeans(n_clusters=optimal_k, n_init=100, random_state=42)  
+kmeans_predictions = kmeans.fit_predict(PCA_df)
+</code></pre></div></div>
+
+<h2 id="checking-the-quality-of-clustering-using-silhoutte-score">Checking the quality of clustering using Silhoutte score</h2>
+
+<p>Silhoutte score is a widely used metric to check the quality of clustering. Silhoutte score closer to 1 is considered a good cluster and means that the data points are unlikely to be assigned to another cluster while score closer to -1 means the data point is most likely assigned to wrong clusters. Having score around 0 means that the clustering is weak and data points could be as close to another cluster as they are to their own cluster.</p>
+
+<h1 id="calculate-the-silhouette-score-for-agglomerative-clustering">Calculate the Silhouette score for agglomerative clustering</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>agg= silhouette_score(PCA_df, agg_prediction)# Calculate the Silhouette score for kmeans clustering  
+kmeans = silhouette_score(PCA_df, kmeans_predictions)
+
+print(f"Silhouette Score for Agglomerative clustering: {agg}")  
+print(f"Silhouette Score for K-means clustering: {kmeans}")
+
+Silhouette Score for Agglomerative clustering: 0.24922619020484865  
+Silhouette Score for K-means clustering: 0.3569952080522956
+
+</code></pre></div></div>
+
+<p>We can see that the silhouette score for k-means clustering is higher than that of agglomerative clustering. Hence, we will be moving forward with Kmeans clustering.</p>
+
+<h2 id="moving-forward-with-k-means-clustering">Moving forward with K-means clustering</h2>
+
+<h1 id="adding-the-cluster-values-to-original-dataframes">Adding the cluster values to original dataframes</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df['cluster'] = kmeans_predictions  
+df_main['cluster'] = kmeans_predictions  
+df.head()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*DRpeV22f4ZYZLngbfDH5Cg.png" alt="Image 12: png" /></p>
+
+<h2 id="visualizing-the-results">Visualizing the results</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Visualizing the clustering resultsfig = plt.figure(figsize=(10, 8))  
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(PCA_df.iloc[:, 0], PCA_df.iloc[:, 1], PCA_df.iloc[:, 2], c=df['cluster'], cmap='Set2')
+
+ax.set_xlabel("Principal Component 1")  
+ax.set_ylabel("Principal Component 2")  
+ax.set_zlabel("Principal Component 3")
+
+plt.title("Clustering Results")
+
+plt.show()
+
+![Image 13: png](https://miro.medium.com/v2/1*qIu7GXwhZs-CuUBI-U9Gvw.png)
+
+Plotting the count of customers in each Clusters
+------------------------------------------------
+
+# Calculating total cluster counts  
+cluster_counts = pd.Series(kmeans_predictions).value_counts()  
+print(cluster_counts)# Bar chart of cluster sizes  
+plt.figure(figsize=(10, 8))  
+sns.countplot(x="cluster", data=df)  
+plt.title("Cluster Sizes")  
+plt.xlabel("Cluster")  
+plt.ylabel("Count")  
+plt.show()
+
+1    558  
+4    497  
+3    476  
+2    467  
+0    214  
+Name: count, dtype: int64
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*z5Ai9xS144HHG9nPJqwJ2w.png" alt="Image 14: png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Income and Total spent by customers
+-----------------------------------
+
+# Scatterplot of Income by Total spent of clusters  
+plt.figure(figsize=(10, 8))  
+sns.scatterplot(x=df["Totalspent"], y=df["Income"], hue=df["cluster"])  
+plt.title("Income by Total spent of customers in each clusters")  
+plt.xlabel("Total spent")  
+plt.ylabel("Income")  
+plt.show()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*7XfleszdnjO_Dz3U0zFRWw.png" alt="Image 15: png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Creating figure with two subplots  
+fig, ax = plt.subplots(1, 2, figsize=(18, 6))# First subplot: Income vs cluster  
+sns.histplot(data=df_main, x="Income", hue="cluster", kde=True, palette="Paired", ax=ax[0])  
+ax[0].set_title("Income vs Cluster")
+
+# Second subplot: Totalspent vs cluster  
+sns.histplot(data=df_main, x="Totalspent", hue="cluster", kde=True, palette="Paired", ax=ax[1])  
+ax[1].set_title("Totalspent vs Cluster")
+
+# Set darkgrid style  
+sns.set_style('darkgrid')
+
+# Show the plot  
+plt.show()
+
+</code></pre></div></div>
+<p><img src="https://miro.medium.com/v2/1*71ijy2plvEcO5eGShw-cig.png" alt="Image 16: png" /></p>
+
+<p>The graphs shows that cluster 4 and 2 have spent the most amount on our products. Therefore, we can say that cluster 4 and 2 are our biggest customer segments.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Total no of accepted promotions
+-------------------------------
+
+plt.figure()  
+pl = sns.countplot(x=df["Cmp_accepted"],hue=df["cluster"])  
+pl.set_title("Count Of Promotion Accepted")  
+pl.set_xlabel("Number Of Total Accepted Promotions")  
+plt.show()
+
+</code></pre></div></div>
+<p><img src="https://miro.medium.com/v2/1*jX4kOhfgMX4pKAucZ3xlTg.png" alt="Image 17: png" /></p>
+
+<p>In overall, the total number of customers who accepted the campaign is very low, and no customer has accepted all five promotions. Therefore, targeted marketing campaigns have significant potential to increase customer engagement.</p>
+
+<h2 id="age-range-of-customers">Age range of customers</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sns.boxplot(x="cluster", y="Age", data=df)  
+plt.title("Box Plot of Age in Each Cluster")  
+plt.xlabel("Clusters")  
+plt.ylabel("Age")  
+plt.show()
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*bKQcJw0ZP3GAioQdLU9xwQ.png" alt="Image 18: png" /></p>
+
+<h2 id="plotting-the-no-of-kids-at-home">Plotting the no of kids at home</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.figure()  
+pl = sns.countplot(x=df["cluster"], hue=df["Kidhome"])  
+pl.set_title("No of kids at home in each cluster")  
+pl.set_xlabel("Clusters")  
+pl.set_ylabel("count of kids at home")  
+plt.show()
+
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/1*ZJqTzE--5lWQ_UvuPIA0aQ.png" alt="Image 19: png" /></p>
+
+<h2 id="education-level-of-customers">Education level of customers</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.figure()  
+pl = sns.countplot(x=df["cluster"], hue=df["Education"])  
+pl.set_title("Education level of customers in each cluster")  
+pl.set_xlabel("Clusters")  
+pl.set_ylabel("count of kids at home")  
+plt.show()
+</code></pre></div></div>
+<p><img src="https://miro.medium.com/v2/1*G9jK8VMhy0gBFi4B1BwHXg.png" alt="Image 20: png" /></p>
+
+<h2 id="interpreting-the-results-of-clustering">Interpreting the results of clustering</h2>
+
+<p>Clustering resulted in grouping the customers into following segments</p>
+
+<p>Cluster 0:</p>
+
+<ul>
+  <li>Medium spending and medium income</li>
+  <li>Very few have accepted promotional campaign</li>
+  <li>Customers aged around 35–80</li>
+  <li>Few of kids at home</li>
+  <li>Most customers have bachelors and higher degree</li>
+</ul>
+
+<p>Cluster 1:</p>
+
+<ul>
+  <li>Low spending and low income</li>
+  <li>Very few have accepted promotional campaign</li>
+  <li>Lower age range from about 28–59</li>
+  <li>Likely to have a kid at home</li>
+</ul>
+
+<p>Cluster 2:</p>
+
+<ul>
+  <li>High spending and high income</li>
+  <li>All customers have bachelors and higher degree</li>
+  <li>Accepted the high number of promotions in comparision</li>
+  <li>Customers aged around 35–80</li>
+  <li>Very unlikely to have a kid at home</li>
+</ul>
+
+<p>Cluster 3</p>
+
+<ul>
+  <li>Low spending and low income</li>
+  <li>Very few have accepted promotional campaign</li>
+  <li>Customers from high age range of around 43–84</li>
+  <li>Might have single or no kid at home</li>
+</ul>
+
+<p>Cluster 4</p>
+
+<ul>
+  <li>High spending and high income</li>
+  <li>All customers have bachelors and higher degree</li>
+  <li>Highest no of customers who have accepted promotional campaign</li>
+  <li>Widest age range covering from 29–83</li>
+  <li>Very unlikely to have a kid at home</li>
+</ul>
+
+<p>Thankyou for reading! I hope this explaination and walk through of cluster analysis was helpful.</p>
+
+<hr />
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Sujan, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

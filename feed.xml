@@ -1,0 +1,2506 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-11T08:53:56+00:00</updated><id>/feed.xml</id><title type="html">Code for Nepal</title><subtitle>Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy</subtitle><entry><title type="html">Getting Into Cluster Analysis Using Customer Demographic Data</title><link href="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html" rel="alternate" type="text/html" title="Getting Into Cluster Analysis Using Customer Demographic Data" /><published>2024-06-16T00:00:00+00:00</published><updated>2024-06-16T00:00:00+00:00</updated><id>/2024/06/16/getting-into-cluster-analysis-using-customer-demographic</id><content type="html" xml:base="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html">&lt;h2 id=&quot;what-is-cluster-analysis&quot;&gt;What is cluster analysis?&lt;/h2&gt;
+
+&lt;p&gt;Clustering or cluster analysis is an aspect of statistical data analysis where you segment the datasets into groups based on similarities. Here, the data points that are close to one another are grouped together to form clusters. Clustering is one of the core data mining techniques and comes under the umbrella of unsupervised Machine Learning. Clustering, being an unsupervised learning technique, does not require much human intervention and any pre-existing labels. This technique is generally used for exploratory data analysis.&lt;/p&gt;
+
+&lt;p&gt;Let’s understand the use of cluster analysis with an example. Suppose the mayor of Kathmandu wants to plan an efficient allocation of the budget for road safety, but is unsure about which areas to focus on. Here, cluster analysis can be used to identify areas where incidents of road accidents are clustered within the city. This analysis can reveal that different clusters have specific causes of accidents, such as high speed, lack of road signs, unmaintained roads, and unorganized pedestrian crossings. By understanding these factors, the mayor can allocate the budget accordingly, prioritizing road repairs, traffic lights, signage, speed cameras, public awareness programs, and traffic personnel deployment. This data-driven approach can significantly reduce the number of accidents. Clustering can be a great way to find patterns and relationships within a large data set. There are various uses of clustering in various industries. Some common application of clustering are :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Customer segmenting for targeted marketing&lt;/li&gt;
+  &lt;li&gt;Recommendation system to suggest songs, movies, contents to users with similar preferences&lt;/li&gt;
+  &lt;li&gt;Detecting anomalities for fraud detection, predictive maintenance and network security&lt;/li&gt;
+  &lt;li&gt;Image segmentation for tumor detection through medical imaging, land cover classification and computer vision for self driving cars&lt;/li&gt;
+  &lt;li&gt;Spatial data analysis for city planning, disease survellience, crime analysis, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While there are numerous clustering techniques, the K-means clustering is used most widely. There is no best clustering technique and the most favorable technique is determined by the properties of data and the purpose of analysis. As of now there are more than 100 different types of algorithms used in clustering. However, the clustering techniques most commonly used can be divided in following categories:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Partitional clustering : K-means, K-medoids, Fuzzy C-means&lt;/li&gt;
+  &lt;li&gt;Hieriarchial clustering : Agglomerative (Bottom-up approach), Divisive (Top-down approach)&lt;/li&gt;
+  &lt;li&gt;Density-Based clustering : DBSCAN, OPTICS, DENCLUE&lt;/li&gt;
+  &lt;li&gt;Grid-Based clustering : STING, WaveCluster&lt;/li&gt;
+  &lt;li&gt;Model-Based clustering : EM, COBWEB, SOM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;customer-segmentation-using-clustering-in-python&quot;&gt;Customer segmentation using Clustering in Python&lt;/h2&gt;
+
+&lt;p&gt;Dataset used — &lt;a href=&quot;https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis/data&quot;&gt;https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis/data&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We will be conducting Agglomerative and K-means clustering on customer demographic data to segment customers for targeted marketing. Major steps we will take in the project are :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Feature engineering and data cleaning&lt;/li&gt;
+  &lt;li&gt;Data preprocessing&lt;/li&gt;
+  &lt;li&gt;Using Elbow method to determine optimal no of clusters&lt;/li&gt;
+  &lt;li&gt;Clustering using Agglomerative and K-means clustering&lt;/li&gt;
+  &lt;li&gt;Checking the quality of the results using Silhoutte score&lt;/li&gt;
+  &lt;li&gt;Checking the results of clustering&lt;/li&gt;
+  &lt;li&gt;Interpreting the results of clustering&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;importing-the-necessary-libraries&quot;&gt;&lt;strong&gt;Importing the necessary libraries&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pandas as pd  
+import numpy as np  
+import matplotlib.pyplot as plt  
+import seaborn as sns  
+import datetime  
+from sklearn.preprocessing import StandardScaler  
+from sklearn.decomposition import PCA  
+from yellowbrick.cluster import KElbowVisualizer  
+import scipy.cluster.hierarchy as sch  
+from scipy.cluster.hierarchy import linkage, dendrogram  
+from sklearn.cluster import AgglomerativeClustering  
+from sklearn.cluster import KMeans  
+from sklearn.metrics import silhouette_score  
+import warnings  
+warnings.filterwarnings('ignore', category=FutureWarning)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;exploring-the-data&quot;&gt;Exploring the data&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df = pd.read_csv(&quot;marketing_campaign.csv&quot;, sep=&quot;t&quot;)  
+df.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*4v7ebUdLnpRhM2rIv4Ne3A.png&quot; alt=&quot;Image 2: png&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df.shape(2240, 29)df.info()&amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;  
+RangeIndex: 2240 entries, 0 to 2239  
+Data columns (total 29 columns):  
+ #   Column               Non-Null Count  Dtype    
+---  ------               --------------  -----    
+ 0   ID                   2240 non-null   int64    
+ 1   Year_Birth           2240 non-null   int64    
+ 2   Education            2240 non-null   object   
+ 3   Marital_Status       2240 non-null   object   
+ 4   Income               2216 non-null   float64  
+ 5   Kidhome              2240 non-null   int64    
+ 6   Teenhome             2240 non-null   int64    
+ 7   Dt_Customer          2240 non-null   object   
+ 8   Recency              2240 non-null   int64    
+ 9   MntWines             2240 non-null   int64    
+ 10  MntFruits            2240 non-null   int64    
+ 11  MntMeatProducts      2240 non-null   int64    
+ 12  MntFishProducts      2240 non-null   int64    
+ 13  MntSweetProducts     2240 non-null   int64    
+ 14  MntGoldProds         2240 non-null   int64    
+ 15  NumDealsPurchases    2240 non-null   int64    
+ 16  NumWebPurchases      2240 non-null   int64    
+ 17  NumCatalogPurchases  2240 non-null   int64    
+ 18  NumStorePurchases    2240 non-null   int64    
+ 19  NumWebVisitsMonth    2240 non-null   int64    
+ 20  AcceptedCmp3         2240 non-null   int64    
+ 21  AcceptedCmp4         2240 non-null   int64    
+ 22  AcceptedCmp5         2240 non-null   int64    
+ 23  AcceptedCmp1         2240 non-null   int64    
+ 24  AcceptedCmp2         2240 non-null   int64    
+ 25  Complain             2240 non-null   int64    
+ 26  Z_CostContact        2240 non-null   int64    
+ 27  Z_Revenue            2240 non-null   int64    
+ 28  Response             2240 non-null   int64    
+dtypes: float64(1), int64(25), object(3)  
+memory usage: 507.6+ KB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are some rows with missing values on income variable which we will be dropping as it is only a minor part of the whole dataset&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df = df.dropna()df.describe()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*f_eyiKVerIfeMrZY0wmjWQ.png&quot; alt=&quot;Image 3: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;feature-engineering-and-data-cleaning&quot;&gt;Feature Engineering and data cleaning&lt;/h2&gt;
+
+&lt;p&gt;Here we will be conducting basic feature engineering to calculate new features using existing variables. Features added are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Calculating Age from the Birth year column&lt;/li&gt;
+  &lt;li&gt;Add total amount spent column by adding all the subcategories of amount spent&lt;/li&gt;
+  &lt;li&gt;Get the total count of campains accepted by adding the count of all campaigns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#Calculating Age from the birth yeardf['Age'] = 2024 - df[&quot;Year_Birth&quot;]
+
+# Get sum of all the spending columns for each customer
+
+
+col_names = ['MntWines', 'MntFruits',  
+       'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts',  
+       'MntGoldProds']
+
+df['Totalspent'] = df[col_names].sum(axis=1)
+
+
+
+# Get sum of all the accepted campaign columns for each customer
+
+col_names2 = ['AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1',  
+       'AcceptedCmp2']
+
+df['Cmp_accepted'] = df[col_names2].sum(axis=1)
+
+df.describe()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*WLsnHESRko2MLD80GiC1Zg.png&quot; alt=&quot;Image 4: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that the max value for age is 131. The data is definitely old and outdated. Hence, we will be dropping instances where age is greater than 90.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df = df[(df[&quot;Age&quot;]&amp;lt;90)]
+
+Checking for outliers
+---------------------
+
+Since K-Means Clustering is sensitive to outliers, we are checking if there are any outliers using boxplot
+
+# Plot the processed dataset  
+def show_boxplot(df):  
+    plt.rcParams['figure.figsize'] = [14,6]  
+    sns.boxplot(data = df, orient=&quot;v&quot;)  
+    plt.title(&quot;Outliers Distribution&quot;, fontsize = 16)  
+    plt.ylabel(&quot;Range&quot;, fontweight = 'bold')  
+    plt.xlabel(&quot;Attributes&quot;, fontweight = 'bold')  
+    plt.xticks(rotation=90)show_boxplot(df)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*9epgfC_crJrqyXzaTZ7zyQ.png&quot; alt=&quot;Image 5: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that the income column has a huge outlier hence we will be dropping the instances with income values above 600000&lt;/p&gt;
+
+&lt;h1 id=&quot;dropping-instances-where-income-is-greater-than-600000&quot;&gt;Dropping instances where income is greater than 600000&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df = df[(df[&quot;Income&quot;]&amp;lt;600000)]  
+print(&quot;Total remaining values after removing outliers =&quot;, len(df))Total remaining values after removing outliers = 2212
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;preprocessing&quot;&gt;Preprocessing&lt;/h2&gt;
+
+&lt;p&gt;First we will be dropping variables with non numerical and irrevelant values.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_main = df.drop(['ID', 'Year_Birth', 'Education', 'Dt_Customer', 'Marital_Status', 'MntWines', 'MntFruits',  
+       'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts',  
+       'MntGoldProds','AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1','Complain', 'Response',  
+       'AcceptedCmp2', 'Z_CostContact', 'Z_Revenue'], axis=1)  
+df_main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*fUp9_Ep-FwQxX8yxmHM37A.png&quot; alt=&quot;Image 6: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;scaling-the-data-to-standardize-all-variables&quot;&gt;Scaling the data to standardize all variables&lt;/h2&gt;
+
+&lt;p&gt;Scaling the data is a crucial step of data preprocessing in machine learning algorithms, especially if they rely on distance calculations. It helps in standardizing all the variables in a dataset. Within a dataset, some variables might contain values with very high ranges while some might contain values with small ranges. Feature scaling helps address this issue by transforming those varying ranges into a uniform range with a mean of zero and a standard deviation of one.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Create scaled DataFrame  
+scaler = StandardScaler()  
+df_scaled = scaler.fit_transform(df_main)  
+df_scaled.shape(2212, 12)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;checking-for-correlation&quot;&gt;Checking for Correlation&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Plotting heatmap to find correlation  
+sns.heatmap(df_main.corr(), annot=True)# Add a title to the plot  
+plt.title(&quot;Correlation Heatmap&quot;)    
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*n--inYKxp-tx22qOIEgCEA.png&quot; alt=&quot;Image 7: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reducing-the-dimensionality-using-pca&quot;&gt;Reducing the dimensionality using PCA&lt;/h2&gt;
+
+&lt;p&gt;While conducting cluster analysis, variables that are correlated can significantly distort the clustering by giving more weight to certain correlated variables and give biased results. Also, high number of dimensions during clustering can cause other issues such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;High computational requirement&lt;/li&gt;
+  &lt;li&gt;Curse of dimensionality&lt;/li&gt;
+  &lt;li&gt;Overfitting due to lot of noise in the data&lt;/li&gt;
+  &lt;li&gt;Performance degradation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;PCA lowers the dimensions of the dataset by combining multiple variables while preserving majority of the variance in the data. This helps in boosting the performance of the algorithm, reduce overfitting and make it easier to visualize and interpret the data. Therefore It is necessary to use Dimensionality Reduction Technique such as PCA (Principal Component Analysis), especially while dealing with high-dimensional data.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#Initiating PCA to reduce dimentions to 3  
+pca = PCA(n_components=3)# Fitting the PCA Model:  
+pca.fit(df_scaled)
+
+
+# Transforming the Data and Creating a DataFrame:  
+PCA_df = pd.DataFrame(pca.transform(df_scaled), columns=([&quot;Col1&quot;,&quot;Col2&quot;, &quot;Col3&quot;]))
+
+# Descriptive statistics  
+PCA_df.describe().T
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*xgtSB7dAkxRhgJWo4ychzw.png&quot; alt=&quot;Image 8: png&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Plotting the results#A 3D Projection Of Data In The Reduced Dimension  
+x =PCA_df[&quot;Col1&quot;]  
+y =PCA_df[&quot;Col2&quot;]  
+z =PCA_df[&quot;Col3&quot;]  
+#To plot  
+fig = plt.figure(figsize=(8,6))  
+ax = fig.add_subplot(111, projection=&quot;3d&quot;)  
+ax.scatter(x,y,z, c=&quot;maroon&quot;, marker=&quot;o&quot; )  
+ax.set_title(&quot;A 3D Projection Of Data In The Reduced Dimension&quot;)  
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*i9FgrwxgEuYqoWGYrzY65g.png&quot; alt=&quot;Image 9: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;calculating-optimal-number-of-clusters-using-elbow-method&quot;&gt;Calculating optimal number of clusters using elbow method&lt;/h2&gt;
+
+&lt;p&gt;Elbow method is a widely recognized way to determine ideal no of clusters. It uses within-cluster sum of squares (WCSS) or inertia. While calculating WCSS, following steps are carried out:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adding the distance between each datapoints and their cluster centroids (centre/mean of the cluster) in a cluster&lt;/li&gt;
+  &lt;li&gt;Squaring the calculated sum of distances for each clusters&lt;/li&gt;
+  &lt;li&gt;Adding the square of distances from all clusters&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In Elbow method, multiple no of clusters (Usually from 0 to 10 clusters) are created and WCSS is calculated in each cluster. As the no of cluster increases, the WCSS value starts to decline. This decline occurs because as the no of cluster increases the datapoints gets closer to the cluster centroids too. If we were to increase the no of clusters continuously, it would reach to a point where each data point acts as a single cluster and the value of WCSS becomes 0 as each data point acts as its own centroid. Here, the elbow point or the optimal no of clusters is at the point where adding futher clusters won’t reduce WCSS significantly.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# finding number of clusters using elbow method  
+Elbow_M = KElbowVisualizer(KMeans(), k=10)  
+Elbow_M.fit(PCA_df)Elbow_M.ax.set_xlabel('No of Clusters')  
+Elbow_M.ax.set_ylabel('WCSS')  
+plt.show()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*ePp3TgxYlJh5uNzc66GHlw.png&quot; alt=&quot;Image 10: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can deduce from the figure that the optimal k is at 5 with elbow method. Hence, we will use 5 clusters as our optimal cluster value.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-method--agglomerative-clustering&quot;&gt;First Method : Agglomerative Clustering&lt;/h2&gt;
+
+&lt;p&gt;First, we will be using agglomerative clustering, which is a type of hieriarchial clustering. Here, the clusters will be progressively merged upwards to form a larger cluster until all the clusters are merged into one. In agglomerative clustering the optimal number of clusters is obtained by cutting the dendogram at the level which matches our desired no of clusters. We will also plot a dendogram to see how the clusters are formed step by step upwards and how it is cut off at the desired no of clusters.&lt;/p&gt;
+
+&lt;h1 id=&quot;using-5-as-the-optimal-cluster-value&quot;&gt;Using 5 as the optimal cluster value&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optimal_k = 5# Perform hierarchical/agglomerative clustering  
+ac = AgglomerativeClustering(n_clusters=optimal_k,linkage='complete')  
+agg_prediction = ac.fit_predict(PCA_df)
+
+# Print the clusters and their count  
+cluster_counts = pd.Series(agg_prediction).value_counts()  
+print(cluster_counts)
+
+# Compute the linkage matrix using the complete linkage method  
+Linkage_matrix = sch.linkage(PCA_df, method='complete')
+
+# Plot the dendrogram  
+plt.figure(figsize=(10, 7))  
+sch.dendrogram(Linkage_matrix, truncate_mode='lastp', p=12, show_leaf_counts=True, leaf_rotation=90., leaf_font_size=12., show_contracted=True)  
+plt.title('Dendrogram of Agglomerative Clustering')  
+plt.xlabel('Data Points')  
+plt.ylabel('Distance')
+
+# Add a horizontal line to show the cut for the desired number of clusters  
+plt.axhline(y=Linkage_matrix[-optimal_k, 2], color='r', linestyle='--')
+
+plt.show()
+
+
+0    1038  
+1     813  
+2     248  
+4     110  
+3       3  
+Name: count, dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*vl_Rh3l11HVvabN0ffvSUQ.png&quot; alt=&quot;Image 11: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above dendrogram we can see the visual representation of all the clusters and how they are merging upwards in different hieriarchial levels. We can also find a horizontal dotted line indicating where the clusters needs to be cut to get our optimal no of clusters which is 5.&lt;/p&gt;
+
+&lt;h2 id=&quot;second-method--k-means-clustering&quot;&gt;Second Method : K-means Clustering&lt;/h2&gt;
+
+&lt;p&gt;K-means is a type of Partitional clustering technique. It works by partitioning a dataset into a fixed no of clusters also referred as K. First it selects one cluster centroid for each cluster at random, then it iteratively forms a cluster by assigning each datapoints to its nearest cluster centroid, calculates the mean of the cluster and assigns it as the new cluster centroids and repeats the process until the centroids do not change significantly.&lt;/p&gt;
+
+&lt;h1 id=&quot;using-5-as-the-optimal-cluster-value-1&quot;&gt;Using 5 as the optimal cluster value&lt;/h1&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optimal_k = 5# Performing the final clustering with the chosen optimal number of clusters  
+kmeans = KMeans(n_clusters=optimal_k, n_init=100, random_state=42)  
+kmeans_predictions = kmeans.fit_predict(PCA_df)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;checking-the-quality-of-clustering-using-silhoutte-score&quot;&gt;Checking the quality of clustering using Silhoutte score&lt;/h2&gt;
+
+&lt;p&gt;Silhoutte score is a widely used metric to check the quality of clustering. Silhoutte score closer to 1 is considered a good cluster and means that the data points are unlikely to be assigned to another cluster while score closer to -1 means the data point is most likely assigned to wrong clusters. Having score around 0 means that the clustering is weak and data points could be as close to another cluster as they are to their own cluster.&lt;/p&gt;
+
+&lt;h1 id=&quot;calculate-the-silhouette-score-for-agglomerative-clustering&quot;&gt;Calculate the Silhouette score for agglomerative clustering&lt;/h1&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;agg= silhouette_score(PCA_df, agg_prediction)# Calculate the Silhouette score for kmeans clustering  
+kmeans = silhouette_score(PCA_df, kmeans_predictions)
+
+print(f&quot;Silhouette Score for Agglomerative clustering: {agg}&quot;)  
+print(f&quot;Silhouette Score for K-means clustering: {kmeans}&quot;)
+
+Silhouette Score for Agglomerative clustering: 0.24922619020484865  
+Silhouette Score for K-means clustering: 0.3569952080522956
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can see that the silhouette score for k-means clustering is higher than that of agglomerative clustering. Hence, we will be moving forward with Kmeans clustering.&lt;/p&gt;
+
+&lt;h2 id=&quot;moving-forward-with-k-means-clustering&quot;&gt;Moving forward with K-means clustering&lt;/h2&gt;
+
+&lt;h1 id=&quot;adding-the-cluster-values-to-original-dataframes&quot;&gt;Adding the cluster values to original dataframes&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df['cluster'] = kmeans_predictions  
+df_main['cluster'] = kmeans_predictions  
+df.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*DRpeV22f4ZYZLngbfDH5Cg.png&quot; alt=&quot;Image 12: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;visualizing-the-results&quot;&gt;Visualizing the results&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Visualizing the clustering resultsfig = plt.figure(figsize=(10, 8))  
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(PCA_df.iloc[:, 0], PCA_df.iloc[:, 1], PCA_df.iloc[:, 2], c=df['cluster'], cmap='Set2')
+
+ax.set_xlabel(&quot;Principal Component 1&quot;)  
+ax.set_ylabel(&quot;Principal Component 2&quot;)  
+ax.set_zlabel(&quot;Principal Component 3&quot;)
+
+plt.title(&quot;Clustering Results&quot;)
+
+plt.show()
+
+![Image 13: png](https://miro.medium.com/v2/1*qIu7GXwhZs-CuUBI-U9Gvw.png)
+
+Plotting the count of customers in each Clusters
+------------------------------------------------
+
+# Calculating total cluster counts  
+cluster_counts = pd.Series(kmeans_predictions).value_counts()  
+print(cluster_counts)# Bar chart of cluster sizes  
+plt.figure(figsize=(10, 8))  
+sns.countplot(x=&quot;cluster&quot;, data=df)  
+plt.title(&quot;Cluster Sizes&quot;)  
+plt.xlabel(&quot;Cluster&quot;)  
+plt.ylabel(&quot;Count&quot;)  
+plt.show()
+
+1    558  
+4    497  
+3    476  
+2    467  
+0    214  
+Name: count, dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*z5Ai9xS144HHG9nPJqwJ2w.png&quot; alt=&quot;Image 14: png&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Income and Total spent by customers
+-----------------------------------
+
+# Scatterplot of Income by Total spent of clusters  
+plt.figure(figsize=(10, 8))  
+sns.scatterplot(x=df[&quot;Totalspent&quot;], y=df[&quot;Income&quot;], hue=df[&quot;cluster&quot;])  
+plt.title(&quot;Income by Total spent of customers in each clusters&quot;)  
+plt.xlabel(&quot;Total spent&quot;)  
+plt.ylabel(&quot;Income&quot;)  
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*7XfleszdnjO_Dz3U0zFRWw.png&quot; alt=&quot;Image 15: png&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Creating figure with two subplots  
+fig, ax = plt.subplots(1, 2, figsize=(18, 6))# First subplot: Income vs cluster  
+sns.histplot(data=df_main, x=&quot;Income&quot;, hue=&quot;cluster&quot;, kde=True, palette=&quot;Paired&quot;, ax=ax[0])  
+ax[0].set_title(&quot;Income vs Cluster&quot;)
+
+# Second subplot: Totalspent vs cluster  
+sns.histplot(data=df_main, x=&quot;Totalspent&quot;, hue=&quot;cluster&quot;, kde=True, palette=&quot;Paired&quot;, ax=ax[1])  
+ax[1].set_title(&quot;Totalspent vs Cluster&quot;)
+
+# Set darkgrid style  
+sns.set_style('darkgrid')
+
+# Show the plot  
+plt.show()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*71ijy2plvEcO5eGShw-cig.png&quot; alt=&quot;Image 16: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The graphs shows that cluster 4 and 2 have spent the most amount on our products. Therefore, we can say that cluster 4 and 2 are our biggest customer segments.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Total no of accepted promotions
+-------------------------------
+
+plt.figure()  
+pl = sns.countplot(x=df[&quot;Cmp_accepted&quot;],hue=df[&quot;cluster&quot;])  
+pl.set_title(&quot;Count Of Promotion Accepted&quot;)  
+pl.set_xlabel(&quot;Number Of Total Accepted Promotions&quot;)  
+plt.show()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*jX4kOhfgMX4pKAucZ3xlTg.png&quot; alt=&quot;Image 17: png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In overall, the total number of customers who accepted the campaign is very low, and no customer has accepted all five promotions. Therefore, targeted marketing campaigns have significant potential to increase customer engagement.&lt;/p&gt;
+
+&lt;h2 id=&quot;age-range-of-customers&quot;&gt;Age range of customers&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sns.boxplot(x=&quot;cluster&quot;, y=&quot;Age&quot;, data=df)  
+plt.title(&quot;Box Plot of Age in Each Cluster&quot;)  
+plt.xlabel(&quot;Clusters&quot;)  
+plt.ylabel(&quot;Age&quot;)  
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*bKQcJw0ZP3GAioQdLU9xwQ.png&quot; alt=&quot;Image 18: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;plotting-the-no-of-kids-at-home&quot;&gt;Plotting the no of kids at home&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure()  
+pl = sns.countplot(x=df[&quot;cluster&quot;], hue=df[&quot;Kidhome&quot;])  
+pl.set_title(&quot;No of kids at home in each cluster&quot;)  
+pl.set_xlabel(&quot;Clusters&quot;)  
+pl.set_ylabel(&quot;count of kids at home&quot;)  
+plt.show()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*ZJqTzE--5lWQ_UvuPIA0aQ.png&quot; alt=&quot;Image 19: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;education-level-of-customers&quot;&gt;Education level of customers&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure()  
+pl = sns.countplot(x=df[&quot;cluster&quot;], hue=df[&quot;Education&quot;])  
+pl.set_title(&quot;Education level of customers in each cluster&quot;)  
+pl.set_xlabel(&quot;Clusters&quot;)  
+pl.set_ylabel(&quot;count of kids at home&quot;)  
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/1*G9jK8VMhy0gBFi4B1BwHXg.png&quot; alt=&quot;Image 20: png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;interpreting-the-results-of-clustering&quot;&gt;Interpreting the results of clustering&lt;/h2&gt;
+
+&lt;p&gt;Clustering resulted in grouping the customers into following segments&lt;/p&gt;
+
+&lt;p&gt;Cluster 0:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Medium spending and medium income&lt;/li&gt;
+  &lt;li&gt;Very few have accepted promotional campaign&lt;/li&gt;
+  &lt;li&gt;Customers aged around 35–80&lt;/li&gt;
+  &lt;li&gt;Few of kids at home&lt;/li&gt;
+  &lt;li&gt;Most customers have bachelors and higher degree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cluster 1:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Low spending and low income&lt;/li&gt;
+  &lt;li&gt;Very few have accepted promotional campaign&lt;/li&gt;
+  &lt;li&gt;Lower age range from about 28–59&lt;/li&gt;
+  &lt;li&gt;Likely to have a kid at home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cluster 2:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;High spending and high income&lt;/li&gt;
+  &lt;li&gt;All customers have bachelors and higher degree&lt;/li&gt;
+  &lt;li&gt;Accepted the high number of promotions in comparision&lt;/li&gt;
+  &lt;li&gt;Customers aged around 35–80&lt;/li&gt;
+  &lt;li&gt;Very unlikely to have a kid at home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cluster 3&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Low spending and low income&lt;/li&gt;
+  &lt;li&gt;Very few have accepted promotional campaign&lt;/li&gt;
+  &lt;li&gt;Customers from high age range of around 43–84&lt;/li&gt;
+  &lt;li&gt;Might have single or no kid at home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cluster 4&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;High spending and high income&lt;/li&gt;
+  &lt;li&gt;All customers have bachelors and higher degree&lt;/li&gt;
+  &lt;li&gt;Highest no of customers who have accepted promotional campaign&lt;/li&gt;
+  &lt;li&gt;Widest age range covering from 29–83&lt;/li&gt;
+  &lt;li&gt;Very unlikely to have a kid at home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankyou for reading! I hope this explaination and walk through of cluster analysis was helpful.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Sujan, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Sujan Gauchan</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><summary type="html">What is cluster analysis?</summary></entry><entry><title type="html">Code for Nepal and DataCamp Donates - Data Fellowship 2023</title><link href="/2024/03/25/code_for_nepal_2023_review.html" rel="alternate" type="text/html" title="Code for Nepal and DataCamp Donates - Data Fellowship 2023" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>/2024/03/25/code_for_nepal_2023_review</id><content type="html" xml:base="/2024/03/25/code_for_nepal_2023_review.html">&lt;p&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/cfn_group.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://codefornepal.org/&quot;&gt;Code for Nepal&lt;/a&gt; continues its mission to enhance digital literacy and technology access in Nepal. Our focus remains on providing training, resources, and advocating for technology education and accessibility. Moreover, we aim to leverage technology to address societal issues and improve the lives of Nepali citizens.&lt;/p&gt;
+
+&lt;p&gt;In 2020, we initiated the Code for Nepal Data Fellowship, which has become one of our flagship programs. Through our partnership with &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; , fellows gain access to a robust learning platform offering interactive courses in data science, analytics, and programming. Alongside, they join a supportive community, collaborate with peers, and receive guidance from experienced mentors. This program offers a unique opportunity for individuals to develop skills and contribute to Nepal’s tech landscape and beyond.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This article summarizes our success with DataCamp Donates for the year 2023.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;key-statistics&quot;&gt;Key Statistics&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/datacamp_adoption_2023.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;table width=&quot;100%&quot;&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/ios/50/000000/graduation-cap.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;421 learners on DataCamp&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/ios/50/000000/checkmark.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;Adoption score of 91%&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/ios/50/000000/diamond--v1.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;1.3 million XPs from top 10 learners&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/material-outlined/50/000000/calendar--v1.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;6 major meetups&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/ios/50/000000/plus--v1.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;25+ Jobs/Internships acheived&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=&quot;font-size: large;&quot;&gt;
+    &lt;td&gt;&lt;img src=&quot;https://img.icons8.com/ios/50/000000/star--v1.png&quot; width=&quot;20&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;1 amazing year&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;application&quot;&gt;Application&lt;/h2&gt;
+
+&lt;iframe src=&quot;https://www.linkedin.com/embed/feed/update/urn:li:share:7070992351090933760&quot; height=&quot;1127&quot; width=&quot;100%&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot; title=&quot;Embedded post&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;in-person-meetups&quot;&gt;In Person Meetups&lt;/h2&gt;
+
+&lt;p&gt;The Code for Nepal fellows meetup in 2023 was a huge success. It wasn’t an average gathering - it was a lively event where fellows got to have insightful discussions with accomplished young data professionals like Suranjan Rana Magar, Prakash Dhakal, Labbi Karmacharya, Subritt Burlakoti, and Sunny Shah. These talks weren’t just about saying hello; they were opportunities for fellows to dig deep into data science, analysis, and engineering. Each conversation allowed them to ask important questions, share ideas, and gain valuable insights for their future work. They discussed DataCamp, job opportunities, academic papers, machine learning, reality of job market etc.&lt;/p&gt;
+
+&lt;p&gt;Beyond just sharing knowledge, the meetup was a bustling place for networking and community building. It helped forge lasting connections and partnerships that go beyond geographical boundaries and career paths.&lt;/p&gt;
+
+&lt;p&gt;Special thanks to Dibyesh Giri, for sharing his inspiring journey with Oho Cake, and Roshan Ghimire, for sharing the incredible origin story of Code For Nepal.&lt;/p&gt;
+
+&lt;div id=&quot;myslider2&quot; style=&quot;width:100%; height:600px&quot;&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/dc1.jpeg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/dc2.jpeg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/group_hackathon.png&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/cfn_get_together.png&quot; /&gt;
+&lt;/div&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  simpleslider.getSlider({
+    container: document.getElementById('myslider2'),
+    transitionTime:1,
+    delay:1.5
+  });
+&lt;/script&gt;
+
+&lt;h2 id=&quot;virtual-event&quot;&gt;Virtual Event&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Code for Nepal fellows network with Nirmal Budhatholi, Senior Data Scientist, Microsoft&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Our virtual event featured Nirmal Budhathoki, a seasoned professional with diverse experience in tech, including work with the US government and as a US Army veteran. Nirmal shared valuable insights on data science toolkit and essential skills, engaging in an interactive Q&amp;amp;A session, providing guidance for aspiring data scientists. He shared valuable insights on the Data Science Toolkit, Top Skills for Data Science, including T-shaped and Pi-shaped skills. Our interactive Q&amp;amp;A session with attendees was both engaging and enlightening. &lt;strong&gt;Our fellows loved him !!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/nirmal.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div id=&quot;myslider1&quot; style=&quot;width:100%; height:400px&quot;&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/nb1.jpeg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/nb2.jpeg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/nb3.jpeg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/nb4.jpeg&quot; /&gt;
+&lt;/div&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  simpleslider.getSlider({
+    container: document.getElementById('myslider1'),
+    transitionTime:1,
+    delay:1.5
+  });
+&lt;/script&gt;
+
+&lt;h2 id=&quot;articles-written-by-the-fellows&quot;&gt;Articles written by the fellows&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/12/27/decoding-trends-of-nepse-stock-data.html&quot;&gt;Decoding Trends of NEPSE stock data&lt;/a&gt; by Mijahla Shakya&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/12/20/comprehensive-analysis-of-superstore-sales-trends-and-performance-analysis.html&quot;&gt;Comprehensive Examination of Superstore Sales Trends and Performance Analysis&lt;/a&gt; by Ayush Adhikari&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/12/18/ml-red-wine-quality.html&quot;&gt;Using Machine Learning for Finding out the Red Wine Quality&lt;/a&gt; by Prabesh Bashyal&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/12/18/deciphering-trends-in-ev-adoption.html&quot;&gt;Deciphering Trends and Patterns in Electric Vehicle Adoption, A Comprehensive Analysis&lt;/a&gt; by Pradipti Simkhada&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/07/06/getting-started-with-GreatAPI.html&quot;&gt;Getting Started with GreatAPI - A Comprehensive Tutorial&lt;/a&gt; by Sahaj Raj Malla&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/07/06/exploring-nepals-export.html&quot;&gt;Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access&lt;/a&gt; by Anupam Bajra&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/06/24/analysis-of-growth-and-distribution-of-registered-companies-in-nepal.html&quot;&gt;Analysis of the growth and distribution of registered companies in Nepal&lt;/a&gt;  by Piyush Rimal&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction.html&quot;&gt;Harnessing Data Science For Agricultural Crops Prediction&lt;/a&gt; by Sadhana Panthi&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/04/12/building-my-own-imdb-dataset-using-scrapy.html&quot;&gt;Building my own IMDB movies dataset using Scrapy&lt;/a&gt; by Shyamron Dongol&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/03/28/survey-form-deployment.html&quot;&gt;Survey Form Deployment and Data Pipeline&lt;/a&gt; by Sudip Shrestha&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/03/27/workflow-of-data-engineering-on-aws.html&quot;&gt;Workflow of Data Engineering Project on AWS&lt;/a&gt; by Ravi Pandit&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/03/16/A-B-testing-implementation-using-python.html&quot;&gt;A/B testing Implementation Using Python&lt;/a&gt; by Sakar Mainali&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/02/21/data-pipeline-with-apache-airflow-and-fast-api.html&quot;&gt;Data Pipeline with Apache Airflow and Fast API&lt;/a&gt; by Prashant Manandhar&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/02/16/use-of-transfer-learning-in-early-pneumonia-detection.html&quot;&gt;Use of Transfer Learning in Early Pneumonia Detection&lt;/a&gt; by Arisha Prasai&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://codefornepal.org/2023/02/16/analysis-of-the-trend-of-internet-usage-in-nepal.html&quot;&gt;Analysis of the trend of internet usage in Nepal&lt;/a&gt; by Pujan Oli&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hackathon&quot;&gt;Hackathon&lt;/h2&gt;
+&lt;h3 id=&quot;data-crunch-2024&quot;&gt;Data Crunch 2024&lt;/h3&gt;
+
+&lt;div id=&quot;myslider3&quot; style=&quot;width:100%; height:400px&quot;&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk1.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk2.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk3.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk4.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk5.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk6.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk7.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk8.jpg&quot; /&gt;
+  &lt;img src=&quot;https://ayushsubedi.github.io/img/hk9.jpg&quot; /&gt;
+
+&lt;/div&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  simpleslider.getSlider({
+    container: document.getElementById('myslider3'),
+    transitionTime:1,
+    delay:1.5
+  });
+&lt;/script&gt;
+
+&lt;p&gt;Data Crunch 2024 was another major success for us this year. Most of the participants were previous or present Code For Nepal fellows. The team comprised a dynamic mix ranging from seasoned professionals to budding enthusiasts, with many of them being engineering, AI, and data students (We also had a team with a eighth grader). They all delivered amazing projects, showcasing the immense potential of data-driven solutions in addressing Nepal’s most pressing challenges. The event saw the convergence of creativity and technology as teams delved into diverse domains such as environment, healthcare, transportation, and beyond. From dynamic dashboards, amazing statistical models, to intricate Machine Learning models, the projects presented at Data Crunch 2024 were both diverse and impactful.&lt;/p&gt;
+
+&lt;p&gt;With NRs. 50,000 for the first-place winners, NRs. 30,000 for the second-place team, and NRs. 20,000 for the third-place recipients, Data Crunch 2024 provided not only recognition but also tangible support for further development and refinement of the ideas presented. We had a budget of NRs. 100,000 for this hackathon, and we are proud to have spent all of it as cash prizes. A very special shoutout to Cloudfactory, for providing us the venue and delicious meal to our participants.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;first-prize-winning-project&quot;&gt;First Prize Winning Project&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/CodeforNepal/khetala-server&quot;&gt;Khetala&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Khetala is a crop recommendation service with a primary aim of helping farmers decide which crops to plant based on different factors including yield, soil profile, weather and market price.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;second-prize-winning-project&quot;&gt;Second Prize Winning Project&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/CodeforNepal/gw-predictor&quot;&gt;Ground Water Predictor&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;GW-predictor is a research project written in Python that aims to predict the groundwater discharge potential at any coordinate specified. At the moment, the project is trained for Kathmandu Valley and ready to use for predicting discharge within Kathmandu. Training and testing of Gaussian Process Model is implemented in jupyter lab interface with the use of python package GPy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;third-prize-winning-project&quot;&gt;Third Prize Winning Project&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/CodeforNepal/wild-watch&quot;&gt;Wild Watch&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This project aims to boost safety along Nepal’s wildlife habitats bordering human settlements using object detection technique. It spots dangerous animals and alerts authorities or nearby communities for swift action, focusing on areas near national parks, wildlife reserves, and forests.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;A fork of these projects are in Code For Nepal repository. Anyone can open a PR to contribute more.&lt;/p&gt;
+
+&lt;h1 id=&quot;datacamp-donates&quot;&gt;DataCamp Donates&lt;/h1&gt;
+
+&lt;p&gt;Our partnership with DataCamp aligns with our organization’s mission to democratize access to data literacy, particularly within marginalized communities. We have witnessed the transformative impact of providing data skills to underserved populations in enabling them to navigate an increasingly data-driven world. Through our past partnership with DataCamp Donates, we have seen tangible benefits for numerous individuals who have gained valuable skills and opportunities for personal and professional growth.&lt;/p&gt;
+
+&lt;p&gt;The success stories emerging from our partnership with DataCamp Donates are truly inspiring. From individuals securing new job opportunities to others using their newfound skills to drive innovation within their communities, the ripple effects of this collaboration are profound. &lt;strong&gt;Code For Nepal is immensely grateful for this partnership.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;testimonials-from-our-fellows&quot;&gt;Testimonials from our fellows&lt;/h2&gt;
+
+&lt;h3 id=&quot;sadhana-panthi&quot;&gt;&lt;a href=&quot;https://www.linkedin.com/in/sadhana-panthi-746561257/&quot;&gt;Sadhana Panthi&lt;/a&gt;&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/sadhana.jpeg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;The DataCamp Donates scholarship played a pivotal role in my journey as a freelancer in machine learning and data science tasks. The interactive tutorials and coding workspace provided a conducive environment for learning and practicing.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ujjwal-khadka&quot;&gt;Ujjwal Khadka&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;DataCamp provided me with the necessary skills in data engineering which helped me secure a full-time job as a Data Engineer.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sachin-shrestha&quot;&gt;Sachin Shrestha&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;I used DataCamp to learn data analysis, primarily focusing on Excel and Python. The interactive learning platform and engaging content helped me gain valuable skills, enabling me to secure a full-time job as a Data Analyst.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sujan-gauchan&quot;&gt;&lt;a href=&quot;https://www.linkedin.com/in/sujan-gauchan-613242147/&quot;&gt;Sujan Gauchan&lt;/a&gt;&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/sujan.jpeg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;Before gaining access to DataCamp through Code For Nepal, I had no knowledge of coding with Python or statistics required in Data Science. The courses provided a structured learning path, making it easier for me to grasp Python and build a foundation for my journey in Data Science.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;shreesh-bhattarai&quot;&gt;&lt;a href=&quot;https://www.linkedin.com/in/shreesh-bhattarai-746561257/&quot;&gt;Shreesh Bhattarai&lt;/a&gt;&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/shreesh.jpeg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;DataCamp provided me with the perfect platform to pursue my interest in data science and mathematics. The courses offered a comprehensive learning experience, allowing me to build a strong foundation in probability, statistics, and data science concepts.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;manjul-tamrakar&quot;&gt;&lt;a href=&quot;https://www.linkedin.com/in/manjul-tamrakar/&quot;&gt;Manjul Tamrakar&lt;/a&gt;&lt;/h3&gt;
+&lt;table style=&quot;width: 100%&quot;&gt;
+    &lt;colgroup&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot; /&gt;
+       &lt;col span=&quot;1&quot; style=&quot;width: 80%;&quot; /&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;padding: 0 15px;&quot;&gt;&lt;img src=&quot;https://ayushsubedi.github.io/img/manjul.jpeg&quot; height=&quot;100&quot; width=&quot;100&quot; /&gt;&lt;/td&gt;&lt;td&gt;DataCamp Donates scholarship played a pivotal role in my journey and our team's success in AICrusade 2023 hackathon. The scholarship ignited my passion for data science, and the courses I took instilled in me valuable problem-solving and teamwork skills. These skills proved invaluable as I collaborated with my teammates, who handled the model training. I focused on designing a user-friendly and intuitive UI, utilising Next.js as a frontend framework, ensuring the project was accessible and engaging for users. DataCamp's comprehensive courses equipped me with the knowledge and confidence to tackle this challenge effectively, and I'm incredibly proud of our team's achievement in winning the environment track.&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Job Placements (Internships, Freelance, Part time and Full time)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.aiscorp.com/&quot;&gt;Aegis Software&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://akbeducationfoundation.org.np/&quot;&gt;AKB Education Foundation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nepalhospitalinfo.com/hospital/bharosa-hospital/&quot;&gt;Bharosa Hospital&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cedargate.com/&quot;&gt;Cedargate Technologies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.codsoft.in/&quot;&gt;Codsoft&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fintech.com.np/&quot;&gt;Fintech Solutions PVT. LTD&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ices.edu.np/&quot;&gt;iCES&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lisnepal.com.np/&quot;&gt;LIS Nepal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.numericmind.com/&quot;&gt;Numeric Mind&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;New Job Titles&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Data Engineer&lt;/li&gt;
+  &lt;li&gt;Researcher&lt;/li&gt;
+  &lt;li&gt;Clinical Data Analyst&lt;/li&gt;
+  &lt;li&gt;Quality Assurance Engineer&lt;/li&gt;
+  &lt;li&gt;Organizer of Datathon&lt;/li&gt;
+  &lt;li&gt;Machine Learning Engineer&lt;/li&gt;
+  &lt;li&gt;Data Analyst&lt;/li&gt;
+  &lt;li&gt;Monitoring and Evaluation Officer&lt;/li&gt;
+  &lt;li&gt;Associate Software Engineer&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ayush Subedi</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><summary type="html"></summary></entry><entry><title type="html">Decoding Trends of NEPSE stock data</title><link href="/2023/12/27/decoding-trends-of-nepse-stock-data-copy.html" rel="alternate" type="text/html" title="Decoding Trends of NEPSE stock data" /><published>2023-12-27T00:00:00+00:00</published><updated>2023-12-27T00:00:00+00:00</updated><id>/2023/12/27/decoding-trends-of-nepse-stock-data%20copy</id><content type="html" xml:base="/2023/12/27/decoding-trends-of-nepse-stock-data-copy.html">&lt;p&gt;In the world of stocks, data holds the key to understanding how the markets move. All the investments have a degree of risk. But stocks have considered to outperform most other investments over the long run.&lt;/p&gt;
+
+&lt;p&gt;NEPSE(Nepal Stock Exchange) is the primary stock exchange of Nepal, provides a platform for the transaction of stocks, bonds through member, market intermediaries like brokers. NEPSE has a become a key player in the country’s financial market, facilitating the trading activities of listed 226 companies as of June 2023. The NEPSE Index is the capitalization-weighted index of all stocks on the Nepal Stock Exchange. Reflecting the large market capitalization of many Nepalese banks, the index is said to predominantly reflect the banking sector.&lt;/p&gt;
+
+&lt;p&gt;In the context of this topic, I collected data-wise indices from the NEPSE’s website and as the download option was not available, I used web scraping to get the required data.&lt;/p&gt;
+
+&lt;p&gt;Web scraping is used to extract data from websites. It automates the process of fetching web pages, extraction of the necessary information from them and writing it to a file.&lt;/p&gt;
+
+&lt;h1 id=&quot;importing-libraries-for-web-scraping&quot;&gt;Importing Libraries for web scraping&lt;/h1&gt;
+
+&lt;p&gt;I used Selenium to web scrape as the data was dynamic and required interaction with the website to filter the number of items per page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1140/1*AGglemi-0gTXCbMimnE-gQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;setting-up-the-selenium-web-driver&quot;&gt;Setting up the Selenium Web Driver&lt;/h1&gt;
+
+&lt;p&gt;Here, Firefox is used as the Web Driver instance. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;driver.get&lt;/code&gt; navigates to the website. The try block performs actions on the webpage, in this case clicks the drop-down menu of items per page and selects 500 and filters the data on the page. Then the rows of the data on the webpage is scraped.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*03HRpYQFU3QOQbnv6Cm9uw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The scrapped data is converted to an array using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asarray&lt;/code&gt; from NumPy library.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:810/1*JaPq_9zv4RsJ9JoYORw5kA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The data in array form is again converted to two-dimensional, tabular data structure DataFrame using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pd.DataFrame&lt;/code&gt; in order to perform operations on the data.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*_kEKAu3_SCOKB1gzRLVRkA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1244/1*vPEMH6XYFI2qyMGDjZG1sw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The data above is written to a CSV(Comma-Separated Values) file as Outputdata. Finally the content is saved as a CSV file and can be used for analysis.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1122/1*g9DzhKm4ZNe3sY8Mq6HRIw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;importing-the-python-libraries-and-loading-dataset&quot;&gt;Importing the python libraries and loading dataset&lt;/h1&gt;
+
+&lt;p&gt;import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px&lt;/p&gt;
+
+&lt;p&gt;The data is loaded and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thousands=','&lt;/code&gt; is used to have the numeric data as float and integer data types which would be otherwise object.&lt;/p&gt;
+
+&lt;p&gt;Loading the dataset&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data = pd.read_csv(r&quot;Outputdata.csv&quot;,thousands=',')
+data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*4lmvQn3V_0aJBPr_jB70XA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some of the columns are removed so that it is easier to work with the data.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data= data.drop(columns=['SN','ABSOLUTE CHANGE', 'PERCENTAGE CHANGE', 'TURNOVER VALUES'], axis=0)
+data.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*JUBGY8ONXz6WvX6XzVxlGg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that some of the columns have been removed.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.tail()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*b_I10iFJRjw5UOjwVi7YhA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.shape
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:166/1*UYGKvCbR6x17LaGp_VVQcA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.columns
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1076/1*Yu8YXVTSjCb4dYoS5KAo-w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.describe()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*IIKhVfcoN3IhS87LEswEfA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.dtypes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:462/1*TrXGkmpSJKE0mBg4jDfrbg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data.drop_duplicates(keep=False, inplace=True)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data[&quot;DATE&quot;]= pd.to_datetime(data[&quot;DATE&quot;])
+
+q1= data['CLOSE'].quantile(0.25)
+q3= data['CLOSE'].quantile(0.75)
+iqr = q3-q1
+upper_bound = q3 + 1.5 * iqr
+data= data[data['CLOSE'] &amp;lt;= upper_bound]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;data-visualization&quot;&gt;Data Visualization&lt;/h1&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure(figsize=(10, 6))
+sns.lineplot(x='DATE', y='CLOSE', data=data)
+plt.title('Closing Stock Price Over Time')
+plt.xlabel('Date')
+plt.ylabel('Closing Stock Price')
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*8RehkMhRadhwS7m3fJN3Dg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From the plot, it can be seen that the closing stock prices slightly increased over time with fluctuations.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data['year'] = data['DATE'].dt.year
+sns.boxplot(x='year', y='CLOSE', data=data)
+plt.title('Closing Stock Prices by Year')
+plt.xlabel('Year')
+plt.ylabel('Closing Stock Price')
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1262/1*CcqcNcs4HLns97tTviIpZQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The stock prices have increased drastically compared to the past year. A heat map can be used to visualize correlation between the stock prices using seaborn.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;corr = data[['HIGH', 'LOW', 'CLOSE']].corr()
+plt.figure(figsize=(6,6))
+sns.heatmap(corr, annot=True, cmap='coolwarm')
+plt.title('Correlation Between Stock Prices')
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1198/1*QtWD2ARvObQ5NzdcDe913A.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can also visualize the distribution of closing stock price using a histogram.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure(figsize=(10, 6))
+sns.histplot(data['CLOSE'], kde=True)
+plt.title('Distribution of Closing Stock Price')
+plt.xlabel('Closing Stock Price')
+plt.ylabel('Frequency')
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*LKX79sssct3ehkWqvsy47A.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Mijahla, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Mijahla Shakya</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html">In the world of stocks, data holds the key to understanding how the markets move. All the investments have a degree of risk. But stocks have considered to outperform most other investments over the long run.</summary></entry><entry><title type="html">Comprehensive Examination of Superstore Sales Trends and Performance Analysis</title><link href="/2023/12/20/comprehensive-analysis-of-superstore-sales-trends-and-performance-analysis.html" rel="alternate" type="text/html" title="Comprehensive Examination of Superstore Sales Trends and Performance Analysis" /><published>2023-12-20T00:00:00+00:00</published><updated>2023-12-20T00:00:00+00:00</updated><id>/2023/12/20/comprehensive-analysis-of-superstore-sales-trends-and%20-performance-analysis</id><content type="html" xml:base="/2023/12/20/comprehensive-analysis-of-superstore-sales-trends-and-performance-analysis.html">&lt;p&gt;Data analysis is pivotal in fostering business growth. Owners must possess a comprehensive understanding of their business analytics to strategically elevate profitability. However, meticulously tracking every sales pattern, discerning customer behaviors, and assessing profitability proves challenging for owners. This is where Data Analysis becomes indispensable. A proficient Data Analyst adeptly uncovers latent sales patterns, delineates diverse trends, and establishes correlations between various parameters. Equipped with this invaluable information, owners gain the ability to target and fortify weaker aspects of their business.&lt;/p&gt;
+
+&lt;p&gt;For example, manufacturing companies often record the runtime, downtime, and work queue for various machines and then analyze the data to better plan workloads so the machines operate closer to peak capacity.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s examine the sales data from a big store worldwide. This project serves as a concise illustration of the diverse sales patterns perceivable within data, offering valuable insights and actionable conclusions that hold the potential to positively impact your business operations.&lt;/p&gt;
+
+&lt;p&gt;We’ll use the Pandas library to handle our data — importing, cleaning, and organizing it. For visualizing the data, we’ll turn to Matplotlib and Seaborn libraries.&lt;/p&gt;
+
+&lt;h1 id=&quot;dataset&quot;&gt;DATASET&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/datasets/fatihilhan/global-superstore-dataset&quot;&gt;https://www.kaggle.com/datasets/fatihilhan/global-superstore-dataset&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;importing-libraries&quot;&gt;Importing Libraries&lt;/h1&gt;
+
+&lt;p&gt;We have used “read_csv()” function from Pandas library to import the dataset.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:706/1*oUgoVi2lup8tGABkUyxSgA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;a-first-glimpse&quot;&gt;A First Glimpse&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*pRL89CsVd9KOPKrqO_5pZw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’ve got 51,290 rows and 27 columns in our data. The products are categorized into ‘categories’ and ‘sub-categories’ columns. Each row has details like product name, customer, order date, order ID, profit, discount, and more.&lt;/p&gt;
+
+&lt;p&gt;We’ve got an unspecified column that needs to be removed. After that, we’ll dig into each feature in our dataset to gather insights.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*vGf3OYIBiJkay6dKmXPMVQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once we’ve gathered plenty of info about our data, it’s time to visualize and extract insights.&lt;/p&gt;
+
+&lt;h1 id=&quot;visualizing-the-data&quot;&gt;Visualizing the Data&lt;/h1&gt;
+
+&lt;p&gt;Let’s check what is the number of orders per category.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*iVdV7uvSoIdPQ2ySqNoH_Q.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*5_6eAN6w2RV-b-_8MrKElA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This graph tells us that around 60% of orders are for Office Supplies, followed by Technology and Furniture categories.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*rIihilMwXv3KW4FIiIcQaA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking at the chart, we see that around 55% of sub-categories belong to Office Supplies. This explains why 60% of orders are for this category. Similarly, Binders are popular compared to others, followed by Storage and Art sub-categories.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s look at the Discount column.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1384/1*qDmd4G06C5WsotmsCLgbrg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Out of 51,290 orders, 22,281 were made with discounts, roughly 45%. It looks like most people prefer buying discounted items. On average, the discount is around 15%.&lt;/p&gt;
+
+&lt;p&gt;Next, we’ll group the discount percentages into categories: none, low discount (0–25%), medium discount (25%-50%), high discount (50%-75%), and very high discount (75% and above) to gain deeper insights.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*MMRYOjeYKCkhU1XJfh91QQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s plot the chart of orders per discount category&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1370/1*jtMLArfrh5Q0_u0ziZc1ww.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When we look at the chart, it’s clear that ‘Office Supplies’ gets higher discounts. Most orders have low discounts, but a few have high discounts.&lt;/p&gt;
+
+&lt;p&gt;Let’s find out which types of customers are more likely to order.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*-FuQq9ur0poSqwM7GVfNrA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The chart shows most orders come from customers, followed by corporations and the Home Office. All categories seem equally popular among these segments. There isn’t a specific category that stands out for any particular segment.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s see which shipping mode is used the most.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*3A8qS4Dwc3pOXoezGB3bmw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From this figure, we can say Standard Class shipping mode is mostly used roughly 55- 60%.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s check sales in each market.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1308/1*bGCR4OMLnEZSjwX0Z-JkUA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Asia-Pacific region has the highest sales, followed by the US, EU, and LATAM regions. Sales are lowest in Canada.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1166/1*ywM7ciqyMZPvpmBPgzfI6A.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Most orders are from the US superstore (9994), followed by Australia (2837), France (2827), Mexico (2644), and Germany (2065). Supermarkets in South Sudan, Chad, and Swaziland have the fewest orders.&lt;/p&gt;
+
+&lt;p&gt;Let’s explore the profits now.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*6t3TUoA-WHTwRaqpQHyvkw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*aXJgV_R0XamZ_3qS49YviQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This chart reveals that the technology category has the highest net profit, followed by office supplies and furniture.&lt;/p&gt;
+
+&lt;p&gt;When it comes to average profit per order, Technology leads, followed by Furniture, while Office supplies have the lowest average profit per order.&lt;/p&gt;
+
+&lt;p&gt;Even though the office supplies category has more products, the Technology category sees a much higher average profit per order and net profit.&lt;/p&gt;
+
+&lt;p&gt;Let’s check the scenario for each sub-category.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*k5VdBLcIb13qaPLYHEbQDg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This chart highlights that Copiers generate the highest average profit across all categories, making $116.315 per order, followed by Appliances at $81. However, the Table category incurs a loss, averaging at -$75 per order.&lt;/p&gt;
+
+&lt;p&gt;Next up, let’s check profits by country.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*rCsAat22wYgUEQJj0zs7Bg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*m8ToqZHEu_wcCw2T09ZTTg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*5_CZTFXsypfv-2sG2KlqkA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*yHsry-gOuO6jbZL-hztBjg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This chart shows that the supermarket in Montenegro is making the highest av. profit of 321.69 dollars, whereas Lithuania is making av. loss of 180 dollars.&lt;/p&gt;
+
+&lt;p&gt;Total profit per country:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*yiQnHoIZlL0ftBsg3sHaYw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*t4yFyiY443JSM1BT00jyGA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, in the US, supermarkets are making the highest profit, totaling $29,000. And, Turkey, they’re facing the highest loss, amounting to $99,000, followed by Nigeria with a loss of $80,000.&lt;/p&gt;
+
+&lt;p&gt;A line plot showing the total profit per market across three years:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*knlCyzuKa9Wy4MgKU8IeyQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This line plot indicates that the total profit in the Asia-Pacific region has steadily increased and is the highest among the tracked periods.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusions-and-suggestion&quot;&gt;Conclusions and suggestion&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Office Supplies category has lots of products but makes less average profit compared to Technology.&lt;/li&gt;
+  &lt;li&gt;Since Technology has the highest profit, focusing on more products in this category could boost business.&lt;/li&gt;
+  &lt;li&gt;Customers are attracted by discounts. Offering around 15% off might increase sales.&lt;/li&gt;
+  &lt;li&gt;Careful discount allocation shows the company’s smart strategy.&lt;/li&gt;
+  &lt;li&gt;Most use the Standard Class shipping. Investing here could improve profits.&lt;/li&gt;
+  &lt;li&gt;Even though the US has a lower average profit per order, high sales result in high profits for supermarkets.&lt;/li&gt;
+  &lt;li&gt;The Table category faces significant losses, suggesting discontinuation.&lt;/li&gt;
+  &lt;li&gt;Asia-Pacific markets have good customer numbers and profitability&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This project vividly demonstrates the transformative power of data analysis in optimizing business strategies. The utilization of graphs and tables unveils invaluable insights pivotal for business expansion. However, it’s crucial to recognize that data analysis isn’t confined solely to business realms; its influence spans across disciplines like scientific research, machine learning, and beyond. By embracing and mastering data analysis, individuals not only empower businesses but also contribute significantly to advancements in diverse fields. Ultimately, learning this skill emerges as a catalyst for personal and professional growth, opening doors to a multitude of opportunities.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Ayush, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Ayush Adhikari</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html">Data analysis is pivotal in fostering business growth. Owners must possess a comprehensive understanding of their business analytics to strategically elevate profitability. However, meticulously tracking every sales pattern, discerning customer behaviors, and assessing profitability proves challenging for owners. This is where Data Analysis becomes indispensable. A proficient Data Analyst adeptly uncovers latent sales patterns, delineates diverse trends, and establishes correlations between various parameters. Equipped with this invaluable information, owners gain the ability to target and fortify weaker aspects of their business.</summary></entry><entry><title type="html">Using Machine Learning for Finding out the Red Wine Quality</title><link href="/2023/12/18/ml-red-wine-quality.html" rel="alternate" type="text/html" title="Using Machine Learning for Finding out the Red Wine Quality" /><published>2023-12-18T00:00:00+00:00</published><updated>2023-12-18T00:00:00+00:00</updated><id>/2023/12/18/ml-red-wine-quality</id><content type="html" xml:base="/2023/12/18/ml-red-wine-quality.html">&lt;p&gt;We all know about the significance of red wine these days. It is also better to know better about its quality and the factors which can affect its quality. In these terms, we can use our computer knowledge of ML, and predict ourselves the quality based on the different physicochemical properties. Now, this will be an estimation on the quality and people will be aware about that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*2RSZUkBUD46mJ9D8Dhr7Lw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Personally, I feel like people should learn the concepts of ML not for something as hesitant, but for the study and learning the nature of relationships and predictions based on our algorithms. That way they can be confident in their results and seek better results not just on some particular aspects but on everything that has target and response variables.&lt;/p&gt;
+
+&lt;p&gt;Here, for the quality of red wine, I am using the dataset from 2009 from the Kaggle. I will be highlighting the procedure on the data visualization, preprocessing and model prediction and finally will focus on its significance.&lt;/p&gt;
+
+&lt;p&gt;I. Dataset&lt;/p&gt;
+
+&lt;p&gt;The dataset is from the following link in Kaggle:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009&quot;&gt;https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009&lt;/a&gt; ?datasetId=4458&amp;amp;sortBy=voteCount. Here is a quick snapshot of the data frame.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*1jqkBLDaUH_ik3bW48SZnw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We carry a basis test on the data frame to check whether there are any null entries or not and are there any duplicated items and perform the summary statistics on the dataset and the result is as follows. There were no null entries but 240 duplicated rows and we dropped those duplicated rows.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*F3SQed-VhJODXYEH7lmhrQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*jdteUpa7zUNGh2cnQE6umQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;II. Data Preprocessing&lt;/p&gt;
+
+&lt;p&gt;Now, we import the libraries, and we did a bit of analysis on the data by visualizing the probability density as it gives us insight on the distribution of data. We have already imported pandas and displayed the data, so we won’t be importing the dataset and named the dataset as redwine_df_cp.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import warnings
+
+warnings.filterwarnings('ignore')
+plt.style.use('seaborn')
+fig = plt.figure(figsize=(15,15))
+
+for index, column in enumerate(redwine_df_cp.columns):
+  plt.subplot(4,3,index+1)
+  sns.distplot(x = redwine_df_cp.loc[:, column], color = 'lightseagreen')
+  plt.title(column, size = 13)
+  fig.tight_layout()
+  plt.grid(True)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The result was as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*PFoLJo-JHAitL1PnC899DQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we can see that there are some datasets like chlorides which are right tailed in distribution that might be due to outliers. Now for simplicity we don’t touch outliers yet and will simply explore the dataset.&lt;/p&gt;
+
+&lt;p&gt;Now, we will try to check the correlation between different variables using the correlation coefficient and seaborn heatmap.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*6f0lC7Dm3cl_52E7E36kng.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From the above heatmap, we can see that there is a positive correlation with alcohol of quality and negative with volatile acidity the most. So, we will be taking these two as prime factors for now and will be seeing their scatterplot/catplot and will see whether they are related or not.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sns.catplot(data=redwine_df_cp, x=&quot;quality&quot;, y=&quot;alcohol&quot;, hue=&quot;quality&quot;)
+plt.show()
+sns.catplot(data=redwine_df_cp, x=&quot;quality&quot;, y=&quot;volatile acidity&quot;, hue=&quot;quality&quot;)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result of the categorical plot is as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*8y_hLp0q29q1uUFcQSB00w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*ONpuMNkePBB9RpPZZ1qUZw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we can see that there is indeed a positive correlation with quality of alcohol as we can think about and negative with volatile acidity. But it is better if we group the quality as a group of three categories as low, medium and high quality wines. That way data visualization and training is easy and less mundane.&lt;/p&gt;
+
+&lt;p&gt;So, we create another copy of the dataframe to preserve the structure of the dataset.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+redwine_test_df = redwine_df_cp.copy()
+redwine_test_df.head()
+
+# Let's define a function to help us.
+def quality_value(value):
+  value = str(value)
+  if value == '3':
+    value = value.replace('3','low')
+    return value
+  elif value == '4':
+    value = value.replace('4','low')
+    return value
+  elif value == '5':
+    value = value.replace('5','medium')
+    return value
+  elif value == '6':
+    value = value.replace('6','medium')
+    return value
+  elif value == '7':
+    value = value.replace('7','high')
+    return value
+  elif value == '8':
+    value = value.replace('8','high')
+    return value
+
+
+redwine_test_df['quality'] = redwine_test_df['quality'].apply(quality_value)
+redwine_test_df[&quot;quality&quot;].unique()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, we will again see the categorical plot of the alcohol and volatile acidity with quality.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*EnO21QIpEz-soiqCQJkVmQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*421EPCD0UeQIfsv-p-dG-w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see now, it’s much more visual and definitive to say that there is indeed positive correlation and negative correlation of alcohol and volatile acidity with quality respectively.&lt;/p&gt;
+
+&lt;p&gt;Now, we will visualize this for the rest of the variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*6xr5m-I0c6tgbCD0DPhYOw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*TgLTjeuhujmeULdbn8ogjw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*USSFq9v-ZWRsRikXxIHeJQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*VjI49oNfQAwPSXuOZ-xqkQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*meMvf-W8GOEGOimvoGxh8w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*f-Z3N7dACTarZgSXTvr0oQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*YTosTmWI55YxV_SJuEWKtQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*jtmPFd-ONzdfnGZpHdAG_A.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:980/1*7shguTznc-8cQjoBPTpExA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hence, we can infer that as a whole all these factors contribute to the quality of red wine, with alcohol and volatile acidity as key factors.&lt;/p&gt;
+
+&lt;p&gt;Now, we will get onto seeing the dataset and visualizing the outliers for this we use seaborn boxplot.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+fig = plt.figure(figsize=(15,15))
+for index,column in enumerate(list(redwine_test_df.columns[:-1])):
+  plt.subplot(4,3,index+1)
+  sns.boxplot(y =redwine_test_df.loc[:, column], x =redwine_test_df['quality'],
+  linewidth=2.5)
+  plt.title(column, size = 12)
+fig.tight_layout()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*Gf0f5XI8SxiRxvsbDedFjQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we can see the outliers in the physicochemical properties, but we won’t clear them all out. We highlight the outlier with high distribution i.e. chlorides for this purpose and we will impute median in the outlier. The code is as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+df_chlorides = redwine_test_df['chlorides']
+# distribution of the variable before cleaning
+plt.figure(figsize=(8,5))
+plt.title('With Outliers')
+sns.distplot(x = df_chlorides, color = '#967bb6')
+# setting the threshold value
+Q1 = df_chlorides.quantile(0.25)
+Q3 = df_chlorides.quantile(0.75)
+# interquartile range
+IQR = Q3 - Q1
+lower_limit = Q1 - 1.5 * IQR
+upper_limit = Q3 + 1.5 * IQR
+# catching outliers
+upper_outlier = (df_chlorides &amp;gt; upper_limit)
+# determining the mean and median values
+mean = df_chlorides.mean()
+median = df_chlorides.median()
+# assigning outliers to median due to its suitability
+df_chlorides[upper_outlier] = median
+# distribution of the data without outliers
+plt.figure(figsize=(8,5))
+plt.title('Without Outliers')
+sns.distplot(x = df_chlorides, color = 'lightseagreen')
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result before and after is as follows for chloride column:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1368/1*MG9jpVv-1Q2KEH6aeHyx3Q.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1368/1*EAqNoec0Qizm4RpuF3vfdQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As, we can see the change in the dataset before and after the outlier. We will see its effect in the model performance and accuracy later on. For now, we will stick with other outliers as looking at the boxplot, other outliers don’t have much impact on the model accuracy and performance.&lt;/p&gt;
+
+&lt;p&gt;III. Classification&lt;/p&gt;
+
+&lt;p&gt;Now, we import all the libraries required for classification.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import accuracy_score, confusion_matrix,
+classification_report
+import catboost as cb
+import xgboost as xgb
+import lightgbm as lgb
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here some classifiers needs the quality column to be values such as 0, 1,2 so we switch it back accordingly.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;redwine_test_df['quality'] = redwine_test_df['quality'].map({'high': 2, 'medium':
+1, 'low': 0})
+redwine_test_df['quality'].unique()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, we separate the dataset into dependent and independent variables.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;y = redwine_test_df[&quot;quality&quot;]
+x = redwine_test_df.drop([&quot;quality&quot;], axis=1)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2,
+random_state=40)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, the main thing here is Standardizing the data. The reason behind the standardization is making the data comparable by eliminating the difference in measurement units in the table. For this we use standard scalar.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, we use SMOTE technique for removing the class imbalance&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smote = SMOTE(random_state=40)
+X_train, y_train = smote.fit_resample(X_train, y_train)
+sns.countplot(y=y_train)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1354/1*8e9H9nj4t9X_7ZKztg314g.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1354/1*80onKqNF6aWiedHikztSxQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After and Before SMOTE Technique&lt;/p&gt;
+
+&lt;p&gt;Now, we use the models for applying the ML.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;models = [
+('Logistic Regression', LogisticRegression()),
+('Support Vector Classifier', SVC()),
+('Naive Bayes', GaussianNB()),
+('KNN', KNeighborsClassifier()),
+('Decision Tree', DecisionTreeClassifier()),
+('Random Forest', RandomForestClassifier()),
+('XGBoost', xgb.XGBClassifier()),
+('LightGBM', lgb.LGBMClassifier()),
+('CatBoost', cb.CatBoostClassifier(verbose=0)),
+('AdaBoost', AdaBoostClassifier())
+]
+
+conf_matrices = []
+class_reports = []
+outcomes = []
+
+for model_name, model in models:
+  cv_results = cross_val_score(model, X_train, y_train, cv=5)
+  mean_accuracy = cv_results.mean()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  accuracy = accuracy_score(y_test, y_pred)
+  cm = confusion_matrix(y_test, y_pred)
+  cr = classification_report(y_test, y_pred)
+  conf_matrices.append((model_name, cm))
+  class_reports.append((model_name, cr))
+  outcomes.append((model_name, mean_accuracy, accuracy))
+
+df_results = pd.DataFrame(outcomes, columns=['Model', 'Cross-Validation
+Accuracy', 'Test Accuracy'])
+df_results.sort_values('Cross-Validation Accuracy', ascending=False,
+inplace=True)
+
+df_results
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The result of the test accuracy and other reports are as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*_qfUBlJ7hveW2kd0NEEPAw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we can see that CatBoost and XGBoost are high in test accuracy, but let’s see the classification report and confusion matrices to find out which model to use and tune.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure(figsize=(12, 8))
+for i, (model_name, cm) in enumerate(conf_matrices, 1):
+  plt.subplot(3, 4, i)
+  plt.title(model_name)
+  sns.heatmap(cm, annot=True, fmt='d')
+  plt.xlabel('Predicted Label')
+  plt.ylabel('True Label')
+
+plt.tight_layout()
+plt.show()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The confusion matrices are depicted below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*yKU7cegVxXWO0jiuyk8rTA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The classification reports are as follows:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for model_name, cr in class_reports:
+  print(f'033[1m{model_name}:033[0m')
+  print(f'033[1mClassification Report:033[0m')
+  print(cr)
+  print('-'*60)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2036/1*6A88BvrHsiNhuZg10_eB5A.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2084/1*p2nhSmu_CZTaOeQesm6XqA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2204/1*QniG0Ql3WXGZ32aCnfT_fg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2072/1*fGm36DeJGTGm7dja9eEyvA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2116/1*gdU49T4FiAEULs8bm95oDQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, looking at the classification report, we chose CatBoost as our classifier and as our model. Now, we tune the model for its best performance and accuracy. For this we use optuna for tuning the model.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+import optuna
+
+def objective(trial):
+  model = cb.CatBoostClassifier(
+  iterations=trial.suggest_int(&quot;iterations&quot;, 100, 1000),
+  learning_rate=trial.suggest_float(&quot;learning_rate&quot;, 1e-3, 1e-1, log=True),
+  depth=trial.suggest_int(&quot;depth&quot;, 4, 10),
+  l2_leaf_reg=trial.suggest_float(&quot;l2_leaf_reg&quot;, 1e-8, 100.0, log=True),
+  bootstrap_type=trial.suggest_categorical(&quot;bootstrap_type&quot;, [&quot;Bayesian&quot;]),
+  random_strength=trial.suggest_float(&quot;random_strength&quot;, 1e-8, 10.0,
+  log=True),
+  bagging_temperature=trial.suggest_float(&quot;bagging_temperature&quot;, 0.0,
+  10.0),
+  od_type=trial.suggest_categorical(&quot;od_type&quot;, [&quot;IncToDec&quot;, &quot;Iter&quot;]),
+  od_wait=trial.suggest_int(&quot;od_wait&quot;, 10, 50),
+  verbose=False
+  )
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  return accuracy_score(y_test, y_pred)
+
+study = optuna.create_study(direction='maximize')
+study.optimize(objective, n_trials=30)
+print('Best hyperparameters:', study.best_params)
+print('Best Accuracy:', study.best_value)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After this, the tuned parameters were passed into the model and we got the final accuracy of the model and our model was devised to the test accuracy of 77.57% which is higher.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;model = cb.CatBoostClassifier(**study.best_params)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+acc_score = accuracy_score(y_test, y_pred)
+acc_score
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hence, we can now predict the quality from the array of constituents value.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# taking the input
+df_columns = list(redwine_test_df.columns)
+test_array = []
+for col_name in df_columns:
+  if col_name == &quot;quality&quot;:
+    continue
+  else:
+    data = float(input(f&quot;Enter the {col_name} quantity
+    [{redwine_test_df[col_name].min()} - {redwine_test_df[col_name].max()}]: &quot;))
+    test_array.append(data)
+
+# giving the data to our model
+q_value = model.predict(test_array)
+if q_value == 1:
+  print(&quot;The red wine is of medium quality!&quot;)
+elif q_value == 2:
+  print(&quot;The red wine is of high quality!&quot;)
+else:
+  print(&quot;The red wine is of poor quality!&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here, we tested a random sample of wine and we got the wine quality as average. Clearly helping with the outliers of the chloride really made improvement in our model.&lt;/p&gt;
+
+&lt;p&gt;IV. Significance&lt;/p&gt;
+
+&lt;p&gt;So, the question may arise about its significance. Companies can use this technique of ML for creating better models and by using the dataset with thousands of data. This is just a simple dataset for devising a method for relating the quality of red wine with its physicochemical properties. General laymen can indeed know about what factors can affect the quality of red wine by analyzing the dataset in the visualization part. These algorithms and techniques can not only be used here but in every field of response and target variables, which can indeed boost our capabilities.&lt;/p&gt;
+
+&lt;p&gt;The link for the github repository for this project is &lt;a href=&quot;https://github.com/prabeshx12/testproject&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Prabesh, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Prabesh Bashyal</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html">We all know about the significance of red wine these days. It is also better to know better about its quality and the factors which can affect its quality. In these terms, we can use our computer knowledge of ML, and predict ourselves the quality based on the different physicochemical properties. Now, this will be an estimation on the quality and people will be aware about that.</summary></entry><entry><title type="html">Deciphering Trends and Patterns in Electric Vehicle Adoption, A Comprehensive Analysis</title><link href="/2023/12/18/deciphering-trends-in-ev-adoption.html" rel="alternate" type="text/html" title="Deciphering Trends and Patterns in Electric Vehicle Adoption, A Comprehensive Analysis" /><published>2023-12-18T00:00:00+00:00</published><updated>2023-12-18T00:00:00+00:00</updated><id>/2023/12/18/deciphering-trends-in-ev-adoption</id><content type="html" xml:base="/2023/12/18/deciphering-trends-in-ev-adoption.html">&lt;p&gt;The world of electric vehicles (EVs) is evolving rapidly, marked by technological advancements and a growing shift towards sustainable transportation. With a dataset encompassing 32,783 entries and 17 columns sourced from (&lt;a href=&quot;https://catalog.data.gov/dataset/electricvehiclepopulationdata&quot;&gt;https://catalog.data.gov/dataset/electricvehiclepopulationdata&lt;/a&gt;), my analysis focused on understanding various facets of this transformative landscape.&lt;/p&gt;
+
+&lt;h2 id=&quot;dataset-overview&quot;&gt;Dataset Overview&lt;/h2&gt;
+
+&lt;p&gt;This dataset offered a comprehensive view of EVs, detailing aspects such as VIN (Vehicle Identification Number), model year, make, model, electric range, base manufacturer’s suggested retail price (MSRP), and geographic distribution.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-preprocessing&quot;&gt;Data Preprocessing&lt;/h2&gt;
+
+&lt;p&gt;To streamline the analysis, we initially narrowed our focus to cars manufactured in 2022 onwards, creating a subset called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;electric_v_from2022&lt;/code&gt;. This subset comprised 12,655 entries&lt;br /&gt;
+and underwent essential preprocessing steps. Null values were identified in columns like ‘Model’ and ‘Legislative District,’ amounting to 68 and&lt;br /&gt;
+3 missing entries, respectively. These missing ‘Model’ values were meticulously filled based on ‘Model Year’ and ‘Make’ using a mapping technique, ensuring data integrity. Additionally, columns like ‘Postal Code,’ ‘Legislative District,’ ‘DOL Vehicle ID,’ and ‘Vehicle Location’ were deemed irrelevant for our analysis and were dropped, refining the dataset further.&lt;/p&gt;
+
+&lt;h2 id=&quot;key-insights&quot;&gt;Key Insights&lt;/h2&gt;
+
+&lt;h3 id=&quot;make-wise-distribution&quot;&gt;Make wise Distribution&lt;/h3&gt;
+
+&lt;p&gt;The dataset revealed Tesla as the dominant player in the EV market, with 15,510 entries, followed by Nissan (3,150) and Chevrolet (2,611). This highlighted Tesla’s significant presence compared to other manufacturers in the EV space.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1160/1*0sH-XYVP5xV-g2TU5-xipg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;manufacturer-trends-by-year&quot;&gt;Manufacturer Trends by Year&lt;/h3&gt;
+
+&lt;p&gt;An analysis based on the number of cars manufactured each year showcased a substantial&lt;br /&gt;
+increase in 2022, with 7,016 entries, followed by 2023 (5,632) and 2021 (4,429). This indicated&lt;br /&gt;
+a rising trend in the production of EVs, particularly in recent years.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*GjaHZXLMQnaK8ljZ1vEcYA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;state-wise-manufacturer-preferences&quot;&gt;State-wise Manufacturer Preferences&lt;/h3&gt;
+
+&lt;p&gt;Geographical distribution of EVs across states and counties, although not provided directly, was visualized through bar plots and count plots, shedding light on regional preferences and adoption rates.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1178/1*DnLbE3sLLLKqtcAc09OjYw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Further exploration into specific states, like Washington State, portrayed the prevalence of different electric vehicle makes across counties. This analysis shed light on regional preferences, offering insights into localized consumer choices.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*7JPqGXUY637INYv2zROn5w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;manufacturer-analysis&quot;&gt;Manufacturer Analysis&lt;/h3&gt;
+&lt;p&gt;Delving deeper into manufacturer trends, it’s evident that each manufacturer has its average electric range. Brands like Tesla, Toyota, and Mitsubishi showcase high average electric ranges, indicating a strong focus on longer-range vehicles.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*lIgcLmStSCgwwLbJ0ETscg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This analysis serves as a testament to the diverse landscape of electric vehicles, highlighting trends in manufacturing, makewise distribution, and regional preferences. It underscores the growing importance of sustainable transportation and the significant role data analysis plays in&lt;br /&gt;
+understanding and navigating this transformative industry.&lt;/p&gt;
+
+&lt;p&gt;As the world shifts towards greener alternatives, the insights gleaned from this analysis can guide stakeholders in policymaking, manufacturing strategies, and consumer preferences within the electric vehicle domain.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Pradipti, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Pradipti Simkhada</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html">The world of electric vehicles (EVs) is evolving rapidly, marked by technological advancements and a growing shift towards sustainable transportation. With a dataset encompassing 32,783 entries and 17 columns sourced from (https://catalog.data.gov/dataset/electricvehiclepopulationdata), my analysis focused on understanding various facets of this transformative landscape.</summary></entry><entry><title type="html">Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access</title><link href="/2023/07/06/exploring-nepals-export.html" rel="alternate" type="text/html" title="Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access" /><published>2023-07-06T00:00:00+00:00</published><updated>2023-07-06T00:00:00+00:00</updated><id>/2023/07/06/exploring-nepals-export</id><content type="html" xml:base="/2023/07/06/exploring-nepals-export.html">&lt;p&gt;The government has published the data regarding the imports &amp;amp; exports of the country for Fiscal Year B.S. 2079/80(Mid July 2022 to Mid July 2023). Because there are news everyday regarding the current economic situation of the country, it is a good idea to understand the area through which we can strengthen the economy which is exports.&lt;/p&gt;
+
+&lt;p&gt;I went through data through the Department of Customs for this data and going even through the tabular form data there were many insights to grasp. When discussing this with friends, they were curious but found the original data hard to understand.&lt;/p&gt;
+
+&lt;p&gt;While the government might be working on improving this data, my focus was on learning to make such information more understandable &amp;amp; accessible. This article lays the foundation for a web dashboard that lets the user search and see visualizations of export data. Though creating such a proper website will be a resource and time taking process, in this article I have tried in getting the foundations for it ready.&lt;/p&gt;
+
+&lt;p&gt;Installing necessary Python libraries&lt;/p&gt;
+
+&lt;p&gt;First, we install the necessary Python libraries for data processing (pandas), interactive visualizations (plotly), and building web applications (dash)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;pip install pandas plotly dash&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Importing Panda Library &amp;amp; needed CSV file&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;import pandas as pd&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;file_path = r”C:\Users\ACER\Desktop\Tasks\Data Article\7980exports.csv”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;df = pd.read_csv(file_path, encoding=’latin-1’)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Data Source: &lt;a href=&quot;https://www.customs.gov.np/page/fts-fy-207980&quot;&gt;https://www.customs.gov.np/page/fts-fy-207980&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we import the Pandas library so that we can do data manipulation &amp;amp; analysis. We have also provided the file path to read the CSV file from the specified path into a Pandas DataFrame. In this step, we have been able to lead this data into the data frame through which we can move for processing and visualization.&lt;/p&gt;
+
+&lt;p&gt;Importing Dash Framework&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;import dash&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;from dash import dcc&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;from dash import html&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;from dash.dependencies import Input, Output&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We are now importing the Dash framework since it is great for creating interactive web applications with Python. For this project, we especially need its web-based data visualizations and interactive components.&lt;/p&gt;
+
+&lt;p&gt;We are also importing the dcc module of Dash as it contains the core components such as graphs, dropdowns, &amp;amp; sliders which are useful elements for this project. Through this step, we now have the modules for a Dash web application along with defining the user interface.&lt;/p&gt;
+
+&lt;p&gt;Initializing Dash app&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Initialize the Dash app&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app = dash.Dash(&lt;strong&gt;name&lt;/strong&gt;)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we create the instance for the application along with providing the unique identifier.&lt;/p&gt;
+
+&lt;p&gt;Defining the layout through Search bar for filtering data &amp;amp; Graph component to display the data&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Define the layout of the web application&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app.layout = html.Div([&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Search bar for filtering data&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;dcc.Input(id=’search-bar’, type=’text’, placeholder=’Search by Item…’),&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Graph component to display the data&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;html.Div([&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;dcc.Graph(id=’export-graph’, config={‘displayModeBar’: False}),&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;]),&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;])&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The layout of the web application is being set up now with the first structure of the web page being set up using the Dash HTML components which includes the search bar &amp;amp; graph that we need since we want the user to search for items &amp;amp; represent it through a graph.&lt;/p&gt;
+
+&lt;p&gt;Then, we use dcc.input to create the needed text input field for this search bar and name it as Search by Item which the user will see it as. We also create the graph component to display the data through this framework.&lt;/p&gt;
+
+&lt;p&gt;Callback to update the graph based on search input&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;@app.callback(&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Output(‘export-graph’, ‘figure’),&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;[Input(‘search-bar’, ‘value’)]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Defining the callback function so that it responds to changes to the search bar the user makes. Here, we also define that the input is the search term that the user enters and output is the export graph through which the necessary item will be updated in the displayed graph.&lt;/p&gt;
+
+&lt;p&gt;Updating graph based on search term&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;def update_graph(search_term):&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;if search_term:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Filter the data based on the search input&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;filtered_df = df[df[‘Item’].str.contains(search_term, case=False)]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;else:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# If no search input, show all data&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;filtered_df = df&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we are creating some important functions for the graph. If there is no search input then the entire Data Frame will show up which will be like the default setting. Also, the words the user types will be case insensitive.&lt;/p&gt;
+
+&lt;p&gt;Create the bar chart using Plotly&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Create the bar chart using Plotly (showing ‘Total Revenue’)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;figure = {&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘data’: [&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;{‘x’: filtered_df[‘Item’], ‘y’: filtered_df[‘Exports_Value’], ‘type’: ‘bar’, ‘name’: ‘Total Revenue’},&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;],&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘layout’: {&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘title’: “Nepal’s Export Data”,&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘xaxis’: {‘title’: ‘Item’},&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘yaxis’: {‘title’: ‘Value’},&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;‘barmode’: ‘group’&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;}&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;}&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;return figure&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The bar chart is now constructed with the Total Revenue data through the filtered dataframe. In the bar chart the X values have been defined as the Item and the Y values as the Exports Value i.e. Total Revenue.&lt;/p&gt;
+
+&lt;p&gt;Running the web application&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;# Run the web application&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;if &lt;strong&gt;name&lt;/strong&gt; == ‘&lt;strong&gt;main&lt;/strong&gt;’:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app.run_server(debug=True)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we do the fun part and see the result that has come from the above process.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/68O-VpoZiGk&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*NF88vaONxWGNSkYl&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Through this dashboard, now it is very easy to search for items you want to know the revenue for exports. We can gain insights now faster and in a more accessible way, that too with context of other similar products and their revenues for exports.&lt;/p&gt;
+
+&lt;p&gt;For me, I found it interesting that even items such as Yarchagumba are bringing in around Rs. 44 crores of revenue per year. Another surprise for me was that Dog/Cat food did Rs. 3.40 arba in revenue which is a very big amount of revenue that provides tons of employment opportunity in Nepal especially in the village areas.&lt;/p&gt;
+
+&lt;p&gt;Thus, by exploring this dashboard and finding out the revenue of different items, we can also map out what kind of opportunity is present to sell Nepali items in the global market too.&lt;/p&gt;
+
+&lt;p&gt;Conclusion&lt;/p&gt;
+
+&lt;p&gt;Now that I’ve worked on this project, I can see there are many kinds of data we can make accessible through turning the raw data into a more accessible format. If you want to further work on this project then the next steps would be to find a way to make it accessible on the internet to people through platforms like Heroku and then test the prototype out.&lt;/p&gt;
+
+&lt;p&gt;Thanks to Code For Nepal’s Data Fellowship program with DataCamp Donates, I got the chance to explore creating tools with Python. I’m thankful to Code for Nepal for giving me the opportunity to learn such Python skills.&lt;/p&gt;
+
+&lt;p&gt;By: Anupam Bajra&lt;/p&gt;
+
+&lt;p&gt;Linkedin: &lt;a href=&quot;https://www.linkedin.com/in/anupam-bajra/&quot;&gt;https://www.linkedin.com/in/anupam-bajra/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Anupam, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Anupam Bajra</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html">The government has published the data regarding the imports &amp;amp; exports of the country for Fiscal Year B.S. 2079/80(Mid July 2022 to Mid July 2023). Because there are news everyday regarding the current economic situation of the country, it is a good idea to understand the area through which we can strengthen the economy which is exports.</summary></entry><entry><title type="html">Getting Started with GreatAPI - A Comprehensive Tutorial</title><link href="/2023/07/06/getting-started-with-GreatAPI.html" rel="alternate" type="text/html" title="Getting Started with GreatAPI - A Comprehensive Tutorial" /><published>2023-07-06T00:00:00+00:00</published><updated>2023-07-06T00:00:00+00:00</updated><id>/2023/07/06/getting-started-with-GreatAPI</id><content type="html" xml:base="/2023/07/06/getting-started-with-GreatAPI.html">&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/format:webp/1*XfvSzeeQPZUPCcjZUvRHmg.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GreatAPI is a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs using FastAPI. This comprehensive tutorial will guide you through the installation and setup process of GreatAPI, and you will learn how to create a new project, manage apps, run the server, and build your API logic using GreatAPI.&lt;/p&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;GreatAPI offers a range of compelling features that make it an attractive choice for developers seeking to build robust web applications and APIs. With its integrated Administrative UI, users gain effortless control over registered models, simplifying data management tasks. Additionally, the framework includes a built-in authentication system, boosting application security by facilitating user authentication and authorization. Furthermore, GreatAPI provides an intuitive project template, streamlining project setup and offering a structured foundation for rapid and collaborative development. GreatAPI’s seamless integration with FastAPI makes it a compelling tool for developing efficient, secure, and user-friendly applications. Embrace the boundless possibilities of web development, creating endpoints for AI models, and creating general APIs with GreatAPI and elevate your projects to new heights. Embark on an exceptional journey of innovation and excellence with GreatAPI at your side. Some of the major features of GreatAPI.&lt;/p&gt;
+
+&lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
+
+&lt;p&gt;Before we dive into the tutorial, make sure you have the following requirements in place:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Python 3.6 or higher and PIP installed on your system.&lt;/li&gt;
+  &lt;li&gt;Familiarity with Python programming language concepts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;GreatAPI is built upon the foundation of the following robust libraries:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;FastAPI: A modern, fast, web framework for building APIs with Python.&lt;/li&gt;
+  &lt;li&gt;uvicorn: ASGI server that runs FastAPI applications.&lt;/li&gt;
+  &lt;li&gt;typer: A command-line interface library for building CLI applications.&lt;/li&gt;
+  &lt;li&gt;jinja2: A templating engine for Python.&lt;/li&gt;
+  &lt;li&gt;SQLAlchemy: A powerful Object-Relational Mapping (ORM) library for Python.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To install GreatAPI and its dependencies, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install greatapi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h1&gt;
+
+&lt;h2 id=&quot;step-1-start-a-new-project&quot;&gt;Step 1: Start a New Project&lt;/h2&gt;
+
+&lt;p&gt;To begin working with GreatAPI, let’s create a new project. Open your terminal and execute the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;greatapi startproject myproject
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will create a new directory named “&lt;em&gt;myproject&lt;/em&gt;” with the basic structure to get you started.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;myproject/&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──&lt;strong&gt;init&lt;/strong&gt;.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──settings.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;main.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-create-a-new-app&quot;&gt;Step 2: Create a New App&lt;/h2&gt;
+
+&lt;p&gt;An app in GreatAPI is a modular unit that encapsulates specific functionality of your project. To create a new app, run the following command:&lt;/p&gt;
+
+&lt;p&gt;greatapi startapp myapp&lt;/p&gt;
+
+&lt;p&gt;This will generate a new directory named “&lt;em&gt;myapp&lt;/em&gt;” containing the necessary files and folders for your app.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;myapp/&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──&lt;strong&gt;init&lt;/strong&gt;.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──models.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──repository.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──router.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;├──schemas.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-run-the-server&quot;&gt;Step 3: Run the Server&lt;/h2&gt;
+
+&lt;p&gt;Now, it’s time to run the development server which will also create tables in the database for creating superuser in the next step. Execute the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;greatapi runserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-4-creating-a-superuser&quot;&gt;Step 4: Creating a Superuser&lt;/h2&gt;
+
+&lt;p&gt;After running the server, let’s create a superuser to manage the administration of your project. Execute the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;greatapi createsuperuser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Follow the prompts to create the superuser account which will be used to login into GreatAPI Administrator.&lt;/p&gt;
+
+&lt;p&gt;The server will start, and you can access your application at &lt;a href=&quot;http://localhost:8000/&quot;&gt;http://localhost:8000/&lt;/a&gt;. Additionally, GreatAPI provides a beautifully designed built-in Admin Panel accessible at &lt;a href=&quot;http://localhost:8000/admin&quot;&gt;http://localhost:8000/admin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2000/1*wPsG8okBBURruyP-i7WXDQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Landing page for Admin view&lt;/p&gt;
+
+&lt;h1 id=&quot;building-api-logic&quot;&gt;Building API Logic&lt;/h1&gt;
+
+&lt;p&gt;GreatAPI is built on top of FastAPI, which allows you to easily implement your API logic for building a powerful API[such as blogs in this case]. Here’s a quick guide on how to do that:&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-add-models&quot;&gt;Step 1: Add Models&lt;/h2&gt;
+
+&lt;p&gt;Define your data models in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myapp/models.py&lt;/code&gt; file using SQLAlchemy syntax. For example:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from greatapi.db.admin.user import User
+from greatapi.db.database import Base
+
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+
+class Blog(Base):
+    __tablename__ = &quot;blogs&quot;
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    title = Column(String)
+    body = Column(String)
+    user_id = Column(Integer, ForeignKey(User.id))
+
+    user = relationship(User)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-2-add-schemas&quot;&gt;Step 2: Add Schemas&lt;/h2&gt;
+
+&lt;p&gt;Create &lt;em&gt;Pydantic&lt;/em&gt; schemas in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myapp/schemas.py&lt;/code&gt; to define the data validation and serialization for your API. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from pydantic import BaseModel
+
+class BlogBase(BaseModel):
+    title: str
+    body: str
+    user_id: int  # Add the user_id field to represent the foreign key relationship
+
+class BlogCreate(BlogBase):
+    pass
+
+class BlogSchema(BlogBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-3-add-crud-operations&quot;&gt;Step 3: Add CRUD Operations&lt;/h2&gt;
+
+&lt;p&gt;Define the &lt;em&gt;CRUD &lt;/em&gt;(Create, Read, Update, Delete) operations in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myapp/repository.py&lt;/code&gt; using SQLAlchemy and your defined models and schemas. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from sqlalchemy.orm import Session
+from myapp.models import Blog
+from myapp.schemas import BlogCreate
+
+def create_blog(db: Session, blog: BlogCreate):
+    new_blog = Blog(**blog.dict())
+    db.add(new_blog)
+    db.commit()
+    db.refresh(new_blog)
+    return new_blog
+
+def read_blog(db: Session, blog_id: int):
+    return db.query(Blog).filter(Blog.id == blog_id).first()
+
+def update_blog(db: Session, blog_id: int, blog: BlogCreate):
+    existing_blog = db.query(Blog).filter(Blog.id == blog_id).first()
+    if existing_blog:
+        for key, value in blog.dict().items():
+            setattr(existing_blog, key, value)
+        db.commit()
+        db.refresh(existing_blog)
+    return existing_blog
+
+def delete_blog(db: Session, blog_id: int):
+    blog = db.query(Blog).filter(Blog.id == blog_id).first()
+    if blog:
+        db.delete(blog)
+        db.commit()
+    return blog
+
+def list_blogs(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(Blog).offset(skip).limit(limit).all()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-4-create-api-endpoints&quot;&gt;Step 4: Create API Endpoints&lt;/h2&gt;
+
+&lt;p&gt;Finally, define the API endpoints in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myapp/router.py&lt;/code&gt; using FastAPI’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;APIRouter&lt;/code&gt;. Link your &lt;em&gt;CRUD&lt;/em&gt; operations to these endpoints. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from greatapi.db.database import get_db
+from myapp.schemas import BlogSchema, BlogCreate
+from myapp.repository import (
+    create_blog,
+    read_blog,
+    update_blog,
+    delete_blog,
+    list_blogs
+)
+
+from typing import List
+
+myapp_router = APIRouter(tags=[&quot;MyApp&quot;])
+
+@myapp_router.post(&quot;/blogs/&quot;, response_model=BlogSchema)
+def create_blog_route(blog: BlogCreate, db: Session = Depends(get_db)):
+    return create_blog(db, blog)
+
+@myapp_router.get(&quot;/blogs/{blog_id}&quot;, response_model=BlogSchema)
+def read_blog_route(blog_id: int, db: Session = Depends(get_db)):
+    return read_blog(db, blog_id)
+
+@myapp_router.put(&quot;/blogs/{blog_id}&quot;, response_model=BlogSchema)
+def update_blog_route(blog_id: int, blog: BlogCreate, db: Session = Depends(get_db)):
+    return update_blog(db, blog_id, blog)
+
+@myapp_router.delete(&quot;/blogs/{blog_id}&quot;, response_model=BlogSchema)
+def delete_blog_route(blog_id: int, db: Session = Depends(get_db)):
+    return delete_blog(db, blog_id)
+
+@myapp_router.get(&quot;/blogs/&quot;, response_model=List[BlogSchema])
+def list_blogs_route(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    return list_blogs(db, skip, limit)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-5-register-models-and-endpoints&quot;&gt;Step 5: Register Models and Endpoints&lt;/h2&gt;
+
+&lt;p&gt;Import your models and API endpoints into the main application file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt; and register them with GreatAPI:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ... (existing code)
+from myapp.router import myapp_router
+from myapp.models import Base as MyAppBase
+
+# ... (existing code)
+admin.AdminBase.metadata.create_all(engine)
+admin.UserBase.metadata.create_all(engine)
+MyAppBase.metadata.create_all(engine) # new code added
+
+# ... (existing code)
+app.include_router(admin_router)
+app.include_router(auth_router)
+app.include_router(user_router)
+app.include_router(test_auth_router)
+app.include_router(history_router)
+app.include_router(myapp_router) # new code added
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, register your models in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;settings.py&lt;/code&gt; by appending the models into the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REGISTERED_ADMINS&lt;/code&gt; such as:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from __future__ import annotations
+
+from greatapi.db.admin.user import User
+from greatapi.db.admin.default import History
+from myapp.models import Blog # new code added
+
+REGISTERED_ADMINS = [
+    User,
+    History,
+    Blog, # new code added
+]
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;With these steps, you have successfully set up your project, created an app, defined models, and built API endpoints using GreatAPI.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;In this tutorial, you learned how to get started with GreatAPI, a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs. You now know how to create projects, manage apps, run the server, and build API logic using GreatAPI. The combination of GreatAPI’s features and the elegance of FastAPI allows you to develop robust and efficient applications with ease. Now, it’s your turn to explore further and build amazing web applications with GreatAPI.&lt;/p&gt;
+
+&lt;h1 id=&quot;happy-programming&quot;&gt;Happy programming!&lt;/h1&gt;
+
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Sahaj, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Sahaj Raj Malla</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Dashboard" /><category term="Python" /><summary type="html"></summary></entry><entry><title type="html">Analysis of the growth and distribution of registered companies in Nepal</title><link href="/2023/06/24/analysis-of-growth-and-distribution-of-registered-companies-in-nepal.html" rel="alternate" type="text/html" title="Analysis of the growth and distribution of registered companies in Nepal" /><published>2023-06-24T00:00:00+00:00</published><updated>2023-06-24T00:00:00+00:00</updated><id>/2023/06/24/analysis-of-growth-and-distribution-of-registered-companies-in-nepal</id><content type="html" xml:base="/2023/06/24/analysis-of-growth-and-distribution-of-registered-companies-in-nepal.html">&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*7Ww5ZPx2WaIpCDNw6Mw85g.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Image source: &lt;a href=&quot;https://myrepublica.nagariknetwork.com/uploads/media/brt-jute-mill-1.jpg&quot;&gt;myrepublica&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nepal has been enabling the development of new firms for around 86 years, beginning with the first registered company, “Biratnagar Jute Mill,” in 1993 BS and continuing to new developing startups. As companies play an considerable part in the economic prosperity, their growth is always beneficial to the nation’s economy.&lt;/p&gt;
+
+&lt;p&gt;The advancement of technology has undoubtedly aided the expansion of various businesses in recent years more than ever before. Startups are expanding across the country, from enterprises producing food and natural goods to computer startups developing software and IT solutions.&lt;/p&gt;
+
+&lt;p&gt;Bearing this in mind, I have gathered a collection of data comprising lists of various sorts of registered corporations/companies in various districts of Nepal from 2002 BS to 2072 BS.&lt;/p&gt;
+
+&lt;p&gt;So, let’s conduct a comprehensive data analysis and evaluate the outcomes.&lt;/p&gt;
+
+&lt;h1 id=&quot;first-importing-necessary-python-libraries&quot;&gt;First, importing necessary python libraries:&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In this data analysis project, we will use pandas for data analysis, cleaning, and exploration, and matplotlib and seaborn for data visualization.&lt;/p&gt;
+
+&lt;h1 id=&quot;next-importing-necessary-csv-files&quot;&gt;Next, importing necessary csv files.&lt;/h1&gt;
+
+&lt;p&gt;We have a total of 11 csv files, each consisting needed fiscal year’s data.&lt;/p&gt;
+
+&lt;p&gt;Source: &lt;a href=&quot;https://opendatanepal.com/&quot;&gt;https://opendatanepal.com/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df1 = pd.read_csv('./csv_files/FY_2002-2062.csv')
+dfs = []
+for i in range(63, 73):
+    filename = f'./csv_files/FY_20{i}.csv'
+    dfs.append(pd.read_csv(filename))
+
+df2 = pd.concat(dfs)
+df = pd.concat([df1, df2])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now that the files have been concatenated into a single data frame, let’s observe the structure of data.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*ovSJcmhDrhHZ6weUX_a2Jg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see, the data is organized into five distinct columns.&lt;/p&gt;
+
+&lt;h1 id=&quot;visualizing-data&quot;&gt;Visualizing Data&lt;/h1&gt;
+
+&lt;h2 id=&quot;bar-plots&quot;&gt;Bar Plots:&lt;/h2&gt;
+
+&lt;p&gt;First, determine the number of registered firms per company type. Then we’ll create a bar graph that shows the number of registered firms by company type.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dfs = [df]
+df_bar = df.copy()
+for df_bar in dfs:
+    df_bar.loc[df_bar['COMPANY_TYPE'].str.startswith('Pri'), 'COMPANY_TYPE'] = 'Private'
+company_counts = df_bar['COMPANY_TYPE'].value_counts(normalize=True)
+plt.figure(figsize=(10, 5))
+ax = sns.countplot(x='COMPANY_TYPE', data=df_bar, palette=['#FF4136', '#0074D9', '#2ECC40', '#B10DC9', '#FF851B', '#FFDC00', '#7FDBFF'])
+plt.title('Distribution of Companies by Type')
+plt.xlabel('Company Type')
+plt.ylabel('Logarithmic scale')
+for p in ax.containers:
+    ax.bar_label(p, label_type='edge', fontsize=10, padding=0)
+plt.yscale('log')
+plt.yticks([100, 1000, 10000, 100000], [100, '1k', '10k', '100k'])
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*SoHCSPHrAkbDKK_G0FUfkw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The plot shows that the number of registered private enterprises is exponentially more than the other groups. This illustrates that over the past 86 years, private enterprises have been serving towards the country’s economy.&lt;/p&gt;
+
+&lt;p&gt;Let us make another bar plot to depict the distribution of enterprises by district. For this, we shall split the districts into provinces and regions for this purpose.&lt;/p&gt;
+
+&lt;p&gt;We will require a csv file with the names of districts, as well as their corresponding regions and provinces.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_district = pd.read_csv('./csv_files/disct.csv')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We will now merge the df_district and df data frames. The integrated data frame will then be saved as a CSV file.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_merged = pd.merge(df, df_district, on='DISTRICT')
+df_merged = df_merged.drop('id', axis=1)
+df_merged = df_merged.drop('_id', axis=1)
+df_merged.insert(0, 'id', range(1, len(df_merged) + 1))
+df_merged.to_csv('./csv_files/merged.csv', index=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let us look at the structure of the new data frame now.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_merged.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*4HspmOI9L_8OUQTJ5Q0Fkw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The data has now been arranged into seven columns, as we can see.&lt;/p&gt;
+
+&lt;p&gt;Visualization below shall show the distribution of various sorts of firms by province.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dfs = [df_merged]
+for df_merged in dfs:
+    df_merged.loc[df_merged['COMPANY_TYPE'].str.startswith('Pri'), 'COMPANY_TYPE'] = 'Private'
+
+plt.figure(figsize=(12,5))
+ax = sns.countplot(data=df_merged, x='province', hue='COMPANY_TYPE', palette=['#FF4136', '#0074D9', '#2ECC40', '#B10DC9', '#FF851B', '#FFDC00', '#7FDBFF'], saturation=0.8)
+plt.title('Distribution of Companies by Province and Company Type')
+plt.xlabel('Province')
+plt.ylabel('Logarithmic Scale')
+plt.yscale('log')
+for p in ax.containers:
+    ax.bar_label(p, label_type='edge', fontsize=10, padding=0)
+ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=4)
+plt.yticks([1, 10, 100, 1000, 10000, 100000], [1, 10, 100, '1k', '10k', '100k'])
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*JmslQbJFWC88d4GoTKepiQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;According to the chart, Province 3 (Bagmati Province) has the most registered firms of all categories, while Province 6 (Karnal Province) has the fewest registered companies of all types.&lt;/p&gt;
+
+&lt;p&gt;This leads to the conclusion that Bagmati Province is the most developed, whereas Karnali Province is the least developed.&lt;/p&gt;
+
+&lt;p&gt;Similarly, no foreign enterprises are registered in Province 1, Karnali Province, or Lumbini Province which indicates the lack of foreign reach and influence in these areas.&lt;/p&gt;
+
+&lt;p&gt;Once again, a graphic representation below shall show the prevalence of various sorts of companies by area.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure(figsize=(10,5))
+ax = sns.countplot(data=df_merged, x='region', hue='COMPANY_TYPE', palette=['#FF4136', '#0074D9', '#2ECC40', '#B10DC9', '#FF851B', '#FFDC00', '#7FDBFF'], saturation=0.8)
+plt.title('Distribution of Companies by Region and Company type')
+plt.xlabel('Region')
+plt.ylabel('Logarithmic Scale')
+plt.yscale('log')
+for p in ax.containers:
+    ax.bar_label(p, label_type='edge', fontsize=10, padding=0)
+ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=4)
+plt.yticks([10, 100, 1000, 10000, 100000], [10, 100, '1k', '10k', '100k'])
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*xBeJuuM7BiTYBeceC-EvcA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The figure shows that the hilly part of Nepal has the most number of registered firms, while the Himalayan region has the fewest.&lt;/p&gt;
+
+&lt;p&gt;This supports the notion that the hilly region is the most developed, whereas the Himalayan region is the least developed.This is probably due to the fact that Kathmandu lies in the hilly region which has the most registered number of firms.&lt;/p&gt;
+
+&lt;p&gt;Similarly, there are no registered foreign enterprises in the Himalayan area, which again indicates the lack of foreign influence and reach in this area.&lt;/p&gt;
+
+&lt;p&gt;Now, consider the distribution of registered firms by district in relation to their region.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;regions = df_merged['region'].unique()
+fig, axs = plt.subplots(1, len(regions), figsize=(6*len(regions), 10))
+
+for i, region in enumerate(regions):
+    region_df = df_merged[df_merged['region']==region]
+    ax = axs[i]
+    sns.countplot(data=region_df, y='DISTRICT', ax=ax,
+                  palette = ['#FF4136', '#0074D9', '#2ECC40', '#B10DC9', '#FF851B', '#FFDC00', '#7FDBFF'], saturation=0.8)
+    ax.set_title(f'Distribution of Companies in {region} region by district')
+    ax.set_xlabel('Logarithmic Scale')
+    ax.set_ylabel('')
+    ax.set_xscale('log')
+    for p in ax.containers:
+        ax.bar_label(p, label_type='center', fontsize=10, padding=0, color='black')
+    plt.subplots_adjust(wspace=0.4)
+
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2000/1*0Aqd_ipSuG-hKElwzF5O3Q.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;According to the plots above, the hilly region has more districts, which benefits the overall number of registered enterprises in that region.&lt;/p&gt;
+
+&lt;p&gt;Manang, Jajarkot and Bardia are the districts with lowest number of companies in himalayan, hilly and tyerai region respectively out of which Manang has the lowest and Bardia has the highest number of companies among the three. This indicates that these three districts are some of the least developed districts of Nepal with Manang coming at the last position.&lt;/p&gt;
+
+&lt;p&gt;Again, let’s visualize the distribution of registered companies by districts with respect to their province.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provinces = df_merged['province'].unique()
+fig, axs = plt.subplots(len(provinces)//2 + len(provinces)%2, 2, figsize=(16, 8*len(provinces)//2 + 5*len(provinces)%2))
+
+for i, province in enumerate(provinces):
+    row = i // 2
+    col = i % 2
+    province_df = df_merged[df_merged['province']==province]
+    ax = axs[row, col]
+    sns.countplot(data=province_df, x='DISTRICT', hue='COMPANY_TYPE', ax=ax,
+                  palette=['#FF4136', '#0074D9', '#2ECC40', '#B10DC9', '#FF851B', '#FFDC00'], saturation=0.8)
+    ax.set_title(f'Distribution of Companies in {province} by District and Company Type')
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_yscale('log')
+    ax.set_yticks([1, 10, 100, 1000, 10000, 100000], [1, 10, 100, '1k', '10k', '100k'])
+    for p in ax.containers:
+        ax.bar_label(p, label_type='edge', fontsize=10, padding=0, rotation=15)
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), ncol=3)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+
+if len(provinces) % 2 != 0:
+    fig.delaxes(axs[-1,-1])
+
+plt.tight_layout()
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:2000/1*FtsPrwl2uEFeZKTW5QUUwQ.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The above array of multivariate bar plots depicts the distribution of various types of registered firms in each district and province of Nepal.&lt;/p&gt;
+
+&lt;p&gt;Based on the plots, it is obvious that Kathmandu has the most registered firms. Because of the constantly growing number of registered firms in Kathmandu, Province 3 (Bagmati Province) is the province with the most registered companies and hence the most developed province in Nepal.&lt;/p&gt;
+
+&lt;p&gt;Similarly, Province 6 has the least number of companies making it the least devleoped province of Nepal.&lt;/p&gt;
+
+&lt;p&gt;Now, let us make a distribution table that lists the top ten and bottom ten districts with the most and least firms, as well as their categories, regions, and provinces.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;table = pd.crosstab(index=[df_merged['DISTRICT'], df_merged['province'], df_merged['region']], columns=df_merged['COMPANY_TYPE'], margins=True)
+table = table.sort_values(by=['All'], ascending=False)
+table = table.iloc[:-1, :-1]
+table1 = table.loc[table.sum(axis=1).sort_values(ascending=False)[:10].index]
+
+table1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*vKyZ9h6no8gujNf1nfZm0g.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;table = pd.crosstab(index=[df_merged['DISTRICT'], df_merged['province'], df_merged['region']], columns=df_merged['COMPANY_TYPE'], margins=True)
+table = table.sort_values(by=['All'], ascending=True)
+table = table.iloc[:-1, :-1]
+table2 = table.loc[table.sum(axis=1).sort_values(ascending=True)[:10].index]
+
+table2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*hOtTZBARYpaMDz3JJflsRw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see from the distribution tables above that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The bulk of the districts with the most firms are in mountainous areas and province 3 (Bagmati Province).&lt;/li&gt;
+  &lt;li&gt;The Himalayan area and province 6 (Karnali Province) have the bulk of the districts with the fewest firms.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This leads us to the conclusion that the hilly area and Bagmati province are Nepal’s most developed regions and provinces, respectively. Similarly, the Himalayan area and Karnali province are Nepal’s least developed regions and provinces, respectively.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, because Kathmandu and Manang have the most and least registered enterprises, respectively, we infer that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Kathmandu is Nepal’s most developed district.&lt;/li&gt;
+  &lt;li&gt;Manang is the most underdeveloped.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_merged['REGISTRATION_DATE'] = pd.to_datetime(df_merged['REGISTRATION_DATE'], format='%Y')
+first_companies = df_merged.groupby('COMPANY_TYPE').first()
+first_companies = first_companies[['ENGLISH_NAME', 'DISTRICT', 'province', 'region', 'REGISTRATION_DATE']]
+first_companies = first_companies.rename(columns={'REGISTRATION_DATE': 'FIRST_REGISTRATION_YEAR'})
+first_companies['FIRST_REGISTRATION_YEAR'] = first_companies['FIRST_REGISTRATION_YEAR'].dt.year
+first_companies = first_companies.sort_values('FIRST_REGISTRATION_YEAR')
+
+first_companies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*HrFAtiGZLN2BSQaaaAMkLA.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The distribution table above indicates when the first of each form of company was registered after 2002 BS. The chart gives a unique glimpse into how, in the early years, Sankhuwasabha, a district in Nepal’s Himalayan region, was a popular location for business registration.&lt;/p&gt;
+
+&lt;h2 id=&quot;line-plot&quot;&gt;Line Plot:&lt;/h2&gt;
+
+&lt;p&gt;Let’s make a line graph that will illustrate the rise in the number of registered businesses from 2002 BS to 2072 BS.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.figure(figsize=(10, 5))
+sns.lineplot(x='REGISTRATION_DATE', y='id', data=df_merged.groupby(['REGISTRATION_DATE'])['id'].count().reset_index())
+plt.title(&quot;Growth of registered companies (2002-2072)&quot;)
+plt.xlabel(&quot;Fiscal year&quot;)
+plt.ylabel(&quot;Number of companies&quot;)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*wiFPvImmm4eLbDec_6FXuw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The number of registered firms has expanded rapidly during a 70-year period (2002–2072 BS), with intermittent dips between 2060 and 2070. The growth took off exponentially from around 2055 B.S.&lt;/p&gt;
+
+&lt;p&gt;Let us now illustrate the growth of various sorts of enterprises throughout time.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_merged['REGISTRATION_DATE'] = pd.to_datetime(df_merged['REGISTRATION_DATE'], format='%Y')
+df_grouped = df_merged.groupby(['REGISTRATION_DATE', 'COMPANY_TYPE']).size().reset_index(name='count')
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='REGISTRATION_DATE', y='count', hue='COMPANY_TYPE', data=df_grouped)
+plt.title(&quot;Growth of different types of companies (2002-2072)&quot;)
+plt.xlabel(&quot;Fiscal year&quot;)
+plt.xticks(pd.date_range(start='2002', end='2082', freq='10Y').strftime('%Y'))
+plt.ylabel(&quot;Number of companies&quot;)
+plt.yscale('log')
+plt.yticks([1, 10, 100, 1000, 10000, 100000], [1, 10, 100, '1k', '10k', '100k'])
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/1*__dQBFj769UADpMn-ioJ2w.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From 2002 to 2072 BS, the line plot above depicts the growth tendency of four main types of enterprises in Nepal. While private enterprises have had exponential growth since 2003 BS, other sorts of firms have only witnessed development in recent years.&lt;/p&gt;
+
+&lt;h2 id=&quot;extracting-conclusions&quot;&gt;Extracting Conclusions&lt;/h2&gt;
+
+&lt;p&gt;We used bar and line graphs to show the data and created a few distributive tables.&lt;/p&gt;
+
+&lt;p&gt;Each of these visualizations highlighted the following trends and conclusions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The great majority of registered corporations are owned by individuals.&lt;/li&gt;
+  &lt;li&gt;Kathmandu has the most registered businesses.&lt;/li&gt;
+  &lt;li&gt;In terms of the number of registered enterprises, Bagmati province is the most developed, while Karnali province is the least developed.&lt;/li&gt;
+  &lt;li&gt;In terms of the number of firms, the hilly region is the most developed, while the Himalayan region is the least developed.&lt;/li&gt;
+  &lt;li&gt;Manang is the least developed district, with only 17 registered businesses, while Kathmandu is the most developed, with 84994 registered businesses as of 2072 BS.&lt;/li&gt;
+  &lt;li&gt;During its early years, Sankhuwasabha was a prominent location for company formation in a Himalayan area.&lt;/li&gt;
+  &lt;li&gt;The number of enterprises has increased dramatically from 2002 to 2072 BS and is expected to continue to grow in the coming years.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, computing the relationship between the rise in the number of businesses and the years they were registered.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df_merged['year'] = pd.DatetimeIndex(df_merged['REGISTRATION_DATE']).year
+total_companies_by_year = df_merged.groupby(['year'])['id'].count().reset_index()
+corr_coef = total_companies_by_year['year'].corr(total_companies_by_year['id'])
+
+print(&quot;Correlation coefficient: &quot;, round(corr_coef, ndigits=3))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We got a correlation coefficient of 0.773.&lt;/p&gt;
+
+&lt;p&gt;Since, the coefficient calculated is more than 0.7, there is a strong positive correlation between the number of firms and their respective registration years. This indicates that the number of companies will continue to grow as the year progresses.&lt;/p&gt;
+
+&lt;p&gt;Note: Refer to my github repository by clicking this &lt;a href=&quot;https://github.com/PIYUSH-R04/Data_analysis_on_the_growth_and_distribution_of_registered_companies_in_Nepal&quot;&gt;&lt;em&gt;link&lt;/em&gt;&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Piyush, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Piyush Rimal</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Company Registration" /><category term="Python" /><summary type="html"></summary></entry><entry><title type="html">Harnessing Data Science For Agricultural Crops Prediction</title><link href="/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction.html" rel="alternate" type="text/html" title="Harnessing Data Science For Agricultural Crops Prediction" /><published>2023-05-24T00:00:00+00:00</published><updated>2023-05-24T00:00:00+00:00</updated><id>/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction</id><content type="html" xml:base="/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction.html">&lt;p&gt;Using AI to determine optimal crop selection can have a significant impact on ending world hunger, particularly in poor developing countries like Nepal. Even though Nepal is an agricultural country, we import a huge amount of food materials every year which make the trade deficit of Nepal even worse. By leveraging AI technologies such as machine learning and data analysis, we can analyze various factors like climate, soil quality, market demand, and available resources. This data-driven approach helps farmers make informed decisions about which crops to plant, increasing agricultural productivity and improving food security. AI algorithms can provide personalized recommendations based on local conditions, enabling farmers to optimize their yields, reduce crop failures, and maximize profits. Ultimately, AI-driven crop selection can contribute to sustainable farming practices, alleviate poverty, and combat hunger in Nepal and similar regions worldwide.&lt;/p&gt;
+
+&lt;p&gt;I personally believe that even the uneducated people in the remote parts of the world should get equal opportunity to make their life better leveraging the power of AI and ML. This projects aims to help such people by recommending right kind of crops to maximize their production and profit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*nWrFYdhySS2t0pb2&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this blog post, we will explore a data science project focused on agricultural crop prediction, highlighting its significance, methodology, and potential benefits.&lt;/p&gt;
+
+&lt;h2 id=&quot;dataset&quot;&gt;Dataset&lt;/h2&gt;
+
+&lt;p&gt;The dataset that we’ll be using is: &lt;a href=&quot;https://www.kaggle.com/datasets/manikantasanjayv/crop-recommender-dataset-with-soil-nutrients&quot;&gt;httpswww.kaggle.com/datasets/manikantasanjayv/crop-recommender-dataset-with-soil-nutrients&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is what the dataset looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*xdq-aUBsuNHX04Ti&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;importing-libraries-and-loading-data&quot;&gt;Importing Libraries and Loading Data&lt;/h2&gt;
+
+&lt;p&gt;To begin, we import necessary libraries such as NumPy, Pandas, Seaborn, Matplotlib, and IPython Widgets. These libraries will help us manipulate and visualize the data effectively. Additionally, we import the dataset containing soil and climate information using the Pandas library.&lt;/p&gt;
+
+&lt;p&gt;import numpy as np&lt;/p&gt;
+
+&lt;p&gt;import pandas as pd&lt;/p&gt;
+
+&lt;p&gt;import seaborn as sns&lt;/p&gt;
+
+&lt;p&gt;import matplotlib.pyplot as plt&lt;/p&gt;
+
+&lt;p&gt;from ipywidgets import interact&lt;/p&gt;
+
+&lt;p&gt;import warnings&lt;/p&gt;
+
+&lt;p&gt;warnings.filterwarnings(‘ignore’)&lt;/p&gt;
+
+&lt;p&gt;data=pd.read_csv(“Crop_recommendation.csv”)&lt;/p&gt;
+
+&lt;p&gt;Next, we utilize the Pandas DataFrame to calculate and display the average ratios of nitrogen (N), phosphorous (P), and potassium (K) in the soil. These nutrients are essential for plant growth and provide valuable insights into soil fertility. The code snippet then proceeds to calculate and display the average temperature, relative humidity, pH value of the soil, and rainfall. These climatic factors play a crucial role in determining suitable crop choices.&lt;/p&gt;
+
+&lt;h2 id=&quot;exploratory-data-analysis&quot;&gt;Exploratory Data Analysis&lt;/h2&gt;
+
+&lt;p&gt;Now ,we utilize the popular data visualization libraries, Matplotlib and Seaborn, to create a grid of subplots. Each subplot represents the distribution of a specific agricultural condition for different crops.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*GNCuGVwoXZJ0oXoS&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first subplot focuses on nitrogen levels (N) in the soil. By utilizing a histogram plot, we can observe the frequency and spread of nitrogen levels across different crops. Similarly, the second subplot showcases the distribution of phosphorous (P) levels, while the third subplot displays the distribution of potassium (K) levels. Moving on to the fourth subplot, it represents the distribution of temperature. Temperature plays a crucial role in crop growth and development, and understanding its distribution helps identify suitable temperature ranges for specific crops. The fifth subplot focuses on rainfall, providing insights into the amount and frequency of precipitation. Next, the sixth subplot examines the distribution of humidity, which is another critical factor affecting crop health and productivity. The seventh subplot visualizes the distribution of soil pH levels. pH level directly influences nutrient availability and crop performance, making it vital to assess its distribution across different crops.&lt;/p&gt;
+
+&lt;h2 id=&quot;evaluation-metrics&quot;&gt;Evaluation Metrics&lt;/h2&gt;
+
+&lt;p&gt;Since this is a supervised classification learning, following metrics have been used:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Accuracy&lt;/li&gt;
+  &lt;li&gt;Precision&lt;/li&gt;
+  &lt;li&gt;Recall&lt;/li&gt;
+  &lt;li&gt;F1 Score&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;determining-optimum-clusters&quot;&gt;Determining Optimum Clusters&lt;/h2&gt;
+
+&lt;p&gt;K-means clustering is a widely used algorithm that partitions data points into clusters based on their similarity. The code snippet begins by importing the necessary libraries, including scikit-learn’s KMeans module. Then, it prepares the data for clustering by removing the labels column and selecting all the values from the dataset. The shape of the data is then printed to gain an understanding of its dimensions.&lt;/p&gt;
+
+&lt;p&gt;from sklearn.cluster import KMeans&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;#removing the labels column&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;x = data.drop([‘label’], axis=1)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;#selecting all the values of data&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;x = x.values&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;#checking the shape&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;print(x.shape)&lt;/p&gt;
+
+&lt;p&gt;(2200, 7)&lt;/p&gt;
+
+&lt;p&gt;Moving on to the main part of the code, we define an empty list called wcss (Within-Cluster Sum of Squares). This list will store the calculated WCSS values for different numbers of clusters.A loop is then executed from 1 to 10, where each iteration creates a KMeans object with a specific number of clusters. To gain insights into the optimal number of clusters, the Matplotlib library is used to create a line plot.&lt;/p&gt;
+
+&lt;p&gt;plt.rcParams[‘figure.figsize’] = (10,4)&lt;/p&gt;
+
+&lt;p&gt;wcss = []&lt;/p&gt;
+
+&lt;p&gt;for i in range(1,11):&lt;/p&gt;
+
+&lt;p&gt;km = KMeans(n_clusters = i, init = ’k-means++’, max_iter = 2000, n_init = 10, random_state = 0)&lt;/p&gt;
+
+&lt;p&gt;km.fit(x)&lt;/p&gt;
+
+&lt;p&gt;wcss.append(km.inertia_)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;#Plotting the results&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;plt.plot(range(1,11), wcss)&lt;/p&gt;
+
+&lt;p&gt;plt.title(‘Elbow Method’, fontsize = 20)&lt;/p&gt;
+
+&lt;p&gt;plt.xlabel(‘No of Clusters’)&lt;/p&gt;
+
+&lt;p&gt;plt.ylabel(‘wcss’)&lt;/p&gt;
+
+&lt;p&gt;plt.show()&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*GeYDMJpC804vor2u&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The resulting plot is known as the Elbow Method plot. It helps us identify the point of inflection or the “elbow” in the curve.&lt;/p&gt;
+
+&lt;h2 id=&quot;splitting-the-dataset-and-analyzing-correlation&quot;&gt;Splitting the Dataset and analyzing correlation&lt;/h2&gt;
+
+&lt;p&gt;Next, we split the dataset into input features and target variables for predictive modeling. Additionally, we will analyze the correlations between different variables using a heatmap visualization.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*39K-bUsRVEi0zq5F&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;data-preprocessing-and-training&quot;&gt;Data Preprocessing and Training&lt;/h2&gt;
+
+&lt;p&gt;We standardize and tidy up our data to improve model performance.Here, we standardize our data using StandardScaler().The ColumnTransformer is used to create a transformer object that applies the StandardScaler to the numeric columns in the dataset, ensuring that all features are on the same scale.Also, the dataset is split into training and testing sets.&lt;/p&gt;
+
+&lt;p&gt;from sklearn.preprocessing import StandardScaler&lt;/p&gt;
+
+&lt;p&gt;from sklearn.compose import ColumnTransformer&lt;/p&gt;
+
+&lt;p&gt;transformer = ColumnTransformer([(‘num’, StandardScaler(), x.columns)])&lt;/p&gt;
+
+&lt;p&gt;Moving on to the model training phase, the code creates an SVM pipeline using the Pipeline module from sklearn.pipeline. The pipeline includes the preprocessing transformer and the SVM model from sklearn.svm. This ensures that the preprocessing steps are seamlessly applied to the data before training the SVM model.&lt;/p&gt;
+
+&lt;p&gt;from sklearn.pipeline import Pipeline&lt;/p&gt;
+
+&lt;p&gt;from sklearn.svm import SVC&lt;/p&gt;
+
+&lt;p&gt;svm_pipe = Pipeline(steps=[(‘preprocessing’, transformer), (‘model’, SVC())])&lt;/p&gt;
+
+&lt;p&gt;svm_pipe.fit(x_train, y_train)&lt;/p&gt;
+
+&lt;p&gt;y_pred = svm_pipe.predict(x_test)&lt;/p&gt;
+
+&lt;p&gt;evaluate_model(“SVM”, y_pred, y_test)&lt;/p&gt;
+
+&lt;p&gt;show_confusion_matrix(y_pred, y_test)&lt;/p&gt;
+
+&lt;p&gt;Additionally, the show_confusion_matrix() function visualizes the confusion matrix using seaborn’s heatmap. The confusion matrix provides insights into the performance of the model by showing the number of true positives, true negatives, false positives, and false negatives.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*1bdFMRW85QSQjcdX&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SVM&lt;/p&gt;
+
+&lt;p&gt;accuracy: 0.9772727272727273&lt;/p&gt;
+
+&lt;p&gt;f1_score 0.9773200952744351&lt;/p&gt;
+
+&lt;p&gt;precision 0.9799524821583645&lt;/p&gt;
+
+&lt;p&gt;recall 0.9772727272727273&lt;/p&gt;
+
+&lt;p&gt;Decision Tree Classifier&lt;/p&gt;
+
+&lt;p&gt;from sklearn.tree import DecisionTreeClassifier&lt;/p&gt;
+
+&lt;p&gt;tree_pipe = Pipeline(steps=[(“preprocessing”, transformer), (“model”, DecisionTreeClassifier())])&lt;/p&gt;
+
+&lt;p&gt;tree_pipe.fit(x_train, y_train)&lt;/p&gt;
+
+&lt;p&gt;y_pred = tree_pipe.predict(x_test)&lt;/p&gt;
+
+&lt;p&gt;evaluate_model(“DecisionTreeClassifier” ,y_pred, y_test)&lt;/p&gt;
+
+&lt;p&gt;show_confusion_matrix(y_pred, y_test)&lt;/p&gt;
+
+&lt;p&gt;DecisionTreeClassifier&lt;/p&gt;
+
+&lt;p&gt;accuracy: 0.9886363636363636&lt;/p&gt;
+
+&lt;p&gt;f1_score 0.9886072979597981&lt;/p&gt;
+
+&lt;p&gt;precision 0.9890874125874125&lt;/p&gt;
+
+&lt;p&gt;recall 0.9886363636363636&lt;/p&gt;
+
+&lt;h2 id=&quot;model-selection&quot;&gt;Model Selection&lt;/h2&gt;
+
+&lt;p&gt;I played around with different algorithms to see which model fits the data best and generalizes well to test data. Logistic regressions, SVM and decision tree worked well but I chose decision tree classifier model as final model. 98% accuracy in test data proves that the decision tree is generalizing well in real-world examples.&lt;/p&gt;
+
+&lt;h2 id=&quot;making-predictions-and-displaying-the-suggested-crop&quot;&gt;Making predictions and Displaying the suggested Crop&lt;/h2&gt;
+
+&lt;p&gt;Finally, we create a dictionary and input values which represent the climatic conditions and the soil nutrients for which we seek crop recommendations. We utilize our trained machine learning model to predict the suggested crop based on the provided climatic data. Since we are using a pipeline, we do not need to perform data preprocessing manually while predicting. The pipeline does the preprocessing and gets the prediction using the learned model. Furthermore, I have saved the weights and biases in a pickle file so that we do not need to train the model every time we need to predict. Once the prediction is made, it prints the suggested crop based on the given climatic conditions.&lt;/p&gt;
+
+&lt;p&gt;This is how a user can give input values to get the recommendation:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/v2/resize:fit:1400/0*Iiwk4oXFPMhVpS3O&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;scope-and-benefits&quot;&gt;Scope and benefits&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Enhanced yield&lt;/li&gt;
+  &lt;li&gt;Risk mitigation&lt;/li&gt;
+  &lt;li&gt;Sustainable farming practices&lt;/li&gt;
+  &lt;li&gt;Improved decision making&lt;/li&gt;
+  &lt;li&gt;The model can continue learning and be better&lt;/li&gt;
+  &lt;li&gt;Knowledge transfer&lt;/li&gt;
+  &lt;li&gt;Improved financial condition&lt;/li&gt;
+  &lt;li&gt;Betterment of the lifestyle of poor communities.&lt;/li&gt;
+  &lt;li&gt;This is a very lightweight model and is freely available for anyone to use.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;While crop recommendation systems offer tremendous potential, certain challenges must be addressed. These include the need for reliable data sources, accessibility for farmers in remote areas, and user-friendly interfaces. However, advancements in technology and increased connectivity hold promise for overcoming these obstacles and extending the reach of these systems to a wider user base.&lt;/p&gt;
+
+&lt;p&gt;Looking ahead, crop recommendation systems can be further enhanced by incorporating real-time data, remote sensing techniques, and artificial intelligence algorithms. This would provide farmers with even more precise recommendations, leading to better crop management, increased sustainability, and improved food security.&lt;/p&gt;
+
+&lt;p&gt;Github repo: &lt;a href=&quot;https://github.com/sadhana70/agricultural-crop-recommendation&quot;&gt;https://github.com/sadhana70/agricultural-crop-recommendation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Code for Nepal would like to thank &lt;a href=&quot;https://www.datacamp.com/donates&quot;&gt;DataCamp Donates&lt;/a&gt; for providing Sadhana, and several other fellows access to DataCamp, to learn and grow.&lt;/p&gt;</content><author><name>Sadhana Panthi</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Agriculture" /><category term="Python" /><summary type="html">Using AI to determine optimal crop selection can have a significant impact on ending world hunger, particularly in poor developing countries like Nepal. Even though Nepal is an agricultural country, we import a huge amount of food materials every year which make the trade deficit of Nepal even worse. By leveraging AI technologies such as machine learning and data analysis, we can analyze various factors like climate, soil quality, market demand, and available resources. This data-driven approach helps farmers make informed decisions about which crops to plant, increasing agricultural productivity and improving food security. AI algorithms can provide personalized recommendations based on local conditions, enabling farmers to optimize their yields, reduce crop failures, and maximize profits. Ultimately, AI-driven crop selection can contribute to sustainable farming practices, alleviate poverty, and combat hunger in Nepal and similar regions worldwide.</summary></entry></feed>

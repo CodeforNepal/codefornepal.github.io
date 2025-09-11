@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Use of Transfer Learning in Early Pneumonia Detection">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2023/02/16/use-of-transfer-learning-in-early-pneumonia-detection.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Use of Transfer Learning in Early Pneumonia Detection">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Use of Transfer Learning in Early Pneumonia Detection | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Use of Transfer Learning in Early Pneumonia Detection</h1>
+    <p>16 Feb 2023 - Arisha Prasai</p>
+    <p>
+      <p>Transfer learning is a technique in machine learning where a pre-trained model is used as a starting point for a new task, rather than training a new model from scratch. It is beneficial for disease detection because it can leverage the features learned from a large dataset to improve the accuracy of smaller datasets, leading to faster and more efficient diagnosis.<br />
+Now, let’s apply this concept to detecting diseases like pneumonia. Traditional machine learning models require large datasets to learn from, which can be a challenge in the medical field where data is often scarce or private. But with transfer learning, we can take advantage of pre-trained models that have already learned complex features from huge datasets of images. By fine-tuning these models on smaller datasets of medical images, we can achieve higher accuracy and faster diagnoses.</p>
+
+<p>Why Pneumonia Detection?</p>
+
+<ul>
+  <li>Pneumonia is more common among children below 5 years of age.</li>
+</ul>
+
+<p>-According to the UNICEF report 2019, it causes death of a child in every 39 seconds in Nepal.</p>
+
+<p>-Most deaths due to pneumonia occur among children of poorest households who are affected by the convergence of poor nutrition, poor hygiene and poor immunization rates.</p>
+
+<p>This project is a small example of how a pre-trained model can be used for early disease detection. We will be using VGG-19 which is a popular deep learning architecture that has been widely used in computer vision tasks and for medical imaging. Moreover, VGG19 has been pre-trained on a large dataset of natural images of size 224 * 224 , which allows it to recognize patterns and shapes that are common to many images. This pre-training enables transfer learning, which is especially beneficial for medical imaging tasks where data is limited. And by fine-tuning the pre-trained VGG19 model on a smaller dataset of X-ray images of pneumonic and non-pneumonic patients on Kaggle, it can quickly learn to recognize specific disease patterns and help clinicians diagnose diseases at an earlier stage.</p>
+
+<p>There are many other pre-trained models like VGG-19 including ResNet, DenseNet, Inception, U-Net or even CovidNet. We could have used any one but for the sake of this post, we will be using VGG-19.</p>
+
+<p>Now, lets dive into it.</p>
+
+<p>The dataset can be found here:<br />
+<a href="https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia">https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia</a></p>
+
+<p>IMPORTING LIBRARIES</p>
+
+<p>Importing the libraries and other dependencies is the first step before dealing with any data . So, we do that in the code below. Also, since it is time consuming to download the whole dataset from Kaggle, we use Kaggle API to avoid that.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*x-pJMrwYvAaYVuTfYF2tmA.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/max/700/1*wHWZm8KJHCkGvOM6sgtwpQ.png" alt="" /></p>
+
+<p>Now since every ML model takes numbers as input, we need to find a way to represent each image in form of numbers. So, we create a function to that takes image as input and converts into a matrix of (150,150).Although VGG-19 was trained on input images of (224,224), the reason for creating a (150,150) matrix is because sessions kept on crashing on Google Colab. So there is definite loss of data but hopefully not so much.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*6YwUsgJAfUd3QrPkRBszmw.png" alt="" /></p>
+
+<p>NORMALISING THE DATA<br />
+Normalizing image data is an important step in preprocessing image data before feeding it into a machine learning model. One reason for normalizing image data is to reduce the effects of lighting and color variations in the input data. This is especially important in medical imaging, where images may have different brightness and contrast levels due to variations in imaging equipment, patient positioning, or lighting conditions.</p>
+
+<p>Likewise, another reason for normalizing image data is to prevent numerical instability during model training. Some machine learning algorithms are sensitive to the scale of the input data, and may not perform well if the input values are too large or too small. We do this by dividing by 255.0 of each value in the matrix because the pixels range from 0–255. This will make all values to align to the same scale of rane 0–1 like shown in the code snippet below:</p>
+
+<p><img src="https://miro.medium.com/max/700/1*I_yrUdTItbrosmJ0QFmdDw.png" alt="" /></p>
+
+<p>DEFINING TARGET VARIABLES</p>
+
+<p>Next, we define target variables and apply image augmentation technique. Image augmentation is used to increase the size of the training dataset, improve model generalization, reduce overfitting, introduce noise, and increase model robustness to image variations and distortions by zooming, altering the orientations, adding filler values and so on.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*eLvIiXuvK2rPVmU1yScV9A.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/max/700/1*pUe7CXhnzhI_fq7wdoHatg.png" alt="" /></p>
+
+<p>In the code above, we use flow_from_directory and ImageDataGenerator class in Keras that saves input data in the form of NumPy arrays, which are a commonly used data structure in Python for numerical computing.</p>
+
+<p>COMPILING THE VGG-19 MODEL</p>
+
+<p>Since we are using a pre-trained model, its is necessary to NOT TRAIN the weights of the first 19 layers . Then, we flatten the ouput of the model to connect it with other 2 Dense layers. The last Dense layer has only one neuron as this use case is a binary classification i.e. the patient is either pneumonic or normal. We have set sigmoid function as activation that gives probability from 0–1, where having 0.5 or greater value means the model predicted patient to have pneumonia and lesser than 0.5 indicates that the model predicted that the patient doesn’t have pneumonia. In this way, a fully connected neural network is made using pre-trained model.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*fGNHQ3HfCz2sRc15v5v3wA.png" alt="" /></p>
+
+<p>Below is the snippet of the neural networks formed. Notice that the parameters that are trainable are the parameters of the last two Dense layers.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*J5AUOForFQR-ASwwpdbDtQ.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/max/700/1*3w0xeah_ksxoi6GEbhkhiw.png" alt="" /></p>
+
+<p>TRAINING THE MODEL ON THE DATA</p>
+
+<p><img src="https://miro.medium.com/max/700/1*Y1y86P60ICIb7eTLnES-4w.png" alt="" /></p>
+
+<p>RESULT</p>
+
+<p>Data augmentation has been used as this was an imbalanced dataset to prevent overfitting. The model scored an accuracy of 89% on the training set and 87% on the validation set. The model is still overfitting to some extent.</p>
+
+<p>We then save this model as an h5 file and later into a joblib file which can later be used for direct prediction without having to train again.</p>
+
+<p>DEMO OF THE MODEL</p>
+
+<p>In the demo below, 3/3 images of untrained dataset of pneumonic and normal X-rays were used to predict the result. In this case, the model seemed to have performed well by classifying all of them correctly.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*NOuM9Qchm1Ky_9S4nJ3q8g.gif" alt="" /></p>
+
+<p>However, the model may still be improved using hyperparameter techniques to prevent overfitting and gradually increasing the accuracy. This can be done by changing the number of layers ,neurons or trying different activation techniques.</p>
+
+<p>In conclusion, transfer learning makes life easier by enabling us to make our own customized model for wide variety of computer vision use cases. Computer aided diagnostics using DL models can assist doctors in early and accurate disease detection, aid human decision making, save time and resources or can even simplify complex procedures. Hence, the use of transfer learning in early disease detection is ample.</p>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Arisha, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

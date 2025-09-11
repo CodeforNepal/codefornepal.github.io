@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Getting Started with GreatAPI - A Comprehensive Tutorial">
+<meta property="og:description" content="GreatAPI is a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs using FastAPI. This comprehensive tutorial will guide you through the installation and setup process of GreatAPI, and you will learn how to create a new project, manage apps, run the server, and build your API logic using GreatAPI.">
+<meta property="og:url" content="/2023/07/06/getting-started-with-GreatAPI.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*XfvSzeeQPZUPCcjZUvRHmg.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="GreatAPI is a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs using FastAPI. This comprehensive tutorial will guide you through the installation and setup process of GreatAPI, and you will learn how to create a new project, manage apps, run the server, and build your API logic using GreatAPI.">
+<meta name="twitter:title" content="Getting Started with GreatAPI - A Comprehensive Tutorial">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*XfvSzeeQPZUPCcjZUvRHmg.jpeg">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Getting Started with GreatAPI - A Comprehensive Tutorial | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Getting Started with GreatAPI - A Comprehensive Tutorial</h1>
+    <p>06 Jul 2023 - Sahaj Raj Malla</p>
+    <p>
+      <p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*XfvSzeeQPZUPCcjZUvRHmg.jpeg" alt="" /></p>
+
+<p>GreatAPI is a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs using FastAPI. This comprehensive tutorial will guide you through the installation and setup process of GreatAPI, and you will learn how to create a new project, manage apps, run the server, and build your API logic using GreatAPI.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>GreatAPI offers a range of compelling features that make it an attractive choice for developers seeking to build robust web applications and APIs. With its integrated Administrative UI, users gain effortless control over registered models, simplifying data management tasks. Additionally, the framework includes a built-in authentication system, boosting application security by facilitating user authentication and authorization. Furthermore, GreatAPI provides an intuitive project template, streamlining project setup and offering a structured foundation for rapid and collaborative development. GreatAPI’s seamless integration with FastAPI makes it a compelling tool for developing efficient, secure, and user-friendly applications. Embrace the boundless possibilities of web development, creating endpoints for AI models, and creating general APIs with GreatAPI and elevate your projects to new heights. Embark on an exceptional journey of innovation and excellence with GreatAPI at your side. Some of the major features of GreatAPI.</p>
+
+<h1 id="requirements">Requirements</h1>
+
+<p>Before we dive into the tutorial, make sure you have the following requirements in place:</p>
+
+<ul>
+  <li>Python 3.6 or higher and PIP installed on your system.</li>
+  <li>Familiarity with Python programming language concepts.</li>
+</ul>
+
+<p>GreatAPI is built upon the foundation of the following robust libraries:</p>
+
+<ul>
+  <li>FastAPI: A modern, fast, web framework for building APIs with Python.</li>
+  <li>uvicorn: ASGI server that runs FastAPI applications.</li>
+  <li>typer: A command-line interface library for building CLI applications.</li>
+  <li>jinja2: A templating engine for Python.</li>
+  <li>SQLAlchemy: A powerful Object-Relational Mapping (ORM) library for Python.</li>
+</ul>
+
+<h1 id="installation">Installation</h1>
+
+<p>To install GreatAPI and its dependencies, use <code class="language-plaintext highlighter-rouge">pip</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install greatapi
+</code></pre></div></div>
+
+<h1 id="getting-started">Getting Started</h1>
+
+<h2 id="step-1-start-a-new-project">Step 1: Start a New Project</h2>
+
+<p>To begin working with GreatAPI, let’s create a new project. Open your terminal and execute the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>greatapi startproject myproject
+</code></pre></div></div>
+
+<p>This will create a new directory named “<em>myproject</em>” with the basic structure to get you started.</p>
+
+<p><em>myproject/</em></p>
+
+<p><em>├──<strong>init</strong>.py</em></p>
+
+<p><em>├──settings.py</em></p>
+
+<p><em>main.py</em></p>
+
+<h2 id="step-2-create-a-new-app">Step 2: Create a New App</h2>
+
+<p>An app in GreatAPI is a modular unit that encapsulates specific functionality of your project. To create a new app, run the following command:</p>
+
+<p>greatapi startapp myapp</p>
+
+<p>This will generate a new directory named “<em>myapp</em>” containing the necessary files and folders for your app.</p>
+
+<p><em>myapp/</em></p>
+
+<p><em>├──<strong>init</strong>.py</em></p>
+
+<p><em>├──models.py</em></p>
+
+<p><em>├──repository.py</em></p>
+
+<p><em>├──router.py</em></p>
+
+<p><em>├──schemas.py</em></p>
+
+<h2 id="step-3-run-the-server">Step 3: Run the Server</h2>
+
+<p>Now, it’s time to run the development server which will also create tables in the database for creating superuser in the next step. Execute the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>greatapi runserver
+</code></pre></div></div>
+
+<h2 id="step-4-creating-a-superuser">Step 4: Creating a Superuser</h2>
+
+<p>After running the server, let’s create a superuser to manage the administration of your project. Execute the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>greatapi createsuperuser
+</code></pre></div></div>
+
+<p>Follow the prompts to create the superuser account which will be used to login into GreatAPI Administrator.</p>
+
+<p>The server will start, and you can access your application at <a href="http://localhost:8000/">http://localhost:8000/</a>. Additionally, GreatAPI provides a beautifully designed built-in Admin Panel accessible at <a href="http://localhost:8000/admin">http://localhost:8000/admin</a>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*wPsG8okBBURruyP-i7WXDQ.png" alt="" /></p>
+
+<p>Landing page for Admin view</p>
+
+<h1 id="building-api-logic">Building API Logic</h1>
+
+<p>GreatAPI is built on top of FastAPI, which allows you to easily implement your API logic for building a powerful API[such as blogs in this case]. Here’s a quick guide on how to do that:</p>
+
+<h2 id="step-1-add-models">Step 1: Add Models</h2>
+
+<p>Define your data models in the <code class="language-plaintext highlighter-rouge">myapp/models.py</code> file using SQLAlchemy syntax. For example:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from greatapi.db.admin.user import User
+from greatapi.db.database import Base
+
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+
+class Blog(Base):
+    __tablename__ = "blogs"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    title = Column(String)
+    body = Column(String)
+    user_id = Column(Integer, ForeignKey(User.id))
+
+    user = relationship(User)
+</code></pre></div></div>
+
+<h2 id="step-2-add-schemas">Step 2: Add Schemas</h2>
+
+<p>Create <em>Pydantic</em> schemas in <code class="language-plaintext highlighter-rouge">myapp/schemas.py</code> to define the data validation and serialization for your API. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pydantic import BaseModel
+
+class BlogBase(BaseModel):
+    title: str
+    body: str
+    user_id: int  # Add the user_id field to represent the foreign key relationship
+
+class BlogCreate(BlogBase):
+    pass
+
+class BlogSchema(BlogBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+</code></pre></div></div>
+
+<h2 id="step-3-add-crud-operations">Step 3: Add CRUD Operations</h2>
+
+<p>Define the <em>CRUD </em>(Create, Read, Update, Delete) operations in <code class="language-plaintext highlighter-rouge">myapp/repository.py</code> using SQLAlchemy and your defined models and schemas. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sqlalchemy.orm import Session
+from myapp.models import Blog
+from myapp.schemas import BlogCreate
+
+def create_blog(db: Session, blog: BlogCreate):
+    new_blog = Blog(**blog.dict())
+    db.add(new_blog)
+    db.commit()
+    db.refresh(new_blog)
+    return new_blog
+
+def read_blog(db: Session, blog_id: int):
+    return db.query(Blog).filter(Blog.id == blog_id).first()
+
+def update_blog(db: Session, blog_id: int, blog: BlogCreate):
+    existing_blog = db.query(Blog).filter(Blog.id == blog_id).first()
+    if existing_blog:
+        for key, value in blog.dict().items():
+            setattr(existing_blog, key, value)
+        db.commit()
+        db.refresh(existing_blog)
+    return existing_blog
+
+def delete_blog(db: Session, blog_id: int):
+    blog = db.query(Blog).filter(Blog.id == blog_id).first()
+    if blog:
+        db.delete(blog)
+        db.commit()
+    return blog
+
+def list_blogs(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(Blog).offset(skip).limit(limit).all()
+</code></pre></div></div>
+
+<h2 id="step-4-create-api-endpoints">Step 4: Create API Endpoints</h2>
+
+<p>Finally, define the API endpoints in <code class="language-plaintext highlighter-rouge">myapp/router.py</code> using FastAPI’s <code class="language-plaintext highlighter-rouge">APIRouter</code>. Link your <em>CRUD</em> operations to these endpoints. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from greatapi.db.database import get_db
+from myapp.schemas import BlogSchema, BlogCreate
+from myapp.repository import (
+    create_blog,
+    read_blog,
+    update_blog,
+    delete_blog,
+    list_blogs
+)
+
+from typing import List
+
+myapp_router = APIRouter(tags=["MyApp"])
+
+@myapp_router.post("/blogs/", response_model=BlogSchema)
+def create_blog_route(blog: BlogCreate, db: Session = Depends(get_db)):
+    return create_blog(db, blog)
+
+@myapp_router.get("/blogs/{blog_id}", response_model=BlogSchema)
+def read_blog_route(blog_id: int, db: Session = Depends(get_db)):
+    return read_blog(db, blog_id)
+
+@myapp_router.put("/blogs/{blog_id}", response_model=BlogSchema)
+def update_blog_route(blog_id: int, blog: BlogCreate, db: Session = Depends(get_db)):
+    return update_blog(db, blog_id, blog)
+
+@myapp_router.delete("/blogs/{blog_id}", response_model=BlogSchema)
+def delete_blog_route(blog_id: int, db: Session = Depends(get_db)):
+    return delete_blog(db, blog_id)
+
+@myapp_router.get("/blogs/", response_model=List[BlogSchema])
+def list_blogs_route(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    return list_blogs(db, skip, limit)
+</code></pre></div></div>
+
+<h2 id="step-5-register-models-and-endpoints">Step 5: Register Models and Endpoints</h2>
+
+<p>Import your models and API endpoints into the main application file <code class="language-plaintext highlighter-rouge">main.py</code> and register them with GreatAPI:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ... (existing code)
+from myapp.router import myapp_router
+from myapp.models import Base as MyAppBase
+
+# ... (existing code)
+admin.AdminBase.metadata.create_all(engine)
+admin.UserBase.metadata.create_all(engine)
+MyAppBase.metadata.create_all(engine) # new code added
+
+# ... (existing code)
+app.include_router(admin_router)
+app.include_router(auth_router)
+app.include_router(user_router)
+app.include_router(test_auth_router)
+app.include_router(history_router)
+app.include_router(myapp_router) # new code added
+</code></pre></div></div>
+
+<p>Finally, register your models in <code class="language-plaintext highlighter-rouge">settings.py</code> by appending the models into the <code class="language-plaintext highlighter-rouge">REGISTERED_ADMINS</code> such as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from __future__ import annotations
+
+from greatapi.db.admin.user import User
+from greatapi.db.admin.default import History
+from myapp.models import Blog # new code added
+
+REGISTERED_ADMINS = [
+    User,
+    History,
+    Blog, # new code added
+]
+
+</code></pre></div></div>
+<p>With these steps, you have successfully set up your project, created an app, defined models, and built API endpoints using GreatAPI.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>In this tutorial, you learned how to get started with GreatAPI, a powerful Python framework that aims to simplify and accelerate the process of building web applications, endpoints for Machine Learning models, and general APIs. You now know how to create projects, manage apps, run the server, and build API logic using GreatAPI. The combination of GreatAPI’s features and the elegance of FastAPI allows you to develop robust and efficient applications with ease. Now, it’s your turn to explore further and build amazing web applications with GreatAPI.</p>
+
+<h1 id="happy-programming">Happy programming!</h1>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Sahaj, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

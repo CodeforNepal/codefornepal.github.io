@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Workflow of Data Engineering Project on AWS">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2023/03/27/workflow-of-data-engineering-on-aws.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Workflow of Data Engineering Project on AWS">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Workflow of Data Engineering Project on AWS | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Workflow of Data Engineering Project on AWS</h1>
+    <p>27 Mar 2023 - Ravi Pandit</p>
+    <p>
+      <p><strong>1.    Architecture Diagram:</strong><br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7rG2FZiu2BqLzK84RX6W9_dAWvsOLMSnKugwEEW6CpUoJn9EVprFnNj9kT-ksfMb5VOiTWhD9o529nfaLnuES-zxH1sl8okOQvnby0ctkNT-TdDp1NNVMeMBNaR4GWQoKF9N2xBNQy7DPigZtbGLMHpX0NAU5tN8ordHgLpZuuSsp-82nlOdbl80/s1234/1.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7rG2FZiu2BqLzK84RX6W9_dAWvsOLMSnKugwEEW6CpUoJn9EVprFnNj9kT-ksfMb5VOiTWhD9o529nfaLnuES-zxH1sl8okOQvnby0ctkNT-TdDp1NNVMeMBNaR4GWQoKF9N2xBNQy7DPigZtbGLMHpX0NAU5tN8ordHgLpZuuSsp-82nlOdbl80/w640-h276/1.jpg" alt="" /></a></p>
+
+<p>Figure 1: Architecture Diagram</p>
+
+<ul>
+  <li><strong>Amazon S3:</strong> Amazon S3 (Simple Storage Service) is a highly scalable and secure cloud storage service provided by Amazon Web Services (AWS). It allows users to store and retrieve any amount of data from anywhere on the web, with high durability, availability, and performance. S3 provides a simple web interface, as well as an API, to manage and access the data stored in it. Users can create buckets (i.e., containers for objects) in S3 and upload files (i.e., objects) to them.</li>
+  <li><strong>Crawler (to extract all the schema &amp; information)</strong>: AWS provides a managed service called AWS Glue Crawler, which is a fully-managed data crawler that automatically discovers, categorizes, and registers metadata about your data assets in AWS.</li>
+  <li><strong>Amazon Athena</strong>: Amazon Athena is an interactive query service provided by AWS that allows users to analyze data in Amazon S3 using standard SQL queries. It is a serverless service, which means that users do not need to manage any infrastructure or perform any database administration tasks. Athena automatically scales query processing based on the amount of data being queried, so users can run ad-hoc queries on large datasets with ease.</li>
+  <li><strong>AWS Glue</strong>: AWS Glue is a fully-managed extract, transform, and load (ETL) service provided by AWS that allows users to move data between different data stores and data lakes. It provides a serverless environment for running ETL jobs, which means that users do not need to manage any infrastructure or perform any database administration tasks.</li>
+  <li><strong>Amazon Redshift</strong>: Amazon Redshift is a fully-managed cloud data warehouse provided by AWS that allows users to store and analyze large amounts of structured and semi-structured data. It is designed to be fast, scalable, and cost-effective, making it a popular choice for big data analytics.</li>
+  <li><strong>VPC</strong>: VPCs provide a flexible and secure way for users to launch and run their AWS resources in a private and isolated network environment.</li>
+</ul>
+
+<p><strong>2.    Dataset:</strong></p>
+
+<p>        For this project, covid-19 dataset will be used, provided by the aws. Structure of dataset and information related to dataset can be studied through this blog:</p>
+
+<p><a href="https://aws.amazon.com/blogs/big-data/a-public-data-lake-for-analysis-of-covid-19-data/">Dataset Link</a></p>
+
+<p>Only selective datasets are downloaded as shown in the figure:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNG439lKyQf8oluYDSzRBAME7adPhtrgqAnsio0-EemVSLNuSUtxgUFKr2UFC3goi0gnIPjgLgAs1UnHjAvX-uX8jXtvxQfj7qv4vn3hlw_j7RhYNEG2Xl1zRpuDG4hKoY-TEJbFFbBSeFdvC46FklwOO3cWlHXzTUbjPQi34h0H9_1p7Z02qZhsc/w309-h556/2.png" alt="" /></td>
+      <td><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4qVgvtcENO0KWsBJhQELNXxTQcaEnBMosHY4BKiHy9KfumidWHhi4NFqdlgQgFNrT-LCfqnTqX1C3WDfSzN9sLhW1vuEIoH8QVkYjYifGgHCNJEmFiIFdBCVZJLVBty43Sx20XdXExuXMCJ0FqD1PjAjbsM01N3ifCzq-aufHIfSMQ62XCbNuNVo/w230-h579/3.jpg" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Figure 2:  Dataset</p>
+
+<p><strong>3.    Storing downloaded Dataset in Amazon S3:</strong></p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjef8BozAhMiYqiElk7N_n6iCjckwVlVjcZJ0JIIMCkHck1fTWD8b2_10O1midmyl1JZZyzwgjcSTOEAmjM0F_FFJ8_vOHYORrlE1FTxQIAWSyUswtHyIcXKJ_LYwHb10GFn1cOdh1ldg7NZ98L47-Hz3LzolW5F_OfkBKXmkT17xH8L8mMiRCxoyM/s1360/4.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjef8BozAhMiYqiElk7N_n6iCjckwVlVjcZJ0JIIMCkHck1fTWD8b2_10O1midmyl1JZZyzwgjcSTOEAmjM0F_FFJ8_vOHYORrlE1FTxQIAWSyUswtHyIcXKJ_LYwHb10GFn1cOdh1ldg7NZ98L47-Hz3LzolW5F_OfkBKXmkT17xH8L8mMiRCxoyM/w640-h388/4.png" alt="" /></a></p>
+
+<p>Figure 3: Storing the downloaded Dataset in Amazon S3</p>
+
+<p><strong>4.    Analyzing the data (Schema Crawling and Table Building):</strong></p>
+
+<p><strong>Crawler</strong> is created for each and every csv data files where crawler crawls on all the dataset stored in S3 and extract all the schema and information.</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1xUggBEMXOy0qH_Nt_lgyQag0K--QnISr8IBjz9nFAO0vmRbWbM4W70aPPbyh75sWytD0tOJzWCwI8m7WFIL8u5PSpR2v268tY92VcFjjN6nZWmzTydddFNugg30rQz8VpYyU3ERFmzMAr5fJa8me6v4MbgYtB2NvKBXuCpmJtgU98E7pHC0WzjM/s1444/5.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1xUggBEMXOy0qH_Nt_lgyQag0K--QnISr8IBjz9nFAO0vmRbWbM4W70aPPbyh75sWytD0tOJzWCwI8m7WFIL8u5PSpR2v268tY92VcFjjN6nZWmzTydddFNugg30rQz8VpYyU3ERFmzMAr5fJa8me6v4MbgYtB2NvKBXuCpmJtgU98E7pHC0WzjM/w640-h338/5.png" alt="" /></a></p>
+
+<p>Figure 4 : Crawler</p>
+
+<p>After completion of crawler task, <strong>Amazon Athena</strong> is used to analyze each and every data (studying the datasets) extracted by crawler.</p>
+
+<p> <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEOCET9_k8tPvmhNUclSqr-5cBrPKsVBPjgMnSAGRFb77a07T8lO-St029NcHjmmzc3iKokySFEbWR2ouX88J-zX61_UIfXd7l_J4ogdcLGbL0KmQD-YvO-EZAwMR2LC4gYQBuDu7kSft4PzZP5UtsuUm94i1X8mPfDFMutH1uKI3ajcnLRBiv8nE/s1162/6.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEOCET9_k8tPvmhNUclSqr-5cBrPKsVBPjgMnSAGRFb77a07T8lO-St029NcHjmmzc3iKokySFEbWR2ouX88J-zX61_UIfXd7l_J4ogdcLGbL0KmQD-YvO-EZAwMR2LC4gYQBuDu7kSft4PzZP5UtsuUm94i1X8mPfDFMutH1uKI3ajcnLRBiv8nE/w637-h640/6.png" alt="" /></a></p>
+
+<p>Figure 5: Amazon Athena</p>
+
+<p><strong> 5.    Building Data Models:</strong></p>
+
+<p>               After analyzing the data, to understand the overall flow of the Data, Data Model is created.</p>
+
+<p>Here, fips is primary key in most of the table which can also be studied from the data source of the dataset.</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqQlM948IHKEV3SFo9Dd_CRU4BmZu6-4HTQkHPYbQn09U0Zqj7Ll_99-FV8PwpBqzMR5sqQqUFyife35H0fZOtPRLzZsVal8MWHcxJrwLbTFAAELm4-mYAS2CV1DhDU6bEUxJbvddtQtkVHfzI_KDGSBc9E47Z_yRI4Xm4dbZC_IdsI_p73ilgb94/s1781/7.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqQlM948IHKEV3SFo9Dd_CRU4BmZu6-4HTQkHPYbQn09U0Zqj7Ll_99-FV8PwpBqzMR5sqQqUFyife35H0fZOtPRLzZsVal8MWHcxJrwLbTFAAELm4-mYAS2CV1DhDU6bEUxJbvddtQtkVHfzI_KDGSBc9E47Z_yRI4Xm4dbZC_IdsI_p73ilgb94/s16000/7.png" alt="" /></a></p>
+
+<p>6.    Schema:</p>
+
+<p>               Here, the fact table is factCovid and there are 3 different dimension table (i.e dimHospital, dimRegion, dimDate). Most of the information is redundant across most of the table in above Data model, thus schema is created because it is more simpler to analyze data in data warehouse when there is less table.</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjY6-cah63gtHLIAWFveNWQjIZCpIyC5rBomSpFjB8if9Sid5auAVUlbW6sDVd_YZW29Yi4xvihk_a_SrEEpNv9d345p21TrByqQpDr40nQYPPgGTwI4SOmYgiSQvsba5xL6mEEOSNh60dtx7RxG8Fry6ZAYdH0GL0rQnCPlNBblgzCOZRFDi_ZJcI/s738/8.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjY6-cah63gtHLIAWFveNWQjIZCpIyC5rBomSpFjB8if9Sid5auAVUlbW6sDVd_YZW29Yi4xvihk_a_SrEEpNv9d345p21TrByqQpDr40nQYPPgGTwI4SOmYgiSQvsba5xL6mEEOSNh60dtx7RxG8Fry6ZAYdH0GL0rQnCPlNBblgzCOZRFDi_ZJcI/w640-h474/8.png" alt="" /></a></p>
+
+<p><strong>7.    Use of Jupyter Notebook:</strong></p>
+
+<ul>
+  <li><strong>Libraries:</strong></li>
+</ul>
+
+<p>import boto3</p>
+
+<p>import pandas as pd</p>
+
+<p>from io import StringIO</p>
+
+<ul>
+  <li><strong>Access Case:</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJEfIZVWd_-ztAVI9Pxg5Sz1ihM0XZoI9fU828A5vOwzkRp9yBPk9X54A9Po0-Za1-3zDjIjE9ZDfG2ZB0VXKl-nWUsvcx6LR2ZYo8mkzR_1je3s2N96c3NKJWxbC-17kSyJnYgpQhF4wX9EE1opuV7ubKhhKF3xoUA6DiEUjKTrtStDX54ALQgzc/s506/9.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJEfIZVWd_-ztAVI9Pxg5Sz1ihM0XZoI9fU828A5vOwzkRp9yBPk9X54A9Po0-Za1-3zDjIjE9ZDfG2ZB0VXKl-nWUsvcx6LR2ZYo8mkzR_1je3s2N96c3NKJWxbC-17kSyJnYgpQhF4wX9EE1opuV7ubKhhKF3xoUA6DiEUjKTrtStDX54ALQgzc/w400-h145/9.png" alt="" /></a></p>
+
+<ul>
+  <li><strong>Connect to Athena and Query Data</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNbCgBR1nQdKyYopL1h3q4MgwWLjNtNL5t2hFWBAJeLP6UBIp61-8pcKfRDNnPmRzH-UrrbzBioypFJd_pl9MPKbVQTV5yqecvIXJbHrW6BRZg0QuofPzcZ5vG6gOytx6_RpD_ZTJCvIQZerb51LSL52hr4rsR3PMyqWu4MQEc6WAgNG09dnSiRtA/s591/10.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNbCgBR1nQdKyYopL1h3q4MgwWLjNtNL5t2hFWBAJeLP6UBIp61-8pcKfRDNnPmRzH-UrrbzBioypFJd_pl9MPKbVQTV5yqecvIXJbHrW6BRZg0QuofPzcZ5vG6gOytx6_RpD_ZTJCvIQZerb51LSL52hr4rsR3PMyqWu4MQEc6WAgNG09dnSiRtA/w400-h101/10.png" alt="" /></a></p>
+
+<ul>
+  <li><strong>Function:</strong></li>
+</ul>
+
+<p>This function basically take boto3 object and dictionary and run query in Athena and store the output in S3 i.e in staging_dir</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigc2UMrTb0tuinKX-h7k1UNwKA41c7HFfFCgWF3Fra9zlBmpzpm_dpMOP2dwVYLnYMxI_DN30yyM9-vdjFuIjQ5R4uEoa6Y5PCD0WIn3yZWXCM4SByEIJJnx22PBxjk-vcMShmKnlEZoObglJpkJH4raIbZPyHw02W03Q0vadj0pxvWnfPloTAV3A/s1128/11.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigc2UMrTb0tuinKX-h7k1UNwKA41c7HFfFCgWF3Fra9zlBmpzpm_dpMOP2dwVYLnYMxI_DN30yyM9-vdjFuIjQ5R4uEoa6Y5PCD0WIn3yZWXCM4SByEIJJnx22PBxjk-vcMShmKnlEZoObglJpkJH4raIbZPyHw02W03Q0vadj0pxvWnfPloTAV3A/w640-h364/11.png" alt="" /></a></p>
+
+<ul>
+  <li><strong>Query Response:</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1knsL-KUQ7X2koVy2GyOJc_YVurH0z_o0MFfTvLDKQMAD5mWSOS7CpW5mKRuw5aieI7Er57jRIkoKmjUEUQ_NejIkl-H7zrrSw1Oh54_nJAgGIW8dz0OJQSNaXvAr85EMDRAwvtR92mQWahjm5sVdxxpy9u-4JxG5KOHsMYQImhH2Wz0ycSwHhiY/s743/12.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1knsL-KUQ7X2koVy2GyOJc_YVurH0z_o0MFfTvLDKQMAD5mWSOS7CpW5mKRuw5aieI7Er57jRIkoKmjUEUQ_NejIkl-H7zrrSw1Oh54_nJAgGIW8dz0OJQSNaXvAr85EMDRAwvtR92mQWahjm5sVdxxpy9u-4JxG5KOHsMYQImhH2Wz0ycSwHhiY/w400-h103/12.png" alt="" /></a></p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ2YtQGn0Y68IFS_-nBwOauSio2nxFi4Q6QH4hxzc3vaMmwBaa-4Ou-rWZRgaTBNKO-PfgVTGeS82FD2JYaPYiPHAAGhGTLFdgSlHYUa0kLt6OGBIrU3ubQB7xB_Xw9iil9FjeOCZuVznLs7ZGx34t3r6NpsgZRJebO_DWVKsG1N0AD4v9Rdp7Npc/s1350/13.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ2YtQGn0Y68IFS_-nBwOauSio2nxFi4Q6QH4hxzc3vaMmwBaa-4Ou-rWZRgaTBNKO-PfgVTGeS82FD2JYaPYiPHAAGhGTLFdgSlHYUa0kLt6OGBIrU3ubQB7xB_Xw9iil9FjeOCZuVznLs7ZGx34t3r6NpsgZRJebO_DWVKsG1N0AD4v9Rdp7Npc/w640-h164/13.png" alt="" /></a></p>
+
+<p>        Similarly, this process is repeated for all other 9 tables created using crawler shown in figure 4.</p>
+
+<ul>
+  <li><strong>Fixing errors’ found in table:</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieoH_0xJj_yqoBQ9wFb9HKfGLpMVPcuYgSg6BL9fBXaeRsk5qllSAcI1f57urVcjHyMr7c5oD4gt80vturQj8_r1E5nJbKYosoVsDmo8hPbAeDvf68rWvuUjqWFcNxH7fSguCnyqsIKh69KCInTshOdoIeljJe750Vp0JoniYf07Q2xnX0A13CxjU/s876/14.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieoH_0xJj_yqoBQ9wFb9HKfGLpMVPcuYgSg6BL9fBXaeRsk5qllSAcI1f57urVcjHyMr7c5oD4gt80vturQj8_r1E5nJbKYosoVsDmo8hPbAeDvf68rWvuUjqWFcNxH7fSguCnyqsIKh69KCInTshOdoIeljJe750Vp0JoniYf07Q2xnX0A13CxjU/w640-h568/14.png" alt="" /></a></p>
+
+<ul>
+  <li><strong>Transformation (ETL job in python):</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibHFIPXq-UwzgiOCP9-5HOSoMYo_sZqLuQRNGAlNPe-3dmtoHLYazFBhO29LO5rdATCdmHiJ2NEkcNt-JN_jC2EArU5nGiLDkdRtnOIDcG6XB4pY-LQN2p9Fm6m8xp7fx4Q4RWDu9SkR1Y0ZLUVt-OheKrznQEA-asTWA_YW9g--GOXC-SBneyzPc/s1238/15.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibHFIPXq-UwzgiOCP9-5HOSoMYo_sZqLuQRNGAlNPe-3dmtoHLYazFBhO29LO5rdATCdmHiJ2NEkcNt-JN_jC2EArU5nGiLDkdRtnOIDcG6XB4pY-LQN2p9Fm6m8xp7fx4Q4RWDu9SkR1Y0ZLUVt-OheKrznQEA-asTWA_YW9g--GOXC-SBneyzPc/w640-h314/15.png" alt="" /></a></p>
+
+<p>                Changing Dimension Table(Date) property as explained in figure of schema:</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEgpam-gFKKHuQM4ew7apOICb2U2MMb6b4z3AG-7OcJZ-3-eY108tSAsK4miyERfuCvfHrzSqInzPIYju_3UPAClmdN2vNv-mn5pTkXZP_jbdS98-1ySGEb-yIeiwhtgB0qP7WpIk_Zny-2JVU7pl0xJOyl_3kzhW19v9Fa0dijpVj9ruyrzD1lqg/s933/16.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEgpam-gFKKHuQM4ew7apOICb2U2MMb6b4z3AG-7OcJZ-3-eY108tSAsK4miyERfuCvfHrzSqInzPIYju_3UPAClmdN2vNv-mn5pTkXZP_jbdS98-1ySGEb-yIeiwhtgB0qP7WpIk_Zny-2JVU7pl0xJOyl_3kzhW19v9Fa0dijpVj9ruyrzD1lqg/w640-h266/16.png" alt="" /></a></p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYNQ4qDf9kaIj-a8kXZCbQtEnM7BDF7yUsQiz6fZbnIWhg-X3TEoQk8PbQcQZzWKDHQNLdpf2qRX6G_1F66TliiDvgF4l8v3S2R0tbDevBRju72m3NoivlDfMLC_Ey65LNKSVpUVxPcri1TVe45yq0kUzuyHMMmqMeyzNGwcz-zU06Z4JTaNMFJEg/s637/17.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYNQ4qDf9kaIj-a8kXZCbQtEnM7BDF7yUsQiz6fZbnIWhg-X3TEoQk8PbQcQZzWKDHQNLdpf2qRX6G_1F66TliiDvgF4l8v3S2R0tbDevBRju72m3NoivlDfMLC_Ey65LNKSVpUVxPcri1TVe45yq0kUzuyHMMmqMeyzNGwcz-zU06Z4JTaNMFJEg/w503-h272/17.png" alt="" /></a></p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIK7PIZspRzcnF1GPEhJKido2y7cXTV3zfF4OTtSZedWCW3Dccvf-bjXMq2L5kOf1tApusM4YhOJCwR19pa9qpnlE5WeJ8C6qwMWOPSUVgRTOLpzQHH86piUmPtZYbzzCEruzeAH7rDXsNJsD9zd_0pvDoNHk9fmuNjEBwMM9uhiRLmrUs-iysclo/s531/18.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIK7PIZspRzcnF1GPEhJKido2y7cXTV3zfF4OTtSZedWCW3Dccvf-bjXMq2L5kOf1tApusM4YhOJCwR19pa9qpnlE5WeJ8C6qwMWOPSUVgRTOLpzQHH86piUmPtZYbzzCEruzeAH7rDXsNJsD9zd_0pvDoNHk9fmuNjEBwMM9uhiRLmrUs-iysclo/w494-h221/18.png" alt="" /></a></p>
+
+<ul>
+  <li><strong>Save results to S3:</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1hr9dAJJsLFWOLZMoXY3UP3FHF_PlZenL1RjhniP5Oi2HVxPhCkEyqYlRDn7NmzDIweM7N5ieHxhecAn4i4v1wKp0hRfQ_f6BZsZkHmNxeLIUDVMBtPMw14TbL0uHBU2ZDgD1pU2IKWUoLXk2hXmqP59mr7FMyjB6QsLt0VIeJ6n3vEQxKcOh9zc/s719/19.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1hr9dAJJsLFWOLZMoXY3UP3FHF_PlZenL1RjhniP5Oi2HVxPhCkEyqYlRDn7NmzDIweM7N5ieHxhecAn4i4v1wKp0hRfQ_f6BZsZkHmNxeLIUDVMBtPMw14TbL0uHBU2ZDgD1pU2IKWUoLXk2hXmqP59mr7FMyjB6QsLt0VIeJ6n3vEQxKcOh9zc/w640-h109/19.png" alt="" /></a></p>
+
+<p>        Here<strong>, </strong>specify the S3 bucket name in place of bucket.</p>
+
+<p>        Similarly, this process is repeated for all other 9 tables created using crawler shown in figure 4.</p>
+
+<ul>
+  <li><strong>Extracting Schema out of the DataFrame:</strong></li>
+</ul>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUsny7e7qv05Zr18CT1T5iCNRan1HSiUmcwNbS-toqoHHXQxMAtdkCOs1Haquff1GmHTf7exF4LGWtGFv84OH8OCiQvIEPxDFcSc94jiI6TEJ2HdCygIkdY50VRadDw762seTkJHYfStFBVbrQ2QbnNVmL3bwIG_8DOn5tE0-z9kV52U2rotENbWY/s963/20.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUsny7e7qv05Zr18CT1T5iCNRan1HSiUmcwNbS-toqoHHXQxMAtdkCOs1Haquff1GmHTf7exF4LGWtGFv84OH8OCiQvIEPxDFcSc94jiI6TEJ2HdCygIkdY50VRadDw762seTkJHYfStFBVbrQ2QbnNVmL3bwIG_8DOn5tE0-z9kV52U2rotENbWY/w490-h739/20.png" alt="" /></a></p>
+
+<p><strong>            Note:</strong> These schema will be needed while creating table in Amazon Redshift.</p>
+
+<p><strong>8.    Creating a Redshift Namespace (Cluster)</strong></p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJVGG_O1P8uhRX9f8jC4Lr6dr2EQvw8qlgdAgVAalwnilWxmL0XVVL6oLKmwdqza1aQ8Y6UCPUm2m9u3EY7on5m4u4b3YkO1Os8cM9nnBimKYEG133F5keA2k3hn41lOIZL9J0noFgqcNp-NizB1dRnpgyXo_gmoBq6knjsR8sq7_phjEreinRj_A/s1464/qqw.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJVGG_O1P8uhRX9f8jC4Lr6dr2EQvw8qlgdAgVAalwnilWxmL0XVVL6oLKmwdqza1aQ8Y6UCPUm2m9u3EY7on5m4u4b3YkO1Os8cM9nnBimKYEG133F5keA2k3hn41lOIZL9J0noFgqcNp-NizB1dRnpgyXo_gmoBq6knjsR8sq7_phjEreinRj_A/w843-h83/qqw.png" alt="" /></a></p>
+
+<p><strong>9.    AWS Glue Job</strong></p>
+
+<p>In AWS, AWS Glue Jobs are used for the ETL (Extract, Transform, Load) process to move data from one location to another. AWS Glue is a fully managed ETL service that makes it easy to move data between different data stores and data lakes.</p>
+
+<p>AWS Glue Jobs are used to run ETL scripts and perform data transformations on data stored in various data sources such as Amazon S3, Amazon RDS, Amazon DynamoDB, Amazon Redshift, and more. AWS Glue Jobs can be written in Python or Scala, and they can be run on a serverless infrastructure. This means that AWS Glue Jobs can scale automatically and can handle any amount of data processing.</p>
+
+<p>Table is created in Amazon Redshift with the help create table command and copy command is used to copy the dimension table and fact table from S3 to Redshift. These all process is done by creating a job in AWS Glue Job. </p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBAEQ0zDXe4epH29MTu5ABCa-oXFg2Y3kYsQC2-nVttqpF5nwlf7C8yrcsg9DVKLouHpczX_Zx1TpT8yHbBeFsd3jFfMGifhcmvq4Cjnp1zFgIS7G_Kfd3DXqfMjhVwcX50L_k9RpVziMIPFftaIQRJ1ZFgnJdArxK8D0Xe2ID2MKJLbeP1WoAri0/s1452/22.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBAEQ0zDXe4epH29MTu5ABCa-oXFg2Y3kYsQC2-nVttqpF5nwlf7C8yrcsg9DVKLouHpczX_Zx1TpT8yHbBeFsd3jFfMGifhcmvq4Cjnp1zFgIS7G_Kfd3DXqfMjhVwcX50L_k9RpVziMIPFftaIQRJ1ZFgnJdArxK8D0Xe2ID2MKJLbeP1WoAri0/w640-h260/22.png" alt="" /></a></p>
+
+<p>Once the AWS Glue Jobs’ task is completed, data can be queried and viewed in Redshift query editor as shown in figure below:</p>
+
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5BVl-jYAY6QP8zZbqQ-QQhVutCA52yol-6GKI-t5nG2TUkxlCUgiMZhqzS8Q_m_2CTc7ebiqT92w7DKWGy_q_Hod-n0xiTLXyqCBb7cdrOzE5SCWB-QrpB03y5PMfj3EhCYs9K8TTbUZw3De6ZwQYrsJ5tZD1UWGtfXNrOPudDWeNC4i72sN7ZJU/s1109/24.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5BVl-jYAY6QP8zZbqQ-QQhVutCA52yol-6GKI-t5nG2TUkxlCUgiMZhqzS8Q_m_2CTc7ebiqT92w7DKWGy_q_Hod-n0xiTLXyqCBb7cdrOzE5SCWB-QrpB03y5PMfj3EhCYs9K8TTbUZw3De6ZwQYrsJ5tZD1UWGtfXNrOPudDWeNC4i72sN7ZJU/w640-h286/24.png" alt="" /></a></p>
+
+<p><strong>Finally, this data can be used by Data Analyst and Data Scientist to derive insights and decision making.</strong></p>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Ravi, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

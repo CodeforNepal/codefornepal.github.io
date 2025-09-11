@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2023/07/06/exploring-nepals-export.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Exploring Nepal’s Exports: Building an Interactive Dashboard for Easy Data Access</h1>
+    <p>06 Jul 2023 - Anupam Bajra</p>
+    <p>
+      <p>The government has published the data regarding the imports &amp; exports of the country for Fiscal Year B.S. 2079/80(Mid July 2022 to Mid July 2023). Because there are news everyday regarding the current economic situation of the country, it is a good idea to understand the area through which we can strengthen the economy which is exports.</p>
+
+<p>I went through data through the Department of Customs for this data and going even through the tabular form data there were many insights to grasp. When discussing this with friends, they were curious but found the original data hard to understand.</p>
+
+<p>While the government might be working on improving this data, my focus was on learning to make such information more understandable &amp; accessible. This article lays the foundation for a web dashboard that lets the user search and see visualizations of export data. Though creating such a proper website will be a resource and time taking process, in this article I have tried in getting the foundations for it ready.</p>
+
+<p>Installing necessary Python libraries</p>
+
+<p>First, we install the necessary Python libraries for data processing (pandas), interactive visualizations (plotly), and building web applications (dash)</p>
+
+<p><em>pip install pandas plotly dash</em></p>
+
+<p>Importing Panda Library &amp; needed CSV file</p>
+
+<p><em>import pandas as pd</em></p>
+
+<p><em>file_path = r”C:\Users\ACER\Desktop\Tasks\Data Article\7980exports.csv”</em></p>
+
+<p><em>df = pd.read_csv(file_path, encoding=’latin-1’)</em></p>
+
+<p>Data Source: <a href="https://www.customs.gov.np/page/fts-fy-207980">https://www.customs.gov.np/page/fts-fy-207980</a></p>
+
+<p>Now, we import the Pandas library so that we can do data manipulation &amp; analysis. We have also provided the file path to read the CSV file from the specified path into a Pandas DataFrame. In this step, we have been able to lead this data into the data frame through which we can move for processing and visualization.</p>
+
+<p>Importing Dash Framework</p>
+
+<p><em>import dash</em></p>
+
+<p><em>from dash import dcc</em></p>
+
+<p><em>from dash import html</em></p>
+
+<p><em>from dash.dependencies import Input, Output</em></p>
+
+<p>We are now importing the Dash framework since it is great for creating interactive web applications with Python. For this project, we especially need its web-based data visualizations and interactive components.</p>
+
+<p>We are also importing the dcc module of Dash as it contains the core components such as graphs, dropdowns, &amp; sliders which are useful elements for this project. Through this step, we now have the modules for a Dash web application along with defining the user interface.</p>
+
+<p>Initializing Dash app</p>
+
+<p><em># Initialize the Dash app</em></p>
+
+<p><em>app = dash.Dash(<strong>name</strong>)</em></p>
+
+<p>Now, we create the instance for the application along with providing the unique identifier.</p>
+
+<p>Defining the layout through Search bar for filtering data &amp; Graph component to display the data</p>
+
+<p><em># Define the layout of the web application</em></p>
+
+<p><em>app.layout = html.Div([</em></p>
+
+<p><em># Search bar for filtering data</em></p>
+
+<p><em>dcc.Input(id=’search-bar’, type=’text’, placeholder=’Search by Item…’),</em></p>
+
+<p><em># Graph component to display the data</em></p>
+
+<p><em>html.Div([</em></p>
+
+<p><em>dcc.Graph(id=’export-graph’, config={‘displayModeBar’: False}),</em></p>
+
+<p><em>]),</em></p>
+
+<p><em>])</em></p>
+
+<p>The layout of the web application is being set up now with the first structure of the web page being set up using the Dash HTML components which includes the search bar &amp; graph that we need since we want the user to search for items &amp; represent it through a graph.</p>
+
+<p>Then, we use dcc.input to create the needed text input field for this search bar and name it as Search by Item which the user will see it as. We also create the graph component to display the data through this framework.</p>
+
+<p>Callback to update the graph based on search input</p>
+
+<p><em>@app.callback(</em></p>
+
+<p><em>Output(‘export-graph’, ‘figure’),</em></p>
+
+<p><em>[Input(‘search-bar’, ‘value’)]</em></p>
+
+<p><em>)</em></p>
+
+<p>Defining the callback function so that it responds to changes to the search bar the user makes. Here, we also define that the input is the search term that the user enters and output is the export graph through which the necessary item will be updated in the displayed graph.</p>
+
+<p>Updating graph based on search term</p>
+
+<p><em>def update_graph(search_term):</em></p>
+
+<p><em>if search_term:</em></p>
+
+<p><em># Filter the data based on the search input</em></p>
+
+<p><em>filtered_df = df[df[‘Item’].str.contains(search_term, case=False)]</em></p>
+
+<p><em>else:</em></p>
+
+<p><em># If no search input, show all data</em></p>
+
+<p><em>filtered_df = df</em></p>
+
+<p>Here, we are creating some important functions for the graph. If there is no search input then the entire Data Frame will show up which will be like the default setting. Also, the words the user types will be case insensitive.</p>
+
+<p>Create the bar chart using Plotly</p>
+
+<p><em># Create the bar chart using Plotly (showing ‘Total Revenue’)</em></p>
+
+<p><em>figure = {</em></p>
+
+<p><em>‘data’: [</em></p>
+
+<p><em>{‘x’: filtered_df[‘Item’], ‘y’: filtered_df[‘Exports_Value’], ‘type’: ‘bar’, ‘name’: ‘Total Revenue’},</em></p>
+
+<p><em>],</em></p>
+
+<p><em>‘layout’: {</em></p>
+
+<p><em>‘title’: “Nepal’s Export Data”,</em></p>
+
+<p><em>‘xaxis’: {‘title’: ‘Item’},</em></p>
+
+<p><em>‘yaxis’: {‘title’: ‘Value’},</em></p>
+
+<p><em>‘barmode’: ‘group’</em></p>
+
+<p><em>}</em></p>
+
+<p><em>}</em></p>
+
+<p><em>return figure</em></p>
+
+<p>The bar chart is now constructed with the Total Revenue data through the filtered dataframe. In the bar chart the X values have been defined as the Item and the Y values as the Exports Value i.e. Total Revenue.</p>
+
+<p>Running the web application</p>
+
+<p><em># Run the web application</em></p>
+
+<p><em>if <strong>name</strong> == ‘<strong>main</strong>’:</em></p>
+
+<p><em>app.run_server(debug=True)</em></p>
+
+<p>Now, we do the fun part and see the result that has come from the above process.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/68O-VpoZiGk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*NF88vaONxWGNSkYl" alt="" /></p>
+
+<p>Through this dashboard, now it is very easy to search for items you want to know the revenue for exports. We can gain insights now faster and in a more accessible way, that too with context of other similar products and their revenues for exports.</p>
+
+<p>For me, I found it interesting that even items such as Yarchagumba are bringing in around Rs. 44 crores of revenue per year. Another surprise for me was that Dog/Cat food did Rs. 3.40 arba in revenue which is a very big amount of revenue that provides tons of employment opportunity in Nepal especially in the village areas.</p>
+
+<p>Thus, by exploring this dashboard and finding out the revenue of different items, we can also map out what kind of opportunity is present to sell Nepali items in the global market too.</p>
+
+<p>Conclusion</p>
+
+<p>Now that I’ve worked on this project, I can see there are many kinds of data we can make accessible through turning the raw data into a more accessible format. If you want to further work on this project then the next steps would be to find a way to make it accessible on the internet to people through platforms like Heroku and then test the prototype out.</p>
+
+<p>Thanks to Code For Nepal’s Data Fellowship program with DataCamp Donates, I got the chance to explore creating tools with Python. I’m thankful to Code for Nepal for giving me the opportunity to learn such Python skills.</p>
+
+<p>By: Anupam Bajra</p>
+
+<p>Linkedin: <a href="https://www.linkedin.com/in/anupam-bajra/">https://www.linkedin.com/in/anupam-bajra/</a></p>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Anupam, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

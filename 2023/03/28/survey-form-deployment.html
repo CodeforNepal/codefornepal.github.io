@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Survey Form Deployment and Data Pipeline">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2023/03/28/survey-form-deployment.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Survey Form Deployment and Data Pipeline">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Survey Form Deployment and Data Pipeline | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Survey Form Deployment and Data Pipeline</h1>
+    <p>28 Mar 2023 - Sudip Shrestha</p>
+    <p>
+      <p>This project is about collecting data by doing survey. Simply, survey data on social media usage is collected. We will be using deploying a single page that contains the survey form to the public internet. We will collect all the data on the MongoDB database. We will create an API that helps to fetch all the survey data from the MongoDB database. You can see the deployed survey form in this  <a href="https://server-mav2.onrender.com/">link</a>.<br />
+After deploying the survey form, we will create a data pipeline that consists of fetching the data from the database and cleaning the data for further use in visualization and analysis. We will be using Airflow for scheduling these two processes one after another. Airflow is an open-source platform for developing, scheduling, and monitoring different workloads. It provides a graphical user interface to manage our workloads.</p>
+
+<p><strong>Code Availability</strong><br />
+Survey Form  <a href="https://github.com/sudips413/DataProjectSurvey">here</a><br />
+Data Pipeline  <a href="https://github.com/sudips413/Airflow">here</a></p>
+
+<p><strong>Technology Used</strong><br />
+HTML, CSS, Javascript<br />
+Nodejs(version 16.17.0), MongoDB<br />
+Airflow</p>
+
+<p><strong>Steps for deploying and pipelining</strong></p>
+
+<p><strong>Step 1: Create a Survey Form</strong><br />
+Create a directory named  <strong><em>your_directory_name.</em></strong>  Create a simple survey form in  <strong><em>index.html</em></strong>  about social media usage by individuals inside  <strong><em>your_directory_name.</em></strong>  The field includes the name, age, sex, social media preferred, and frequency of usage.</p>
+
+<p><strong>Step 2: Create a node.js server</strong><br />
+On  <strong><em>your_directory_name</em></strong> run, the command  <strong><em>npm init –y.</em></strong>  After that install express, body-parser, and mongoose.<br />
+<strong><em>npm install express body-parser mongoose<br />
+_**Create a Model folder and create a file named  **_Survey.js</em></strong>  This file includes the schema for the database. Write the following code to create a mongoose schema.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const mongoose = require('mongoose');  
+const Schema = mongoose.Schema;  
+const surveySchema = new Schema({  
+    name: {  
+        type: String,  
+        default: 'Anonymous'  
+    },  
+    age: {  
+        type: String,  
+        default: 'Not Specified'  
+    },  
+    sex:{  
+        type: String,  
+        default: 'Not Specified'  
+    },  
+    platform:{  
+        type: String,  
+        default: 'Not Specified'  
+    },  
+    frequency:{  
+        type: String,  
+        default: 'Not Specified'  
+    }  
+});  
+module.exports = mongoose.model('Survey', surveySchema);
+</code></pre></div></div>
+<p>After that,Create a server.js file. Write the following code to start the server at port 3000.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const express = require('express');  
+const app = express();  
+const bodyParser = require('body-parser');  
+app.use(bodyParser.json());  
+const port = 3000;  
+const survey = require('./Model/Survey');  
+//connect to mongodb  
+const mongoose = require('mongoose');  
+mongoose.connect('mongodb+srv://&lt;your_mongodb_username&gt;:&lt;your_mongod_password&gt;@cluster0.iwq7e3d.mongodb.net/&lt;collection_name&gt;', {useNewUrlParser: true, useUnifiedTopology: true})  
+.then(() =&gt; console.log('Connected to MongoDB...'))  
+.catch(err =&gt; console.error('Could not connect to MongoDB...'));  
+app.listen(port, () =&gt; {  
+    console.log(`Example app listening at http://localhost:${port}`);  
+});
+</code></pre></div></div>
+<p>Add this code to serve the  <strong><em>index.html</em></strong> on running the localhost:3000/</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.get('/', (req, res) =&gt; {  
+    //respond the static index.html file  
+    res.sendFile(__dirname + '/index.html');  
+});
+</code></pre></div></div>
+<p>Now create an endpoint that handles the post request of saving the survey data to the MongoDB database.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.post('/survey', async(req, res) =&gt; {  
+    const obj = new survey({  
+        name: req.body.name,  
+        age: req.body.age,  
+        sex : req.body.sex,  
+        platform: req.body.socialMedia,  
+        frequency: req.body.frequency  
+    });  
+    await obj.save().then((data)=&gt;{  
+        res.status(200).send('Data saved successfully');         
+    })  
+    .catch(err =&gt; {  
+        res.status(400).send('Unable to save to database');  
+        console.log(err);  
+    });  
+});
+</code></pre></div></div>
+<p>To provide all the data, add this code to endpoint “/data”</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.get('/data', async(req, res) =&gt; {  
+    try {  
+        const data = await survey.find();  
+        res.json(data);  
+    } catch (err) {  
+        console.error(err);  
+        res.status(500).send('Server Error');  
+    }  
+});
+</code></pre></div></div>
+<p>After that, we need to send the post request from the frontend part so, add this code to  <strong><em>index.html.</em></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>await fetch('http://localhost:3000/survey',{  
+      method:'POST',  
+      headers:{  
+          'Content-Type':'application/json'  
+      },  
+      body:JSON.stringify(data)  
+  }).then((res)=&gt;{ //your code here  
+  }).catch((err)=&gt;{ //your code here  
+})
+</code></pre></div></div>
+<p><strong>Step 3: Deploying to Render Platform</strong><br />
+To deploy the application, we need to create a repository in our GitHub. After pushing all the code to the repository. We can log in to the rendering platform with a GitHub account. Click on the new button, list of services will be seen. Click on web service. It provides a free plan for web services. Click on the free plan. A new page appears where you can connect your repository.<br />
+You can visit this youtube link for guidelines.<br />
+Note*: Sometimes node engine errors might arrive during deployment. Add  <strong><em>.nvmrc</em></strong> in your directory with the specific required version of the node engine.<br />
+After that, you need to change the endpoint with deployed URL in  <strong><em>index.htm</em></strong>l. Update the endpoint by removing ‘http://localhost:3000/survey’ to render the service URL like  <em>‘</em><a href="https://your-webserviceurl.com/survey"><em>https://your-webserviceurl.com/survey</em></a><em>’</em></p>
+
+<p><strong>Step 4: Data pipelining using Airflow</strong><br />
+We need to install airflow. I have to install airflow in windows(wsl). You can install it by watching this guideline video <a href="https://www.youtube.com/watch?v=Va_NMDoDqLQ">link</a>.<br />
+Under the file directory  <strong><em>dags,</em></strong> create a new dag for fetching and cleaning the data  <strong><em>fecthingandclean.py</em></strong>. Also, create new folder  <em>data</em>  with a subfolder <em>surveyData</em>  as shown in the figure.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:670/1*BymlH_V8kCFPx-CF1xN7fg.png" alt="" /></p>
+
+<p>dags and data folder</p>
+
+<p>In  <strong><em>fetchingandclean.py,</em></strong> we need to import the necessary files first.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import requests  
+from airflow import DAG  
+from airflow.operators.python import PythonOperator  
+from datetime import datetime  
+import pandas as pd  
+import os  
+import csv  
+import json
+</code></pre></div></div>
+<p>After that, we define a function that performs the workload of fetching the data from MongoDB collection. The response from the URL is in string form so, we need to convert it to a list using a JSON package.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def fetchData():  
+    try:  
+        url = “https://your-webserviceurl.com/data”  
+        response = requests.request("GET", url)  
+        data= response.text  
+        data = json.loads(data)  
+        flocation="yourpath/data/surveyData/surveyData.csv"  
+        if not os.path.exists(flocation):  
+            open(flocation,'w').close()  
+            with open(flocation, 'w', newline='') as f:  
+            # Create a csv writer object  
+                writer = csv.writer(f)                  
+                # Write the header row  
+                writer.writerow(data[0].keys())                  
+                # Write the data rows  
+                for row in data:  
+                    writer.writerow(row.values())  
+        else:  
+            with open(flocation, 'w', newline='') as f:  
+            # Create a csv writer object  
+                writer = csv.writer(f)                  
+                # Write the header row  
+                writer.writerow(data[0].keys())                  
+                # Write the response.text rows  
+                for row in data:                      
+                    writer.writerow(row.values())  
+    except:  
+        print("error while fetching")
+</code></pre></div></div>
+<p>After that, create a cleanData function workload.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def cleanData():  
+    try:  
+        flocation="yourpath/data/surveyData/surveyDataClean.csv"  
+        if not os.path.exists(flocation):  
+            open(flocation,'w').close()  
+        df= pd.read_csv("yourpath/data/surveyData/surveyData.csv")  
+        #remove duplicates  
+        df = df.drop('__v', axis=1)  
+        df = df.rename(columns={'_id': 'userID'})  
+        df= df.drop_duplicates()  
+        df.to_csv(flocation,index=False)  
+    except:  
+        print("Could not clean the data!!!")
+</code></pre></div></div>
+<p>Now create a DAG</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>with DAG(dag_id="SURVEY-DATA",  
+        start_date=datetime(2023,3,25),  
+        schedule_interval="@hourly",  
+        catchup=False) as dag:      
+        fetch = PythonOperator(  
+            task_id="Fetch_from_API",  
+            python_callable=fetchData  
+        )  
+        clean = PythonOperator(  
+            task_id="clean_the_data",  
+            python_callable=cleanData  
+        )  
+fetch &gt;&gt; clean
+</code></pre></div></div>
+<p><strong>Step 5: To run this you can type the following code in a different terminal.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow webserver  
+airflow scheduler  
+</code></pre></div></div>
+<p>Now you can visit the airflow home page at  <strong><em>“localhost:8080”.</em></strong> Select the  <strong><em>SURVEY-DATA</em></strong>  dag and you trigger it to run. You can view the graph from UI.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1212/1*PqSiZWC0sddG35oz5I6FLQ.png" alt="" /></p>
+
+<p>After running the dags, the data folder must have two files shown below.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:636/1*XIIHw7jH8trsV6_ho2FMrg.png" alt="" /></p>
+
+<p>We have successfully deployed the survey form and made a data pipeline using airflow. The collection of data and cleaning can be scheduled at certain intervals of time like hourly which is written in the DAG code above.</p>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Sudip, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

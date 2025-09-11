@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Go Beyond CSV: Data Ingestion with Pandas">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2022/04/16/go-beyond-csv-data-ingestion-with-pandas.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Go Beyond CSV: Data Ingestion with Pandas">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Go Beyond CSV: Data Ingestion with Pandas | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Go Beyond CSV: Data Ingestion with Pandas</h1>
+    <p>16 Apr 2022 - Mala Deep Upadhaya</p>
+    <p>
+      <p><strong>Mala Deep is a Business Intelligence Consultant, and community focused data citizen.</strong></p>
+
+<h1 id="go-beyond-csv-data-ingestion-with-pandas">Go Beyond CSV: Data Ingestion with Pandas</h1>
+
+<h2 id="data-will-not-always-come-to-you-in-csv">Data will not always come to you in CSV</h2>
+
+<p><img src="https://miro.medium.com/max/1400/1*YQ1pRMimXT-jX_mYHy8GhQ.png" alt="Pandas Read_CSV() data ingestion in Python" /></p>
+
+<p>Pandas read_csv() method. Image by the author.</p>
+
+<p>Ifyou are a complete beginner or think of yourself as a beginner to data engineering or data science, then you are totally familiar with the Jupyter notebook and the following command.</p>
+
+<p><strong>#importing dataset</strong></p>
+
+<p>df = pd.read_csv(“path/filename.extension”)</p>
+
+<p>Then you know how to acquire data in  <a href="https://docs.fileformat.com/spreadsheet/csv/">CSV (Comma Separated Values)</a>. After all, before you can analyze data, you first have to acquire it.</p>
+
+<p>From my experience and most of the tutorials/resources out there, they have always been written with working CSV files. So, when you go to work for a company, and someone gives you data in SQL and/or JSON, then you start to panic and create a self-image of  <em>“oh, this is going to be tough.”</em></p>
+
+<p>But, if you follow this blog, you can easily work with any sort of data in a jupyter notebook.</p>
+
+<blockquote>
+  <p><strong>Remember:</strong> Before you can analyze data, you first have to acquire it.</p>
+</blockquote>
+
+<p>Let’s get started. Data ingestion is the process of pulling data from a variety of sources into your system with the purpose of easily exploring, maintaining, and using it for your own use. Today, you will learn how to transfer data from various formats such as Excel, HTML, SQL, and JSON into a Pandas dataframe object using various Pandas methods (highlighted below as  <em>read_csv()</em>).</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*jHOtYNOWRoC61pVPeCv5kQ.png" alt="Pandas Read_CSV() Streamlined data ingestion in Python" /></p>
+
+<p>Pandas read_csv() method. Image by the author.</p>
+
+<h2 id="step-involved">Step Involved</h2>
+
+<p>To transfer such data format, into a Python DataFrame object, the following steps are taken:</p>
+
+<ol>
+  <li>Knowing from where and how you will pull data.</li>
+</ol>
+
+<p>Unless at until you have an idea of where your data is and in what format you will never going to bring it as DataFrame object. After that, if your data is residing on the server, then you will need the path, and URL to the file.</p>
+
+<ol>
+  <li><em>Use Pandas ‘</em><strong><em>read_x</em></strong><em>’ method</em></li>
+</ol>
+
+<p>For loading and converting CSV data into a DataFrame object, use  _read_csv()._You need to replace  <strong>x</strong>  with another.</p>
+
+<ol>
+  <li>Validate the data using a DataFrame object.</li>
+</ol>
+
+<p>Next, you need to verify whether the conversion was smooth.</p>
+
+<h2 id="for-excel">For Excel</h2>
+
+<p><a href="https://docs.fileformat.com/spreadsheet/">Excel sheets (spreadsheets)</a>  are still widely used in a variety of domains. Excel is widely used, from developing budgeting strategies to tracking daily student attendance.</p>
+
+<ul>
+  <li>method:  <em>read_excel()</em></li>
+  <li>extension/format:  <em>.xlsx</em>  or <em>.xls</em></li>
+</ul>
+
+<p>For now, you will be using  <a href="https://opendatanepal.com/dataset/preliminary-data-of-national-population-and-housing-census-2021">Preliminary Data of National Population and Housing Census 2021, Nepal</a>  dataset from  <a href="https://opendatanepal.com/">OpenDataNepal</a>. I have saved this dataset as n_epalcensusdata.xlsx_</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*p-kP__XLzF26gBFY7fKP8w.png" alt="Snapshot of Excel dataset. Image by author. Preliminary Data of National Population and Housing Census 2021, Nepal dataset from OpenDataNepal. Streamlined data ingestion in Python." /></p>
+
+<p>Snapshot of the Excel dataset. Image by the author.  <a href="https://opendatanepal.com/dataset/preliminary-data-of-national-population-and-housing-census-2021">Preliminary Data of National Population and Housing Census 2021, Nepal</a>  dataset from  <a href="https://opendatanepal.com/">OpenDataNepal</a>.</p>
+
+<p><strong>#import the Pandas library<br />
+**import pandas</strong>#import excel data and store as data_excel dataframe (no need to do df always)<br />
+<strong>data_excel = pd.read_excel(“n_epalcensusdata.xlsx_”)</strong>#view the dataset as pandas dataframe object<br />
+**data_excel.head()</p>
+
+<p>Output:</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*Ef44Ulu8OZ6019iYbywqFw.png" alt="Snapshot of Excel dataset. Image by author. Preliminary Data of National Population and Housing Census 2021, Nepal dataset from OpenDataNepal. Streamlined data ingestion in Python." /></p>
+
+<p>Output obtained from data_excel.head() as Pandas dataframe. Image by the author.</p>
+
+<p>If you have more than one sheet in your workbook then an additional parameter called  <em>sheet_name</em>  is needed.</p>
+
+<p>data_excel = pd.read_excel(“nepalcensusdata.xlsx”,sheet_name = 0)<br />
+data_excel.head()</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*YyRE7PVarQd8o4LCseiZHw.png" alt="Snapshot of Excel dataset. Image by author. Preliminary Data of National Population and Housing Census 2021, Nepal dataset from OpenDataNepal. Streamlined data ingestion in Python." /></p>
+
+<p>Pandas read_excel() method. Image by the author.</p>
+
+<p>In our case, we are importing the first sheet, thus it is given 0. The sheet numbers start at 0.</p>
+
+<h2 id="for-html">For HTML</h2>
+
+<p>If you are familiar with data scrapping (web scraping), then  <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a>,  <a href="https://www.selenium.dev/">Selenium</a>, and  <a href="https://scrapy.org/">Scrapy</a>  are familiar to you. You inspect the HTML structure of the website and pull down the data. If you feel it is sometimes time-consuming or hectic, you can easily do that using the  <em>read_html()</em> method.</p>
+
+<ul>
+  <li>method: <em>read_html()</em></li>
+  <li>extension:  <em>.html</em></li>
+</ul>
+
+<p>From Wikipedia, we will extract a table from the  <strong><em>Money Heist</em></strong>  (Spanish:  <strong><em>Casa de Papel)</em></strong>  series on  <a href="https://www.netflix.com/np/Title/80192098">Netflix</a>  from the following url:  <a href="https://en.wikipedia.org/wiki/Money_Heist">https://en.wikipedia.org/wiki/Money_Heist</a></p>
+
+<p>We will be extracting the awards and nominations tables.</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*ynN7---8I48m2TDIC4gR3A.png" alt="Snapshot of Money Heist awards and nominations table from Wikipedia. Image by the author. Streamlined Data Ingestion in Python Pandas." /></p>
+
+<p>Snapshot of Money Heist awards and nominations table from  <a href="https://en.wikipedia.org/wiki/Money_Heist">Wikipedia</a>. Image by the author.</p>
+
+<p><strong>#import the Pandas library</strong><br />
+import pandas<strong>#import html data and store as data_html dataframe<br />
+**data_html = pd.read_html(“<a href="https://en.wikipedia.org/wiki/Money_Heist">https://en.wikipedia.org/wiki/Money_Heist</a>”)[1]</strong>#view the dataset as pandas dataframe object**<br />
+data_html.head()</p>
+
+<p>Output:</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*bmaziSMNp4NzLqzAO3AbVA.png" alt="Snapshot of Money Heist awards and nominations table from Wikipedia. Image by the author. Streamlined Data Ingestion in Python Pandas." /></p>
+
+<p>Output obtained from data_html.head() about awards and nominations of  <a href="https://en.wikipedia.org/wiki/Money_Heist">Netflix series Money Heist</a>  as Pandas dataframe. Image by author.</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*kesAJ6IxbV8DzVEI_-RZ0Q.png" alt="Streamlined Data Ingestion in Python Pandas. df_read_html() method example." /></p>
+
+<p>Pandas read_html() method. Image by the the author.</p>
+
+<p>Here, the initial output from the  <em>read_html()</em>  method is a list, and to convert that list into a dataframe, you have to use [0] at the end. So, here you have used [2] because, on the wikipedia page, you wanted to extract the awards and nominations table. Before this table, there were two more tables. One is called “infobox,” and the next is “Episodes” and to extract the infobox, you need to use [0] and for the episode table [1].</p>
+
+<p><img src="https://miro.medium.com/max/4540/1*UTOqktqRtaHp5Pe28XiDsw.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/max/3848/1*CEmq3dL2uaoAst4afDHRzA.png" alt="" /></p>
+
+<p>Pandas read_html() method for ingesting different tables. Image by the the author.</p>
+
+<p>Remember that using  <em>read_html()</em>  is not a simple task.To get the exact table you are looking at, you need to play with your initial result without any frustration.</p>
+
+<h2 id="for-sql">For SQL</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/SQL">Structured Query Language (SQL)</a>  is a standard language for storing, manipulating, and retrieving data in databases. Reading data from a database is a two-step process. You first make a way to connect to a database, then query it with SQL and Pandas. In Python, to connect to a SQL server, you need to have either  <a href="https://docs.sqlalchemy.org/en/14/core/connections.html">SQLAlchemy connectabl</a>e or  <a href="https://sqlite.org/index.html">sqlite3</a>.</p>
+
+<ul>
+  <li>method:  <em>read_sql_query()</em></li>
+  <li>extension:  <em>.db</em></li>
+</ul>
+
+<p>Unlike other formats, for SQL you will have to write a few more lines of code. You first make a connection with the database. Then you will use Pandas’s  <em>read_sql_query()</em>  function to convert the output to a dataframe and write a SQL query to import all columns from the database.</p>
+
+<p>For now, the demo  <em>my_aquarium.db</em>  is created with a single table called “fish” with the following columns:  <em>name, species, tank_number.</em></p>
+
+<p><strong>#import the required libraries<br />
+**import sqlite3<br />
+import pandas</strong>#prepare a connection object and Pass the Database name as a parameter<br />
+<strong>connection = sqlite3.connect(“<em>aquarium.db</em>”)</strong>#use read_sql_query method and Pass SELECT query and connection object as parameter<br />
+<strong>data_Sql = pd.read_sql_query(“SELECT * FROM fish”, connection)</strong>#<strong>**view the dataset as pandas dataframe object<br />
+**print(data_Sql)</strong>#close the connection object<br />
+**connection.close()</p>
+
+<p>Output:</p>
+
+<p><img src="https://miro.medium.com/max/1032/1*pcOC534YBtdZOLNwvqViLw.png" alt="Output obtained from read_sql_query() with fish table as Pandas dataframe. Image by the author. Data Ingestion in Python Pandas." /></p>
+
+<p>Output obtained from  <code class="language-plaintext highlighter-rouge">read_sql_query</code>() with fish table as Pandas dataframe. Image by the author.</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*lEoW9iw_ZO8M7iVto2bQww.png" alt="Output obtained from read_sql_query() with fish table as Pandas dataframe. Image by the author. Data Ingestion in Python Pandas." /></p>
+
+<p>Pandas read_sql_query() method. Image by the author.</p>
+
+<p>Remember to close the database connection every time you open it.</p>
+
+<h1 id="for-json">For JSON</h1>
+
+<p><a href="https://www.json.org/json-en.html">JavaScript Object Notation (JSON)</a>  is the most common file format preferred by web developers and data engineers. It’s used widely across the internet for almost every single  <a href="https://aws.amazon.com/what-is/api/">API</a>  that you will access.</p>
+
+<ul>
+  <li>method:  <em>read_json()</em></li>
+  <li>extension: .<em>json</em></li>
+</ul>
+
+<p>You will use data from  <a href="https://www.kaggle.com/datasets/aditya2803/one-piece-anime">One Piece Anime from Kaggle</a>  stored as  <em>openPiece.json</em></p>
+
+<p><img src="https://miro.medium.com/max/1400/1*EFsNwpfbhHzWRU46L-wOdw.png" alt="Snapshot of One piece anime from Kaggle. Image by author. pd.read_json() example data ingestion in pandas python." /></p>
+
+<p>Snapshot of  <a href="https://www.kaggle.com/datasets/aditya2803/one-piece-anime">One piece anime from Kaggle.</a>  Image by author.</p>
+
+<p><strong>#import the Pandas library</strong><br />
+import pandas<strong>#import html data and store as data_json dataframe<br />
+**data_json = pd.read_json(“opnePiece.json”)</strong>#view the dataset as pandas dataframe object**<br />
+data_json.head()</p>
+
+<p>Output:</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*STt3j_EDKSW_4LeGRgv-RA.png" alt="Snapshot of One piece anime from Kaggle. Image by author. pd.read_json() example data ingestion in pandas python." /></p>
+
+<p>Output obtained from  <code class="language-plaintext highlighter-rouge">read_json</code>() as Pandas DataFrame. Image by the author.</p>
+
+<p><img src="https://miro.medium.com/max/1400/1*c_n7XHped9lB_bOBaFcj7A.png" alt="pd.read_json() example data ingestion in pandas python." /></p>
+
+<p>Pandas read_json() method. Image by the author.</p>
+
+<p>In this manner, you can obtain data in a variety of formats.</p>
+
+<blockquote>
+  <p>Remember: Acquiring data is just the beginning.</p>
+</blockquote>
+
+<p>Of course, acquiring data is just the beginning. After this, you need to explore data and play with it before you get deep into a data science project. But if you need ideas on where to go next, go with  <a href="https://medium.com/analytics-vidhya/exploratory-data-analysis-for-beginner-7488d587f1ec">exploratory data analysis for begineers.</a></p>
+
+<p>PS: I was able to delve deeper into this because of the  <a href="https://codefornepal.org/data-fellowship/">Data Fellowship</a> opportunity provided by  <a href="https://codefornepal.org/">Code For Nepal</a>.I’d like to express my gratitude to Code for Nepal for providing a fantastic opportunity to the Nepali community, as well as the <a href="https://www.datacamp.com/">DataCamp</a>for believing in Code for Nepal.</p>
+
+<p><em>If you have any queries regarding the article or want to work together on your next data engineering or data science project, ping me on</em> <a href="https://www.linkedin.com/in/maladeep/"><em>LinkedIn</em></a><em>.</em></p>
+
+<p>Originally published at  <a href="https://towardsdatascience.com/go-beyond-csv-data-ingestion-with-pandas-4c1a0dd4f2e2">Mala’s Medium blog</a></p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

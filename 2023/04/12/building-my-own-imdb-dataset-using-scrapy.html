@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Building my own IMDB movies dataset using Scrapy">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2023/04/12/building-my-own-imdb-dataset-using-scrapy.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Building my own IMDB movies dataset using Scrapy">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Building my own IMDB movies dataset using Scrapy | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Building my own IMDB movies dataset using Scrapy</h1>
+    <p>12 Apr 2023 - Shyamron Dongol</p>
+    <p>
+      <p>Scrapy, a free and open-source web crawling framework, was first release on June 26, 2008 licensed under BSD. It is used for web scraping and extracting structured data. Scrapy is widely used by many employers, for both freelancing and in-house jobs for various applications from data mining to monitoring websites. or changes. Scrapy is popularly used due to its ability to handle requests asynchronously, i.e., it can execute multiple tasks concurrently, such as making requests, processing responses, and saving data. It allows you to focus on the data extraction process utilizing CSS selectors and XPath expressions rather than the complex internals of how spiders are supposed to function. With Scrapy, you can easily build complex scraping pipelines that can handle multiple pages, parse complex HTML structures, and store data in various formats.</p>
+
+<p>Web scraping is a technique for gathering data or information on web pages. Web crawling is usually the first step of data tasks. This blog discusses how powerful scrapy is and how it can be implemented using Python. Movies information such as title, rating, no. of reviews, genres and other information are scraped from imdb.com site. Obtaining this information is the first step towards tasks such as movie recommendation systems, discover trends on movies, visualize how movies’ popularity is dependent on various factors and other visualizations and evaluations.</p>
+
+<p>For example, you can analyze the genres of movies that are currently popular and see how they have changed over time. Furthermore, you can analyze the movie information obtained from Scrapy to see which actors, directors, or production companies are associated with popular movies and use this information to predict the success of future movies.</p>
+
+<p>This blog provides a step-by-step guide on creating a Scrapy project and a spider to scrape data from IMDB. Let’s get going.</p>
+
+<h1 id="getting-started-prerequisites">Getting Started (Prerequisites)</h1>
+
+<ol>
+  <li>Install scrapy.</li>
+</ol>
+
+<p>Firstly, we have to install scrapy. If you are using anaconda, you can use conda to install scrapy such as:</p>
+
+<p>conda install -c conda-forge scrapy</p>
+
+<p>Or using pip as:</p>
+
+<p>pip install scrapy</p>
+
+<h1 id="creating-our-scrapy-project">Creating our scrapy project</h1>
+
+<h2 id="step-1">Step 1:</h2>
+
+<p>To create our scrapy project, run following command in your appropriate directory.</p>
+
+<p>scrapy startproject imdbscrapy</p>
+
+<p>Here, imdbscrapy is the scrapy project name and our scrapy project folder would look like this:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:728/1*893_Vv12_AG2e-91LojEiw.png" alt="" /></p>
+
+<p>The created project folder contains multiple files each having specific purpose.</p>
+
+<p><em>Scrapy.cfg — Deploys configuration file.</em></p>
+
+<p><em><strong>init</strong>.py — Initialization file</em></p>
+
+<p><em>Item.py — Project items definition file</em></p>
+
+<p><em>Middlewares.py — Project middle wares file</em></p>
+
+<p><em>Pipelines.py — Project pipelines file</em></p>
+
+<p><em>Setting.py — Project settings file</em></p>
+
+<p><em>Spiders/ — A directory where later you will put your spiders.</em></p>
+
+<p>Spiders are classes that you define and that Scrapy uses to scrape information from websites.</p>
+
+<h2 id="step-2">Step 2:</h2>
+
+<p>Creating spider: To create a spider, we navigate towards the spider folder and run following command:</p>
+
+<p>scrapy genspider imdb_movies imdb.com</p>
+
+<p>After executing above command, python file named imdb_movies is created in spiders directory with start URL <a href="https://www.imdb.com/">https://www.imdb.com</a>. All the commands will be written here to scrape the information.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:572/1*jITOZixb3c2kawXEnnCqAA.png" alt="" /></p>
+
+<p>imdb_movies.py would contain python code given as follows.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:822/1*WMw7r67_sn566UrdIUg7ZQ.png" alt="" /></p>
+
+<h2 id="step-3">Step 3:</h2>
+
+<p>Now, navigating toward <a href="https://www.imdb.com/search/title/?genres=action&amp;languages=en&amp;sort=user_rating,desc&amp;title_type=feature">Feature Film, Action, English (Sorted by IMDb Rating Descending) — IMDb</a>, i.e., the movies with genre “action” web URL are selected to scrape. It consists of more than 20k+ action movies separated in multiple pages with each page containing maximum 50 movies.</p>
+
+<p>We would want to scrape following features from each action movies:</p>
+
+<ol>
+  <li>Title</li>
+  <li>Rating</li>
+  <li>No. of reviews</li>
+  <li>Directors and Actors</li>
+  <li>Genres</li>
+  <li>Year</li>
+  <li>Runtime</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*NFasfq50w3auqBg0z-fN3A.png" alt="" /></p>
+
+<h2 id="step-4">Step 4:</h2>
+
+<p>In imdb_movies.py, specify our required urls and genres lists. In this case, since we are only scraping for ‘action’ genre, so genre is a list containing ‘action’. If you want to scrape other genres, you can add it on the list.</p>
+
+<p>Now, yield scrapy request for each url in urls list. In this case there is only one url i.e., for ‘action’ genre.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ImdbMoviesSpider(scrapy.Spider):
+    name = 'imdb_movies'
+    allowed_domains = ['www.imdb.com']
+    start_urls = 'http://www.imdb.com/'
+    genres=['action']
+
+    def start_requests(self):
+        urls=[]
+        for genre in self.genres:\
+            urls.append(f"{self.start_urls}/search/title/?genres={genre}&amp;languages=en&amp;sort=user_rating,desc&amp;title_type=feature")
+        for url in urls:
+            yield scrapy.Request(url=url,callback=self.parse)
+
+    def parse(self, response):
+        pass
+
+</code></pre></div></div>
+<p>Step 5:
+——-</p>
+
+<p>We can use CSS or Xpath to select elements from the websites. First thing to do is navigate towards the required website and right click on the mouse and Inspect. This will display he website’s HTML, CSS, and JavaScript code.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1234/1*Ce_e4L2yUPNU-37Ja3V2MQ.png" alt="" /></p>
+
+<p>Select Ctrl+ shift + c and click on required elements in the web that you want to extract. This will display the HTML code for the specific feature.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*_Hiwb-t8hSTveT4o5MF2Tg.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*ML25OpQ1tzIm4YFkUFglQg.png" alt="" /></p>
+
+<p>Here, the div class lister-list contains all the movies each separated under div class list-item mode-advanced. Each required items are selected again using span, div or p.</p>
+
+<p>As default, the features variables are set to empty string (‘ ‘) , as all the movies may not have values.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def parse(self, response):
+    movies_list=response.css('div.lister-list')
+    for movie in movies_list:
+        movies=movie.css('div.lister-item.mode-advanced')
+        year=''
+        title=''
+        rating=''
+        reviews=''
+        directors_actors=''
+        genres=''
+        gross=''
+        runtime=''
+</code></pre></div></div>
+
+<p>If the div class name is unique then we can directly use the class name. If the same class name is used for other divisions as well, we may want to be specific about which division we want to scrape. Following is the illustration using CSS expression:</p>
+
+<p>for items in movies:
+    rating=items.css(“div.inline-block.ratings-imdb-rating strong::text”).get()
+    runtime=items.css(“span.runtime::text”).get()
+    year=items.css(‘span.lister-item-year.text-muted.unbold::text’).get()</p>
+
+<p>Referencing to <a href="https://cdn-images-1.medium.com/max/900/1*ML25OpQ1tzIm4YFkUFglQg.png">figure </a>above, to extract title text, we can use ‘a’ tag, but other divisions also have ‘a’ tag, so we specify the unique division that title ‘a’ tag belong to and then scrape within the division.</p>
+
+<p>title=items.css(“h3.lister-item-header a::text”).get()<br />
+genres=items.css(“p.text-muted  span.genre::text”).get()</p>
+
+<p>Syntax:</p>
+
+<p><em>feature = response.css(“div.parent-class div.child-class::text”).get()</em></p>
+
+<h2 id="step-6">Step 6:</h2>
+
+<p>Another way of writing expressions is using nth-child. Code snapshot is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for item in items.css('p.sort-num_votes-visible'):
+    reviews=item.css("span:nth-child(2)::text").get()
+    gross=item.css('span:nth-child(5)::text').get()
+</code></pre></div></div>
+
+<p>In above code, the second and fifth child span within element ‘p’ are being accessed to obtain number of reviews and gross obtained from the movie</p>
+
+<h2 id="step-7">Step 7:</h2>
+
+<p>We can also use Xpath for extracting elements.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for item in items.css('div.lister-item-content'):
+    for names in item.xpath('.//p[3]'):
+        directors_actors = [name.strip() for name in names.css('::text').extract()]
+
+
+</code></pre></div></div>
+
+<p>Here, actors and directors’ names are extracted from third ‘p’ element within div class lister-item-content.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>If you want to learn more about detailed information and syntax relating to scrapy Xpath and CSS expressions, refer this tutorial [Scrapy Python: How to Make Web Crawler in Python</td>
+      <td>DataCamp](https://www.datacamp.com/tutorial/making-web-crawlers-scrapy-python) .</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="step-8">Step 8:</h2>
+
+<p>Doing this will extract required elements from one page of website. We can further modify the code to extract from multiple pages.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*Ae3fDtizuOExatOuWPPtFg.png" alt="" /></p>
+
+<p>Code snippet is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>next_page = response.css('a.lister-page-next.next-page').attrib['href']
+next_page = f"{self.start_urls}/{next_page}"
+print(f"temp:{next_page}")
+if next_page is not None:
+    yield response.follow(next_page,callback=self.parse)
+
+</code></pre></div></div>
+<p>In this code, href is extracted from ‘a’ element to navigate to next page. This code allows the spider to follow links to the next page of search results until there are no more pages.</p>
+
+<h2 id="step-9">Step 9:</h2>
+
+<p>The spider is run by following command:</p>
+
+<p>scrapy crawl imdb_movies -O movies.csv</p>
+
+<p>A dataset name movies.csv is obtained.</p>
+
+<p>Compiling all the code snippets, complete code for our spider is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import scrapy\
+class ImdbMoviesSpider(scrapy.Spider):
+    name = 'imdb_movies'
+    allowed_domains = ['www.imdb.com']
+    start_urls = 'http://www.imdb.com/'
+    genres=['action']
+
+    def start_requests(self):
+        urls=[]
+        for genre in self.genres:
+            urls.append(f"{self.start_urls}/search/title/?genres={genre}&amp;languages=en&amp;sort=user_rating,desc&amp;title_type=feature")
+        for url in urls:
+            yield scrapy.Request(url=url,callback=self.parse)
+
+    def parse(self, response):
+        movies_list=response.css('div.lister-list')
+        for movie in movies_list:
+            movies=movie.css('div.lister-item.mode-advanced')
+            year=''
+            title=''
+            rating=''
+            reviews=''
+            directors_actors=''
+            genres=''
+            gross=''
+            runtime=''
+            for items in movies:
+                rating=items.css("div.inline-block.ratings-imdb-rating strong::text").get()
+                runtime=items.css("span.runtime::text").get()
+                year=items.css('span.lister-item-year.text-muted.unbold::text').get()
+                title=items.css("h3.lister-item-header a::text").get()\
+                genres=items.css("p.text-muted  span.genre::text").get()
+
+                for item in items.css('p.sort-num_votes-visible'):
+                    reviews=item.css("span:nth-child(2)::text").get()
+                    gross=item.css('span:nth-child(5)::text').get()
+
+                for item in items.css('div.lister-item-content'):
+                    for names in item.xpath('.//p[3]'):
+                        directors_actors = [name.strip() for name in names.css('::text').extract()]
+                yield{\
+                    "year":year,
+                    "title":title,
+                    'rating':rating,
+                    'no_of_reviews':reviews,
+                    'directors_actors':directors_actors,
+                    'genres':genres.strip(),
+                    'runtime':runtime,
+                    'gross':gross
+                }
+
+        next_page = response.css('a.lister-page-next.next-page').attrib['href']
+        next_page = f"{self.start_urls}/{next_page}"
+        print(f"temp:{next_page}")
+        if next_page is not None:
+            yield response.follow(next_page,callback=self.parse)
+
+</code></pre></div></div>
+
+<p>After executing the spider, all 20,464 action movies from IMDB were extracted. The dataset contains a lot of dirty values and empty cells. Data manipulations and data preprocessing can be done before applying the data to proper use. Complete code along with extracted dataset can be found in GitHub <a href="https://github.com/shyamron/imdb_movies_scrapy.git">here</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>By implementing the spider code, 20k+ action movies were scraped in about 15–20 minutes. This clearly show how power scrapy is. You can explore further about scrapy <a href="https://docs.scrapy.org/en/latest/intro/tutorial.html">here </a>to scrape your own dataset.</p>
+
+<h2 id="references">References:</h2>
+
+<ul>
+  <li><a href="https://www.datacamp.com/tutorial/making-web-crawlers-scrapy-python">Scrapy Python: How to Make Web Crawler in Python, DataCamp</a></li>
+  <li><a href="https://doc.scrapy.org/en/latest/intro/tutorial.html">Scrapy Tutorial — Scrapy 2.8.0 documentation</a></li>
+  <li><a href="https://www.experfy.com/blog/using-scrapy-to-build-your-own-dataset">Using Scrapy to Build your Own Dataset, Experfy Insights</a></li>
+  <li><a href="https://app.datacamp.com/learn/courses/web-scraping-with-python">Web Scraping with Python — DataCamp Learn</a></li>
+</ul>
+
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Shyamron, and several other fellows access to DataCamp, to learn and grow.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

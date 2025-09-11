@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Performing a Mann-Kendall Trend Test for Temperature Data in Python">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2022/08/29/mann-kendall.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Performing a Mann-Kendall Trend Test for Temperature Data in Python">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Performing a Mann-Kendall Trend Test for Temperature Data in Python | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Performing a Mann-Kendall Trend Test for Temperature Data in Python</h1>
+    <p>29 Aug 2022 - Ashma Subedi</p>
+    <p>
+      <p><strong>Ashma Subedi recently completed her Masters in Environment Science from Kathmandu University. She loves solving environment problems using data science and machine learning, especially time series analysis.</strong></p>
+
+<p><strong>Why determining the climate trend is important?</strong></p>
+
+<p>Trend analysis of climate variables such as temperature and precipitation, which offers an overall assessment of the changes in the climate variables, is a fundamental procedure in determining the state of a country’s/ district’s/ municipality’s climate. There is various trend test to determine the climatic variations. Here, in this blog, I will be explaining why I used the Mann-Kendall Trend Test and how this test will determine whether a climatic trend is significant or not using python. The Mann-Kendall Trend Test is used to detect whether time series data has a trend or not. It’s a non-parametric test, which means there’s no underlying assumption about the data’s normality. It can be used in climatic studies to investigate the significance of growing average temperatures over a region over a period of time, as shown below.</p>
+
+<p><strong>How the Test Works</strong>
+This test works by using a hypotheses test. The hypotheses for the test are:</p>
+
+<ul>
+  <li>H0: It is a null hypothesis which means there is no trend present in the data.</li>
+  <li>H1: It is an alternative hypothesis which means there is a trend present in the data. Here, the trend can be a positive trend as well as a negative trend.</li>
+</ul>
+
+<p>If the test’s p-value is less than a certain threshold (typical thresholds include 0.10, 0.05, and 0.01), there is statistically substantial evidence that a trend exists in the time series data.</p>
+
+<p><strong>Example: Mann-Kendall Trend Test in Python</strong></p>
+
+<p>The pymannkendall package must be installed in order to execute a Mann-Kendall Trend Test in Python. After that, all the necessary libraries are imported.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+import pandas as pd
+import pymannkendall as mk
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+%matplotlib inline
+</code></pre></div></div>
+<p>To calculate the trend analysis, the temperature data of one of the weather stations in Nepal was collected from the Department of Hydrology and Meteorology, Kathmandu. The maximum temperature and minimum temperature data were collected from the year 1992 to 2020.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#read dataset
+data = pd.read_csv('D:/M/excel/tmax.csv')
+data
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(data.Year,data.Tmax, 'g')
+plt.xlabel('Year')
+plt.ylabel('Maximum Temperature')
+
+#calculate equation for trendline
+z = np.polyfit(data.Year, data.Tmax, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+plt.plot(data.Year, p(data.Year), 'b--')
+</code></pre></div></div>
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/tmax.png" alt="" /></p>
+
+<p>Autocorrelation graphs are a common method for determining the randomness of data collection. The randomness of data values at different time lags is determined by computing autocorrelation.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from datetime import datetime
+data['dated'] = pd.to_datetime(data['Year'])
+df = data.set_index('dated')
+df.drop(['Year'], axis=1, inplace=True)
+fig, ax = plt.subplots(figsize=(12, 8))
+sm.graphics.tsa.plot_acf(df, lags=20, ax=ax)
+plt.show()
+</code></pre></div></div>
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/auto_tmax.png" alt="" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d = mk.original_test(df, alpha=0.05)
+d
+</code></pre></div></div>
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/tmin.png" alt="" /></p>
+
+<p>Here is how to interpret the output of the test:</p>
+<ul>
+  <li>trend: This tells the trend i.e. whether the data has an increasing, decreasing, or no trend.</li>
+  <li>h: True if the trend is present. False if no trend is present.</li>
+  <li>p: The p-value of the test.</li>
+  <li>z: The normalized test statistic.</li>
+  <li>Tau: Kendall Tau.</li>
+  <li>s: Mann-Kendal’s score</li>
+  <li>var_s: Variance S</li>
+  <li>slope: Sen slope (used to assess the magnitude of meteorological parameters, which refers to how much an increase or reduction occurs each year.)</li>
+  <li>intercept: Intercept of Kendall-Theil Robust Line</li>
+</ul>
+
+<p>Here, the test trend shows there is an increasing trend in the maximum temperature data with a p-value less than 0.05 which means our null hypothesis is rejected and our alternative hypothesis is accepted. That is, there is a significant positive change in the trend in the last 28 years. The sen slope is 0.16 meaning that the maximum temperature has increased by 0.16 degree per year.</p>
+
+<p>Using a similar code, the trend for minimum temperature and average temperature from 1992 to 2020 was also calculated.</p>
+
+<p>Plotting minimum temperature data using plt.plot</p>
+
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/tmin.png" alt="" />
+<img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/auto_tmin.png" alt="" /></p>
+
+<p>The initial lag indicates minor autocorrelation in this ACF plot. So, we can disregard it. Now, calculating the trend using above- mentioned code, we get:
+<img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/senslope_tmin.jpg" alt="" /></p>
+
+<p>We can conclude that there is a substantial trend in this dataset based on the above result. h=True because the p-value is less than alpha=0.05. The trend is significantly decreasing with a value of -0.125 for the trend/slope. Lastly, the average temperature trend from 1992 to 2020 was calculated using the same code. Plotting the average temperature</p>
+
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/tavg.png" alt="" />
+<img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/auto_tavg.png" alt="" /></p>
+
+<p><img src="https://github.com/ashmasubedi0/Mann-Kendall-Trend-Test/raw/main/senslope_tavg.jpg" alt="" /></p>
+
+<p>Here, the test trend shows there is an increasing trend in the average temperature data with a p-value less than 0.05. That is, there is a significant positive change in the trend in the last 28 years with a sen slope of 0.019.</p>
+
+<p>From testing all the three data sets (maximum temperature, minimum temperature, and average temperature), it can be said that the trend analysis reveals a positive trend (maximum temperature and average temperature) and a negative trend in minimum temperature and statistical significance. Because the estimated p-value is less than the alpha (significance threshold), the null hypothesis should be rejected and the alternative hypothesis accepted.</p>
+
+<p>I’m attempting to demonstrate how a trend can be tested using my blog. More datasets, such as those from the last 50 years, can be used to produce more trustworthy trend test results. I simply ran one trend test here; however, when working with climatic/meteorological data, it is required to run multiple trend tests. Moreover, there are a few things that need to be considered before using the Mann-Kendall Trend Test such as the data collected should not be seasonal i.e. only summer or winter months as the test won’t work or give reliable trend; and there should be no missing values, if there are some it can be filled using fillna().</p>
+
+<p>The Mann-Kendall test is a powerful trend test for analyzing seasonal and annual trends in environmental data and climate data, and this test is preferred over others because it can be used with time-series data that does not follow a statistical distribution.</p>
+
+<p>Despite the fact that the code appears simple and the data visualization appears appealing, I found it difficult to get there. This was only possible because of <strong>Code for Nepal</strong>, and I’d like to express my gratitude to them for giving me the opportunity to study Python through <a href="https://www.datacamp.com/">DataCamp</a> and <a href="https://www.datacamp.com/donates">DataCamp Donates</a>.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

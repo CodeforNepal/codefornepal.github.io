@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Basics of Multiple Linear Regression using R">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2022/04/15/Basics-of-Multiple-Linear-Regression-using-R.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Basics of Multiple Linear Regression using R">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Basics of Multiple Linear Regression using R | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Basics of Multiple Linear Regression using R</h1>
+    <p>15 Apr 2022 - Roshan Rai</p>
+    <p>
+      <p><img src="https://media-exp1.licdn.com/dms/image/C5612AQExJT7EGkOAYQ/article-cover_image-shrink_720_1280/0/1647962745221?e=2147483647&amp;v=beta&amp;t=9cb7liNjoM5Q0k3vkbWd7jhYArMCoipF3-6MnPjn2lE" alt="Photo by Luke Chesser on Unsplash" />
+Photo by Luke Chesser on Unsplash</p>
+
+<h2 id="roshan-rai">Roshan Rai</h2>
+
+<p>(https://www.linkedin.com/in/tetris/roshan-rai-935301217/)</p>
+
+<p>MBA student at KUSOM</p>
+
+<p>Nepal had seen the steady rise of the e-commerce sector primarily because of the rising of secure and easy e-payment systems, emerging e-commerce platforms like DARAZ, Sastodeal and the growth of small entrepreneurs using social media platforms like Facebook and Instagram to sell their products. But, it was the COVID lockdowns that had a major role in the current rapid growth of e-commerce. According to NRB, the amount of online transactions reached Rs. 4.93 trillion in the first nine months of FY 2021 compared to Rs. 2 trillion in the same time period in the previous year. E-commerce companies like Daraz and Sastodeal grew by 100 per cent in terms of volume and value respectively in the year 2021 (Prasain, 2021).</p>
+
+<p>Understanding the growth of e-commerce in Nepal, me and my friends did a small study on “Consumers’ attitude towards online shopping” as a part of our project. The questionnaire was prepared by Shachee Shrestha, Aastha Kayastha and Kshitiz Vaidya. With the data available, I did some analysis using R. This article will showcase some of my skills in R that I have gained so far as a “Data Fellow 2021” of “Code for Nepal”. The article/blog will focus on data visualization &amp; the regression analysis of the responses as well as why &amp; how I did in R.</p>
+
+<h2 id="1-data-manipulation">1. Data Manipulation</h2>
+
+<p>The study focused on understanding how consumer attitude is affected by four different factors: security of online transactions, web design, the reputation of online retailers and price and deals. For the study, Likert scales were used which ranged from 1 to 5 i.e. 1 – Strongly Disagree, 2 – Disagree, 3 – Neither Agree/Disagree, 4 – Agree and 5 – Strongly Agree. Most works on data cleaning and manipulation were done on MS Excel. The only data manipulation I did on R was creating new columns of an average of the above-mentioned variables. The questionnaire included:</p>
+
+<ol>
+  <li>Four questions related to security variable; each of them coded as SEC_1, SEC_2, SEC_3 and SEC_4.Four questions related to web-design variable; each of them coded as WEB_1, WEB_2, WEB_3 and WEB_4.</li>
+  <li>Five questions related to reputation variable; each of them coded as REP_1, REP_2, REP_3, REP_4 and REP_5.</li>
+  <li>Five questions related to price and deals variable; each of them coded as PRC_1, PRC_2, PRC_3, PRC_4 and PRC_5.</li>
+  <li>
+    <p>Four questions related to attitude variable; each of them coded as ATT_1, ATT_2, ATT_3 and ATT_4.</p>
+
+    <h1 id="create-average-columns-for-security-web-design-reputation-and-price--deals-variable">Create average columns for security, web design, reputation and price &amp; deals variable</h1>
+
+    <p>consumer_behaviour1 &lt;- consumer_behaviour %&gt;%</p>
+
+    <p>mutate(sec_avg = as.integer((SEC_1 + SEC_2 + SEC_3 + SEC_4) / 4),</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     web_avg = as.integer((WEB_1 + WEB_2 + WEB_3 + WEB_4) / 4),
+
+     rep_avg = as.integer((REP_1 + REP_2 + REP_3 + REP_4 + REP_5) / 5),
+
+     prc_avg = as.integer((PRC_1 + PRC_2 + PRC_3 + PRC_4 + PRC_5) / 5),
+
+     att_avg = as.integer((ATT_1 + ATT_2 + ATT_3 + ATT_4) / 4))
+</code></pre></div>    </div>
+
+    <p>head(consumer_behaviour1)</p>
+  </li>
+</ol>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQE-nWbirhKugQ/article-inline_image-shrink_1500_2232/0/1647524983541?e=2147483647&amp;v=beta&amp;t=OmUdWCD6mCH6HRtDexAYKmq8u2wTZOx-70QbNEt86JY" alt="No alt text provided for this image" /></p>
+
+<h2 id="2-visualizing-the-demographic-data">2. Visualizing the Demographic data</h2>
+
+<h3 id="22-plotting-gender-with-respect-to-the-age-of-respondents">2.2 Plotting Gender with respect to the age of respondents</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(consumer_behaviour, aes(Age, fill=Gender)) +
+
+geom_bar(position="dodge", width=0.85, colour="black") +
+
+labs(title="Age of Respondents",
+
+    x="Age in years",
+
+    y="Frequency") +
+
+theme_bw(base_size=14) +
+
+  theme(axis.text = element_text(size = 14),
+
+        axis.text.x = element_text(angle=90),
+
+       legend.text = element_text(size = 14),
+
+       plot.title = element_text(size=16)) +
+
+facet_wrap(~Gender)
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQFUd5NY5RYTGw/article-inline_image-shrink_1500_2232/0/1647524849000?e=2147483647&amp;v=beta&amp;t=I7yZV3LQVJZVKorkBGdg7ljsZMcatjoo52g6AUYcr68" alt="No alt text provided for this image" /></p>
+
+<h3 id="23-plotting-educational-qualification-with-respect-to-the-gender-of-respondents">2.3 Plotting educational qualification with respect to the gender of respondents</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(consumer_behaviour, aes(x=Educational.Attainment, fill=Gender)) +
+
+geom_bar(width=0.6, colour="black", position="dodge") +
+
+labs(title="Educational qualification based on gender",
+
+    x="Gender",
+
+    y="Frequency") +
+
+coord_flip() +
+
+theme_bw(base_size=14) +
+
+theme(axis.text = element_text(size=14),
+
+     legend.text=element_text(size=14),
+
+     plot.title=element_text(size=16))+
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQErXjDzfBl6nw/article-inline_image-shrink_1500_2232/0/1647524785281?e=2147483647&amp;v=beta&amp;t=a4XOgeElzqVxhN3krEB_iKBUZczgwwTxdSU-fer-mvc" alt="No alt text provided for this image" /></p>
+
+<h3 id="24-plotting-income-of-respondents-based-on-the-gender-and-educational-qualification">2.4 Plotting income of respondents based on the gender and educational qualification</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(consumer_behaviour, aes(x=Income, fill=Gender)) +
+
+geom_bar(width=0.6, colour="black", position="dodge") +
+
+labs(title="Income based on gender and educational qualification",
+
+    x="Gender",
+
+    y="Frequency") +
+
+theme_bw(base_size=14) +
+
+theme(axis.text = element_text(size=14),
+
+      axis.text.x = element_text(angle=90),
+
+     legend.text=element_text(size=14),
+
+     plot.title=element_text(size=16)) +
+
+facet_wrap(~Educational.Attainment)+
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQGSpVpzRC5HIw/article-inline_image-shrink_1500_2232/0/1647524673927?e=2147483647&amp;v=beta&amp;t=HaLmrRrLL4XeNO4EzehIpb_pn0UyecvJKiXeMhAXzEI" alt="No alt text provided for this image" /></p>
+
+<h2 id="3-visualizing-the-likert-scales">3. Visualizing the Likert Scales</h2>
+
+<p>I have plotted Likert scales using violin plots from the ggplot2 package. Visualizing the Likert scales in R would have been better with Likert or HH packages. Instead, I have chosen ggplot2. Though Likert plots using Likert or HH are visually appealing, there are some advantages of visualizing Likert data in violin plots. For example, one can integrate a boxplot within the violin plot or even show mean, median, standard deviation points individually within the violin plot.</p>
+
+<p>For every variable, there is a certain number of questions measured on the Likert scale of which the average has been taken and plotted. Interpreting the plots has been quite challenging to me. If anyone reading this article would like to help me with that, your help will be appreciated. Similarly, in the following violin plots, black dots represent the median of the response of a certain variable.</p>
+
+<h3 id="31-security-variable">3.1 Security Variable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Plotting security variable
+
+ggplot(consumer_behaviour1, aes(Gender, sec_avg, color=Gender)) +
+
+geom_violin(trim=FALSE, size=1.5) +
+
+geom_jitter(position=position_jitter(0.2)) +
+
+stat_summary(fun=median, geom="point", shape=16,
+
+                 size=3, color="Black") +
+
+facet_wrap(~Income) +
+
+scale_y_continuous(name="Scale", breaks=c(1,2,3,4,5)) +
+
+labs(title="Security", x="Gender", y="") +
+
+theme_bw(base_size=13) +
+
+theme(axis.text=element_text(size=13),
+
+     legend.text=element_text(size=13),
+
+     legend.position="bottom",
+
+     plot.title=element_text(size=16, face="bold"))
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQE24YEqMkwe-w/article-inline_image-shrink_1500_2232/0/1647507233894?e=2147483647&amp;v=beta&amp;t=y5fQK_ETMV-0JlEFgoL3f_uVlvjnCQKA-Yja3iEIPGA" alt="No alt text provided for this image" /></p>
+
+<p>From this plot, we can conclude that the median responses for the security variable are mostly either “Agree” or “Neither agree nor disagree” for different income levels.</p>
+
+<h3 id="32-web-design-variable">3.2 Web Design Variable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Plotting Web design variable
+
+ggplot(consumer_behaviour1, aes(Gender, web_avg, color=Gender)) +
+
+geom_violin(trim=FALSE, size=1.5) +
+
+geom_jitter(height=0.1) +
+
+stat_summary(fun=median, geom="point", shape=16, size=3, color="black") +
+
+facet_wrap(~Income) +
+
+scale_y_continuous(name="Scale", breaks=c(1,2,3,4,5)) +
+
+labs(title="Web Design Scale", x="Gender", y="") +
+
+theme_bw(base_size=13) +
+
+theme(axis.text=element_text(size=13),
+
+     legend.text=element_text(size=13),
+
+     legend.position="bottom",
+
+     plot.title=element_text(size=16, face="bold"))
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQEF9mpxojW6yg/article-inline_image-shrink_1500_2232/0/1647522601583?e=2147483647&amp;v=beta&amp;t=uhSrmIbNRmsOoe2abMeqx41GDXaZ-RalBUpC-Dklg8Y" alt="No alt text provided for this image" /></p>
+
+<p>This plot shows, the median responses for a web-design variable to be mostly “agree” for different income levels of males and females.</p>
+
+<h3 id="33-reputation-variable">3.3 Reputation Variable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Plotting Reputation variable
+
+ggplot(consumer_behaviour1, aes(Gender, rep_avg, color=Gender)) +
+
+geom_violin(trim=FALSE, size=1.5) +
+
+geom_jitter(height=0.1) +
+
+stat_summary(fun=median, geom="point", shape=16,
+
+            color="black", size=3) +
+
+facet_wrap(~Income) +
+
+scale_y_continuous(name="Scale", breaks=c(1,2,3,4,5)) +
+
+labs(title="Reputation Scale", x="Gender", y="") +
+
+theme_bw(base_size=13) +
+
+theme(axis.text=element_text(size=13),
+
+     legend.text=element_text(size=13),
+
+     legend.position="bottom",
+
+     plot.title=element_text(size=16, face="bold"))
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQHrAUx4woPfpA/article-inline_image-shrink_1500_2232/0/1647523654009?e=2147483647&amp;v=beta&amp;t=au9ChsafhOPvwOeGrA-tNq-RiGaaDmbP6ZPoJckPJtI" alt="No alt text provided for this image" /></p>
+
+<p>This plot shows, the median responses for a reputation variable to be mostly “neither agree nor disagree” and “agree for different income levels of males and females.</p>
+
+<h3 id="34-price-and-deal-variable">3.4 Price and Deal variable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Plotting price and deals variable
+
+ggplot(consumer_behaviour1, aes(Gender, prc_avg, color=Gender)) +
+
+geom_violin(trim=FALSE, size=1.5) +
+
+geom_jitter(height=0.1) +
+
+stat_summary(fun=median, geom="point", shape=16,
+
+            color="black", size=3) +
+
+#geom_boxplot(width=0.1) +
+
+facet_wrap(~Income) +
+
+scale_y_continuous(name="Scale", breaks=c(1,2,3,4,5)) +
+
+labs(title="Price &amp; Deals Scale", x="Gender", y="") +
+
+theme_bw(base_size=13) +
+
+theme(axis.text=element_text(size=13),
+
+     legend.text=element_text(size=13),
+
+     legend.position="bottom",
+
+     plot.title=element_text(size=16, face="bold"))
+</code></pre></div></div>
+
+<p>The Output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQEZpd6_nKc-_Q/article-inline_image-shrink_1500_2232/0/1647523801310?e=2147483647&amp;v=beta&amp;t=lqTB8BGV6ajpaDGQR_Z-WRiE-afQfeLMKoa1kYyusiA" alt="No alt text provided for this image" /></p>
+
+<p>This plot shows, the median responses for a price and deals variable to be mostly “neither agree nor disagree” for different income levels of males and females.</p>
+
+<h3 id="35-attitude-variable">3.5 Attitude Variable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Plotting Attitude variable
+
+ggplot(consumer_behaviour1, aes(Gender, att_avg, color=Gender)) +
+
+geom_violin(trim=FALSE, size=1.5) +
+
+geom_jitter(height=0.1) +
+
+stat_summary(fun=median, geom="point", shape=16,
+
+            color="black", size=3) +
+
+#geom_boxplot(width=0.1) +
+
+facet_wrap(~Income) +
+
+scale_y_continuous(name="Scale", breaks=c(1,2,3,4,5)) +
+
+labs(title="Attitude Scale", x="Gender", y="") +
+
+theme_bw(base_size=13) +
+
+theme(axis.text=element_text(size=13),
+
+     legend.text=element_text(size=13),
+
+     legend.position="bottom",
+
+     plot.title=element_text(size=16, face="bold"))
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQEymFlRxbHYGQ/article-inline_image-shrink_1500_2232/0/1647566870506?e=2147483647&amp;v=beta&amp;t=p5z6-xW3e_aFh0idWlwnzs4sGTUbHqzKuYN1-cp_CDs" alt="No alt text provided for this image" /></p>
+
+<p>This plot shows, the median responses for attitude variable to be “neither agree nor disagree” for different income levels of males and females.</p>
+
+<h2 id="4-model-selection">4. Model Selection</h2>
+
+<p>Selecting a good model is not an easy task. A model with “too many” predictors can result in an overfitted model i.e. model that gives low bias but high variance with poor predictions while a model with “too few” predictors result in an under-fitted model i.e. model that gives low variance but high bias with poor predictions. Criteria for model selection must incorporate the goodness of fit and parsimony. A good model balance bias and variance to get good predictions. There are various methods for model selection like adjusted R-square, Akaike’s Information Criterion, Bayesian (BIC). I will be using the AIC method for the determination of the best model of regression here.</p>
+
+<h3 id="41-akaikes-information-criterion">4.1 Akaike’s Information Criterion</h3>
+
+<p>The AIC was developed by the Japanese statistician Hirotugu Akaike. It considers both the fit of the model as well as the number of parameters in the model. A higher number of parameters result in more penalty. The model fit is measured as the likelihood of the parameters being correct for the population based on the observed sample. Hence, AIC equals the number of parameters minus the likelihood of the overall model. In conclusion, we select the model with the lowest AIC value.</p>
+
+<p>In R, we can use the AICcmodavg package to determine the AIC values of a different model. If there are p number of predictors, the total number of models that can be formed is 2^p. For simplicity, I have only used linear models. The models can be formed in R as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Forming the regression models
+
+sec_avg.mod &lt;- lm(att_avg ~ sec_avg, data = consumer_behaviour1)
+
+web_avg.mod &lt;- lm(att_avg ~ web_avg, data = consumer_behaviour1)
+
+rep_avg.mod &lt;- lm(att_avg ~ rep_avg, data = consumer_behaviour1)
+
+prc_avg.mod &lt;- lm(att_avg ~ prc_avg, data = consumer_behaviour1)
+
+sec_avg.web_avg.mod &lt;- lm(att_avg ~ sec_avg + web_avg, data = consumer_behaviour1)
+
+sec_avg.rep_avg.mod &lt;- lm(att_avg ~ sec_avg + rep_avg, data = consumer_behaviour1)
+
+web_avg.rep_avg.mod &lt;- lm(att_avg ~ web_avg + rep_avg, data = consumer_behaviour1)
+
+sec_avg.web_avg.rep_avg.mod &lt;- lm(att_avg ~ sec_avg + web_avg + rep_avg, data = consumer_behaviour1)
+
+web_avg.rep_avg.prc_avg.mod &lt;- lm(att_avg ~ web_avg + rep_avg + prc_avg, data = consumer_behaviour1)
+
+rep_avg.prc_avg.sec_avg.mod &lt;- lm(att_avg ~ sec_avg + rep_avg + prc_avg, data = consumer_behaviour1)
+
+combination.mod &lt;- lm(att_avg ~ sec_avg + web_avg + rep_avg + prc_avg, data = consumer_behaviour1)
+</code></pre></div></div>
+
+<p>The AIC can be determined in R as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Determining the AICc of models
+
+library("AICcmodavg")
+
+models &lt;- list(sec_avg.mod, web_avg.mod, rep_avg.mod, prc_avg.mod, sec_avg.web_avg.mod, sec_avg.rep_avg.mod, web_avg.rep_avg.mod, sec_avg.web_avg.rep_avg.mod, web_avg.rep_avg.prc_avg.mod, rep_avg.prc_avg.sec_avg.mod, combination.mod)
+
+models.name &lt;- c("sec_avg.mod", "web_avg.mod", "rep_avg.mod", "prc_avg.mod", "sec_avg.web_avg.mod", "sec_avg.rep_avg.mod", "web_avg.rep_avg.mod", "sec_avg.web_avg.rep_avg.mod",  "web_avg.rep_avg.prc_avg.mod", "rep_avg.prc_avg.sec_avg.mod", "combination.mod")
+
+aictab(cand.set = models, modnames = models.name) %&gt;%
+
+knitr::kable()
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQH8F6fC3lLwnQ/article-inline_image-shrink_1500_2232/0/1647879087269?e=2147483647&amp;v=beta&amp;t=8YT6lmiCiWVUXAJJV-rxg-oP7Il8ugwosp5nOoASn_U" alt="No alt text provided for this image" /></p>
+
+<p>From this output, we can clearly see sec_avg.web_avg.rep_avg.mod has the lowest AICc value i.e. 87.37457 followed by sec_avg.web_avg.mod i.e. 87.57156. Since the difference in AICc between the models is so low that one can argue that we better choose the second model because K = 4 for the second model vs. K = 5 for the first. In such scenarios, it is better to take the help of other model selection methods along with AIC to select the best model. But here I will be selecting the first model i.e sec_avg.web_avg.rep_avg.mod.</p>
+
+<h2 id="5-test-of-homoscedasticity">5. Test of Homoscedasticity</h2>
+
+<p>The important assumption of multiple regression analysis is that data needs to show homoscedasticity i.e. variance of the dependent variable is the same for all data. In R, we can simply perform a homoscedasticity test using the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Test of Homoscedasticity
+
+res &lt;- resid(sec_avg.web_avg.rep_avg.mod)
+
+plot(fitted(sec_avg.web_avg.rep_avg.mod), res)
+
+abline(0,0))
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQHyWf3XhR-YkA/article-inline_image-shrink_1500_2232/0/1647917455340?e=2147483647&amp;v=beta&amp;t=lDVdAnLI32cjaNen5hsQ4OndxuCBFpwytmJPszksbds" alt="No alt text provided for this image" /></p>
+
+<p>This plot shows that residuals are pretty symmetrically distributed around the line. Hence, we can conclude that assumption of homoscedasticity hasn’t been violated.</p>
+
+<h2 id="6-q-q-plot">6. Q-Q plot</h2>
+
+<p>The quantile-quantile plot helps to determine if the residuals follow the normal distribution. If all the points on the plot lie on the straight line, we can conclude that the distribution is normally distributed. In R, the Q-Q plot can be shown with the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Creates the q-q plot
+
+qqnorm(res) 
+ 
+#Creates the line in the plot                  
+
+qqline(res)       
+</code></pre></div></div>
+
+<p>​</p>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQG7QmaH9va0sw/article-inline_image-shrink_1500_2232/0/1647919821000?e=2147483647&amp;v=beta&amp;t=N2M-vBxvHU_90l4ncwsMTtnNb2VC7O7-CG4C2sQ08q0" alt="No alt text provided for this image" /></p>
+
+<p>As we can see in the plot, the residuals tend to stray away from the straight line hence, the distribution may not be perfectly normally distributed. The distribution is somewhat right-skewed. This indicates that we need to do some transformation in our model. But in our case, since this article focuses on some basics of performing regression analysis, I will be using the same model without any transformation.</p>
+
+<h2 id="7-regression-analysis">7. Regression Analysis</h2>
+
+<p>Using the model selected above, regression analysis in R can be performed as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Regression Analysis
+
+model &lt;- lm(att_avg ~ sec_avg + web_avg  + rep_avg, data = consumer_behaviour1)
+
+summary(model)
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQHdaFrhycSp1g/article-inline_image-shrink_1500_2232/0/1647880184606?e=2147483647&amp;v=beta&amp;t=Er6c2gf-tHtwWPmz2Lrw-YcLp2ASX1CEHmc6n6En43Q" alt="No alt text provided for this image" /></p>
+
+<p>From this output, our regression model is att_avg = 1.594 + 0.1215 sec_avg + 0.1973 web_avg + 0.0802 rep_avg . Here, 0.1215, 0.1973 and 0.0802 are regression coefficients of sec_avg, web_avg and rep_avg. Regression coefficient of sec_avg is 0.1215 indicates that if security variable increases by 1 scale, attitude variable increases by 0.1215 scale. Other regression coefficients can be explained likewise. At 5% level of significance, sec_avg and web_avg are statistically significant since their p-values i.e. 0.0334 &amp; 0.001 respectively are less than alpha = 0.05. Adjusted R-square of the model is 0.399 indicates 39.9% variance of dependendt variable is explained by these three predictors. P-value of overall model is 2.87e-11 is lower than 0.05 hence, the overall model is statistically significant.</p>
+
+<h2 id="8-analysis-of-variances">8. Analysis of Variances</h2>
+
+<p>ANOVA or Analysis of variances is a statistical test that determines whether there is a difference in means of groups at each level of the independent variable. It estimates how a quantitative dependent variable changes at different levels of one or more categorical independent variables. In R, ANOVA can be performed as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Performing anova analysis
+
+anova &lt;- aov(att_avg ~ sec_avg + web_avg + rep_avg, data = consumer_behaviour1)
+
+summary(anova)
+</code></pre></div></div>
+
+<p>The output:</p>
+
+<p><img src="https://media-exp1.licdn.com/dms/image/C5612AQF76QNr-d8LNQ/article-inline_image-shrink_1500_2232/0/1647952353227?e=2147483647&amp;v=beta&amp;t=WuNOBx6WFbG3Z7yaNxkaBbB_ZozQ-LwaFyFMeTvnXpI" alt="No alt text provided for this image" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>People argue that Likert scale data cannot be treated as continuous and multiple linear regression analysis cannot be performed. Hence, I have used an average of each variable for the analysis. With dependent and independent variables in Likert scale data, it is encouraged to perform ordinal logistic regression instead of linear regression. This article summarizes the study on “Consumer attitude towards online shopping in Nepal” and how I performed it using R. All thanks goes to <a href="https://codefornepal.org/">Code for Nepal</a> for providing me with a wonderful opportunity to learn R.</p>
+
+<p>To download responses, click <a href="https://github.com/Roshann-Rai/Consumer_Behaviour/blob/main/stat_data_file.csv">here</a>! To download the R file, click <a href="https://github.com/Roshann-Rai/Consumer_Behaviour/blob/main/Understanding%20consumer%20attitude%20towards%20online%20shopping.r">here</a>!</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>

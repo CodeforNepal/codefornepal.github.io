@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66983412-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66983412-1');
+  </script>
+  <!-- End Google Analytics -->
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy">
+  <meta name="author" content="">
+  <meta name="keyword" content="code for nepal, c4n, volunteer, code, nepal" />
+  <meta property="og:locale" content="en_US">
+  <meta property="fb:pages" content="201272103415379">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Use of Python in the biological environment- Prey Predators Equation (Lotka–Volterra model)">
+<meta property="og:description" content="">
+<meta property="og:url" content="/2022/05/23/prey-predators-equation.html">
+<meta property="og:site_name" content="Code for Nepal">
+<meta property="og:image" content="">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Use of Python in the biological environment- Prey Predators Equation (Lotka–Volterra model)">
+<meta name="twitter:site" content="@codefornepal">
+<meta name="twitter:image" content="">
+<link rel="canonical" href="https://codefornepal.org/">
+<link rel="icon" href="/assets/img/c4n-icon.jpg">
+
+
+  <title>
+    
+    Use of Python in the biological environment- Prey Predators Equation (Lotka–Volterra model) | Code for Nepal
+    
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this theme -->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">
+      
+      <img height="52" src="/assets/img/c4n_logo.png" />
+      
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/fellowship2025/">Data Fellowship</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/blog/">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/team/">Team</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link js-scroll-trigger" href="/joinus/">Join us</a>
+          
+        </li>
+        
+        </li>
+        <!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+
+
+<div class="container blog" id="pagecontainer">
+  <div class="row">
+  <div class="col-md-12">
+    <h1 class="title">Use of Python in the biological environment- Prey Predators Equation (Lotka–Volterra model)</h1>
+    <p>23 May 2022 - Ashma Subedi</p>
+    <p>
+      <p><strong>Ashma Subedi recently completed her Masters in Environment Science from Kathmandu University. She loves solving environment problems using data science and machine learning, especially time series analysis.</strong></p>
+
+<p>Use of Python in the biological environment- Prey Predators Equation (Lotka–Volterra model)</p>
+
+<p>The relation and interactions between predators and their prey are important factors when it comes to conservation and ecosystem stability. In an ecosystem, the predator/prey relationship provides enough stability for an essentially unlimited number of species to coexist. Predators, for example, enhance predation and reduce the number of prey when the number of prey is high. Ecosystems are more stable and can support a greater number of species as a result of these predator/prey relationships. </p>
+
+<p>Let’s see an example of prey and predator of Chitwan National Park. Every day, deer or wild boar must run faster than the fastest tiger or get unnoticeable around the tiger, if not it will be killed. Likewise, the tiger knows it must outrun the slowest deer or it will starve to death. </p>
+
+<p><img src="https://lh4.googleusercontent.com/7kCehut4OvzIq5OL1xyPKZQsRNwH-KSm6cS2WLNOG_tqYY8NFq5Ets2vRLeYGwJK3shaT_0EqoT8tRDgLyyAkMNGqfYGYdnhHFUla4qBj34gnTBS4wW5wIHdlXe4pCAXvdlvkQ4dSiXYj740XA" alt="" /></p>
+
+<p>Source: <a href="https://suleimansultan.artstation.com/projects/zOXLl6">https://suleimansultan.artstation.com/projects/zOXLl6</a> </p>
+
+<p>So what are the laws that govern the dynamics of these prey and predator’s complicated systems and how do these species interact? To answer these questions ordinary differential equation (ODE) model can be used, which consists of two animal species, one that acts as a predator species and the other as its prey: the prey-predator model, also known as Lotka–Volterra equations.</p>
+
+<p>To understand the interesting relationship between prey and predators and to get the answer to the above-mentioned questions, I took the initiative to work on a biological model  “Dynamics of Biological Systems in which Tiger and Deer interact” using Python. </p>
+
+<p>This blog will highlight some of the Python skills (such as the use of matplotlib module and its application to plot trajectories, directions fields, etc.) which I have acquired from Data Fellowship, Code for Nepal. The main objective of this blog is to describe the dynamics of ecological systems in which two species interact.</p>
+
+<p><strong>The  Lotka–Volterra Model</strong></p>
+
+<p>The populations change through time according to the pair of equations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>du/dt =a*u-b*u*v(dv/dt)=-c*v +d*b*u*v
+</code></pre></div></div>
+
+<p>with the following notations: </p>
+
+<p>u: number of preys (for example, deer)<br />
+v: number of predators (for example, tigers)<br />
+a, b, c, d are constant parameters defining the behavior of the population:<br />
+a is the natural growth rate of deer when there’s no tiger<br />
+b is the natural death rate of deer, due to predation<br />
+c is the natural death rate of tigers when there’s no deer<br />
+d is the factor describing how many caught deer let’s create a new tiger</p>
+
+<p>Here a, b, c, and d are some given constants.</p>
+
+<p>Firstly, all the necessary libraries were imported and the constant parameters were defined (example: a= 1, b=0.1, c=1.5, d=0.75). </p>
+
+<p><strong>Population equilibrium and stability of fixed points</strong></p>
+
+<p>When neither of the population levels changes, i.e. when both of the derivatives are equal to 0, the model is said to be in population equilibrium. This results in two fixed points, and the stability of the fixed point at the origin can be determined using partial derivatives and linearization.</p>
+
+<p>A saddle point on the surface of a function’s graph, where the slopes (derivatives) in orthogonal directions are all zero, is the function’s origin (a critical point). This point is important because it shows the stability of the function. If the system is stable, then the extinction of both species would be very unlikely. However, since the origin point is unstable, it is hard to predict the extinction of both species. If the predators are intentionally destroyed, then the prey population would only grow, and the predators would die of starvation. This scenario would only occur if the populations of both the predators and the prey are destroyed. Prey and predator populations can go infinitesimally near to extinction and still recover.</p>
+
+<p><strong>Integrating the ordinary differential equations using scipy.integrate</strong></p>
+
+<p>This module has an odeint function for integrating ODEs that can be used by importing a library (from scipy import integrate). After the integration, the following figure is obtained which shows the possible solutions to the Lotka-Volterra equations.</p>
+
+<p><img src="https://lh4.googleusercontent.com/vpUXZ5vaMZHgPJ_08OESQKlhVTRyn5X_CN7P0Nj8FtTVfRNc9px6sohUR8S9V-9RLLBTD9nUoJ7GKRbDllIi0Q2uLRAmXybzVlP4I2PD0QhIhyFWUIRxrhgjMEMX1yAGRoFPSnCF18LOBGMtkQ" alt="" /></p>
+
+<p>The example exemplifies the model’s key qualitative behavior and its ever-changing character. These variations are unavoidable in a real-world system. When predators are few, the prey population has a chance to expand since predators may catch fewer animals than new prey are born. However, if the prey population is large enough, many predators will be content enough to have progeny. </p>
+
+<p>The rising predator population will consume more prey until it reaches a point where consumption exceeds prey reproduction. After that, the prey population will begin to dwindle. Because of the decreased supply of food, the predator population will soon follow, resulting in mass starvation. The ecology will be in a position where there are few preys and few predators, allowing the prey population to rise once more, and history will repeat itself. </p>
+
+<p>Different starting points between the extinction of both species were plotted in a phase plane, and Matplotlib’s colormap was used to define colors for the trajectories.</p>
+
+<p><img src="https://lh3.googleusercontent.com/Ihr--fRmwxjnMNUiA4OOc_CWTElC6NsLCin_NmfKLp_Jej4BLzbzNHcmxwxMYYVJRPg8Gyu0yXdlcWrAjufQbHnJvTXDZSma8TD4n-7iE6Pb9HMNXpke_EhcOUI4VDifZlNlKR4Ux52EUYbMuw" alt="" /></p>
+
+<p>Figure: Phase-space plot for the predator and prey</p>
+
+<p><img src="https://lh6.googleusercontent.com/B3VA_fkfJE-HDToU1uKcGn-3JixU_GA1Q4MiIQo7Y1wnuzAEP5Yr_SG_Q1J8tTto2z1mxQH-CbfyfHxtINSW0a1Md3XWuAgp8QCnvvFDu_ftGbQxTGzCYlh4SBfXrMLVmtv2n71BC9oP3-TbFg" alt="" /></p>
+
+<p>Changing the tiger or deer population can have unexpected consequences. If tigers are introduced to reduce the number of deers, this may result in an increase of deers, in the long run, depending on the timing of the intervention.</p>
+
+<p>In conclusion, ecologists and biologists can use this model to predict what will happen when two species compete for the same resources. Furthermore, predators influence the dynamics of their prey in ways that cascade across ecosystems, altering processes such as productivity, biodiversity, nutrient cycles, disease dynamics, carbon storage, etc. However, this model requires certain assumptions (as made here also) that may or may not be true in the natural world. Some assumptions include: the prey population always has enough food, the population’s rate of change is proportional to its size, predators have an insatiable desire, etc.</p>
+
+<p>Because of Code For Nepal’s Data Fellowship program in partnership with <a href="https://www.datacamp.com/donates">DataCamp Donates</a>, I was able to take the initiative to learn more about the Lotka–Volterra model and its applications. I am grateful to Code for Nepal for providing me with the opportunity to study advanced Python.</p>
+
+    </p>
+  </div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codefornepal-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+	<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <span class="copyright"
+          >Copyright &copy; Code for Nepal 2025</span
+        >
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          
+          <li class="list-inline-item">
+            
+            <a href="https://twitter.com/codefornepal">
+              <i class="fab fa-twitter"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.facebook.com/codefornepal">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://www.vimeo.com/codefornepal">
+              <i class="fab fa-vimeo-square"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="https://github.com/code4Nepal">
+              <i class="fab fa-github"></i>
+            </a>
+            
+          </li>
+          
+          <li class="list-inline-item">
+            
+            <a href="http://instagram.com/codefornepal">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+          </li>
+          
+          <div class="mt-2"><!--Paypal Button-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+    <button id="donate-btn" class="btn btn-sm btn-primary" type="submit">
+      <span>Donate</span>
+    </button>
+    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/codeofconduct/" target="_blank"
+              >Code of Conduct</a
+            >
+          </li>
+        </ul>
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/privacy/" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-11 mt-4">
+        <span class="code">This work is licensed under a Creative Commons Attribution - ShareAlike 3.0 License! <br>  Code for Nepal is a registered 501(c)(3) nonprofit organization. <br> EIN: 47-3620037</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- End Footer -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="/assets/js/jquery.easing.min.js"></script>
+
+	<!-- Contact form JavaScript -->
+	<script src="/assets/js/jqBootstrapValidation.js"></script>
+	<script src="/assets/js/contact_me.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="/assets/js/agency.min.js"></script>
+
+</body>
+
+</html>
