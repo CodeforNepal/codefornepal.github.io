@@ -1,93 +1,26 @@
-title: "OUR TEAM"
+title: "CURRENT TEAM"
 text: ""
 subtext:
 section: team
 people:
-  - name: Aishraj Dahal
-    image: "/assets/img/team/aishraj_dahal.jpg"
-    linkedin_url:
-
-  - name: Aman Giri
-    image: "/assets/img/team/aman.jpg"
-    linkedin_url: https://www.linkedin.com/in/aman-giri-ag/
-
   - name: Animesh S. Basnet
     image: "/assets/img/team/animesh.png"
     linkedin_url: https://www.linkedin.com/in/animeshbasnet/
-  
-  - name: Anup Dhamala
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url:
 
   - name: Ayush Subedi
     image: "/assets/img/team/aayush.jpeg"
     linkedin_url: https://www.linkedin.com/in/ayush-subedi/
 
-  - name: Bikesh Bimali
-    image: "/assets/img/team/bikesh_bimali.jpg"
-    linkedin_url: https://www.linkedin.com/in/bikesh-bimali/
-
-  - name: David Shrestha
-    image: "/assets/img/team/david_shrestha.jpg"
-    linkedin_url: https://www.linkedin.com/in/davidsth/
-
-  - name: Dipak Gautam
-    image: "/assets/img/team/dipak_gautam.jpg"
-    linkedin_url: https://www.linkedin.com/in/dipak-g-a02664128/
-
-  - name: Ishan Dongol
-    image: "/assets/img/team/ishan_dongol.jpg"
-    linkedin_url: https://www.linkedin.com/in/lognod/
-
   - name: Labbi Karmacharya
     image: "/assets/img/team/labbi.png"
     linkedin_url: https://www.linkedin.com/in/labbi-karmacharya/
-
-  - name: Laurence Hall
-    image: "/assets/img/team/laurence_hall.jpg"
-    linkedin_url: https://www.linkedin.com/in/laurence-h-078704197/
-
-  - name: Nitesh Rajbanshi
-    image: "/assets/img/team/nitesh_rajbanshi.jpg"
-    linkedin_url: https://www.linkedin.com/in/nitesh-rajbanshi-87a481231/
-
-  - name: "Pragya Tripathi "
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url:
-
-  - name: Pratima Kandel
-    image: "/assets/img/team/pratima_kandel.jpg"
-    linkedin_url: https://www.linkedin.com/in/pratima-kandel-a37061156/
-
-  - name: Prayatna Mishra
-    image: "/assets/img/team/prayatna.jpeg"
-    linkedin_url: https://www.linkedin.com/in/pragyatripathi/
 
   - name: Ravi Kumar
     image: "/assets/img/team/ravi_kumar.jpg"
     linkedin_url: https://www.linkedin.com/in/ravinepal/
 
-  - name: Sambidh Rai
-    image: "/assets/img/team/sambidh.png"
-    linkedin_url: https://www.linkedin.com/in/sambidhrai/
-
   - name: Sanjay Shrestha
     image: "/assets/img/team/Sanjay_Shrestha.jpg"
     linkedin_url: https://www.linkedin.com/in/sanjay-shrestha-85ba9b22b/
 
-  - name: Shreeya Khadka
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url:
-
-  - name: Shreyahsa Paudel
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url:
-
-  - name: Sukriti Adhikari
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url: https://www.linkedin.com/in/sukriti-adhikari/
-
-  - name: Sweta Baniya
-    image: "/assets/img/team/placeholder.png"
-    linkedin_url: https://www.linkedin.com/in/sweta-baniya-phd-5892994b/
 
