@@ -4,18 +4,18 @@ header:
   button: Help Nepal fight COVID-19
   buttonlink: "2021/05/02/donate-to-save-lives-and-help-nepalis-fight-COVID-19-pandemic" # "#{section}" or "URL/page link"
 
-services:
-  title: "Our work"
-  text: "As a community of volunteers we believe in creating opportunities and public goods."
-  section: work
-  list:
-    - title: "[NepalMap](https://github.com/CodeforNepal/nepalmap_federal)"
-      desc: "Explore and understand Nepal using data"
-      icon: fas fa-map-marker-alt
+# services:
+#   title: "Our work"
+#   text: "As a community of volunteers we believe in creating opportunities and public goods."
+#   section: work
+#   list:
+#     - title: "[NepalMap](https://github.com/CodeforNepal/nepalmap_federal)"
+#       desc: "Explore and understand Nepal using data"
+#       icon: fas fa-map-marker-alt
 
-    - title: "[Sangraha](https://github.com/CodeforNepal/akshara-project)"
-      desc: "Access Nepali poems and literature"
-      icon: fas fa-book-open
+#     - title: "[Sangraha](https://github.com/CodeforNepal/akshara-project)"
+#       desc: "Access Nepali poems and literature"
+#       icon: fas fa-book-open
 
 portfolio:
   title: "Stories"
