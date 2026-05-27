@@ -1,4 +1,135 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-04-01T12:47:43+00:00</updated><id>/feed.xml</id><title type="html">Code for Nepal</title><subtitle>Community of volunteers helping address Nepal&apos;s challenges using civic tech to innovate, organize and advocate digital literacy</subtitle><entry><title type="html">Getting Into Cluster Analysis Using Customer Demographic Data</title><link href="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html" rel="alternate" type="text/html" title="Getting Into Cluster Analysis Using Customer Demographic Data" /><published>2024-06-16T00:00:00+00:00</published><updated>2024-06-16T00:00:00+00:00</updated><id>/2024/06/16/getting-into-cluster-analysis-using-customer-demographic</id><content type="html" xml:base="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html"><![CDATA[<h2 id="what-is-cluster-analysis">What is cluster analysis?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-05-27T14:06:00+00:00</updated><id>/feed.xml</id><title type="html">Code for Nepal</title><subtitle>Community of volunteers helping address Nepal&apos;s challenges using civic tech to innovate, organize and advocate digital literacy</subtitle><entry><title type="html">10-Step Digital Transformation Implementation Plan for Prosperous Nepal</title><link href="/2026/05/26/digital-transformation-plan-nepal.html" rel="alternate" type="text/html" title="10-Step Digital Transformation Implementation Plan for Prosperous Nepal" /><published>2026-05-26T00:00:00+00:00</published><updated>2026-05-26T00:00:00+00:00</updated><id>/2026/05/26/digital-transformation-plan-nepal</id><content type="html" xml:base="/2026/05/26/digital-transformation-plan-nepal.html"><![CDATA[<p><img src="/assets/img/blog/10_step_digital_transformation.jpg" alt="" /></p>
+
+<h2 id="executive-summary">Executive Summary</h2>
+
+<p>The Government of Nepal’s 100-point roadmap presents a historic opportunity to modernize governance, deliver public services efficiently and strengthen Nepal’s economy. However, executing this vision requires moving beyond fragmented IT projects. I have developed a comprehensive 10-Step Implementation Plan backed by global best practices.</p>
+
+<p>Crucially, because Nepal’s adult literacy rate is approximately 70%. Hence, importing standard “text-heavy” digital models from the West will deepen inequality. This strategy advocates for a radical pivot to a “voice-first, human-first” design philosophy, backed by a strong, centralized digital authority capable of overriding bureaucratic resistance and standardizing national infrastructure.</p>
+
+<hr />
+
+<h2 id="the-strategic-pivot-the-trishul-of-inclusivity">The Strategic Pivot: The “Trishul of Inclusivity”</h2>
+
+<p>A digital strategy that assumes universal literacy will fail one-third of our population. Before any technology is deployed, it must pass what I call the “Trishul of Inclusivity” test. We must shift from expecting citizens to understanding complex websites to building systems that understand our citizens.</p>
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; padding: 8px 12px;">Inclusivity Pillar</th>
+      <th style="border: 1px solid #000; padding: 8px 12px;">Strategic Mandate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Voice-Enabled</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Core services must be accessible via Interactive Voice Response (IVR) and voice commands in major Nepali languages or at least in Nepali language. Data architecture must support voice-based queries natively.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Visually Intuitive</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Interfaces must prioritize universally understood icons, colors, and biometric authentication (fingerprint/facial recognition) over passwords and text-heavy forms.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Agent-Assisted</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Widespread rollout of a "Human Bridge"—a franchised network of local entrepreneurs (Digital Nepal Kendras) equipped to process digital requests on behalf of non-literate citizens.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="the-10-step-strategic-framework">The 10-Step Strategic Framework</h2>
+
+<p>The transformation agenda is divided into three sequential phases to ensure foundational infrastructure is built before deploying advanced services.</p>
+
+<hr />
+
+<h4 id="phase-i---foundational-pillars">Phase I - Foundational Pillars</h4>
+<p><em>Break ministerial silos, establish digital trust, and build the shared “digital rails” for all future services.</em></p>
+
+<p><strong>1. Establish Central Authority:</strong> Empower the E-Governance Commission (EGC) or equivalent agency or PMO with budget veto power.</p>
+
+<p><strong>2. Enact Legal Framework:</strong> Pass Data Protection, Digital Services, and Cybersecurity Acts.</p>
+
+<p><strong>3. Build Digital Public Infrastructure (DPI):</strong> Deploy biometric e-ID, X-Road data exchange, and interoperable payments, as Nagrik app is doing.</p>
+
+<hr />
+
+<h4 id="phase-ii---implementation--delivery">Phase II - Implementation &amp; Delivery</h4>
+<p><em>Deliver immediate, highly visible public value, stimulate the digital economy, and bridge the access gap.</em></p>
+
+<p><strong>4. Digitize High-Impact Services:</strong> Target land, business, and social security.</p>
+
+<p><strong>5. Foster PPPs:</strong> Open government APIs to private innovation.</p>
+
+<p><strong>6. Launch Digital Familiarity Program:</strong> Train citizens on voice UI and agent-assisted models.</p>
+
+<hr />
+
+<h4 id="phase-iii---sustainability--growth">Phase III - Sustainability &amp; Growth</h4>
+<p><em>Ensure long-term resilience, foster homegrown tech talent, and maintain accountability through transparent metrics.</em></p>
+
+<p><strong>7. Strengthen Cybersecurity:</strong> Launch a National Computer Emergency Response Teams (CERT) and critical infrastructure standards.</p>
+
+<p><strong>8. Promote Innovation:</strong> Enact a Startup Act with an “Inclusivity Innovation Fund.”</p>
+
+<p><strong>9. Global Cooperation:</strong> Appoint a Tech Ambassador and harmonize cross-border data.</p>
+
+<p><strong>10. Monitor &amp; Evaluate:</strong> Deploy a real-time, public KPI dashboard.</p>
+
+<hr />
+
+<h2 id="navigating-systemic-bottlenecks-the-global-playbook">Navigating Systemic Bottlenecks: The Global Playbook</h2>
+
+<p>Senior leadership must anticipate and aggressively manage institutional resistance. The global playbook dictates that consensus is often impossible in the early stages of digital reform; strong executive mandates are required.</p>
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; padding: 8px 12px;">Anticipated Bottleneck</th>
+      <th style="border: 1px solid #000; padding: 8px 12px;">The Global Playbook Solution</th>
+      <th style="border: 1px solid #000; padding: 8px 12px;">Action Required by Leadership</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Bureaucratic Turf Wars &amp; Silos</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>UK's "Spend Control":</strong> The central digital agency (GDS) was given the power to block any ministry's IT spending that did not align with national standards.</td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Grant the EGC binding authority over all departmental IT procurement and budget approvals to enforce interoperability.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Public Sector Talent Deficit</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">USA's "Tour of Duty": The US Digital Service recruited top private-sector engineers for short, high-impact government fellowships based on patriotism, not salary matching. <a href="https://handbook.tts.gsa.gov/18f/history-and-values/#18f-a-civic-consultancy-2" target="_blank">See 18F </a> </td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Launch a prestigious "Digital Nepal Corps" fellowship to attract top diaspora and local tech talent for 2-year terms.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>The Last-Mile Access Chasm</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong><a href="https://marketplace.a2i.gov.bd/about" target="_blank">Bangladesh's "a2i" Model:</a></strong> Deployed thousands of local digital agents to serve as the human interface for digital services.</td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Fund and franchise the "Digital Nepal Kendras," turning local youth into digital service intermediaries.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong>Resistance to Process Reform</strong></td>
+      <td style="border: 1px solid #000; padding: 8px 12px;"><strong><a href="https://thedocs.worldbank.org/en/doc/bd555a478d4a4a63acc0739084838b20-0350062022/original/GovTech-Case-Studies-Georgia-Promoting-Digital-Transformation-through-GovTech.pdf" target="_blank">Georgia's Radical Transparency:</a></strong> Georgia completely rewrote bureaucratic rules before digitizing them, publishing strict service delivery times publicly.</td>
+      <td style="border: 1px solid #000; padding: 8px 12px;">Mandate Business Process Re-engineering (BPR) before any service is digitized. Do not simply digitize bad paper processes.</td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+
+<h2 id="recommendations-for-immediate-action">Recommendations for Immediate Action</h2>
+
+<p>To maintain momentum on the 100-point roadmap, senior leadership should prioritize the following immediate actions:</p>
+
+<ol>
+  <li>
+    <p><strong>Elevate the EGC’s Authority:</strong> Issue a directive granting the Electronic Governance Commission binding “spend control” over all major IT projects proposed by individual ministries. Or elevate 1 entity or team under Prime Minister’s Office to undertake similar responsibilities of EGC.</p>
+  </li>
+  <li>
+    <p><strong>Fast-Track the Legal Framework:</strong> Introduce the Data Protection and Cybersecurity Acts to Parliament in the upcoming session. Ensure “mediated consent” for non-literate citizens is legally defined.</p>
+  </li>
+  <li>
+    <p><strong>Commission the “Digital Nepal Kendra” Pilot:</strong> Allocate immediate funding for a pilot program of 500 agent-assisted digital service centers in highly rural municipalities.</p>
+  </li>
+</ol>]]></content><author><name>Ravi Kumar, Code For Nepal</name></author><category term="Digital Transformation" /><category term="E-Governance" /><category term="Nepal Policy" /><category term="Digital Inclusion" /><category term="Public Services" /><summary type="html"><![CDATA[A comprehensive strategy to modernize Nepal's governance and deliver public services efficiently through inclusive, voice-first design principles.]]></summary></entry><entry><title type="html">Getting Into Cluster Analysis Using Customer Demographic Data</title><link href="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html" rel="alternate" type="text/html" title="Getting Into Cluster Analysis Using Customer Demographic Data" /><published>2024-06-16T00:00:00+00:00</published><updated>2024-06-16T00:00:00+00:00</updated><id>/2024/06/16/getting-into-cluster-analysis-using-customer-demographic</id><content type="html" xml:base="/2024/06/16/getting-into-cluster-analysis-using-customer-demographic.html"><![CDATA[<h2 id="what-is-cluster-analysis">What is cluster analysis?</h2>
 
 <p>Clustering or cluster analysis is an aspect of statistical data analysis where you segment the datasets into groups based on similarities. Here, the data points that are close to one another are grouped together to form clusters. Clustering is one of the core data mining techniques and comes under the umbrella of unsupervised Machine Learning. Clustering, being an unsupervised learning technique, does not require much human intervention and any pre-existing labels. This technique is generally used for exploratory data analysis.</p>
 
@@ -2292,215 +2423,4 @@ print("Correlation coefficient: ", round(corr_coef, ndigits=3))
 
 <p>Note: Refer to my github repository by clicking this <a href="https://github.com/PIYUSH-R04/Data_analysis_on_the_growth_and_distribution_of_registered_companies_in_Nepal"><em>link</em></a> for more details.</p>
 
-<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Piyush, and several other fellows access to DataCamp, to learn and grow.</p>]]></content><author><name>Piyush Rimal</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Company Registration" /><category term="Python" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Harnessing Data Science For Agricultural Crops Prediction</title><link href="/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction.html" rel="alternate" type="text/html" title="Harnessing Data Science For Agricultural Crops Prediction" /><published>2023-05-24T00:00:00+00:00</published><updated>2023-05-24T00:00:00+00:00</updated><id>/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction</id><content type="html" xml:base="/2023/05/24/harnessing-data-science-for-agricultural-crops-prediction.html"><![CDATA[<p>Using AI to determine optimal crop selection can have a significant impact on ending world hunger, particularly in poor developing countries like Nepal. Even though Nepal is an agricultural country, we import a huge amount of food materials every year which make the trade deficit of Nepal even worse. By leveraging AI technologies such as machine learning and data analysis, we can analyze various factors like climate, soil quality, market demand, and available resources. This data-driven approach helps farmers make informed decisions about which crops to plant, increasing agricultural productivity and improving food security. AI algorithms can provide personalized recommendations based on local conditions, enabling farmers to optimize their yields, reduce crop failures, and maximize profits. Ultimately, AI-driven crop selection can contribute to sustainable farming practices, alleviate poverty, and combat hunger in Nepal and similar regions worldwide.</p>
-
-<p>I personally believe that even the uneducated people in the remote parts of the world should get equal opportunity to make their life better leveraging the power of AI and ML. This projects aims to help such people by recommending right kind of crops to maximize their production and profit.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*nWrFYdhySS2t0pb2" alt="" /></p>
-
-<p>In this blog post, we will explore a data science project focused on agricultural crop prediction, highlighting its significance, methodology, and potential benefits.</p>
-
-<h2 id="dataset">Dataset</h2>
-
-<p>The dataset that we’ll be using is: <a href="https://www.kaggle.com/datasets/manikantasanjayv/crop-recommender-dataset-with-soil-nutrients">httpswww.kaggle.com/datasets/manikantasanjayv/crop-recommender-dataset-with-soil-nutrients</a></p>
-
-<p>This is what the dataset looks like:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*xdq-aUBsuNHX04Ti" alt="" /></p>
-
-<h2 id="importing-libraries-and-loading-data">Importing Libraries and Loading Data</h2>
-
-<p>To begin, we import necessary libraries such as NumPy, Pandas, Seaborn, Matplotlib, and IPython Widgets. These libraries will help us manipulate and visualize the data effectively. Additionally, we import the dataset containing soil and climate information using the Pandas library.</p>
-
-<p>import numpy as np</p>
-
-<p>import pandas as pd</p>
-
-<p>import seaborn as sns</p>
-
-<p>import matplotlib.pyplot as plt</p>
-
-<p>from ipywidgets import interact</p>
-
-<p>import warnings</p>
-
-<p>warnings.filterwarnings(‘ignore’)</p>
-
-<p>data=pd.read_csv(“Crop_recommendation.csv”)</p>
-
-<p>Next, we utilize the Pandas DataFrame to calculate and display the average ratios of nitrogen (N), phosphorous (P), and potassium (K) in the soil. These nutrients are essential for plant growth and provide valuable insights into soil fertility. The code snippet then proceeds to calculate and display the average temperature, relative humidity, pH value of the soil, and rainfall. These climatic factors play a crucial role in determining suitable crop choices.</p>
-
-<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
-
-<p>Now ,we utilize the popular data visualization libraries, Matplotlib and Seaborn, to create a grid of subplots. Each subplot represents the distribution of a specific agricultural condition for different crops.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*GNCuGVwoXZJ0oXoS" alt="" /></p>
-
-<p>The first subplot focuses on nitrogen levels (N) in the soil. By utilizing a histogram plot, we can observe the frequency and spread of nitrogen levels across different crops. Similarly, the second subplot showcases the distribution of phosphorous (P) levels, while the third subplot displays the distribution of potassium (K) levels. Moving on to the fourth subplot, it represents the distribution of temperature. Temperature plays a crucial role in crop growth and development, and understanding its distribution helps identify suitable temperature ranges for specific crops. The fifth subplot focuses on rainfall, providing insights into the amount and frequency of precipitation. Next, the sixth subplot examines the distribution of humidity, which is another critical factor affecting crop health and productivity. The seventh subplot visualizes the distribution of soil pH levels. pH level directly influences nutrient availability and crop performance, making it vital to assess its distribution across different crops.</p>
-
-<h2 id="evaluation-metrics">Evaluation Metrics</h2>
-
-<p>Since this is a supervised classification learning, following metrics have been used:</p>
-
-<ol>
-  <li>Accuracy</li>
-  <li>Precision</li>
-  <li>Recall</li>
-  <li>F1 Score</li>
-</ol>
-
-<h2 id="determining-optimum-clusters">Determining Optimum Clusters</h2>
-
-<p>K-means clustering is a widely used algorithm that partitions data points into clusters based on their similarity. The code snippet begins by importing the necessary libraries, including scikit-learn’s KMeans module. Then, it prepares the data for clustering by removing the labels column and selecting all the values from the dataset. The shape of the data is then printed to gain an understanding of its dimensions.</p>
-
-<p>from sklearn.cluster import KMeans</p>
-
-<p><em>#removing the labels column</em></p>
-
-<p>x = data.drop([‘label’], axis=1)</p>
-
-<p><em>#selecting all the values of data</em></p>
-
-<p>x = x.values</p>
-
-<p><em>#checking the shape</em></p>
-
-<p>print(x.shape)</p>
-
-<p>(2200, 7)</p>
-
-<p>Moving on to the main part of the code, we define an empty list called wcss (Within-Cluster Sum of Squares). This list will store the calculated WCSS values for different numbers of clusters.A loop is then executed from 1 to 10, where each iteration creates a KMeans object with a specific number of clusters. To gain insights into the optimal number of clusters, the Matplotlib library is used to create a line plot.</p>
-
-<p>plt.rcParams[‘figure.figsize’] = (10,4)</p>
-
-<p>wcss = []</p>
-
-<p>for i in range(1,11):</p>
-
-<p>km = KMeans(n_clusters = i, init = ’k-means++’, max_iter = 2000, n_init = 10, random_state = 0)</p>
-
-<p>km.fit(x)</p>
-
-<p>wcss.append(km.inertia_)</p>
-
-<p><em>#Plotting the results</em></p>
-
-<p>plt.plot(range(1,11), wcss)</p>
-
-<p>plt.title(‘Elbow Method’, fontsize = 20)</p>
-
-<p>plt.xlabel(‘No of Clusters’)</p>
-
-<p>plt.ylabel(‘wcss’)</p>
-
-<p>plt.show()</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*GeYDMJpC804vor2u" alt="" /></p>
-
-<p>The resulting plot is known as the Elbow Method plot. It helps us identify the point of inflection or the “elbow” in the curve.</p>
-
-<h2 id="splitting-the-dataset-and-analyzing-correlation">Splitting the Dataset and analyzing correlation</h2>
-
-<p>Next, we split the dataset into input features and target variables for predictive modeling. Additionally, we will analyze the correlations between different variables using a heatmap visualization.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*39K-bUsRVEi0zq5F" alt="" /></p>
-
-<h2 id="data-preprocessing-and-training">Data Preprocessing and Training</h2>
-
-<p>We standardize and tidy up our data to improve model performance.Here, we standardize our data using StandardScaler().The ColumnTransformer is used to create a transformer object that applies the StandardScaler to the numeric columns in the dataset, ensuring that all features are on the same scale.Also, the dataset is split into training and testing sets.</p>
-
-<p>from sklearn.preprocessing import StandardScaler</p>
-
-<p>from sklearn.compose import ColumnTransformer</p>
-
-<p>transformer = ColumnTransformer([(‘num’, StandardScaler(), x.columns)])</p>
-
-<p>Moving on to the model training phase, the code creates an SVM pipeline using the Pipeline module from sklearn.pipeline. The pipeline includes the preprocessing transformer and the SVM model from sklearn.svm. This ensures that the preprocessing steps are seamlessly applied to the data before training the SVM model.</p>
-
-<p>from sklearn.pipeline import Pipeline</p>
-
-<p>from sklearn.svm import SVC</p>
-
-<p>svm_pipe = Pipeline(steps=[(‘preprocessing’, transformer), (‘model’, SVC())])</p>
-
-<p>svm_pipe.fit(x_train, y_train)</p>
-
-<p>y_pred = svm_pipe.predict(x_test)</p>
-
-<p>evaluate_model(“SVM”, y_pred, y_test)</p>
-
-<p>show_confusion_matrix(y_pred, y_test)</p>
-
-<p>Additionally, the show_confusion_matrix() function visualizes the confusion matrix using seaborn’s heatmap. The confusion matrix provides insights into the performance of the model by showing the number of true positives, true negatives, false positives, and false negatives.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*1bdFMRW85QSQjcdX" alt="" /></p>
-
-<p>SVM</p>
-
-<p>accuracy: 0.9772727272727273</p>
-
-<p>f1_score 0.9773200952744351</p>
-
-<p>precision 0.9799524821583645</p>
-
-<p>recall 0.9772727272727273</p>
-
-<p>Decision Tree Classifier</p>
-
-<p>from sklearn.tree import DecisionTreeClassifier</p>
-
-<p>tree_pipe = Pipeline(steps=[(“preprocessing”, transformer), (“model”, DecisionTreeClassifier())])</p>
-
-<p>tree_pipe.fit(x_train, y_train)</p>
-
-<p>y_pred = tree_pipe.predict(x_test)</p>
-
-<p>evaluate_model(“DecisionTreeClassifier” ,y_pred, y_test)</p>
-
-<p>show_confusion_matrix(y_pred, y_test)</p>
-
-<p>DecisionTreeClassifier</p>
-
-<p>accuracy: 0.9886363636363636</p>
-
-<p>f1_score 0.9886072979597981</p>
-
-<p>precision 0.9890874125874125</p>
-
-<p>recall 0.9886363636363636</p>
-
-<h2 id="model-selection">Model Selection</h2>
-
-<p>I played around with different algorithms to see which model fits the data best and generalizes well to test data. Logistic regressions, SVM and decision tree worked well but I chose decision tree classifier model as final model. 98% accuracy in test data proves that the decision tree is generalizing well in real-world examples.</p>
-
-<h2 id="making-predictions-and-displaying-the-suggested-crop">Making predictions and Displaying the suggested Crop</h2>
-
-<p>Finally, we create a dictionary and input values which represent the climatic conditions and the soil nutrients for which we seek crop recommendations. We utilize our trained machine learning model to predict the suggested crop based on the provided climatic data. Since we are using a pipeline, we do not need to perform data preprocessing manually while predicting. The pipeline does the preprocessing and gets the prediction using the learned model. Furthermore, I have saved the weights and biases in a pickle file so that we do not need to train the model every time we need to predict. Once the prediction is made, it prints the suggested crop based on the given climatic conditions.</p>
-
-<p>This is how a user can give input values to get the recommendation:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/0*Iiwk4oXFPMhVpS3O" alt="" /></p>
-
-<h2 id="scope-and-benefits">Scope and benefits</h2>
-
-<ol>
-  <li>Enhanced yield</li>
-  <li>Risk mitigation</li>
-  <li>Sustainable farming practices</li>
-  <li>Improved decision making</li>
-  <li>The model can continue learning and be better</li>
-  <li>Knowledge transfer</li>
-  <li>Improved financial condition</li>
-  <li>Betterment of the lifestyle of poor communities.</li>
-  <li>This is a very lightweight model and is freely available for anyone to use.</li>
-</ol>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>While crop recommendation systems offer tremendous potential, certain challenges must be addressed. These include the need for reliable data sources, accessibility for farmers in remote areas, and user-friendly interfaces. However, advancements in technology and increased connectivity hold promise for overcoming these obstacles and extending the reach of these systems to a wider user base.</p>
-
-<p>Looking ahead, crop recommendation systems can be further enhanced by incorporating real-time data, remote sensing techniques, and artificial intelligence algorithms. This would provide farmers with even more precise recommendations, leading to better crop management, increased sustainability, and improved food security.</p>
-
-<p>Github repo: <a href="https://github.com/sadhana70/agricultural-crop-recommendation">https://github.com/sadhana70/agricultural-crop-recommendation</a></p>
-
-<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Sadhana, and several other fellows access to DataCamp, to learn and grow.</p>]]></content><author><name>Sadhana Panthi</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Agriculture" /><category term="Python" /><summary type="html"><![CDATA[Using AI to determine optimal crop selection can have a significant impact on ending world hunger, particularly in poor developing countries like Nepal. Even though Nepal is an agricultural country, we import a huge amount of food materials every year which make the trade deficit of Nepal even worse. By leveraging AI technologies such as machine learning and data analysis, we can analyze various factors like climate, soil quality, market demand, and available resources. This data-driven approach helps farmers make informed decisions about which crops to plant, increasing agricultural productivity and improving food security. AI algorithms can provide personalized recommendations based on local conditions, enabling farmers to optimize their yields, reduce crop failures, and maximize profits. Ultimately, AI-driven crop selection can contribute to sustainable farming practices, alleviate poverty, and combat hunger in Nepal and similar regions worldwide.]]></summary></entry></feed>
+<p>Code for Nepal would like to thank <a href="https://www.datacamp.com/donates">DataCamp Donates</a> for providing Piyush, and several other fellows access to DataCamp, to learn and grow.</p>]]></content><author><name>Piyush Rimal</name></author><category term="CodeforNepal" /><category term="DataCamp Donates" /><category term="Nepal" /><category term="Company Registration" /><category term="Python" /><summary type="html"><![CDATA[]]></summary></entry></feed>
