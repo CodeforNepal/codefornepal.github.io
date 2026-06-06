@@ -1,6 +1,6 @@
 title: "CURRENT TEAM"
-text: ""
-subtext:
+text: "This is the current team of the organization. We are a group of passionate individuals who are dedicated to making a positive impact in our community. We work together to achieve our goals and create a better future for everyone."
+subtext: 
 section: team
 people:
   - name: Animesh S. Basnet
@@ -18,9 +18,15 @@ people:
   - name: Ravi Kumar
     image: "/assets/img/team/ravi_kumar.jpg"
     linkedin_url: https://www.linkedin.com/in/ravinepal/
+      
+  - name: Sandip Katel
+    image: "/assets/img/team/sandip_katel.jpg"
+    linkedin_url: https://www.linkedin.com/in/sandipkatel/
 
   - name: Sanjay Shrestha
     image: "/assets/img/team/Sanjay_Shrestha.jpg"
     linkedin_url: https://www.linkedin.com/in/sanjay-shrestha-85ba9b22b/
 
-
+  - name: Sauhar Khanal
+    image: "/assets/img/team/Sauhar_Khanal.jpg"
+    linkedin_url: https://www.linkedin.com/in/sauhar-khanal-87b058199/
