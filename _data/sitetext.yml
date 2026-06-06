@@ -69,12 +69,14 @@ footer:
   legal_title: Code of Conduct
   privacy: Privacy Policy
   social:
+    - url: https://www.linkedin.com/company/code-for-nepal/
+      icon: "fab fa-linkedin-in"
     - url: https://twitter.com/codefornepal
       icon: "fab fa-twitter"
     - url: https://www.facebook.com/codefornepal
       icon: "fab fa-facebook-f"
-    - url: https://www.vimeo.com/codefornepal
-      icon: "fab fa-vimeo-square"
+    # - url: https://www.vimeo.com/codefornepal
+    #   icon: "fab fa-vimeo-square"
     - url: https://github.com/code4Nepal
       icon: "fab fa-github"
     - url: http://instagram.com/codefornepal
