@@ -1,66 +1,120 @@
 <!-- Footer -->
-<footer class="footer" id="footer">
-  <div class="container mt-4">
-    <div class="row align-items-center">
-      <div class="col-md-4">
-        <span class="copyright"
-          >Copyright &copy; {{ site.title }} {{ 'now' | date: "%Y" }}</span
-        >
+<footer id="footer" style="background:#111827; color:white; padding:4rem 0 0;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+
+    <!-- Donation CTA strip -->
+    <div style="background:#1f2937; border-radius:8px; padding:1.5rem 2rem; margin-bottom:3rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <p style="margin:0; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem; color:white; text-transform:uppercase; letter-spacing:0.08em;">Support our mission</p>
+        <p style="margin:0.25rem 0 0; font-size:0.82rem; color:rgba(255,255,255,0.6); font-family:'Droid Serif','Georgia',serif;">Every contribution helps expand digital literacy in Nepal.</p>
+      </div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:inline;">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="A8L4MMC7NP5ZS"/>
+        <button type="submit"
+                style="background:#dc2626; color:white; padding:0.6rem 1.5rem; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; font-family:'Montserrat',sans-serif; border:none; border-radius:9999px; cursor:pointer; white-space:nowrap;"
+                onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">
+          Donate Now
+        </button>
+        <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" alt="" />
+      </form>
+    </div>
+
+    <!-- 3-column grid -->
+    <div id="footerGrid" style="display:grid; grid-template-columns:35% 30% 35%; gap:3rem; padding-bottom:3rem;">
+
+      <!-- Column 1: Logo + mission + social -->
+      <div>
+        {% if site.logo %}
+        <a href="{{ site.baseurl }}/" style="display:inline-block; margin-bottom:1rem;">
+          <img src="{{ site.baseurl }}/{{ site.logo.path }}" alt="{{ site.title }}" style="height:40px; width:auto; filter:brightness(0) invert(1);">
+        </a>
+        {% else %}
+        <a href="{{ site.baseurl }}/" style="display:inline-block; margin-bottom:1rem; color:white; text-decoration:none; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.08em;">{{ site.title }}</a>
+        {% endif %}
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.6); line-height:1.7; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif;">
+          Increasing digital literacy and open data use to empower communities across Nepal.
+        </p>
+        <!-- Social icons -->
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          {% for link in site.data.sitetext.footer.social %}
+          {% if link.url %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; background:rgba(255,255,255,0.08); border-radius:50%; color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem; transition:background 0.2s;"
+             onmouseover="this.style.background='#dc2626'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.7)';">
+            {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Social Media -->
-      <div class="col-md-4">
-        <ul class="list-inline social-buttons">
+      <!-- Column 2: Quick links -->
+      <div>
+        <h4 style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; color:rgba(255,255,255,0.45); margin:0 0 1.25rem;">Quick Links</h4>
+        <ul style="list-style:none; margin:0; padding:0;">
+          <li style="margin-bottom:0.6rem;"><a href="{{ site.baseurl }}/about/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">About</a></li>
+          <li style="margin-bottom:0.6rem;"><a href="{{ site.baseurl }}/fellowship2026/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Fellowship 2026</a></li>
+          <li style="margin-bottom:0.6rem;"><a href="{{ site.baseurl }}/projects/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Projects</a></li>
+          <li style="margin-bottom:0.6rem;"><a href="{{ site.baseurl }}/blog/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Blog</a></li>
+          <li style="margin-bottom:0.6rem;"><a href="{{ site.baseurl }}/joinus/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Join Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Connect -->
+      <div>
+        <h4 style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; color:rgba(255,255,255,0.45); margin:0 0 1.25rem;">Connect</h4>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.75); margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">
+          <i class="fas fa-envelope" style="margin-right:0.5rem; color:#dc2626;"></i>
+          <a href="mailto:contact@codefornepal.org" style="color:rgba(255,255,255,0.75); text-decoration:none;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">contact@codefornepal.org</a>
+        </p>
+        <div style="margin-top:1rem;">
           {% for link in site.data.sitetext.footer.social %}
-          <li class="list-inline-item">
-            {% if link.url %}
-            <a href="{{ link.url }}">
-              {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
-            </a>
-            {% endif %}
-          </li>
+          {% if link.url %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+             style="display:flex; align-items:center; gap:0.5rem; color:rgba(255,255,255,0.65); text-decoration:none; font-size:0.82rem; font-family:'Montserrat',sans-serif; margin-bottom:0.5rem;"
+             onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+            {% if link.icon %}<i class="{{ link.icon }}" style="width:16px; text-align:center;"></i>{% endif %}
+            <span>{{ link.url | replace: 'https://', '' | replace: 'http://', '' | split: '/' | first }}</span>
+          </a>
+          {% endif %}
           {% endfor %}
-          <div class="mt-2">{% include donations.html %}</div>
-        </ul>
+        </div>
       </div>
-      
-      <!-- Legal -->
-      <div class="col-md-4">
-        <ul class="list-inline quicklinks">
-          <li class="list-inline-item">
-            <a href="{{ site.baseurl }}/codeofconduct/" target="_blank"
-              >{{ site.data.sitetext.footer.legal_title }}</a
-            >
-          </li>
-        </ul>
-        <ul class="list-inline quicklinks">
-          <li class="list-inline-item">
-            <a href="{{ site.baseurl }}/privacy/" target="_blank"
-              >{{ site.data.sitetext.footer.privacy }}</a
-            >
-          </li>
-        </ul>
-      </div>
-      
-      <div class="col-md-11 mt-4">
-        <span class="code">{{ site.data.sitetext.footer.license }}</span>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div id="footerBottom" style="border-top:1px solid rgba(255,255,255,0.1); padding:1.5rem 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <p style="margin:0; font-size:0.78rem; color:rgba(255,255,255,0.4); font-family:'Montserrat',sans-serif;">
+        &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.
+      </p>
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <a href="{{ site.baseurl }}/codeofconduct/" target="_blank" style="font-size:0.75rem; color:rgba(255,255,255,0.4); text-decoration:none; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ site.data.sitetext.footer.legal_title | default: "Code of Conduct" }}</a>
+        <a href="{{ site.baseurl }}/privacy/" target="_blank" style="font-size:0.75rem; color:rgba(255,255,255,0.4); text-decoration:none; font-family:'Montserrat',sans-serif;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ site.data.sitetext.footer.privacy | default: "Privacy Policy" }}</a>
       </div>
     </div>
+
+    <!-- License line -->
+    {% if site.data.sitetext.footer.license %}
+    <div style="padding-bottom:1.5rem;">
+      <p style="margin:0; font-size:0.72rem; color:rgba(255,255,255,0.3); line-height:1.6; font-family:'Droid Serif','Georgia',serif;">{{ site.data.sitetext.footer.license }}</p>
+    </div>
+    {% endif %}
+
   </div>
 </footer>
 
-{% if page.layout == "page" %}
-<script>
-  fixPageShort();
-  function fixPageShort() {
-    if (window.innerHeight > document.body.offsetHeight) {
-      document.getElementById("footer").style.position = "fixed";
-      document.getElementById("footer").style.bottom = 0;
-      document.getElementById("footer").style.right = 0;
-      document.getElementById("footer").style.left = 0;
-      document.getElementById("footer").style.width = "100%";
-    }
+<style>
+@media (max-width: 768px) {
+  #footerGrid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
   }
-</script>
-{% endif %}
+  #footerBottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+</style>
 <!-- End Footer -->

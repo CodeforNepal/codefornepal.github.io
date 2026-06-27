@@ -21,6 +21,6 @@ pagination:
   debug: false
   sort_reverse: true
   collection: "posts"
-  per_page: 8
+  per_page: 50
   permalink: "/page/:num/"
 exclude: [vendor]

@@ -1,38 +1,79 @@
 <!-- Navigation -->
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="{{ site.baseurl }}/">
+<nav id="mainNav" style="position:fixed; top:0; left:0; right:0; z-index:1000; background:#111827; box-shadow:0 2px 12px rgba(0,0,0,0.25);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:64px;">
+
+    <!-- Logo -->
+    <a href="{{ site.baseurl }}/" style="display:flex; align-items:center; text-decoration:none; flex-shrink:0;">
       {% if site.logo %}
-      <img height="{{ site.logo.height | default: 52 }}" src="{{ site.baseurl }}/{{ site.logo.path }}" />
+      <img src="{{ site.baseurl }}/{{ site.logo.path }}" alt="{{ site.title }}" style="height:44px; width:auto; display:block;">
       {% else %}
-      {{ site.title }}
+      <span style="color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; text-transform:uppercase; letter-spacing:0.08em;">{{ site.title }}</span>
       {% endif %}
     </a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-      aria-label="Toggle navigation">
-      Menu
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav text-uppercase ml-auto d-flex align-items-center">
-        {% for link in site.data.navigation.nav %}
-        <li class="nav-item">
-          {% if link.url %}
-          <a class="nav-link js-scroll-trigger" href="{{ link.url }}">{{ link.title }}</a>
-          {% elsif link.section %}
-          <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/#{{ link.section }}">{{ link.title }}</a>
-          {% elsif link.page %}
-          <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/{{ link.page }}/">{{ link.title }}</a>
-          {% else %}
-          <a class="nav-link js-scroll-trigger" href="#">{{ link.title }}</a>
-          {% endif %}
-        </li>
-        {% endfor %}
-        </li>
-        {% include donations.html %}
-      </ul>
+
+    <!-- Desktop links -->
+    <div id="navDesktopLinks" style="display:flex; align-items:center; gap:0.25rem; flex:1; justify-content:flex-end;">
+      {% for link in site.data.navigation.nav %}
+        {% if link.url %}
+          <a href="{{ link.url }}"
+             style="color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.5rem 0.9rem; border-radius:4px;"
+             onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">{{ link.title }}</a>
+        {% elsif link.section %}
+          <a href="{{ site.baseurl }}/#{{ link.section }}"
+             style="color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.5rem 0.9rem; border-radius:4px;"
+             onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">{{ link.title }}</a>
+        {% elsif link.page %}
+          <a href="{{ site.baseurl }}/{{ link.page }}/"
+             style="color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.5rem 0.9rem; border-radius:4px;"
+             onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">{{ link.title }}</a>
+        {% else %}
+          <a href="#"
+             style="color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.5rem 0.9rem; border-radius:4px;"
+             onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">{{ link.title }}</a>
+        {% endif %}
+      {% endfor %}
+
+
     </div>
+
+    <!-- Mobile hamburger button -->
+    <button id="navToggle" type="button" aria-label="Toggle navigation"
+            style="display:none; background:transparent; border:none; color:white; cursor:pointer; padding:0.5rem; line-height:1;"
+            onclick="(function(){var m=document.getElementById('navMobileMenu'); var open=(m.style.display==='block'); m.style.display=open?'none':'block';})()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="navMobileMenu" style="display:none; background:#1f2937; border-top:1px solid rgba(255,255,255,0.1); padding:1rem 1.5rem;">
+    {% for link in site.data.navigation.nav %}
+      {% if link.url %}
+        <a href="{{ link.url }}"
+           style="display:block; color:white; font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.07);">{{ link.title }}</a>
+      {% elsif link.section %}
+        <a href="{{ site.baseurl }}/#{{ link.section }}"
+           style="display:block; color:white; font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.07);">{{ link.title }}</a>
+      {% elsif link.page %}
+        <a href="{{ site.baseurl }}/{{ link.page }}/"
+           style="display:block; color:white; font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.07);">{{ link.title }}</a>
+      {% else %}
+        <a href="#"
+           style="display:block; color:white; font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.07);">{{ link.title }}</a>
+      {% endif %}
+    {% endfor %}
+
   </div>
 </nav>
+
+<style>
+@media (max-width: 767px) {
+  #navDesktopLinks { display: none !important; }
+  #navToggle { display: block !important; }
+}
+</style>
 <!-- End Navigation -->

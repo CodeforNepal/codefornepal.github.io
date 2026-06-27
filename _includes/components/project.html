@@ -1,10 +1,13 @@
     <div class="row text-center justify-content-center">
       {% for service in site.data.sitetext.services.list %}
+      {% assign title_html = service.title | markdownify %}
+      {% assign url = title_html | split: 'href="' | last | split: '"' | first %}
+      {% assign title_text = service.title | markdownify | strip_html %}
+      {% assign title_clean = title_text | strip %}
+      {% if title_clean == "Open Data" or title_clean == "Fellowships" or title_clean == "Community" %}
+        {% continue %}
+      {% endif %}
       <div class="col-md-4 col-lg-3 mb-4">
-        {% assign title_html = service.title | markdownify %}
-        {% assign url = title_html | split: 'href="' | last | split: '"' | first %}
-        {% assign title_text = service.title | markdownify | strip_html %}
-        
         <a href="{{ url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark d-block h-100">
           <div class="service-item h-100 d-flex flex-column align-items-center justify-content-center p-3">
             <span class="fa-stack fa-4x mb-3">

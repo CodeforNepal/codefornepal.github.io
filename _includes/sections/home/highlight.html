@@ -1,0 +1,60 @@
+<!-- Recent Posts -->
+{% assign highlighted = site.tags.highlight %}
+{% if highlighted.size > 0 %}
+<section style="padding:6rem 0; background:#f9fafb;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+
+    <div style="text-align:center; margin-bottom:4rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#9ca3af; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:500;">From our blog</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em; margin:0;">Recent Posts</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:2rem;">
+      {% for post in site.tags.highlight limit:3 %}
+      <article style="background:white; border:1px solid #f3f4f6; display:flex; flex-direction:column; overflow:hidden; transition:box-shadow 0.2s;"
+               onmouseover="this.style.boxShadow='0 4px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+
+        {% if post.image %}
+        <div style="height:180px; overflow:hidden;">
+          <img src="{{ post.image }}" alt="{{ post.title }}" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        {% else %}
+        <div style="height:180px; background:#f3f4f6; display:flex; align-items:center; justify-content:center;">
+          <i class="fas fa-newspaper" style="font-size:2rem; color:#d1d5db;"></i>
+        </div>
+        {% endif %}
+
+        <div style="padding:1.5rem; display:flex; flex-direction:column; flex:1;">
+          <p style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.2em; color:#9ca3af; margin-bottom:0.5rem; font-family:'Montserrat',sans-serif;">
+            {{ post.date | date: "%b %-d, %Y" }}
+          </p>
+          <h3 style="font-size:1rem; font-weight:600; color:#111827; line-height:1.4; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif;">
+            <a href="{{ post.id }}" style="color:inherit; text-decoration:none;"
+               onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#111827'">
+              {{ post.title }}
+            </a>
+          </h3>
+          <p style="font-size:0.875rem; color:#6b7280; line-height:1.65; flex:1; margin-bottom:1.25rem;">
+            {{ post.excerpt | strip_html | truncatewords: 28 }}
+          </p>
+          <a href="{{ post.id }}" style="font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#dc2626; text-decoration:none; font-family:'Montserrat',sans-serif;"
+             onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+            Read more &rarr;
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="{{ site.baseurl }}/blog/"
+         style="display:inline-block; padding:0.75rem 2rem; border:2px solid #111827; color:#111827; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; text-decoration:none; font-family:'Montserrat',sans-serif; transition:background 0.2s, color 0.2s;"
+         onmouseover="this.style.background='#111827'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#111827'">
+        View all posts
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+<!-- End Recent Posts -->

@@ -1,8 +1,55 @@
-// Global styling for this template
+%base-font-style {
+  letter-spacing: -0.003em;
+  line-height: 32px;
+  font-weight: 200 !important;
+}
+
+html {
+  background-color: #111827;
+}
+
 body {
+  padding-top: 0 !important;
   overflow-x: hidden;
-  // @include body-font;
   @extend %base-font-style;
+}
+
+#pagecontainer {
+  padding-top: 100px;
+  padding-bottom: 0px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  box-sizing: border-box;
+}
+
+// Center and pad text content on standard pages (like About, Blog posts)
+#pagecontainer > p,
+#pagecontainer > h1,
+#pagecontainer > h2,
+#pagecontainer > h3,
+#pagecontainer > h4,
+#pagecontainer > h5,
+#pagecontainer > h6,
+#pagecontainer > ul,
+#pagecontainer > ol,
+#pagecontainer > .row,
+#pagecontainer > #disqus_thread,
+#pagecontainer > noscript {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
 }
 
 p {
@@ -86,11 +133,7 @@ img::-moz-selection {
   list-style: none;
 }
 
-%base-font-style{
-  letter-spacing: -0.003em;
-  line-height: 32px;
-  font-weight: 200 !important;
-}
+
 .clean-text {
   @extend %base-font-style;
   font-size: 21px;

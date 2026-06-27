@@ -12,11 +12,11 @@ title: Team
       </div>
     </div>
 
-    <div class="row">
+    <div id="teamGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:3rem 1.5rem; justify-items:center; margin-bottom:3rem;">
       {% for person in site.data.team.people %}
-      <div class="col-sm-4 mb-4 mx-auto">
+      <div style="width:100%; max-width:340px;">
         <div class="team-member">
-          <img class="mx-auto rounded-circle" src="{{ person.image | prepend: site.baseurl }}" alt="">
+          <img class="mx-auto rounded-circle" src="{{ person.image | prepend: site.baseurl }}" alt="" style="width:280px; height:280px; object-fit:cover; border: 7px solid rgba(0,0,0,0.1);">
           <a href = "{{person.linkedin_url}}" class="text-decoration-none" target= "blank">
             <h4>{{ person.name }}</h4>
           </a>
@@ -34,6 +34,15 @@ title: Team
       </div>
       {% endfor %}
     </div>
+
+    <style>
+    @media (max-width: 768px) {
+      #teamGrid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem 1.5rem !important;
+      }
+    }
+    </style>
 
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">

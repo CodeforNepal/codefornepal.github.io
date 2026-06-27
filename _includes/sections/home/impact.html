@@ -1,0 +1,38 @@
+<!-- Impact Stats -->
+{% if site.data.sitetext.impact %}
+<section id="impact" style="padding:4rem 0; background:#f9fafb; border-bottom:1px solid #f3f4f6;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div id="impactGrid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0;">
+      {% for stat in site.data.sitetext.impact.stats %}
+      <div style="text-align:center; padding:2rem 1rem; {% unless forloop.last %}border-right:1px solid #e5e7eb;{% endunless %}">
+        <div style="font-size:2.5rem; font-weight:700; color:#111827; font-family:'Montserrat',sans-serif; line-height:1; margin-bottom:0.5rem;">
+          {{ stat.number }}
+        </div>
+        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.15em; color:#6b7280; font-family:'Montserrat',sans-serif; font-weight:500;">
+          {{ stat.label }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width: 600px) {
+  #impactGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  #impactGrid > div {
+    border-right: none !important;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  #impactGrid > div:nth-child(odd) {
+    border-right: 1px solid #e5e7eb !important;
+  }
+  #impactGrid > div:nth-child(3),
+  #impactGrid > div:nth-child(4) {
+    border-bottom: none !important;
+  }
+}
+</style>
+{% endif %}
+<!-- End Impact Stats -->
