@@ -1,0 +1,20 @@
+<!-- Partners -->
+{% if site.data.sitetext.clients.list %}
+<section id="{{ site.data.sitetext.clients.section | default: 'clients' }}" style="padding:4rem 0; background:#f9fafb; border-top:1px solid #f3f4f6;">
+  <div style="max-width:900px; margin:0 auto; padding:0 1.5rem; text-align:center;">
+    <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#9ca3af; margin-bottom:2.5rem; font-family:'Montserrat',sans-serif; font-weight:500;">
+      {{ site.data.sitetext.clients.title | default: "Our Partners" }}
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:center;">
+      {% for client in site.data.sitetext.clients.list %}
+      <a href="{{ client.url }}" target="_blank" rel="noopener noreferrer"
+         style="opacity:0.6; transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+        <img src="{{ client.logo }}" alt="{{ client.title }}" style="max-height:{{ site.data.sitetext.clients.max-height | default: '70px' }}; max-width:140px; object-fit:contain;">
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- End Partners -->

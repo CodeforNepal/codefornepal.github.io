@@ -3,39 +3,207 @@ layout: page
 title: Fellowship
 ---
 
+<!-- Hero Banner -->
+<section style="background:#111827; padding:5rem 0 4rem; margin:-1px;">
+  <div style="max-width:900px; margin:0 auto; padding:0 1.5rem; text-align:center;">
+    <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:1rem; font-family:'Montserrat',sans-serif; font-weight:600;">Applications Open</p>
+    <h1 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; color:white; line-height:1.1; margin-bottom:1.25rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+      {{ site.data.fellowship.about.title | default: "Data Fellowship 2026" }}
+    </h1>
+    <p style="font-size:1rem; color:rgba(255,255,255,0.7); max-width:620px; margin:0 auto 2.5rem; line-height:1.75; font-family:'Droid Serif','Georgia',serif;">
+      A free program supported by DataCamp Donates to help Nepalis build in-demand data skills, earn certificates, and join a growing community of civic technologists.
+    </p>
+    <div style="display:flex; gap:2rem; align-items:center; justify-content:center; margin-bottom:2.5rem; flex-wrap:wrap;">
+      <img src="/assets/img/c4n_logo.png" alt="Code for Nepal" style="height:2.5rem; filter:brightness(0) invert(1); opacity:0.9;" onerror="this.style.display='none'">
+      <span style="color:rgba(255,255,255,0.3); font-size:1.5rem;">+</span>
+      <img src="/assets/img/datacamp.png" alt="DataCamp" style="height:2.5rem;" onerror="this.style.display='none'">
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjd4VXYxSOxc707VXc9gwVJ2k8urkRR258AMFgD0eqDGpgWA/viewform"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:1rem 2.5rem; background:#dc2626; color:white; font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+       onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">
+      Apply Now
+    </a>
+  </div>
+</section>
+
+<!-- Program Overview -->
+<section style="padding:5rem 0; background:white;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div id="overviewGrid" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+      <div>
+        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600;">About the program</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:700; color:#111827; margin-bottom:1.25rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Free data skills training for all Nepalis</h2>
+        <div style="font-size:0.95rem; color:#6b7280; line-height:1.8; font-family:'Droid Serif','Georgia',serif;">{{ site.data.fellowship.about.text | markdownify }}</div>
+        <div style="margin-top:2rem;">
+          <img src="/assets/img/data_fellowship_2026.jpg" alt="Data Fellowship 2026" style="width:100%; border-radius:2px; display:block;" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div>
+        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600;">Program includes</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:700; color:#111827; margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">What you get</h2>
+        <ul style="list-style:none; margin:0; padding:0;">
+          <li style="display:flex; gap:0.75rem; margin-bottom:1rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">DataCamp Premium subscription to take expert-led courses and earn certificates</span></li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:1rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">Opportunity to publish data visualizations and blog posts on Code for Nepal</span></li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:1rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">Industry &amp; academia expert teaching assistants for support and community participation</span></li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:1rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">Involvement in Open Source Projects</span></li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:1rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">A digital certificate from Code for Nepal upon fellowship completion</span></li>
+          <li style="display:flex; gap:0.75rem; align-items:flex-start;"><i class="fas fa-check-circle" style="color:#dc2626; font-size:1rem; margin-top:0.15rem; flex-shrink:0;"></i><span style="font-size:0.9rem; color:#374151; line-height:1.6; font-family:'Droid Serif','Georgia',serif;">Lifetime membership in the Code for Nepal community</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section style="padding:5rem 0; background:#f9fafb;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif; font-weight:600;">The process</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">How It Works</h2>
+    </div>
+    <div id="stepsGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem;">
+      <div style="background:white; padding:2.5rem 2rem; border:1px solid #f3f4f6; text-align:center;">
+        <div style="width:3rem; height:3rem; background:#111827; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;"><span style="color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem;">1</span></div>
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-graduation-cap" style="color:#dc2626;"></i></div>
+        <h3 style="font-size:1rem; font-weight:700; color:#111827; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif;">DataCamp Courses</h3>
+        <p style="font-size:0.85rem; color:#6b7280; line-height:1.65; font-family:'Droid Serif','Georgia',serif;">Learn data skills through DataCamp's expert-led online curriculum covering Python, SQL, data science, and more.</p>
+      </div>
+      <div style="background:white; padding:2.5rem 2rem; border:1px solid #f3f4f6; text-align:center;">
+        <div style="width:3rem; height:3rem; background:#dc2626; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;"><span style="color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem;">2</span></div>
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-tasks" style="color:#dc2626;"></i></div>
+        <h3 style="font-size:1rem; font-weight:700; color:#111827; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif;">Assignment &amp; Project</h3>
+        <p style="font-size:0.85rem; color:#6b7280; line-height:1.65; font-family:'Droid Serif','Georgia',serif;">Apply your skills to real-world data projects, contributing to open source civic technology for Nepal.</p>
+      </div>
+      <div style="background:white; padding:2.5rem 2rem; border:1px solid #f3f4f6; text-align:center;">
+        <div style="width:3rem; height:3rem; background:#111827; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;"><span style="color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem;">3</span></div>
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-certificate" style="color:#dc2626;"></i></div>
+        <h3 style="font-size:1rem; font-weight:700; color:#111827; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif;">Support &amp; Certification</h3>
+        <p style="font-size:0.85rem; color:#6b7280; line-height:1.65; font-family:'Droid Serif','Georgia',serif;">Get mentored by experts, earn your DataCamp certificates, and receive a Code for Nepal fellowship certificate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Eligibility -->
+<section style="padding:5rem 0; background:white;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif; font-weight:600;">Requirements</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Who Can Apply</h2>
+    </div>
+    <div id="eligibilityGrid" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+      <div style="background:#f9fafb; padding:2.5rem; border:1px solid #f3f4f6;">
+        <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:0 0 1.5rem; font-family:'Montserrat',sans-serif; display:flex; align-items:center; gap:0.75rem;"><i class="fas fa-user-check" style="color:#dc2626;"></i> Requirements</h3>
+        <ul style="list-style:none; margin:0; padding:0;">
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:#374151; font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-check" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Any Nepali interested in learning data skills — no prior experience needed</li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:#374151; font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-check" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Commitment to complete at least one DataCamp track or course</li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:#374151; font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-check" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Access to a computer and internet connection</li>
+          <li style="display:flex; gap:0.75rem; align-items:flex-start; font-size:0.9rem; color:#374151; font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-check" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Willingness to participate in the Code for Nepal community</li>
+        </ul>
+      </div>
+      <div style="background:#111827; padding:2.5rem; color:white;">
+        <h3 style="font-size:1rem; font-weight:700; color:white; margin:0 0 1.5rem; font-family:'Montserrat',sans-serif; display:flex; align-items:center; gap:0.75rem;"><i class="fas fa-star" style="color:#dc2626;"></i> Outcomes</h3>
+        <ul style="list-style:none; margin:0; padding:0;">
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:rgba(255,255,255,0.8); font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-arrow-right" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Industry-recognized DataCamp certificates</li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:rgba(255,255,255,0.8); font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-arrow-right" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Real-world data project experience</li>
+          <li style="display:flex; gap:0.75rem; margin-bottom:0.9rem; align-items:flex-start; font-size:0.9rem; color:rgba(255,255,255,0.8); font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-arrow-right" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Expert mentorship and career guidance</li>
+          <li style="display:flex; gap:0.75rem; align-items:flex-start; font-size:0.9rem; color:rgba(255,255,255,0.8); font-family:'Droid Serif','Georgia',serif; line-height:1.6;"><i class="fas fa-arrow-right" style="color:#dc2626; margin-top:0.2rem; flex-shrink:0;"></i>Lifetime Code for Nepal community membership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cohort details -->
+<section style="padding:4rem 0; background:#f9fafb; border-top:1px solid #f3f4f6;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div id="cohortGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem; text-align:center;">
+      <div style="padding:2rem;">
+        <div style="width:3rem; height:3rem; background:#fef2f2; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-calendar-alt" style="color:#dc2626;"></i></div>
+        <h4 style="font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:0.5rem; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.08em;">Applications Open</h4>
+        <p style="font-size:1rem; color:#6b7280; font-family:'Droid Serif','Georgia',serif;">June 1, 2026</p>
+      </div>
+      <div style="padding:2rem; border-left:1px solid #e5e7eb; border-right:1px solid #e5e7eb;">
+        <div style="width:3rem; height:3rem; background:#fef2f2; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-sync-alt" style="color:#dc2626;"></i></div>
+        <h4 style="font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:0.5rem; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.08em;">Review Process</h4>
+        <p style="font-size:1rem; color:#6b7280; font-family:'Droid Serif','Georgia',serif;">Rolling basis</p>
+      </div>
+      <div style="padding:2rem;">
+        <div style="width:3rem; height:3rem; background:#fef2f2; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;"><i class="fas fa-users" style="color:#dc2626;"></i></div>
+        <h4 style="font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:0.5rem; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.08em;">Availability</h4>
+        <p style="font-size:1rem; color:#6b7280; font-family:'Droid Serif','Georgia',serif;">Limited seats</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Learning Outcomes -->
+<section style="padding:5rem 0; background:white;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif; font-weight:600;">Why join</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Learning Outcomes</h2>
+    </div>
+    <div id="outcomesGrid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem;">
+      <div style="padding:2rem; border:1px solid #f3f4f6; display:flex; gap:1rem; align-items:flex-start;"><div style="flex-shrink:0; width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center;"><i class="fas fa-users" style="color:#dc2626; font-size:0.9rem;"></i></div><div><h3 style="font-size:0.95rem; font-weight:700; color:#111827; margin:0 0 0.4rem; font-family:'Montserrat',sans-serif;">Community Learning</h3><p style="font-size:0.85rem; color:#6b7280; line-height:1.6; margin:0; font-family:'Droid Serif','Georgia',serif;">Learn alongside hundreds of other Nepali data enthusiasts. Share knowledge, collaborate, and grow together.</p></div></div>
+      <div style="padding:2rem; border:1px solid #f3f4f6; display:flex; gap:1rem; align-items:flex-start;"><div style="flex-shrink:0; width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center;"><i class="fas fa-chart-bar" style="color:#dc2626; font-size:0.9rem;"></i></div><div><h3 style="font-size:0.95rem; font-weight:700; color:#111827; margin:0 0 0.4rem; font-family:'Montserrat',sans-serif;">Data Projects</h3><p style="font-size:0.85rem; color:#6b7280; line-height:1.6; margin:0; font-family:'Droid Serif','Georgia',serif;">Build a portfolio of real data projects that matter — from Nepal's census data to public health analytics.</p></div></div>
+      <div style="padding:2rem; border:1px solid #f3f4f6; display:flex; gap:1rem; align-items:flex-start;"><div style="flex-shrink:0; width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center;"><i class="fas fa-user-tie" style="color:#dc2626; font-size:0.9rem;"></i></div><div><h3 style="font-size:0.95rem; font-weight:700; color:#111827; margin:0 0 0.4rem; font-family:'Montserrat',sans-serif;">Mentorship</h3><p style="font-size:0.85rem; color:#6b7280; line-height:1.6; margin:0; font-family:'Droid Serif','Georgia',serif;">Connect with industry professionals and academics who provide guidance, feedback, and career advice.</p></div></div>
+      <div style="padding:2rem; border:1px solid #f3f4f6; display:flex; gap:1rem; align-items:flex-start;"><div style="flex-shrink:0; width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center;"><i class="fas fa-certificate" style="color:#dc2626; font-size:0.9rem;"></i></div><div><h3 style="font-size:0.95rem; font-weight:700; color:#111827; margin:0 0 0.4rem; font-family:'Montserrat',sans-serif;">Certifications</h3><p style="font-size:0.85rem; color:#6b7280; line-height:1.6; margin:0; font-family:'Droid Serif','Georgia',serif;">Earn DataCamp certificates recognized by employers worldwide, plus a Code for Nepal fellowship certificate.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:5rem 0; background:#f9fafb;">
+  <div style="max-width:800px; margin:0 auto; padding:0 1.5rem;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif; font-weight:600;">Questions</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Frequently Asked Questions</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+      <details style="background:white; border:1px solid #f3f4f6;">
+        <summary style="padding:1.25rem 1.5rem; font-size:0.95rem; font-weight:600; color:#111827; font-family:'Montserrat',sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:space-between;">Who is eligible to apply? <i class="fas fa-chevron-down" style="color:#dc2626; font-size:0.75rem; flex-shrink:0;"></i></summary>
+        <div style="padding:0 1.5rem 1.25rem; font-size:0.9rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">Any Nepali is welcome to apply — whether you're a student, working professional, or someone looking to change careers. No prior data experience is required; we welcome complete beginners.</div>
+      </details>
+      <details style="background:white; border:1px solid #f3f4f6;">
+        <summary style="padding:1.25rem 1.5rem; font-size:0.95rem; font-weight:600; color:#111827; font-family:'Montserrat',sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:space-between;">Is the fellowship really free? <i class="fas fa-chevron-down" style="color:#dc2626; font-size:0.75rem; flex-shrink:0;"></i></summary>
+        <div style="padding:0 1.5rem 1.25rem; font-size:0.9rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">Yes! The Data Fellowship is completely free, thanks to DataCamp Donates. Fellows receive full access to DataCamp's premium platform at no cost.</div>
+      </details>
+      <details style="background:white; border:1px solid #f3f4f6;">
+        <summary style="padding:1.25rem 1.5rem; font-size:0.95rem; font-weight:600; color:#111827; font-family:'Montserrat',sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:space-between;">How long is the fellowship? <i class="fas fa-chevron-down" style="color:#dc2626; font-size:0.75rem; flex-shrink:0;"></i></summary>
+        <div style="padding:0 1.5rem 1.25rem; font-size:0.9rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">The fellowship is self-paced. Fellows are expected to complete at least one DataCamp track within a few months. Most fellows complete the program within 3–6 months.</div>
+      </details>
+      <details style="background:white; border:1px solid #f3f4f6;">
+        <summary style="padding:1.25rem 1.5rem; font-size:0.95rem; font-weight:600; color:#111827; font-family:'Montserrat',sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:space-between;">What data skills can I learn? <i class="fas fa-chevron-down" style="color:#dc2626; font-size:0.75rem; flex-shrink:0;"></i></summary>
+        <div style="padding:0 1.5rem 1.25rem; font-size:0.9rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">DataCamp offers courses across Python, R, SQL, data visualization, machine learning, AI, data engineering, and business analytics. You choose the track that best fits your goals.</div>
+      </details>
+      <details style="background:white; border:1px solid #f3f4f6;">
+        <summary style="padding:1.25rem 1.5rem; font-size:0.95rem; font-weight:600; color:#111827; font-family:'Montserrat',sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:space-between;">Do I need to be in Nepal to participate? <i class="fas fa-chevron-down" style="color:#dc2626; font-size:0.75rem; flex-shrink:0;"></i></summary>
+        <div style="padding:0 1.5rem 1.25rem; font-size:0.9rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">No! The fellowship is fully online and open to Nepalis worldwide — whether you're in Nepal or part of the diaspora abroad. All you need is internet access.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Apply CTA -->
+<section style="padding:5rem 0; background:#dc2626;">
+  <div style="max-width:700px; margin:0 auto; padding:0 1.5rem; text-align:center;">
+    <h2 style="font-size:clamp(1.75rem,4vw,2.75rem); font-weight:700; color:white; margin-bottom:1rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Ready to apply?</h2>
+    <p style="font-size:1rem; color:rgba(255,255,255,0.85); margin-bottom:2.5rem; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">Applications are reviewed on a rolling basis. Apply today to secure your spot in the next cohort.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjd4VXYxSOxc707VXc9gwVJ2k8urkRR258AMFgD0eqDGpgWA/viewform"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block; padding:1rem 3rem; background:white; color:#dc2626; font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+       onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='white'">
+      Apply Now
+    </a>
+  </div>
+</section>
+
 <style>
-  div.fellowship-section {
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 0;
-    /* font-style: italic; */
-    margin-bottom: 140px;
-    text-transform: none;
-    line-height: 1.7;
-  }
-  p.section-text {
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    line-height: 1.7;
-  }
-  h2.fellowship-heading {
-    font-size: 40px;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
-
-  h3.fellowship-heading {
-    font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
-  .custom_li {
-    margin-top: 4%;
-  }
+@media (max-width: 768px) {
+  #overviewGrid, #eligibilityGrid, #stepsGrid, #outcomesGrid, #cohortGrid { grid-template-columns: 1fr !important; }
+  #cohortGrid > div { border-left: none !important; border-right: none !important; border-bottom: 1px solid #e5e7eb; }
+  #cohortGrid > div:last-child { border-bottom: none !important; }
+}
 </style>
-
-{% include fellowship_about.html %} 
-{% include fellowship_components.html %} 
-{% include fellowship_outcomes.html %} 
-{% include fellowship_details.html %}

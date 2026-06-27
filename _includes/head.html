@@ -20,7 +20,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="fb:pages" content="201272103415379">
 
-  {% include meta.html %}
+  {% include components/meta.html %}
 
 
   <title>
@@ -45,19 +45,41 @@
   <!-- Custom styles for this theme -->
   <link href="/assets/css/agency.css" rel="stylesheet">
 
-  <!-- Page container change top padding when nav shrinks -->
-  {% if (page.layout == "page" or page.layout == 'post') %}
+  <!-- Global responsive design tokens -->
   <style>
+    /* Ensure nav always has proper top offset for fixed nav (64px) */
+    body { padding-top: 64px; }
+
+    /* Page layouts get extra top padding for content readability */
+    {% if page.layout == "page" or page.layout == "post" %}
     #pagecontainer {
-      padding-top: 150px;
+      padding-top: 3rem;
+      padding-bottom: 5rem;
+    }
+    @media (max-width: 991px) {
+      #pagecontainer { padding-top: 2rem; }
+    }
+    {% endif %}
+
+    /* Responsive grid helpers used across all sections */
+    @media (max-width: 768px) {
+      [style*="grid-template-columns:35% 30% 35%"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="gap:4rem"] { gap: 2rem !important; }
+      [style*="padding:6rem 0"] { padding: 3.5rem 0 !important; }
+      [style*="padding:5rem 0"] { padding: 3rem 0 !important; }
     }
 
-    @media only screen and (max-width: 991px) {
-      #pagecontainer {
-        padding-top: 100px;
-      }
+    /* Details/summary FAQ animation */
+    details > div {
+      animation: fadeInDown 0.2s ease;
     }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary { list-style: none; }
   </style>
-  {% endif %}
 
 </head>

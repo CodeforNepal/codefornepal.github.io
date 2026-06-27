@@ -1,0 +1,63 @@
+<!-- Hero -->
+<section id="home" style="position:relative; background-color:#111827; min-height:100vh; min-height:100dvh; width:100%; margin:0; box-sizing:border-box; overflow:hidden;">
+  <!-- Background image container (fixes WebKit flex background-size bug on mobile Safari) -->
+  <div style="position:absolute; inset:0; background-image:url('/assets/img/header-bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; background-attachment:scroll; z-index:1;"></div>
+  <!-- Dark overlay -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.68); z-index:2;"></div>
+
+  <!-- Content Centering Wrapper (Flexbox inside block section) -->
+  <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; min-height:100dvh; width:100%; padding:6rem 1.5rem 4rem; box-sizing:border-box;">
+    <!-- Content -->
+    <div style="text-align:center; color:white; max-width:860px; margin:0 auto; width:100%;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:rgba(255,255,255,0.55); margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; font-weight:500;">
+        Civic Technology &middot; Open Data &middot; Community
+      </p>
+      {% if site.data.sitetext.header.title %}
+      <h1 style="font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.1; margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+        {{ site.data.sitetext.header.title }}
+      </h1>
+      {% endif %}
+      {% if site.data.sitetext.header.text %}
+      <p style="font-size:clamp(1rem,2.5vw,1.3rem); color:rgba(255,255,255,0.78); margin-bottom:3rem; line-height:1.75; max-width:580px; margin-left:auto; margin-right:auto; font-family:'Droid Serif','Georgia',serif;">
+        {{ site.data.sitetext.header.text }}
+      </p>
+      {% endif %}
+
+      <!-- 4 CTA buttons: stacked on mobile, side-by-side on desktop -->
+      <div id="heroCtas" style="display:grid; grid-template-columns:1fr; gap:0.85rem; max-width:560px; margin:0 auto;">
+        <!-- Apply for Fellowship -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjd4VXYxSOxc707VXc9gwVJ2k8urkRR258AMFgD0eqDGpgWA/viewform"
+           target="_blank" rel="noopener noreferrer"
+           style="display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; background:#dc2626; color:white; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; text-decoration:none; font-family:'Montserrat',sans-serif; border:2px solid #dc2626; text-align:center; line-height:1.3;"
+           onmouseover="this.style.background='#b91c1c'; this.style.borderColor='#b91c1c';" onmouseout="this.style.background='#dc2626'; this.style.borderColor='#dc2626';">
+          Apply for Fellowship
+        </a>
+        <!-- Partner With Us -->
+        <a href="mailto:{{ site.email }}"
+           style="display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; background:transparent; color:white; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; text-decoration:none; font-family:'Montserrat',sans-serif; border:2px solid rgba(255,255,255,0.65); text-align:center; line-height:1.3;"
+           onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='transparent'">
+          Partner With Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); text-align:center; color:rgba(255,255,255,0.4); z-index:10;">
+    <p style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.35em; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif;">Scroll to explore</p>
+    <div style="width:1px; height:2.5rem; background:rgba(255,255,255,0.3); margin:0 auto; animation:heroScrollPulse 2s ease-in-out infinite;"></div>
+  </div>
+</section>
+
+<style>
+@keyframes heroScrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(1); }
+  50% { opacity: 0.9; transform: scaleY(1.08); }
+}
+@media (min-width: 600px) {
+  #heroCtas {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+</style>
+<!-- End Hero -->

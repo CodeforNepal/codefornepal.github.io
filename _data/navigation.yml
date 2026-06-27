@@ -1,21 +1,15 @@
 nav:
-    
   - title: "About"
-    section: about
+    page: about
 
-  - title: "Data Fellowship"
+  - title: "Fellowship"
     page: fellowship2026
-  
+
+  - title: "Projects"
+    page: projects
+
   - title: "Blog"
     page: blog
 
-  - title: "Team"
-    page: team
-
-  -  title: "Join us"
-     page: joinus
-
-    
-
-  
-
+  - title: "Join Us"
+    page: joinus
