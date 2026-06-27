@@ -3,28 +3,25 @@
   <!-- Background image container (fixes WebKit flex background-size bug on mobile Safari) -->
   <div style="position:absolute; inset:0; background-image:url('/assets/img/header-bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; background-attachment:scroll; z-index:1;"></div>
   <!-- Dark overlay -->
-  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.68); z-index:2;"></div>
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.82); z-index:2;"></div>
 
   <!-- Content Centering Wrapper (Flexbox inside block section) -->
   <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; min-height:100dvh; width:100%; padding:6rem 1.5rem 4rem; box-sizing:border-box;">
     <!-- Content -->
     <div style="text-align:center; color:white; max-width:860px; margin:0 auto; width:100%;">
-      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:rgba(255,255,255,0.55); margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; font-weight:500;">
-        Civic Technology &middot; Open Data &middot; Community
-      </p>
       {% if site.data.sitetext.header.title %}
-      <h1 style="font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.1; margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+      <h1 id="heroTitle" style="font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.1; margin-bottom:1.5rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
         {{ site.data.sitetext.header.title }}
       </h1>
       {% endif %}
       {% if site.data.sitetext.header.text %}
-      <p style="font-size:clamp(1rem,2.5vw,1.3rem); color:rgba(255,255,255,0.78); margin-bottom:3rem; line-height:1.75; max-width:580px; margin-left:auto; margin-right:auto; font-family:'Droid Serif','Georgia',serif;">
+      <p id="heroSubtitle" style="font-size:clamp(1rem,2.5vw,1.3rem); color:rgba(255,255,255,0.78); margin-bottom:3rem; line-height:1.75; max-width:580px; margin-left:auto; margin-right:auto; font-family:'Droid Serif','Georgia',serif;">
         {{ site.data.sitetext.header.text }}
       </p>
       {% endif %}
 
       <!-- 4 CTA buttons: stacked on mobile, side-by-side on desktop -->
-      <div id="heroCtas" style="display:grid; grid-template-columns:1fr; gap:0.85rem; max-width:560px; margin:0 auto;">
+      <div id="heroCtas" style="display:grid; grid-template-columns:1fr; gap:0.85rem; max-width:560px; margin:0 auto; opacity:0; transform:translateY(20px); transition:opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s; pointer-events:none;">
         <!-- Apply for Fellowship -->
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjd4VXYxSOxc707VXc9gwVJ2k8urkRR258AMFgD0eqDGpgWA/viewform"
            target="_blank" rel="noopener noreferrer"
@@ -43,11 +40,122 @@
   </div>
 
   <!-- Scroll indicator -->
-  <div style="position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); text-align:center; color:rgba(255,255,255,0.4); z-index:10;">
+  <div id="heroScrollIndicator" style="position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); text-align:center; color:rgba(255,255,255,0.4); z-index:10; cursor:pointer;">
     <p style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.35em; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif;">Scroll to explore</p>
     <div style="width:1px; height:2.5rem; background:rgba(255,255,255,0.3); margin:0 auto; animation:heroScrollPulse 2s ease-in-out infinite;"></div>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var html = document.documentElement;
+  var body = document.body;
+  var isScrolled = false;
+  var lockDuration = 1200; // Match transition duration of remaining content
+
+  // Trigger load animations
+  setTimeout(function() {
+    body.classList.add("is-loaded");
+  }, 100);
+
+  // Lock scrolling initially if loaded at the top
+  if (window.scrollY < 15) {
+    html.style.setProperty("overflow", "hidden", "important");
+    body.style.setProperty("overflow", "hidden", "important");
+  } else {
+    body.classList.add("is-scrolled");
+    isScrolled = true;
+  }
+
+  function activateScrolledState() {
+    if (isScrolled) return;
+    isScrolled = true;
+    
+    // Immediately restore pointer events on content wrapper
+    var contentWrapper = document.getElementById("homepageRemainingContent");
+    if (contentWrapper) {
+      contentWrapper.style.pointerEvents = "auto";
+    }
+    
+    // Trigger reveal transitions (components start animating while locked)
+    body.classList.add("is-scrolled");
+    
+    // Unlock and scroll ONLY after the components have finished animating
+    setTimeout(function() {
+      html.style.removeProperty("overflow");
+      body.style.removeProperty("overflow");
+      
+      // Smooth scroll down to the first section
+      var nextSection = document.getElementById("pillars");
+      if (nextSection) {
+        var targetY = nextSection.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      }
+      
+      // Trigger window resize to force Leaflet to recalculate container dimensions
+      window.dispatchEvent(new Event('resize'));
+      
+      // Clean up listeners
+      window.removeEventListener("wheel", handleWheelScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("keydown", handleKeyDown);
+    }, lockDuration);
+  }
+
+  function handleWheelScroll(e) {
+    if (e.deltaY > 0) {
+      e.preventDefault();
+      activateScrolledState();
+    }
+  }
+
+  var touchStartY = 0;
+  function handleTouchStart(e) {
+    touchStartY = e.touches[0].clientY;
+  }
+  function handleTouchMove(e) {
+    var touchEndY = e.touches[0].clientY;
+    if (touchStartY - touchEndY > 30) { // Swipe up
+      e.preventDefault();
+      activateScrolledState();
+    }
+  }
+
+  function handleKeyDown(e) {
+    var keys = ["ArrowDown", "Space", "PageDown", " "];
+    if (keys.indexOf(e.key) !== -1) {
+      e.preventDefault();
+      activateScrolledState();
+    }
+  }
+
+  if (window.scrollY < 15) {
+    window.addEventListener("wheel", handleWheelScroll, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("keydown", handleKeyDown, { passive: false });
+  }
+
+  // Scroll indicator click trigger
+  var scrollIndicator = document.getElementById("heroScrollIndicator");
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener("click", function() {
+      activateScrolledState();
+    });
+  }
+
+  // Fallback for native scrollbar dragging
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 15 && !isScrolled) {
+      body.classList.add("is-scrolled");
+      isScrolled = true;
+      html.style.removeProperty("overflow");
+      body.style.removeProperty("overflow");
+    }
+  });
+});
+</script>
 
 <style>
 @keyframes heroScrollPulse {
@@ -58,6 +166,54 @@
   #heroCtas {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+}
+
+/* Staggered On-Load Transitions */
+#heroTitle {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+body.is-loaded #heroTitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#heroSubtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+body.is-loaded #heroSubtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#heroScrollIndicator {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s;
+}
+body.is-loaded #heroScrollIndicator {
+  opacity: 0.85;
+  transform: translate(-50%, 0);
+}
+
+/* On-Scroll Animations */
+body.is-scrolled #heroCtas {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+body.is-scrolled #mainNav {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+body.is-scrolled #homepageRemainingContent {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 </style>
 <!-- End Hero -->
