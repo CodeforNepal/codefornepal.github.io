@@ -3,27 +3,27 @@ about:
   image: "assets/about.svg"
   template: "default"
   text: "
-  We are pleased to announce that applications are open for Code For Nepal Data Fellowship. The objective of this fellowship organized by Code for Nepal with support from **[DataCamp Donates](https://www.datacamp.com/donates)** is to help anyone, especially those who cannot afford DataCamp subscription, build their data skills and make progress in their lives.
+  We are pleased to announce that applications are open for the Code for Nepal Data Fellowship. The objective of this fellowship, organized by **[Code for Nepal](https://www.codefornepal.org/)** with support from **[DataCamp](https://www.datacamp.com/)** and **[TechPana](https://www.techpana.com/)**, is to help anyone build their AI and data skills, make progress in their lives, and help Nepal become a tech hub.
   <br><br>
-  <strong>Applications open: June 1<sup>st</sup>, 2026 (Rolling basis)</strong>
   
+  Data Fellows will get access to a Premium DataCamp subscription (typically <strong>$330/year</strong>), along with support for career opportunities and networking. We are grateful to DataCamp for donating access to their expert-led data skill training, used by 1,600+ companies including Google, Uber, and PayPal.
   <br><br>
-  We are grateful to DataCamp for donating access to their expert-led data skill training. DataCamp offers online training for all data skills and levels, from non-coding essentials for business to data science and machine learning, all taught by leading experts in the field. DataCamp is used by 6,000+ companies such as Google, Uber, PayPal and others to build skills of their employees.
-  <br><br>
-  **Every Nepali interested in learning new skills can apply. Apply using the form below!**
+  **See below for details about the Fellowship and apply!**
   "
-  
+
   about_program: "
   The Data Fellowship includes:
                         <ol>
                         <li class='custom_li'>A DataCamp Premium subscription to take courses and earn certificates.</li>
-                        <li class='custom_li'>Opportunity to publish data visualizations and blog posts via Code for Nepal site. (When data visualizations and or blog posts of fellows who have earned DataCamp certificate will be selected to be published by Code for Nepal.) </li>
-                        <li class='custom_li'>Industry/academia expert teaching assistants (offline and online) to support learning, community participation.</li>
+                        <li class='custom_li'>Opportunity to publish data visualizations and blog posts via the Code for Nepal site. Selected posts (from fellows who've earned a DataCamp certificate) earn a Nrs 5,000 stipend.</li>
+                        <li class='custom_li'>Industry/academia expert teaching assistants (offline and online) to support learning and community participation.</li>
                         <li class='custom_li'>Involvement in Open Source Projects.</li>
-                        <li class='custom_li'>A digital certificate from Code for Nepal after the completion of the fellowship.</li>
-                        <li class='custom_li'>Opportunity be part of Code For Nepal Community.</li>
+                        <li class='custom_li'>A digital certificate from Code for Nepal after completion of the fellowship.</li>
+                        <li class='custom_li'>Opportunity to contribute to open source data projects after the program.</li>
+                        <li class='custom_li'>Opportunity to be part of the Code for Nepal Community.</li>
                         </ol>
                         <br>
+
                         <div class='text-center'>
                         <a href='https://docs.google.com/forms/d/e/1FAIpQLSfjd4VXYxSOxc707VXc9gwVJ2k8urkRR258AMFgD0eqDGpgWA/viewform' class='btn btn-primary' target='_blank'>Apply Now</a>
                         </div>
