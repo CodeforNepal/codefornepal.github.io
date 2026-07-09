@@ -3,82 +3,147 @@ layout: page
 title: Join Us
 ---
 
-<div class="container clean-text my-5" id="joinus">
-  <!-- Heading -->
-  <div class="row mb-4">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading text-uppercase">Join Us</h2>
-    </div>
+<!-- Header -->
+<section style="padding:3rem 0 2.5rem; background:#f9fafb; border-bottom:1px solid #f3f4f6;">
+  <div class="joinus-container">
+    <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600;">Get Involved</p>
+    <h1 style="font-size:clamp(1.75rem,4vw,2.75rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Join Our Community</h1>
   </div>
+</section>
 
-  <!-- Intro Text -->
-  <div class="row">
-    <div class="col-md-12">
-      <p class="mb-4">
-        You can help us and many in Nepal just from your couch or sofa. You can
-        be a
-        <strong>designer</strong>, <strong>marketer</strong>,
-        <strong>coder</strong>, <strong>writer</strong>,
-        <strong>problem-solver</strong>, or <strong>anyone else</strong>
-        who is interested in helping people make better use of technology,
-        become digitally and data literate. If that sounds like you, join us
-        via:
-      </p>
-
-      <!-- Join Links -->
-
-      <div class="list-group mt-4 mb-4">
-        <a
-          href="https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="list-group-item list-group-item-action"
-        >
-          <em class="fab fa-slack mr-3"></em> Slack (Say hello and introduce
-          yourself)
-        </a>
-        <a
-          href="https://github.com/CodeforNepal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="list-group-item list-group-item-action"
-          ><em class="fab fa-github mr-3"></em> Github (You can start looking at
-          projects and contribute by resolving issues or suggesting
-          enhancements)</a
-        >
-        <a
-          href="https://linkedin.com/company/code-for-nepal/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="list-group-item list-group-item-action"
-          ><em class="fab fa-linkedin-in mr-3"></em> LinkedIn (Follow us for updates and news)</a
-        >
-        <a
-          href="https://facebook.com/codefornepal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="list-group-item list-group-item-action"
-          ><em class="fab fa-facebook mr-3"></em> Facebook</a
-        >
-        <a
-          href="https://twitter.com/codefornepal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="list-group-item list-group-item-action"
-          ><em class="fab fa-twitter mr-3"></em> Twitter</a
-        >
-      </div>
-
-      <!-- Extra Info -->
-      <p class="mb-3">
-        We also encourage you to explore our website, learn about our projects,
-        and read the “<a
-          href="{{ site.baseurl }}/codeofconduct/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Code of Conduct</a
-        >” policy.
+<!-- Content -->
+<section style="padding:5rem 0; background:white;">
+  <div class="joinus-container">
+    
+    <!-- Intro Text -->
+    <div style="max-width:800px;">
+      <p style="font-size:1.08rem; color:#4b5563; line-height:1.8; font-family:'Droid Serif','Georgia',serif; margin:0 0 2.5rem;">
+        You can help us and many in Nepal just from your couch or sofa. We welcome 
+        <strong>designers</strong>, <strong>marketers</strong>, 
+        <strong>coders</strong>, <strong>writers</strong>, 
+        <strong>problem-solvers</strong>, and <strong>anyone else</strong> 
+        interested in helping people make better use of technology and become digitally and data literate.
       </p>
     </div>
+
+    <!-- Join Links Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:3rem;">
+      
+      <!-- Slack -->
+      <a href="https://join.slack.com/t/codefornepal/shared_invite/zt-fm07r7gz-97iagKnDNJ3DbX8QKR6Bxg"
+         target="_blank" rel="noopener noreferrer" class="join-card"
+         style="border:1px solid #f3f4f6; padding:2rem; display:flex; flex-direction:column; text-decoration:none; background:white; transition:box-shadow 0.2s, border-color 0.2s; box-sizing:border-box;">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="fab fa-slack" style="color:#dc2626; font-size:1.25rem;"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">Slack</h3>
+        <p style="font-size:0.88rem; color:#6b7280; line-height:1.65; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif; flex:1;">
+          Say hello and introduce yourself to the community. Talk and collaborate with team members in real-time.
+        </p>
+        <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#dc2626; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;">
+          Join Channel <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+        </span>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/CodeforNepal"
+         target="_blank" rel="noopener noreferrer" class="join-card"
+         style="border:1px solid #f3f4f6; padding:2rem; display:flex; flex-direction:column; text-decoration:none; background:white; transition:box-shadow 0.2s, border-color 0.2s; box-sizing:border-box;">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="fab fa-github" style="color:#dc2626; font-size:1.25rem;"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">GitHub</h3>
+        <p style="font-size:0.88rem; color:#6b7280; line-height:1.65; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif; flex:1;">
+          Look at our civic tech codebases. Contribute by writing code, resolving issues, or suggesting enhancements.
+        </p>
+        <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#dc2626; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;">
+          View Projects <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+        </span>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/company/code-for-nepal/"
+         target="_blank" rel="noopener noreferrer" class="join-card"
+         style="border:1px solid #f3f4f6; padding:2rem; display:flex; flex-direction:column; text-decoration:none; background:white; transition:box-shadow 0.2s, border-color 0.2s; box-sizing:border-box;">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="fab fa-linkedin-in" style="color:#dc2626; font-size:1.25rem;"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">LinkedIn</h3>
+        <p style="font-size:0.88rem; color:#6b7280; line-height:1.65; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif; flex:1;">
+          Follow us for professional updates, announcements, project launches, and educational opportunities.
+        </p>
+        <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#dc2626; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;">
+          Follow Us <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+        </span>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://facebook.com/codefornepal"
+         target="_blank" rel="noopener noreferrer" class="join-card"
+         style="border:1px solid #f3f4f6; padding:2rem; display:flex; flex-direction:column; text-decoration:none; background:white; transition:box-shadow 0.2s, border-color 0.2s; box-sizing:border-box;">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="fab fa-facebook" style="color:#dc2626; font-size:1.25rem;"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">Facebook</h3>
+        <p style="font-size:0.88rem; color:#6b7280; line-height:1.65; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif; flex:1;">
+          Connect with us, share our stories, and get in touch with digital advocates across our local communities.
+        </p>
+        <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#dc2626; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;">
+          Visit Page <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+        </span>
+      </a>
+
+      <!-- Twitter -->
+      <a href="https://twitter.com/codefornepal"
+         target="_blank" rel="noopener noreferrer" class="join-card"
+         style="border:1px solid #f3f4f6; padding:2rem; display:flex; flex-direction:column; text-decoration:none; background:white; transition:box-shadow 0.2s, border-color 0.2s; box-sizing:border-box;">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="fab fa-twitter" style="color:#dc2626; font-size:1.25rem;"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 0.5rem; font-family:'Montserrat',sans-serif;">Twitter / X</h3>
+        <p style="font-size:0.88rem; color:#6b7280; line-height:1.65; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif; flex:1;">
+          Follow our updates, tweet discussions, share insights, and join open civic tech conversations.
+        </p>
+        <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#dc2626; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;">
+          Follow Updates <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+        </span>
+      </a>
+
+    </div>
+
+    <!-- Extra Info -->
+    <p style="font-size:0.95rem; color:#6b7280; line-height:1.7; font-family:'Droid Serif','Georgia',serif; border-top:1px solid #f3f4f6; padding-top:2rem;">
+      We also encourage you to explore our website, learn about our projects, and read our 
+      <a href="{{ site.baseurl }}/codeofconduct/" target="_blank" rel="noopener noreferrer"
+         style="color:#dc2626; text-decoration:none; font-weight:600;"
+         onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">
+        Code of Conduct
+      </a> 
+      policy.
+    </p>
+
   </div>
-</div>
+</section>
+
+<style>
+.joinus-container {
+  max-width: 1300px !important;
+  padding: 0 4rem !important;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.join-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border-color: #e5e7eb !important;
+}
+@media (max-width: 960px) {
+  .joinus-container {
+    padding: 0 2.5rem !important;
+  }
+}
+@media (max-width: 640px) {
+  .joinus-container {
+    padding: 0 1.5rem !important;
+  }
+}
+</style>

@@ -1,0 +1,53 @@
+{% if site.data.sitetext.services %}
+<!-- Our Work -->
+<section id="{{ site.data.sitetext.services.section | default: 'work' }}" style="padding:6rem 0; background:#fff;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 1.5rem;">
+
+    <!-- Section header -->
+    <div style="text-align:center; margin-bottom:4rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#9ca3af; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:500;">What we do</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin-bottom:1rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+        {{ site.data.sitetext.services.title | default: "Our Work" }}
+      </h2>
+      {% if site.data.sitetext.services.text %}
+      <p style="font-size:1.05rem; color:#6b7280; max-width:540px; margin:0 auto; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">
+        {{ site.data.sitetext.services.text }}
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Card grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+      {% for service in site.data.sitetext.services.list %}
+      {% assign title_html = service.title | markdownify %}
+      {% assign url = title_html | split: 'href="' | last | split: '"' | first %}
+      {% assign title_text = service.title | markdownify | strip_html %}
+      {% if url == title_text %}{% assign url = "" %}{% endif %}
+
+      <div style="border:1px solid #f3f4f6; padding:2rem; transition:box-shadow 0.2s, border-color 0.2s; cursor:default;"
+           onmouseover="this.style.boxShadow='0 4px 24px rgba(0,0,0,0.07)'; this.style.borderColor='#e5e7eb';"
+           onmouseout="this.style.boxShadow='none'; this.style.borderColor='#f3f4f6';">
+        <div style="width:2.5rem; height:2.5rem; background:#fef2f2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+          <i class="{{ service.icon }}" style="color:#dc2626; font-size:1rem;"></i>
+        </div>
+        {% if url != "" %}
+        <h3 style="font-size:1rem; font-weight:600; color:#111827; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif;">
+          <a href="{{ url }}" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"
+             onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#111827'">
+            {{ title_text }}
+          </a>
+        </h3>
+        {% else %}
+        <h3 style="font-size:1rem; font-weight:600; color:#111827; margin-bottom:0.6rem; font-family:'Montserrat',sans-serif;">
+          {{ title_text }}
+        </h3>
+        {% endif %}
+        <p style="font-size:0.9rem; color:#6b7280; line-height:1.65; margin:0;">{{ service.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+<!-- End Our Work -->
+{% endif %}

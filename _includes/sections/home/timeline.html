@@ -1,0 +1,210 @@
+<!-- Our Story / Timeline -->
+<section id="{{ site.data.sitetext.timeline.section | default: 'about' }}" style="padding:6rem 0; background:#fff;">
+  <div style="max-width:900px; margin:0 auto; padding:0 1.5rem;">
+
+    <!-- Section header -->
+    <div style="text-align:center; margin-bottom:5rem;">
+      <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#9ca3af; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:500;">Our journey</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#111827; margin-bottom:1rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+        {{ site.data.sitetext.timeline.title | default: "About" }}
+      </h2>
+      {% if site.data.sitetext.timeline.text %}
+      <p style="font-size:1.05rem; color:#6b7280; max-width:520px; margin:0 auto; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">
+        {{ site.data.sitetext.timeline.text }}
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="timeline-wrapper">
+      
+      <!-- Central Line -->
+      <div class="timeline-line"></div>
+
+      {% for event in site.data.sitetext.timeline.events %}
+      {% assign is_right = event.align | default: "left" %}
+      
+      <!-- Timeline row -->
+      <div class="timeline-row {% if is_right == 'right' %}timeline-row-right{% else %}timeline-row-left{% endif %}">
+        
+        <!-- Content Panel -->
+        <div class="timeline-content">
+          <div class="timeline-content-card">
+            <span class="timeline-year">{{ event.year }}</span>
+            <h3 class="timeline-title">{{ event.title }}</h3>
+            <div class="timeline-desc">{{ event.desc | markdownify }}</div>
+          </div>
+        </div>
+
+        <!-- Node Circle -->
+        <div class="timeline-node">
+          <div class="timeline-node-circle">
+            {% if event.image %}
+            <img src="{{ event.image | prepend: site.baseurl }}" alt="{{ event.alt | default: '' }}">
+            {% else %}
+            <div class="timeline-node-icon"><i class="fas fa-star"></i></div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Spacer Column for symmetry on desktop -->
+        <div class="timeline-spacer"></div>
+
+      </div>
+      {% endfor %}
+
+      <!-- End CTA -->
+      {% if site.data.sitetext.timeline.end %}
+      <div style="text-align:center; padding:2rem; background:#fef2f2; border:1px solid #fee2e2; border-radius:8px; position:relative; z-index:2; margin-top:2rem;">
+        <div style="font-size:1.1rem; color:#dc2626; font-weight:600; font-family:'Montserrat',sans-serif;">
+          {{ site.data.sitetext.timeline.end | markdownify }}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* Base Timeline Styles */
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+}
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+.timeline-row-left .timeline-content {
+  grid-column: 1;
+  text-align: right;
+}
+.timeline-row-left .timeline-spacer {
+  grid-column: 3;
+}
+.timeline-row-right .timeline-content {
+  grid-column: 3;
+  text-align: left;
+}
+.timeline-row-right .timeline-spacer {
+  grid-column: 1;
+}
+.timeline-node {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timeline-node-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 2px #dc2626;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-node-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.timeline-node-icon {
+  color: #dc2626;
+  font-size: 1.25rem;
+}
+.timeline-content-card {
+  padding: 1.5rem;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: left;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.timeline-row-left .timeline-content-card {
+  text-align: left;
+}
+.timeline-row-right .timeline-content-card {
+  text-align: left;
+}
+.timeline-year {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #dc2626;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 0 0.75rem;
+}
+.timeline-desc {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.7;
+  font-family: 'Droid Serif', 'Georgia', serif;
+}
+.timeline-desc p {
+  margin: 0;
+}
+
+/* Responsive styles for tablets and mobile */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 40px;
+    transform: none;
+  }
+  .timeline-row {
+    grid-template-columns: 80px 1fr !important;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .timeline-row-left .timeline-content,
+  .timeline-row-right .timeline-content {
+    grid-column: 2 !important;
+    text-align: left !important;
+  }
+  .timeline-row-left .timeline-content-card,
+  .timeline-row-right .timeline-content-card {
+    text-align: left !important;
+    width: 100%;
+  }
+  .timeline-node {
+    grid-column: 1 !important;
+    justify-content: flex-start;
+  }
+  .timeline-node-circle {
+    width: 60px;
+    height: 60px;
+  }
+  .timeline-spacer {
+    display: none;
+  }
+}
+</style>

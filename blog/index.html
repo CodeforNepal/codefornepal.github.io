@@ -1,46 +1,171 @@
 ---
 layout: page
 title: Blog
-pagination: 
+pagination:
   enabled: true
+  per_page: 50
 ---
-<div class="row">
-  <div class="col-md-12 mb-4">
-    <h1 class="text-center mb-4">Blog</h1>
-  </div>
 
-  {% for post in paginator.posts %}
-  <div class="col-md-8 offset-2">
-    <div class="card mb-4">
-      <div class="card-body">
-        <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <small class="text-secondary">Published {{ post.date | date: '%B %d, %Y' }}</small>
-        <p class="card-text">{{ post.excerpt }}</p>
+<!-- Header + Search -->
+<section style="padding:3rem 0 2rem; background:#f9fafb; border-bottom:1px solid #f3f4f6;">
+  <div class="blog-container">
+    <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600;">Stories &amp; Updates</p>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+      <h1 style="font-size:clamp(1.75rem,4vw,2.75rem); font-weight:700; color:#111827; margin:0; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">
+        Blog
+      </h1>
+      <!-- Filters wrapper -->
+      <div style="display:flex; gap:1rem; align-items:center; width:100%; max-width:500px; flex-wrap:wrap;">
+        <!-- Search bar -->
+        <div style="position:relative; flex:1; min-width:200px;">
+          <i class="fas fa-search" style="position:absolute; left:0.85rem; top:50%; transform:translateY(-50%); color:#9ca3af; font-size:0.85rem;"></i>
+          <input type="text" id="blogSearch" placeholder="Search posts..."
+                 style="width:100%; padding:0.65rem 1rem 0.65rem 2.5rem; border:1px solid #e5e7eb; background:white; font-size:0.88rem; font-family:'Montserrat',sans-serif; color:#111827; outline:none; box-sizing:border-box;"
+                 oninput="filterPosts()"
+                 onfocus="this.style.borderColor='#dc2626'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <!-- Year filter -->
+        {% assign years = "" | split: "," %}
+        {% for post in paginator.posts %}
+          {% assign yr = post.date | date: "%Y" %}
+          {% unless years contains yr %}
+            {% assign years = years | push: yr %}
+          {% endunless %}
+        {% endfor %}
+        {% assign years = years | sort | reverse %}
+        <select id="yearFilter" onchange="filterPosts()"
+                style="padding:0.65rem 2rem 0.65rem 1rem; border:1px solid #e5e7eb; background:white; font-size:0.88rem; font-family:'Montserrat',sans-serif; color:#111827; outline:none; cursor:pointer; height:38px; box-sizing:border-box;">
+          <option value="all">All Years</option>
+          {% for yr in years %}
+          <option value="{{ yr }}">{{ yr }}</option>
+          {% endfor %}
+        </select>
       </div>
     </div>
   </div>
-  {% endfor %}
-</div>
+</section>
 
-<div class="row mb-4">
-  {% if paginator.total_pages > 1 %}
-  <div class="col-12">
-    <ul class="paginator-links-list d-flex justify-content-center list-unstyled">
-      {% if paginator.previous_page %}
-      <li>
-        <a class="paginator-link btn btn-primary" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
-          Previous
-        </a>
-      </li>
-      {% endif %}
-      {% if paginator.next_page %}
-      <li>
-        <a class="ml-4 btn btn-primary" href="{{ paginator.next_page_path | prepend: site.baseurl }}">
-          Next
-        </a>
-      </li>
-      {% endif %}
-    </ul>
+<!-- Posts grid -->
+<section style="padding:4rem 0; background:white;">
+  <div class="blog-container">
+    <div id="postsGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem;">
+      {% for post in paginator.posts %}
+      <article class="blog-post-card"
+               data-title="{{ post.title | downcase | escape }}"
+               data-year="{{ post.date | date: '%Y' }}"
+               style="border:1px solid #f3f4f6; display:flex; flex-direction:column; overflow:hidden;"
+               onmouseover="this.style.boxShadow='0 4px 24px rgba(0,0,0,0.07)'; this.style.borderColor='#e5e7eb';"
+               onmouseout="this.style.boxShadow='none'; this.style.borderColor='#f3f4f6';">
+        <div style="padding:2rem; display:flex; flex-direction:column; flex:1;">
+          <p style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.2em; color:#9ca3af; margin:0 0 0.75rem; font-family:'Montserrat',sans-serif;">
+            {{ post.date | date: "%B %-d, %Y" }}
+          </p>
+          <h2 style="font-size:1.05rem; font-weight:700; color:#111827; line-height:1.45; margin:0 0 1rem; font-family:'Montserrat',sans-serif;">
+            <a href="{{ post.url | relative_url }}" style="color:inherit; text-decoration:none;"
+               onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#111827'">
+              {{ post.title }}
+            </a>
+          </h2>
+          <p style="font-size:0.88rem; color:#6b7280; line-height:1.7; flex:1; margin:0 0 1.5rem; font-family:'Droid Serif','Georgia',serif;">
+            {{ post.excerpt | strip_html | truncatewords: 30 }}
+          </p>
+          <a href="{{ post.url | relative_url }}"
+             style="font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#dc2626; text-decoration:none; font-family:'Montserrat',sans-serif; display:inline-flex; align-items:center; gap:0.4rem;"
+             onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+            Read more <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- No results message -->
+    <div id="noResults" style="display:none; text-align:center; padding:4rem 0; color:#9ca3af; font-family:'Montserrat',sans-serif; font-size:0.9rem;">
+      <i class="fas fa-search" style="font-size:2rem; margin-bottom:1rem; display:block;"></i>
+      No posts found matching your search.
+    </div>
   </div>
-  {% endif %}
-</div>
+</section>
+
+<!-- Pagination -->
+{% if paginator.total_pages > 1 %}
+<section style="padding:2rem 0 4rem; background:white; border-top:1px solid #f3f4f6;">
+  <div class="blog-container">
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}"
+         style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.65rem 1.25rem; background:#111827; color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+         onmouseover="this.style.background='#1f2937'" onmouseout="this.style.background='#111827'">
+        <i class="fas fa-arrow-left" style="font-size:0.7rem;"></i> Previous
+      </a>
+      {% endif %}
+
+      <span style="font-size:0.78rem; color:#9ca3af; font-family:'Montserrat',sans-serif;">
+        Page {{ paginator.page }} of {{ paginator.total_pages }}
+      </span>
+
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl }}"
+         style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.65rem 1.25rem; background:#dc2626; color:white; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+         onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">
+        Next <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<script>
+function filterPosts() {
+  var query = document.getElementById('blogSearch').value.trim().toLowerCase();
+  var selectedYear = document.getElementById('yearFilter').value;
+  var cards = document.querySelectorAll('.blog-post-card');
+  var visibleCount = 0;
+  
+  cards.forEach(function(card) {
+    var title = card.getAttribute('data-title') || '';
+    var year = card.getAttribute('data-year') || '';
+    
+    var matchesQuery = !query || title.indexOf(query) !== -1;
+    var matchesYear = selectedYear === 'all' || year === selectedYear;
+    
+    if (matchesQuery && matchesYear) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  
+  var noResults = document.getElementById('noResults');
+  if (noResults) {
+    noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+  }
+}
+</script>
+
+<style>
+.blog-container {
+  max-width: 1300px !important;
+  padding: 0 4rem !important;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (max-width: 960px) {
+  #postsGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .blog-container {
+    padding: 0 2.5rem !important;
+  }
+}
+@media (max-width: 640px) {
+  #postsGrid {
+    grid-template-columns: 1fr !important;
+  }
+  .blog-container {
+    padding: 0 1.5rem !important;
+  }
+}
+</style>

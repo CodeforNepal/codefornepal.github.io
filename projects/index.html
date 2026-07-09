@@ -2,25 +2,70 @@
 layout: page
 title: Projects
 ---
-  <div class="container clean-text" id="joinus">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Projects</h2>
+
+<!-- Header -->
+<section style="padding:3rem 0 2.5rem; background:#f9fafb; border-bottom:1px solid #f3f4f6;">
+  <div class="project-container">
+    <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.35em; color:#dc2626; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; font-weight:600;">Open Source</p>
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+      <div>
+        <h1 style="font-size:clamp(1.75rem,4vw,2.75rem); font-weight:700; color:#111827; margin:0 0 0.75rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Our Projects</h1>
+        <p style="font-size:0.95rem; color:#6b7280; line-height:1.7; max-width:600px; margin:0; font-family:'Droid Serif','Georgia',serif;">Since 2014, our community has built a series of open-source civic tech and data tools to help Nepalis access and use public information.</p>
       </div>
+      <a href="https://github.com/CodeforNepal" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border:2px solid #111827; color:#111827; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; text-decoration:none; font-family:'Montserrat',sans-serif; white-space:nowrap; align-self:flex-start;"
+         onmouseover="this.style.background='#111827'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#111827'">
+        <i class="fab fa-github"></i> View on GitHub
+      </a>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <p>Since 2014, our small community of volunteers, have organized digital workshops, conferences, provided scholarships, and built a series of products such as:</p>
-      {% include project.html %}
-      </div>
-    </div>
-    
-    <div>
-      <p> Please see below a list of ongoing and completing projects.</p> 
-      
-      <iframe style="width: 100%; height: 100vh; border: 0;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSxJfgI-cisYhfqgx-MupvHADoexYTxQBIwCCGt25fmOn4LASMaO_m5Hq-Snrs-mun_IwU_RGyYPzUM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-      
-    </div>
-      
   </div>
-  
+</section>
+
+<!-- Featured projects grid -->
+{% if site.data.sitetext.services.list %}
+<section style="padding:5rem 0; background:white;">
+  <div class="project-container">
+    {% include components/project.html %}
+  </div>
+</section>
+{% endif %}
+
+
+<!-- Contribute CTA -->
+<section style="padding:4rem 0; background:#111827;">
+  <div style="max-width:700px; margin:0 auto; padding:0 1.5rem; text-align:center;">
+    <h2 style="font-size:1.75rem; font-weight:700; color:white; margin-bottom:0.75rem; font-family:'Montserrat',sans-serif; letter-spacing:-0.02em;">Want to contribute?</h2>
+    <p style="font-size:0.95rem; color:rgba(255,255,255,0.7); margin-bottom:2rem; line-height:1.7; font-family:'Droid Serif','Georgia',serif;">All our projects are open-source. Fork a repo, open an issue, or reach out to get involved.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://github.com/CodeforNepal" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 1.75rem; background:white; color:#111827; font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+         onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='white'">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="{{ site.baseurl }}/joinus/"
+         style="display:inline-block; padding:0.85rem 1.75rem; border:2px solid rgba(255,255,255,0.5); color:white; font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; text-decoration:none; font-family:'Montserrat',sans-serif;"
+         onmouseover="this.style.borderColor='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.5)'">
+        Join Our Community
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.project-container {
+  max-width: 1300px !important;
+  padding: 0 4rem !important;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (max-width: 960px) {
+  .project-container {
+    padding: 0 2.5rem !important;
+  }
+}
+@media (max-width: 640px) {
+  .project-container {
+    padding: 0 1.5rem !important;
+  }
+}
+</style>
