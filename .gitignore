@@ -1,3 +1,4 @@
+# Jekyll (legacy, kept for reference on master)
 _site
 .sass-cache
 .jekyll-cache
@@ -5,3 +6,14 @@ _site
 vendor
 _drafts/
 .DS_Store
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

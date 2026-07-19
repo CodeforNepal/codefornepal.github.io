@@ -1,3 +1,6 @@
 [build]
-  command = "bundle install && bundle exec jekyll build"
-  publish = "_site"
+  command = "npm ci && npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"

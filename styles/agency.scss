@@ -1,0 +1,45 @@
+@charset "utf-8";
+// De-Liquified copy of the original assets/css/agency.scss.
+// The only change from the Jekyll source is that the 6 Liquid-templated lines
+// (which read _data/style.yml at build time) are replaced with the resolved
+// static values. Import order is preserved EXACTLY — custom $primary/$white/$black
+// are defined BEFORE the Bootstrap import so they win via !default.
+
+// Core variables and mixins
+@import "base/variables.scss";
+@import "base/mixins.scss";
+
+// Custom colors (resolved from _data/style.yml: highlight #54bfff, white #fff, black #ff4040)
+$primary: #54bfff !default;
+$white: #fff !default;
+$black: #ff4040 !default;
+
+// Custom Images (style.yml: header-image ../img/header-bg.jpg; contact-image absent -> empty)
+$header-image: "/assets/img/header-bg.jpg";
+$contact-image: "";
+
+$theme-colors: (
+  "primary": $primary,
+);
+
+// Global CSS
+@import "base/page.scss";
+
+// Components
+@import "components/buttons.scss";
+@import "components/navbar.scss";
+@import "components/client-scroll.scss";
+
+// Layout
+@import "layout/masthead.scss";
+@import "layout/services.scss";
+@import "layout/portfolio.scss";
+@import "layout/timeline.scss";
+@import "layout/team.scss";
+@import "layout/contact.scss";
+@import "layout/footer.scss";
+@import "layout/blogs.scss";
+@import "layout/joinus.scss";
+@import "layout/sponsors.scss";
+
+@import "bootstrap/scss/bootstrap.scss";
