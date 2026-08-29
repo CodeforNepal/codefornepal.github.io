@@ -1,0 +1,178 @@
+/* ============================================================
+   Code for Nepal — design tokens & base styles
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --brand-red: #dc2626;
+  --brand-red-dark: #b91c1c;
+
+  /* Ink / neutrals */
+  --ink-900: #111827; /* headings, nav/footer bg */
+  --ink-800: #1f2937; /* card-hover bg, mobile menu bg */
+  --ink-700: #374151;
+  --ink-600: #4b5563;
+  --ink-500: #6b7280; /* body copy on light bg */
+  --ink-400: #9ca3af; /* meta text, placeholders */
+
+  /* Surfaces */
+  --surface-white: #ffffff;
+  --surface-subtle: #f9fafb;
+  --surface-code: var(--ink-900);
+
+  /* Borders */
+  --border: #e5e7eb;
+  --border-soft: #f3f4f6;
+  --border-strong: #dfe2e7;
+
+  /* On-dark text (footer/nav) */
+  --on-dark: #ffffff;
+  --on-dark-muted: rgba(255, 255, 255, 0.75);
+  --on-dark-faint: rgba(255, 255, 255, 0.45);
+  --on-dark-hairline: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Droid Serif', 'Georgia', serif;
+  --font-script: 'Kaushan Script', cursive;
+  --font-slab: 'Roboto Slab', serif;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--ink-900);
+  background: var(--surface-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* ============================================================
+   Blog post typography (shared by app/blog/[...slug]/page.tsx)
+   ============================================================ */
+
+.post-content {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink-700);
+}
+.post-content > *:first-child { margin-top: 0; }
+
+.post-content h1, .post-content h2, .post-content h3,
+.post-content h4, .post-content h5, .post-content h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--ink-900);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.post-content h2 { font-size: 1.5rem; margin: 2.75rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-soft); }
+.post-content h3 { font-size: 1.2rem; margin: 2.25rem 0 1rem; }
+.post-content h4 { font-size: 1.05rem; margin: 1.75rem 0 0.75rem; }
+
+.post-content p { margin: 0 0 1.5rem; }
+
+.post-content a { color: var(--brand-red); text-decoration: underline; text-decoration-color: rgba(220,38,38,0.35); text-underline-offset: 2px; }
+.post-content a:hover { text-decoration-color: var(--brand-red); }
+
+.post-content strong { font-weight: 700; color: var(--ink-900); }
+.post-content em { font-style: italic; }
+
+.post-content ul, .post-content ol { margin: 0 0 1.5rem; padding-left: 1.5rem; }
+.post-content li { margin-bottom: 0.5rem; }
+.post-content li > ul, .post-content li > ol { margin: 0.5rem 0 0; }
+
+.post-content blockquote {
+  margin: 0 0 1.5rem;
+  padding: 0.25rem 1.5rem;
+  border-left: 3px solid var(--brand-red);
+  background: var(--surface-subtle);
+  color: var(--ink-600);
+  font-style: italic;
+}
+.post-content blockquote p:last-child { margin-bottom: 0; }
+
+.post-content hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+}
+
+.post-content pre {
+  background: var(--surface-code);
+  color: var(--border-soft);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+.post-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  border: none;
+}
+.post-content code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background: var(--border-soft);
+  color: var(--brand-red-dark);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 2rem;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  overflow-x: auto;
+  display: block;
+}
+.post-content table th, .post-content table td {
+  border: 1px solid var(--border) !important;
+  padding: 0.65rem 0.9rem !important;
+  text-align: left;
+}
+.post-content table th {
+  background: var(--surface-subtle);
+  font-weight: 700;
+  color: var(--ink-900);
+}
+.post-content table tr:nth-child(even) td { background: #fafafa; }
+
+@media (max-width: 640px) {
+  .post-content { font-size: 0.98rem; }
+  .post-content pre { padding: 1rem; font-size: 0.8rem; }
+}
