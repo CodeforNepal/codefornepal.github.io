@@ -198,7 +198,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           .post-content pre { padding: 1rem; font-size: 0.8rem; }
         }
       `}</style>
-      
+
       {/*For Google's article rich results */}
       <script
         type="application/ld+json"
@@ -211,7 +211,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
             author: post.author ? { '@type': 'Person', name: post.author } : undefined,
             description: post.description || undefined,
             image: post.image ? [post.image] : undefined,
-            mainEntityOfPage: `${site.url}${post.url}`,
+            // mainEntityOfPage: `${site.url}${post.url}`,
           }),
         }}
       />

@@ -2,6 +2,7 @@
 
 import { useState, type CSSProperties } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { site } from '@/lib/config';
 import { navigation } from '@/data/navigation';
 import { useReveal } from './RevealProvider';
@@ -31,14 +32,10 @@ const mobileLinkStyle: CSSProperties = {
   borderBottom: '1px solid rgba(255,255,255,0.07)',
 };
 
-/**
- * Ported from _includes/nav.html.
- * On the home page (`reveal`), the bar starts hidden and is revealed once the
- * hero reveal fires (isScrolled) — replacing the original body.is-scrolled coupling.
- */
 export function Nav({ reveal = false }: { reveal?: boolean }) {
   const { isScrolled } = useReveal();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const revealed = !reveal || isScrolled;
 
@@ -103,17 +100,25 @@ export function Nav({ reveal = false }: { reveal?: boolean }) {
               justifyContent: 'flex-end',
             }}
           >
-            {navigation.map((item) => (
-              <Link
-                key={item.page}
-                href={`/${item.page}/`}
-                style={linkStyle}
-                onMouseOver={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
-                onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}
-              >
-                {item.title}
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              const href = `/${item.page}/`;
+              const active = pathname === href || pathname?.startsWith(href);
+              return (
+                <Link
+                  key={item.page}
+                  href={href}
+                  aria-current={active ? 'page' : undefined}
+                  style={{
+                    ...linkStyle,
+                    background: active ? 'rgba(255,255,255,0.12)' : 'transparent',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
+                  onMouseOut={(e) => (e.currentTarget.style.background = active ? 'rgba(255,255,255,0.12)' : 'transparent')}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile hamburger */}
@@ -121,6 +126,7 @@ export function Nav({ reveal = false }: { reveal?: boolean }) {
             id="navToggle"
             type="button"
             aria-label="Toggle navigation"
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((o) => !o)}
             style={{
               display: 'none',

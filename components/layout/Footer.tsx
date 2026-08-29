@@ -4,20 +4,18 @@ import Link from 'next/link';
 import { site, PAYPAL_BUTTON_ID } from '@/lib/config';
 import { footer } from '@/data/sitetext';
 
-const hostname = (url: string) => url.replace(/^https?:\/\//, '').split('/')[0];
-
 /** Ported from _includes/footer.html. */
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="footer" style={{ background: '#111827', color: 'white', padding: '4rem 0 0' }}>
+    <footer id="footer" style={{ background: 'var(--ink-900)', color: 'var(--on-dark)', padding: '4rem 0 0' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem' }}>
         {/* Donation CTA strip */}
         <div
           style={{
-            background: '#1f2937',
-            borderRadius: '8px',
+            background: 'var(--ink-800)',
+            borderRadius: 'var(--radius-lg)',
             padding: '1.5rem 2rem',
             marginBottom: '3rem',
             display: 'flex',
@@ -31,10 +29,10 @@ export function Footer() {
             <p
               style={{
                 margin: 0,
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
                 fontWeight: 700,
                 fontSize: '0.9rem',
-                color: 'white',
+                color: 'var(--on-dark)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
               }}
@@ -45,8 +43,8 @@ export function Footer() {
               style={{
                 margin: '0.25rem 0 0',
                 fontSize: '0.82rem',
-                color: 'rgba(255,255,255,0.6)',
-                fontFamily: "'Droid Serif','Georgia',serif",
+                color: 'var(--on-dark-muted)',
+                fontFamily: 'var(--font-body)',
               }}
             >
               Every contribution helps expand digital literacy in Nepal.
@@ -63,21 +61,21 @@ export function Footer() {
             <button
               type="submit"
               style={{
-                background: '#dc2626',
-                color: 'white',
+                background: 'var(--brand-red)',
+                color: 'var(--on-dark)',
                 padding: '0.6rem 1.5rem',
                 fontSize: '0.78rem',
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
                 border: 'none',
                 borderRadius: '9999px',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
               }}
-              onMouseOver={(e) => (e.currentTarget.style.background = '#b91c1c')}
-              onMouseOut={(e) => (e.currentTarget.style.background = '#dc2626')}
+              onMouseOver={(e) => (e.currentTarget.style.background = 'var(--brand-red-dark)')}
+              onMouseOut={(e) => (e.currentTarget.style.background = 'var(--brand-red)')}
             >
               Donate Now
             </button>
@@ -86,6 +84,7 @@ export function Footer() {
               width="1"
               height="1"
               alt=""
+              style={{ position: 'absolute', border: 0 }}
             />
           </form>
         </div>
@@ -95,12 +94,12 @@ export function Footer() {
           id="footerGrid"
           style={{
             display: 'grid',
-            gridTemplateColumns: '35% 30% 35%',
+            gridTemplateColumns: '1.4fr 1fr 1fr',
             gap: '3rem',
             paddingBottom: '3rem',
           }}
         >
-          {/* Column 1: Logo + mission + social */}
+          {/* Column 1: Logo + mission + social (the ONLY place social links appear) */}
           <div>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
               <img
@@ -112,59 +111,72 @@ export function Footer() {
             <p
               style={{
                 fontSize: '0.88rem',
-                color: 'rgba(255,255,255,0.6)',
+                color: 'var(--on-dark-muted)',
                 lineHeight: 1.7,
-                margin: '0 0 1.5rem',
-                fontFamily: "'Droid Serif','Georgia',serif",
+                margin: '0 0 0.5rem',
+                fontFamily: 'var(--font-body)',
               }}
             >
               Increasing digital literacy and open data use to empower communities across Nepal.
             </p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              {footer.social.map((link) => (
-                <a
-                  key={link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '36px',
-                    height: '36px',
-                    background: 'rgba(255,255,255,0.08)',
-                    borderRadius: '50%',
-                    color: 'rgba(255,255,255,0.7)',
-                    textDecoration: 'none',
-                    fontSize: '0.85rem',
-                    transition: 'background 0.2s',
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = '#dc2626';
-                    e.currentTarget.style.color = 'white';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                  }}
-                >
-                  <i className={link.icon} />
-                </a>
-              ))}
-            </div>
+            <p
+              style={{
+                fontSize: '0.78rem',
+                color: 'rgba(255,255,255,0.4)',
+                margin: '0 0 1.5rem',
+                fontFamily: 'var(--font-heading)',
+              }}
+            >
+              A registered nonprofit run by volunteers.
+            </p>
+            {footer.social.length > 0 && (
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {footer.social.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.url}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '36px',
+                      height: '36px',
+                      background: 'rgba(255,255,255,0.08)',
+                      borderRadius: '50%',
+                      color: 'var(--on-dark-muted)',
+                      textDecoration: 'none',
+                      fontSize: '0.85rem',
+                      transition: 'background 0.2s, color 0.2s',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.background = 'var(--brand-red)';
+                      e.currentTarget.style.color = 'var(--on-dark)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
+                      e.currentTarget.style.color = 'var(--on-dark-muted)';
+                    }}
+                  >
+                    <i className={link.icon} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Column 2: Quick links */}
           <div>
             <h4
               style={{
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
                 fontWeight: 700,
                 fontSize: '0.75rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.15em',
-                color: 'rgba(255,255,255,0.45)',
+                color: 'var(--on-dark-faint)',
                 margin: '0 0 1.25rem',
               }}
             >
@@ -182,13 +194,13 @@ export function Footer() {
                   <Link
                     href={l.href}
                     style={{
-                      color: 'rgba(255,255,255,0.75)',
+                      color: 'var(--on-dark-muted)',
                       textDecoration: 'none',
                       fontSize: '0.88rem',
-                      fontFamily: "'Montserrat',sans-serif",
+                      fontFamily: 'var(--font-heading)',
                     }}
-                    onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-                    onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+                    onMouseOver={(e) => (e.currentTarget.style.color = 'var(--on-dark)')}
+                    onMouseOut={(e) => (e.currentTarget.style.color = 'var(--on-dark-muted)')}
                   >
                     {l.label}
                   </Link>
@@ -197,64 +209,50 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Connect */}
+          {/* Column 3: Contact — just the email now; social lives in Column 1 only */}
           <div>
             <h4
               style={{
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
                 fontWeight: 700,
                 fontSize: '0.75rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.15em',
-                color: 'rgba(255,255,255,0.45)',
+                color: 'var(--on-dark-faint)',
                 margin: '0 0 1.25rem',
               }}
             >
-              Connect
+              Get in Touch
             </h4>
             <p
               style={{
                 fontSize: '0.88rem',
-                color: 'rgba(255,255,255,0.75)',
-                margin: '0 0 0.5rem',
-                fontFamily: "'Montserrat',sans-serif",
+                color: 'var(--on-dark-muted)',
+                margin: '0 0 0.75rem',
+                fontFamily: 'var(--font-heading)',
               }}
             >
-              <i className="fas fa-envelope" style={{ marginRight: '0.5rem', color: '#dc2626' }} />
+              <i className="fas fa-envelope" aria-hidden="true" style={{ marginRight: '0.5rem', color: 'var(--brand-red)' }} />
               <a
                 href={`mailto:${site.email}`}
-                style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}
-                onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-                onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+                style={{ color: 'var(--on-dark-muted)', textDecoration: 'none' }}
+                onMouseOver={(e) => (e.currentTarget.style.color = 'var(--on-dark)')}
+                onMouseOut={(e) => (e.currentTarget.style.color = 'var(--on-dark-muted)')}
               >
                 {site.email}
               </a>
             </p>
-            <div style={{ marginTop: '1rem' }}>
-              {footer.social.map((link) => (
-                <a
-                  key={link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: 'rgba(255,255,255,0.65)',
-                    textDecoration: 'none',
-                    fontSize: '0.82rem',
-                    fontFamily: "'Montserrat',sans-serif",
-                    marginBottom: '0.5rem',
-                  }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-                  onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
-                >
-                  <i className={link.icon} style={{ width: '16px', textAlign: 'center' }} />
-                  <span>{hostname(link.url)}</span>
-                </a>
-              ))}
-            </div>
+            <p
+              style={{
+                fontSize: '0.88rem',
+                color: 'var(--on-dark-muted)',
+                margin: 0,
+                fontFamily: 'var(--font-heading)',
+              }}
+            >
+              <i className="fas fa-location-dot" aria-hidden="true" style={{ marginRight: '0.5rem', color: 'var(--brand-red)' }} />
+              Kathmandu, Nepal
+            </p>
           </div>
         </div>
 
@@ -262,7 +260,7 @@ export function Footer() {
         <div
           id="footerBottom"
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderTop: '1px solid var(--on-dark-hairline)',
             padding: '1.5rem 0',
             display: 'flex',
             alignItems: 'center',
@@ -276,12 +274,12 @@ export function Footer() {
               margin: 0,
               fontSize: '0.78rem',
               color: 'rgba(255,255,255,0.4)',
-              fontFamily: "'Montserrat',sans-serif",
+              fontFamily: 'var(--font-heading)',
             }}
           >
             &copy; {year} {site.title}. All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
             <Link
               href="/codeofconduct/"
               target="_blank"
@@ -289,9 +287,9 @@ export function Footer() {
                 fontSize: '0.75rem',
                 color: 'rgba(255,255,255,0.4)',
                 textDecoration: 'none',
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
               }}
-              onMouseOver={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--on-dark-muted)')}
               onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
             >
               {footer.legalTitle}
@@ -303,13 +301,38 @@ export function Footer() {
                 fontSize: '0.75rem',
                 color: 'rgba(255,255,255,0.4)',
                 textDecoration: 'none',
-                fontFamily: "'Montserrat',sans-serif",
+                fontFamily: 'var(--font-heading)',
               }}
-              onMouseOver={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--on-dark-muted)')}
               onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
             >
               {footer.privacy}
             </Link>
+            <a
+              href="#page-top"
+              aria-label="Back to top"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                background: 'rgba(255,255,255,0.08)',
+                color: 'rgba(255,255,255,0.6)',
+                textDecoration: 'none',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = 'var(--brand-red)';
+                e.currentTarget.style.color = 'var(--on-dark)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
+                e.currentTarget.style.color = 'rgba(255,255,255,0.6)';
+              }}
+            >
+              <i className="fas fa-arrow-up" aria-hidden="true" style={{ fontSize: '0.75rem' }} />
+            </a>
           </div>
         </div>
 
@@ -322,7 +345,7 @@ export function Footer() {
                 fontSize: '0.72rem',
                 color: 'rgba(255,255,255,0.3)',
                 lineHeight: 1.6,
-                fontFamily: "'Droid Serif','Georgia',serif",
+                fontFamily: 'var(--font-body)',
               }}
               dangerouslySetInnerHTML={{ __html: footer.license }}
             />
