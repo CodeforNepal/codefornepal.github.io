@@ -15,9 +15,9 @@ export function JoinUsContent() {
   return (
     <>
       {/* Header */}
-      <section style={{ padding: '3rem 0 2.5rem', background: '#f9fafb', borderBottom: '1px solid #f3f4f6' }}>
+      <section style={{ padding: '3rem 0 2rem', background: '#f9fafb', borderBottom: '1px solid #f3f4f6' }}>
         <div className="joinus-container">
-          <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.35em', color: '#dc2626', marginBottom: '0.75rem', fontFamily: "'Montserrat',sans-serif", fontWeight: 600 }}>Get Involved</p>
+          <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.35em', color: '#dc2626', marginBottom: '0.75rem', marginTop: '2rem', fontFamily: "'Montserrat',sans-serif", fontWeight: 600 }}>Get Involved</p>
           <h1 style={{ fontSize: 'clamp(1.75rem,4vw,2.75rem)', fontWeight: 700, color: '#111827', margin: 0, fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>Join Our Community</h1>
         </div>
       </section>

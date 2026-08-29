@@ -4,13 +4,7 @@ import { RevealProvider } from '@/components/layout/RevealProvider';
 import { Footer } from '@/components/layout/Footer';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 
-// Global styles. Order matters and mirrors the original <head>:
-//   1. Font Awesome 5 icon font (was /assets/css/all.min.css)
-//   2. agency.scss  = custom theme + vendored Bootstrap 4.5.2 (was /assets/css/agency.css)
-//   3. head-global.css = the inline <style> block from head.html (must come AFTER agency)
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import '@/styles/agency.scss';
-import '@/styles/head-global.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

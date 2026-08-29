@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/team/',
     '/joinus/',
     '/fellowship2026/',
-    '/data_crunch_hackathon_2024/',
     '/blog/',
     '/codeofconduct/',
     '/privacy/',

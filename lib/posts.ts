@@ -32,6 +32,7 @@ export interface Post {
   tags: string[];
   description: string;
   image?: string;
+  coverImage?: string;
   /** Plain-text first paragraph, for card excerpts. */
   excerpt: string;
   /** Raw Markdown body (converted to HTML lazily via markdownToHtml). */
@@ -64,6 +65,14 @@ function toArray(v: unknown): string[] {
   return [String(v)];
 }
 
+const COVER_IMAGE_RE = /^\s*!\[[^\]]*\]\(([^)]+)\)\s*/;
+
+function extractCoverImage(content: string): { coverImage: string | undefined; rest: string } {
+  const match = COVER_IMAGE_RE.exec(content);
+  if (!match) return { coverImage: undefined, rest: content };
+  return { coverImage: match[1], rest: content.slice(match[0].length) };
+}
+
 function firstParagraphText(markdown: string): string {
   const block = markdown.trim().split(/\n\s*\n/)[0] ?? '';
   return block
@@ -90,7 +99,7 @@ export function getAllPosts(): Post[] {
 
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
     const { data, content } = matter(raw);
-
+    const { coverImage, rest: excerptSource } = extractCoverImage(content);
     // URL: explicit permalink verbatim, else Jekyll default /YYYY/MM/DD/slug/.
     const url = data.permalink
       ? ensureTrailingSlash(String(data.permalink))
@@ -123,6 +132,7 @@ export function getAllPosts(): Post[] {
       tags: toArray(data.tags),
       description: data.description ? String(data.description) : '',
       image: data.image ? String(data.image) : undefined,
+      coverImage,
       excerpt: firstParagraphText(content),
       body: content,
     };
@@ -166,7 +176,7 @@ export function truncateWords(text: string, words: number): string {
 }
 
 /** Posts per page (mirrors _config.yml pagination.per_page). */
-export const PER_PAGE = 50;
+export const PER_PAGE = 20;
 
 export function totalPages(): number {
   return Math.max(1, Math.ceil(getAllPosts().length / PER_PAGE));
@@ -179,7 +189,10 @@ export interface PostSummary {
   url: string;
   dateFormatted: string;
   year: string;
+  author: string;
+  authorLower: string;
   excerpt: string;
+  coverImage?: string;
 }
 
 function toSummary(p: Post): PostSummary {
@@ -189,7 +202,10 @@ function toSummary(p: Post): PostSummary {
     url: p.url,
     dateFormatted: p.dateFormatted,
     year: p.year,
+    author: p.author,
+    authorLower: p.author.toLowerCase(),
     excerpt: truncateWords(p.excerpt, 30),
+    coverImage: p.coverImage,
   };
 }
 

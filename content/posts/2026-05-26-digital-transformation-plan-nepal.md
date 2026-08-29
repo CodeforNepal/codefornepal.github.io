@@ -1,7 +1,7 @@
 ---
 title: "10-Step Digital Transformation Implementation Plan for Prosperous Nepal"
 date: 2026-05-26
-author: Ravi Kumar, Code For Nepal
+author: Ravi Kumar
 description: "A comprehensive strategy to modernize Nepal's governance and deliver public services efficiently through inclusive, voice-first design principles."
 layout: post
 tags:
