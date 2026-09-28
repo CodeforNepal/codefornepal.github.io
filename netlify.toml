@@ -1,3 +1,12 @@
 [build]
-  command = "bundle install && bundle exec jekyll build"
-  publish = "_site"
+  command = "yarn install --frozen-lockfile && yarn build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback for client-side routes.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

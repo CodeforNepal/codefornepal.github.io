@@ -1,8 +1,11 @@
 # codefornepal.github.io
 
-To build a new device agnostic and low bandwidth friendly website of Code for Nepal.
+A device-agnostic, low-bandwidth-friendly website for Code for Nepal
+([codefornepal.org](https://codefornepal.org)).
 
-Jekyll instance of codefornepal.org
+Built with **React 19 + Vite + TypeScript + React Router**. Blog posts are
+authored as Markdown in `content/posts/` and rendered to HTML at build time.
+(Previously Jekyll, then Next.js.)
 
 ## Admin page to easily publish blogs
 
@@ -10,87 +13,57 @@ You need to be a blog publisher to access the following:
 
 https://codefornepal.org/admin
 
-
+The admin panel (Decap CMS) is configured in `public/admin/config.yml` and
+commits Markdown files to `content/posts/` on the `master` branch.
 
 ## Design Guidelines
 
 These are our brand color schemes.
+
 ```
-Red: #E00015
-Blue: #00ADEF
-White: #FFFFFF 
+Red: #E00015
+Blue: #00ADEF
+White: #FFFFFF
 Light gray: #FCFBFB
 ```
 
-## Install in Linux Fedora / Ubuntu  
+## Installation and Setup
 
-### Step 1
+Requires **Node 20+** and **Yarn 1.x**.
 
-- Fedora
-
-```console
-$ sudo dnf install ruby-devel
-```
-
-```console
-$ sudo dnf groupinstall development-tools rpm-development-tools c-development
-```
-
-- Ubuntu
-
-```console
-$ sudo apt-get install ruby-full
-```
-
-```console
-$ sudo apt-get install build-essential zlib1g-dev
-```
-
-### Step 2
-
-```console
-$ gem install bundler
-```
-
-### Step 3
-
-- Fork **https://github.com/CodeforNepal/codefornepal.github.io.git**
-- and then
 ```console
 $ git clone https://github.com/<yourusername>/codefornepal.github.io.git
 $ cd codefornepal.github.io/
-$ git remote add upstream https://github.com/CodeforNepal/codefornepal.github.io.git 
+$ git remote add upstream https://github.com/CodeforNepal/codefornepal.github.io.git
+$ yarn install
 ```
 
-### Step 4
+### Develop
 
 ```console
-$ bundle install
+$ yarn dev
 ```
 
-### Step 5
+Go to -> http://localhost:5173/
+
+### Build
 
 ```console
-$ bundle exec jekyll serve
+$ yarn build      # -> ./out  (static site: HTML, JS/CSS, feed.xml, sitemap.xml, 404.html)
+$ yarn preview    # serve ./out locally
 ```
-Go to -> http://127.0.0.1:4000/
 
-### Optional
-
-- To make server accessible in **Network** and in diffrent **port**
+### Typecheck
 
 ```console
-$ bundle exec jekyll serve --host=0.0.0.0 --port=3000
+$ yarn typecheck
 ```
-Go to -> http://`<local_ip_of_machine>`:3000/
 
-## Keep Fork Updated 
+
+## Keep Fork Updated
 
 ```console
-$ git fetch upstream 
-$ git merge upstream master
-$ git push origin master 
+$ git fetch upstream
+$ git merge upstream/master
+$ git push origin master
 ```
-
-
-

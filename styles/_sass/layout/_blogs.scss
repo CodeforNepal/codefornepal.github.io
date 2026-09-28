@@ -1,0 +1,37 @@
+.card{
+    // border:none;
+    img{
+        width: 100% !important;
+    }
+}
+
+.container{
+    &.blog{
+        max-width: 800px;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        @include mq(phablet,min){
+            padding-left: 64px;
+            padding-right: 64px;
+        }
+        img{
+            width: 100%;
+            margin: 2rem 0;
+            display: block;
+        }
+        .title{
+            font-weight: 400;
+            font-size: 40px;
+            margin-bottom: 20px;
+            margin-top: 1rem;
+        }
+        figcaption{
+            margin-top: 8px;
+            margin-bottom: 2rem;
+            font-size: 14px;
+        }
+        p,span{
+            @extend .clean-text
+        }
+    }
+}

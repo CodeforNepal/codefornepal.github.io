@@ -1,0 +1,64 @@
+/* Reproduction of the global <style> block from _includes/head.html.
+   Imported AFTER agency.scss so its rules override the compiled theme (matching
+   the original, where this <style> follows the agency.css <link> in <head>). */
+
+/* Fixed-nav offset (64px). NOTE: base _page.scss sets body{padding-top:0 !important},
+   which wins over this non-important rule — reproduced faithfully (net computed: 0). */
+body {
+  padding-top: 64px;
+}
+
+/* Page/post layouts get extra top padding for readability
+   (overrides base #pagecontainer padding-top:100px). Only page/post render
+   #pagecontainer in this app, so the rule is unconditional here. */
+#pagecontainer {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+@media (max-width: 991px) {
+  #pagecontainer {
+    padding-top: 2rem;
+  }
+}
+
+/* Responsive grid helpers used across the inline-styled sections.
+   These key off inline style substrings, so ported components MUST keep the
+   exact inline shorthand strings (e.g. grid-template-columns:35% 30% 35%). */
+@media (max-width: 768px) {
+  [style*="grid-template-columns:35% 30% 35%"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gap:4rem"] {
+    gap: 2rem !important;
+  }
+  [style*="padding:6rem 0"] {
+    padding: 3.5rem 0 !important;
+  }
+  [style*="padding:5rem 0"] {
+    padding: 3rem 0 !important;
+  }
+}
+
+/* Details/summary FAQ animation */
+details > div {
+  animation: fadeInDown 0.2s ease;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary {
+  list-style: none;
+}
