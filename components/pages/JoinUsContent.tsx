@@ -55,6 +55,21 @@ export function JoinUsContent() {
             ))}
           </div>
 
+          <Link href="/contribute/" className="join-guide">
+            <div style={{ width: '2.5rem', height: '2.5rem', background: '#dc2626', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <i className="fas fa-pen-nib" style={{ color: 'white', fontSize: '1.1rem' }} />
+            </div>
+            <div style={{ flex: 1, minWidth: '220px' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827', margin: '0 0 0.35rem', fontFamily: "'Montserrat',sans-serif" }}>Write a blog or dataviz</h3>
+              <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.6, margin: 0, fontFamily: "'Droid Serif','Georgia',serif" }}>
+                Have a story or chart about Nepal? Consult our contributor guide to learn how to prepare and submit one to Code for Nepal.
+              </p>
+            </div>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#dc2626', fontFamily: "'Montserrat',sans-serif", display: 'inline-flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap' }}>
+              Read the Guide <i className="fas fa-arrow-right" style={{ fontSize: '0.7rem' }} />
+            </span>
+          </Link>
+
           <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: 1.7, fontFamily: "'Droid Serif','Georgia',serif", borderTop: '1px solid #f3f4f6', paddingTop: '2rem' }}>
             We also encourage you to explore our website, learn about our projects, and read our{' '}
             <Link
@@ -74,6 +89,8 @@ export function JoinUsContent() {
 
       <style>{`
         .joinus-container { max-width: 1300px !important; padding: 0 4rem !important; margin: 0 auto; box-sizing: border-box; }
+        .join-guide { display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem; padding: 1.5rem 2rem; margin-bottom: 3rem; background: #fef2f2; border: 1px solid #fee2e2; text-decoration: none; transition: box-shadow 0.2s, border-color 0.2s; }
+        .join-guide:hover { text-decoration: none; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: #fecaca; }
         .join-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: #e5e7eb !important; }
         @media (max-width: 960px) { .joinus-container { padding: 0 2.5rem !important; } }
         @media (max-width: 640px) { .joinus-container { padding: 0 1.5rem !important; } }

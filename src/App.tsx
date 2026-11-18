@@ -18,6 +18,9 @@ const AboutPage = lazy(() => import('./pages/StaticPages').then((m) => ({ defaul
 const ProjectsPage = lazy(() =>
   import('./pages/StaticPages').then((m) => ({ default: m.ProjectsPage })),
 );
+const ContributePage = lazy(() =>
+  import('./pages/StaticPages').then((m) => ({ default: m.ContributePage })),
+);
 const FellowshipPage = lazy(() =>
   import('./pages/StaticPages').then((m) => ({ default: m.FellowshipPage })),
 );
@@ -69,6 +72,7 @@ export function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about/" element={<AboutPage />} />
               <Route path="/projects/" element={<ProjectsPage />} />
+              <Route path="/contribute/" element={<ContributePage />} />
               <Route path="/fellowship2026/" element={<FellowshipPage />} />
               <Route path="/data_crunch_hackathon_2024/" element={<HackathonPage />} />
               <Route path="/joinus/" element={<JoinUsPage />} />

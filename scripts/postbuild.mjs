@@ -70,6 +70,7 @@ ${entries}
     '/',
     '/about/',
     '/projects/',
+    '/contribute/',
     '/team/',
     '/joinus/',
     '/fellowship2026/',

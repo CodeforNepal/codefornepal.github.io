@@ -18,6 +18,8 @@ export function PostPage() {
 
   useEffect(() => {
     let alive = true;
+    // Clear the previous post's body so it never flashes while the next one loads.
+    setHtml(null);
     if (post) getPostBody(post.url).then((h) => alive && setHtml(h ?? ''));
     return () => {
       alive = false;

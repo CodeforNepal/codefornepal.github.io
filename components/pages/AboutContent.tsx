@@ -132,46 +132,48 @@ export function AboutContent() {
             <h2 style={{ fontSize: 'clamp(1.75rem,4vw,2.5rem)', fontWeight: 700, color: '#111827', marginBottom: '0.75rem', fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>Our Team</h2>
             <p style={{ fontSize: '0.95rem', color: '#6b7280', maxWidth: '500px', margin: '0 auto', fontFamily: "'Droid Serif','Georgia',serif", lineHeight: 1.7 }}>{team.text}</p>
           </div>
-          <div id="teamGrid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', maxWidth: '760px', margin: '0 auto' }}>
-            {team.people.map((person) => (
-              <div key={person.name} style={{ textAlign: 'center' }}>
-                <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 1rem', border: '3px solid #fee2e2', boxShadow: '0 0 0 4px #fff, 0 0 0 5px #f3f4f6' }}>
-                  {person.image ? (
-                    <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  ) : (
-                    <div style={{ width: '100%', height: '100%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <i className="fas fa-user" style={{ color: '#dc2626', fontSize: '2rem' }} />
-                    </div>
-                  )}
-                </div>
-                {person.linkedinUrl ? (
-                  <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                    <h3
-                      style={{ fontSize: '0.9rem', fontWeight: 700, color: '#111827', margin: '0 0 0.25rem', fontFamily: "'Montserrat',sans-serif" }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = '#dc2626')}
-                      onMouseOut={(e) => (e.currentTarget.style.color = '#111827')}
-                    >
-                      {person.name}
-                    </h3>
-                  </a>
-                ) : (
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#111827', margin: '0 0 0.25rem', fontFamily: "'Montserrat',sans-serif" }}>{person.name}</h3>
-                )}
-                {person.linkedinUrl && (
-                  <a
-                    href={person.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: 'inline-block', marginTop: '0.5rem', color: '#9ca3af', fontSize: '0.85rem' }}
-                    onMouseOver={(e) => (e.currentTarget.style.color = '#dc2626')}
-                    onMouseOut={(e) => (e.currentTarget.style.color = '#9ca3af')}
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                )}
+          {team.groups.map((group, gi) => (
+            <div key={group.id} style={{ marginTop: gi === 0 ? 0 : '4rem' }}>
+              <div style={{ textAlign: 'center', marginBottom: '2.25rem' }}>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#111827', margin: '0 0 0.4rem', fontFamily: "'Montserrat',sans-serif", textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.title}</h3>
+                <p style={{ fontSize: '0.88rem', color: '#6b7280', margin: '0 auto', maxWidth: '460px', fontFamily: "'Droid Serif','Georgia',serif", lineHeight: 1.6 }}>{group.text}</p>
               </div>
-            ))}
-          </div>
+              <div className="teamGrid">
+                {group.people.map((person) => (
+                  <div key={person.name} style={{ textAlign: 'center' }}>
+                    <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 1rem', border: '3px solid #fee2e2', boxShadow: '0 0 0 4px #fff, 0 0 0 5px #f3f4f6' }}>
+                      {person.image ? (
+                        <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      ) : (
+                        <div style={{ width: '100%', height: '100%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <i className="fas fa-user" style={{ color: '#dc2626', fontSize: '2rem' }} />
+                        </div>
+                      )}
+                    </div>
+                    {person.linkedinUrl ? (
+                      <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer" className="team-name-link" style={{ textDecoration: 'none' }}>
+                        <h4 style={{ fontSize: '0.9rem', fontWeight: 700, margin: '0 0 0.25rem', fontFamily: "'Montserrat',sans-serif" }}>{person.name}</h4>
+                      </a>
+                    ) : (
+                      <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#111827', margin: '0 0 0.25rem', fontFamily: "'Montserrat',sans-serif" }}>{person.name}</h4>
+                    )}
+                    {person.linkedinUrl && (
+                      <a
+                        href={person.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${person.name} on LinkedIn`}
+                        className="team-social-link"
+                        style={{ display: 'inline-block', marginTop: '0.5rem', fontSize: '0.85rem' }}
+                      >
+                        <i className="fab fa-linkedin-in" />
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -197,9 +199,15 @@ export function AboutContent() {
       </section>
 
       <style>{`
+        .teamGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 760px; margin: 0 auto; }
+        .teamGrid > div { flex: 0 0 calc((100% - 4rem) / 3); }
+        .team-name-link h4 { color: #111827; transition: color 0.2s; }
+        .team-name-link:hover h4 { color: #dc2626; }
+        .team-social-link { color: #9ca3af; transition: color 0.2s; }
+        .team-social-link:hover { color: #dc2626; }
         @media (max-width: 768px) {
           #missionGrid, #pillarsGrid, #operateGrid { grid-template-columns: 1fr !important; }
-          #teamGrid { grid-template-columns: repeat(2, 1fr) !important; }
+          .teamGrid > div { flex-basis: calc((100% - 2rem) / 2); }
         }
       `}</style>
     </>

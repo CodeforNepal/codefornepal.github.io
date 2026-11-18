@@ -68,6 +68,14 @@ export function BlogList({ pagePosts, allPosts, years, page, totalPages, prevPat
               </select>
             </div>
           </div>
+          <p style={{ margin: '1.25rem 0 0', fontSize: '0.88rem', color: '#6b7280', fontFamily: "'Droid Serif','Georgia',serif", lineHeight: 1.6 }}>
+            <i className="fas fa-pen-nib" style={{ color: '#dc2626', marginRight: '0.5rem' }} />
+            Want to write a blog or dataviz for Code for Nepal?{' '}
+            <Link href="/contribute/" className="blog-guide-link">
+              Consult our contributor guide
+            </Link>{' '}
+            to learn how to submit one.
+          </p>
         </div>
       </section>
 
@@ -158,6 +166,8 @@ export function BlogList({ pagePosts, allPosts, years, page, totalPages, prevPat
       )}
 
       <style>{`
+        .blog-guide-link { color: #dc2626; font-weight: 600; text-decoration: none; }
+        .blog-guide-link:hover { color: #b91c1c; text-decoration: underline; }
         .blog-container { max-width: 1300px !important; padding: 0 4rem !important; margin: 0 auto; box-sizing: border-box; }
         @media (max-width: 960px) { #postsGrid { grid-template-columns: repeat(2, 1fr) !important; } .blog-container { padding: 0 2.5rem !important; } }
         @media (max-width: 640px) { #postsGrid { grid-template-columns: 1fr !important; } .blog-container { padding: 0 1.5rem !important; } }

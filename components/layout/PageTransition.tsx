@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -7,14 +7,11 @@ import { useLocation } from 'react-router-dom';
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
-  const [key, setKey] = useState(pathname);
 
-  useEffect(() => {
-    setKey(pathname);
-  }, [pathname]);
-
+  // Key directly on the pathname: mirroring it into state via an effect rendered the
+  // new route once under the old key and then remounted it (double mount + late fade).
   return (
-    <div key={key} className="page-transition">
+    <div key={pathname} className="page-transition">
       {children}
       <style>{`
         .page-transition {
