@@ -58,6 +58,39 @@ function firstParagraphText(markdown) {
 }
 
 /** Convert Markdown (with embedded raw HTML) to an HTML string. */
+/**
+ * First usable image in a rendered post body, used as the card thumbnail when the
+ * front matter has no `image:` (no post sets one). Skips data URIs; upgrades
+ * protocol-relative and http:// URLs to https:// to avoid mixed-content blocking.
+ */
+function firstImage(html) {
+  for (const m of html.matchAll(/<img\b[^>]*?\ssrc=["']([^"']+)["']/gi)) {
+    const src = decodeHTML(m[1].trim());
+    if (!src || src.startsWith('data:')) continue;
+    if (src.startsWith('//')) return `https:${src}`;
+    return src.replace(/^http:\/\//i, 'https://');
+  }
+  return undefined;
+}
+
+/**
+ * Normalize inconsistent author values from the WordPress/Jekyll import so the
+ * blog author filter doesn't list the same person several times.
+ */
+const AUTHOR_ALIASES = {
+  ravi: 'Ravi Kumar',
+  'ravi kumar, code for nepal': 'Ravi Kumar',
+  'krishna kumar shrestha': 'Krishna Kumar Shrestha',
+};
+
+function normalizeAuthor(raw) {
+  const name = String(raw ?? '').trim().replace(/\s+/g, ' ');
+  if (!name) return '';
+  const key = name.toLowerCase();
+  if (key.replace(/\s+/g, '') === 'codefornepal') return 'Code for Nepal';
+  return AUTHOR_ALIASES[key] ?? name;
+}
+
 async function markdownToHtml(markdown) {
   const file = await unified()
     .use(remarkParse)
@@ -97,6 +130,7 @@ export async function loadPosts() {
       const dDay = dateObj.getUTCDate();
 
       const title = decodeHTML(String(data.title ?? rawSlug));
+      const html = await markdownToHtml(content);
 
       return {
         slug,
@@ -107,12 +141,12 @@ export async function loadPosts() {
         dateFormatted: `${MONTHS[dMonth]} ${dDay}, ${dYear}`,
         dateToString: `${dDay} ${MONTHS[dMonth]} ${dYear}`,
         year: String(dYear),
-        author: data.author ? String(data.author) : '',
+        author: normalizeAuthor(data.author),
         tags: toArray(data.tags),
         description: data.description ? String(data.description) : '',
-        image: data.image ? String(data.image) : undefined,
+        image: data.image ? String(data.image) : firstImage(html),
         excerpt: firstParagraphText(content),
-        html: await markdownToHtml(content),
+        html,
       };
     }),
   );

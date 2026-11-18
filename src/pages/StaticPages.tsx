@@ -6,6 +6,7 @@ import { FellowshipContent } from '@/components/pages/FellowshipContent';
 import { HackathonContent } from '@/components/pages/HackathonContent';
 import { JoinUsContent } from '@/components/pages/JoinUsContent';
 import { ProjectsContent } from '@/components/pages/ProjectsContent';
+import { ContributeContent } from '@/components/pages/ContributeContent';
 import { getRootMarkdown } from '@/lib/posts';
 import { team } from '@/data/team';
 
@@ -26,6 +27,21 @@ export function ProjectsPage() {
       <Seo title="Projects" path="/projects/" />
       <PageLayout>
         <ProjectsContent />
+      </PageLayout>
+    </>
+  );
+}
+
+export function ContributePage() {
+  return (
+    <>
+      <Seo
+        title="Write a Blog or Dataviz"
+        description="How to write a blog post or create a data visualization and submit it to Code for Nepal."
+        path="/contribute/"
+      />
+      <PageLayout>
+        <ContributeContent />
       </PageLayout>
     </>
   );
@@ -66,7 +82,7 @@ export function JoinUsPage() {
 
 /**
  * Ported from team/index.html — the older jekyll-agency Bootstrap team layout,
- * kept as-is (team.yml has no role/social, so those render empty, matching today).
+ * now split into the operational team and the advisory group.
  */
 export function TeamPage() {
   return (
@@ -82,39 +98,43 @@ export function TeamPage() {
               </div>
             </div>
 
-            <div
-              id="teamGrid"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '3rem 1.5rem',
-                justifyItems: 'center',
-                marginBottom: '3rem',
-              }}
-            >
-              {team.people.map((person) => (
-                <div key={person.name} style={{ width: '100%', maxWidth: '340px' }}>
-                  <div className="team-member">
-                    <img
-                      className="mx-auto rounded-circle"
-                      src={person.image}
-                      alt=""
-                      style={{
-                        width: '280px',
-                        height: '280px',
-                        objectFit: 'cover',
-                        border: '7px solid rgba(0,0,0,0.1)',
-                      }}
-                    />
-                    <a href={person.linkedinUrl} className="text-decoration-none" target="blank">
-                      <h4>{person.name}</h4>
-                    </a>
-                    <p className="text-muted" />
-                    <ul className="list-inline social-buttons" />
-                  </div>
+            {team.groups.map((group) => (
+              <div key={group.id} style={{ marginBottom: '3rem' }}>
+                <div className="text-center" style={{ marginBottom: '2rem' }}>
+                  <h3 className="text-uppercase" style={{ fontWeight: 700 }}>{group.title}</h3>
+                  <p className="text-muted">{group.text}</p>
                 </div>
-              ))}
-            </div>
+                <div className="teamPageGrid">
+                  {group.people.map((person) => (
+                    <div key={person.name} style={{ width: '100%', maxWidth: '340px' }}>
+                      <div className="team-member">
+                        <img
+                          className="mx-auto rounded-circle"
+                          src={person.image || '/assets/img/team/placeholder.png'}
+                          alt={person.name}
+                          style={{
+                            width: '280px',
+                            maxWidth: '100%',
+                            aspectRatio: '1 / 1',
+                            height: 'auto',
+                            objectFit: 'cover',
+                            border: '7px solid rgba(0,0,0,0.1)',
+                          }}
+                        />
+                        <a
+                          href={person.linkedinUrl}
+                          className="text-decoration-none"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <h4>{person.name}</h4>
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
 
             <div className="row">
               <div className="col-lg-8 mx-auto text-center">
@@ -125,8 +145,11 @@ export function TeamPage() {
         </section>
 
         <style>{`
+          .teamPageGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem 1.5rem; }
+          .teamPageGrid > div { flex: 0 1 calc((100% - 3rem) / 3); }
           @media (max-width: 768px) {
-            #teamGrid { grid-template-columns: 1fr !important; gap: 2rem 1.5rem !important; }
+            .teamPageGrid { gap: 2rem 1.5rem; }
+            .teamPageGrid > div { flex-basis: 100%; }
           }
         `}</style>
       </PageLayout>

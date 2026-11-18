@@ -18,3 +18,5 @@ yarn-error.log*
 # OS
 .DS_Store
 .sass-cache
+
+todo.txt

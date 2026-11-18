@@ -62,20 +62,14 @@ export function truncateWords(text: string, words: number): string {
   return parts.slice(0, words).join(' ') + '…';
 }
 
-/** Posts per page (mirrors _config.yml pagination.per_page). */
-export const PER_PAGE = 50;
-
-export function totalPages(): number {
-  return Math.max(1, Math.ceil(data.posts.length / PER_PAGE));
-}
-
-/** Lightweight post shape for the blog index (cards + client search). */
+/** Lightweight post shape for the blog index (table/cards + client search). */
 export interface PostSummary {
   title: string;
   titleLower: string;
   url: string;
   dateFormatted: string;
   year: string;
+  author: string;
   excerpt: string;
 }
 
@@ -86,6 +80,7 @@ function toSummary(p: Post): PostSummary {
     url: p.url,
     dateFormatted: p.dateFormatted,
     year: p.year,
+    author: p.author,
     excerpt: truncateWords(p.excerpt, 30),
   };
 }
@@ -95,10 +90,15 @@ export function getAllSummaries(): PostSummary[] {
   return data.posts.map(toSummary);
 }
 
-/** The slice of summaries for a given 1-based page. */
-export function getPageSummaries(page: number): PostSummary[] {
-  const start = (page - 1) * PER_PAGE;
-  return data.posts.slice(start, start + PER_PAGE).map(toSummary);
+/** Distinct post authors with post counts, alphabetical (for the blog author filter). */
+export function getAuthors(): { name: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const p of data.posts) {
+    if (p.author) counts.set(p.author, (counts.get(p.author) ?? 0) + 1);
+  }
+  return [...counts]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 }
 
 /** Distinct post years, newest first (for the blog year filter). */
@@ -111,7 +111,23 @@ export function getYears(): string[] {
  * (`virtual:post-bodies`) that is dynamically imported so the ~1 MB corpus is
  * only fetched when a post page is actually viewed.
  */
+let bodies: Record<string, string> | null = null;
+
+async function loadBodies(): Promise<Record<string, string>> {
+  if (!bodies) bodies = (await import('virtual:post-bodies')).default;
+  return bodies;
+}
+
 export async function getPostBody(url: string): Promise<string | undefined> {
-  const mod = await import('virtual:post-bodies');
-  return mod.default[url];
+  return (await loadBodies())[url];
+}
+
+/** Synchronous lookup once the bodies chunk has loaded (undefined until then). */
+export function getCachedPostBody(url: string): string | undefined {
+  return bodies?.[url];
+}
+
+/** Fetch the post-bodies chunk ahead of time (e.g. from the blog index) so opening a post is instant. */
+export function preloadPostBodies(): void {
+  loadBodies().catch(() => {});
 }

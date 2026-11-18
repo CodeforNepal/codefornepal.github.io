@@ -174,6 +174,7 @@ export function Footer() {
                 { href: '/fellowship2026/', label: 'Fellowship 2026' },
                 { href: '/projects/', label: 'Projects' },
                 { href: '/blog/', label: 'Blog' },
+                { href: '/contribute/', label: 'Write for Us' },
                 { href: '/joinus/', label: 'Join Us' },
               ].map((l) => (
                 <li key={l.href} style={{ marginBottom: '0.6rem' }}>

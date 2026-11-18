@@ -118,7 +118,7 @@ export const clients = {
 
 export const impact = {
   stats: [
-    { number: '500+', label: 'Fellows Trained' },
+    { number: '1500+', label: 'Fellows Trained' },
     { number: '10+', label: 'Years of Impact' },
     { number: '20+', label: 'Open Source Projects' },
     { number: '10k+', label: 'Community Members' },

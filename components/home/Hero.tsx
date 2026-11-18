@@ -18,7 +18,13 @@ export function Hero() {
     const html = document.documentElement;
     const body = document.body;
     let scrolled = false;
+    let unlockTimer: number | undefined;
     const lockDuration = 1200; // match the reveal transition duration
+
+    // Reveal state lives in a provider above the router, so it survives navigation.
+    // Start every home visit from the hidden state so returning to "/" replays the
+    // reveal instead of locking scroll behind already-visible content.
+    setScrolled(false);
 
     const loadTimer = window.setTimeout(() => setLoaded(true), 100);
 
@@ -42,7 +48,7 @@ export function Hero() {
       if (scrolled) return;
       scrolled = true;
       setScrolled(true);
-      window.setTimeout(() => {
+      unlockTimer = window.setTimeout(() => {
         html.style.removeProperty('overflow');
         body.style.removeProperty('overflow');
         const next = document.getElementById('pillars');
@@ -101,6 +107,7 @@ export function Hero() {
 
     return () => {
       window.clearTimeout(loadTimer);
+      window.clearTimeout(unlockTimer);
       cleanupListeners();
       window.removeEventListener('scroll', onScrollFallback);
       indicator?.removeEventListener('click', activate);

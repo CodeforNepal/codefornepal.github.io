@@ -26,9 +26,16 @@ export function buildMeta(opts: {
     title,
     description: description ?? site.description,
     canonical: site.url + path,
-    image: image ?? site.favicon,
+    // og:image / twitter:image must be absolute URLs; site-relative paths get the origin.
+    image: absoluteUrl(image ?? site.favicon),
     type,
   };
+}
+
+function absoluteUrl(src: string): string {
+  if (/^https?:\/\//i.test(src)) return src;
+  if (src.startsWith('//')) return `https:${src}`;
+  return site.url + (src.startsWith('/') ? src : `/${src}`);
 }
 
 /** Full <title> string (mirrors the Next `%s | Code for Nepal` template). */
