@@ -7,7 +7,7 @@ const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
 /**
  * Ported from _includes/sections/home/header.html — the full-viewport hero AND the
- * home page's scroll-lock reveal controller. The original toggled global body classes
+ * home page's reveal controller (originally a scroll lock; now non-blocking). The original toggled global body classes
  * (is-loaded / is-scrolled); here it drives the shared RevealProvider state that the
  * Nav and the below-the-fold content wrapper also consume.
  */
@@ -15,104 +15,62 @@ export function Hero() {
   const { isLoaded, isScrolled, setLoaded, setScrolled } = useReveal();
 
   useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-    let scrolled = false;
-    let unlockTimer: number | undefined;
-    const lockDuration = 1200; // match the reveal transition duration
+    let revealed = false;
 
     // Reveal state lives in a provider above the router, so it survives navigation.
-    // Start every home visit from the hidden state so returning to "/" replays the
-    // reveal instead of locking scroll behind already-visible content.
+    // Start every home visit from the hidden state so returning to "/" replays the reveal.
     setScrolled(false);
 
     const loadTimer = window.setTimeout(() => setLoaded(true), 100);
 
-    const atTop = window.scrollY < 15;
-    if (atTop) {
-      html.style.setProperty('overflow', 'hidden', 'important');
-      body.style.setProperty('overflow', 'hidden', 'important');
-    } else {
-      scrolled = true;
-      setScrolled(true);
-    }
-
     function cleanupListeners() {
       window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchmove', reveal);
       window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('scroll', onScroll);
     }
 
-    function activate() {
-      if (scrolled) return;
-      scrolled = true;
+    // Reveal the nav, CTAs and below-the-fold content on the first scroll intent.
+    // Scrolling is never blocked: the page moves natively while the content fades in.
+    function reveal() {
+      if (revealed) return;
+      revealed = true;
       setScrolled(true);
-      unlockTimer = window.setTimeout(() => {
-        html.style.removeProperty('overflow');
-        body.style.removeProperty('overflow');
-        const next = document.getElementById('pillars');
-        if (next) {
-          const targetY = next.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        }
-        // Force any Leaflet map to recalc its container size.
-        window.dispatchEvent(new Event('resize'));
-        cleanupListeners();
-      }, lockDuration);
+      cleanupListeners();
     }
 
     function onWheel(e: WheelEvent) {
-      if (e.deltaY > 0) {
-        e.preventDefault();
-        activate();
-      }
-    }
-    let touchStartY = 0;
-    function onTouchStart(e: TouchEvent) {
-      touchStartY = e.touches[0].clientY;
-    }
-    function onTouchMove(e: TouchEvent) {
-      const touchEndY = e.touches[0].clientY;
-      if (touchStartY - touchEndY > 30) {
-        e.preventDefault();
-        activate();
-      }
+      if (e.deltaY > 0) reveal();
     }
     function onKeyDown(e: KeyboardEvent) {
-      if (['ArrowDown', 'Space', 'PageDown', ' '].includes(e.key)) {
-        e.preventDefault();
-        activate();
-      }
+      if (['ArrowDown', 'PageDown', ' ', 'End'].includes(e.key)) reveal();
     }
-    function onScrollFallback() {
-      if (window.scrollY > 15 && !scrolled) {
-        scrolled = true;
-        setScrolled(true);
-        html.style.removeProperty('overflow');
-        body.style.removeProperty('overflow');
-      }
+    function onScroll() {
+      if (window.scrollY > 0) reveal();
     }
 
-    if (atTop) {
-      window.addEventListener('wheel', onWheel, { passive: false });
-      window.addEventListener('touchstart', onTouchStart);
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      window.addEventListener('keydown', onKeyDown, { passive: false } as AddEventListenerOptions);
+    // The indicator is an explicit "take me down" action, so it also scrolls.
+    function onIndicatorClick() {
+      reveal();
+      document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    window.addEventListener('scroll', onScrollFallback);
+
+    if (window.scrollY > 0) {
+      reveal();
+    } else {
+      window.addEventListener('wheel', onWheel, { passive: true });
+      window.addEventListener('touchmove', reveal, { passive: true });
+      window.addEventListener('keydown', onKeyDown);
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
 
     const indicator = document.getElementById('heroScrollIndicator');
-    indicator?.addEventListener('click', activate);
+    indicator?.addEventListener('click', onIndicatorClick);
 
     return () => {
       window.clearTimeout(loadTimer);
-      window.clearTimeout(unlockTimer);
       cleanupListeners();
-      window.removeEventListener('scroll', onScrollFallback);
-      indicator?.removeEventListener('click', activate);
-      html.style.removeProperty('overflow');
-      body.style.removeProperty('overflow');
+      indicator?.removeEventListener('click', onIndicatorClick);
     };
   }, [setLoaded, setScrolled]);
 

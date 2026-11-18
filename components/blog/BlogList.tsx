@@ -3,6 +3,7 @@ import Link from '@/components/ui/Link';
 import { useViewMode } from '@/components/ui/ViewToggle';
 import { ListToolbar } from '@/components/ui/ListToolbar';
 import { Dropdown } from '@/components/ui/Dropdown';
+import { PostThumb } from '@/components/ui/PostThumb';
 import type { PostSummary } from '@/lib/posts';
 
 interface Props {
@@ -119,7 +120,10 @@ export function BlogList({ posts, years, authors }: Props) {
             <div id="postsGrid">
               {visible.map((post) => (
                 <article key={post.url} className="blog-post-card">
-                  <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <Link href={post.url} className="blog-card-thumb" tabIndex={-1} aria-hidden>
+                    <PostThumb src={post.image} alt="" />
+                  </Link>
+                  <div style={{ padding: '1.5rem 2rem 2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <p style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', margin: '0 0 0.75rem', fontFamily: "'Montserrat',sans-serif" }}>{post.dateFormatted}</p>
                     <h2 style={{ fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.45, margin: '0 0 1rem', fontFamily: "'Montserrat',sans-serif" }}>
                       <Link href={post.url} className="blog-card-title">
@@ -152,6 +156,9 @@ export function BlogList({ posts, years, authors }: Props) {
         #postsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .blog-post-card { border: 1px solid #f3f4f6; display: flex; flex-direction: column; overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
         .blog-post-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: #e5e7eb; }
+        .blog-card-thumb { display: block; overflow: hidden; }
+        .blog-card-thumb img { transition: transform 0.4s ease; }
+        .blog-post-card:hover .blog-card-thumb img { transform: scale(1.03); }
         .blog-card-title { color: #111827; text-decoration: none; transition: color 0.2s; }
         .blog-card-title:hover { color: #dc2626; text-decoration: none; }
         .blog-card-more { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #dc2626; text-decoration: none; font-family: 'Montserrat',sans-serif; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }

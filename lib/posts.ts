@@ -71,6 +71,8 @@ export interface PostSummary {
   year: string;
   author: string;
   excerpt: string;
+  /** Card thumbnail (front matter `image`, else the first image in the body). */
+  image?: string;
 }
 
 function toSummary(p: Post): PostSummary {
@@ -82,6 +84,7 @@ function toSummary(p: Post): PostSummary {
     year: p.year,
     author: p.author,
     excerpt: truncateWords(p.excerpt, 30),
+    image: p.image,
   };
 }
 

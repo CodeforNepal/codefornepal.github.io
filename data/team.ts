@@ -53,7 +53,13 @@ const advisory: TeamGroup = {
   id: 'advisory',
   title: 'Advisory Group',
   text: 'Experienced members who guide our strategy, partnerships, and long-term direction.',
+  // Ordered women first, then men; alphabetical within each.
   people: [
+    {
+      name: 'Sweta Baniya',
+      image: '/assets/img/team/sweta_baniya.jpg',
+      linkedinUrl: 'https://www.linkedin.com/in/sweta-baniya',
+    },
     {
       name: 'Ayush Subedi',
       image: '/assets/img/team/aayush.jpeg',
@@ -68,11 +74,6 @@ const advisory: TeamGroup = {
       name: 'Ravi Kumar',
       image: '/assets/img/team/ravi_kumar.jpg',
       linkedinUrl: 'https://www.linkedin.com/in/ravinepal/',
-    },
-    {
-      name: 'Sweta Baniya',
-      image: '/assets/img/team/sweta_baniya.jpg',
-      linkedinUrl: 'https://www.linkedin.com/in/sweta-baniya',
     },
   ],
 };

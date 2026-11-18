@@ -3,92 +3,12 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Map as LeafletMap, GeoJSON as LeafletGeoJSON, Layer, LeafletMouseEvent } from 'leaflet';
 import type { Feature } from 'geojson';
 import { useReveal } from '@/components/layout/RevealProvider';
+import { fellowshipCohort, provinceImpact, reachBin, reachBins, type ProvinceImpact } from '@/data/regionalImpact';
 
-interface ProvInfo {
-  title: string;
-  tag: string;
-  tagColor: string;
-  tagBg: string;
-  desc: string;
-  m1: string;
-  m2: string;
-}
-
-const provData: Record<string, ProvInfo> = {
-  'prov-koshi': {
-    title: 'Koshi Province',
-    tag: 'Active Impact',
-    tagColor: '#ffffff',
-    tagBg: '#dc2626',
-    desc: 'Koshi supports a growing network of open source contributors and data advocates. Local training seminars educate public sector representatives and volunteers on using open data tools for community research.',
-    m1: 'Regional Tech Seminars',
-    m2: 'Open Source Contributor Hubs',
-  },
-  'prov-madhesh': {
-    title: 'Madhesh Province',
-    tag: 'Active Impact',
-    tagColor: '#ffffff',
-    tagBg: '#dc2626',
-    desc: 'A core focus region for digital literacy and inclusion. We run coding bootcamps and localized workshops here for young girls and underrepresented youths, fostering career entries into the tech sector.',
-    m1: 'Girls Who Code Bootcamps',
-    m2: 'Digital Literacy Workshops',
-  },
-  'prov-bagmati': {
-    title: 'Bagmati Province',
-    tag: 'Active Impact',
-    tagColor: '#ffffff',
-    tagBg: '#dc2626',
-    desc: 'Our primary hub for advanced civic technology development and open data advocacy. Bagmati has hosted 4 key hackathons and our central tech fellowships, connecting developers with municipal open data projects.',
-    m1: 'Civic Tech Fellowships',
-    m2: 'Open Data Portals',
-  },
-  'prov-gandaki': {
-    title: 'Gandaki Province',
-    tag: 'Future Expansion',
-    tagColor: '#ffffff',
-    tagBg: '#475569',
-    desc: 'Gandaki is a major source of tech talent in our virtual networks. Local developers collaborate online with our Bagmati teams on municipal dashboard builds and open codebases.',
-    m1: 'Collaborative Dashboards',
-    m2: 'Online Developer Networks',
-  },
-  'prov-lumbini': {
-    title: 'Lumbini Province',
-    tag: 'Future Expansion',
-    tagColor: '#ffffff',
-    tagBg: '#475569',
-    desc: 'Lumbini province hosts virtual user group meetings. We are actively seeking local institutional partners in Lumbini to co-launch digital training modules and data camps.',
-    m1: 'Virtual User Groups',
-    m2: 'Partnership Exploration',
-  },
-  'prov-karnali': {
-    title: 'Karnali Province',
-    tag: 'Future Expansion',
-    tagColor: '#ffffff',
-    tagBg: '#475569',
-    desc: 'A key target area for our upcoming digital literacy outreach campaigns. Remote participants from Karnali join our virtual mentoring tracks to build coding capabilities.',
-    m1: 'Virtual Mentorships',
-    m2: 'Future Expansion Target',
-  },
-  'prov-sudurpashchim': {
-    title: 'Sudurpashchim Province',
-    tag: 'Future Expansion',
-    tagColor: '#ffffff',
-    tagBg: '#475569',
-    desc: 'While we do not have local bootcamps here yet, Sudurpashchim is home to several virtual community members and remote fellowship participants. We plan to establish regional workshops here soon.',
-    m1: 'Remote Program Access',
-    m2: 'Community Growth Area',
-  },
-};
-
-const provMapping: Record<string, string> = {
-  '1': 'prov-koshi',
-  '2': 'prov-madhesh',
-  '3': 'prov-bagmati',
-  '4': 'prov-gandaki',
-  '5': 'prov-lumbini',
-  '6': 'prov-karnali',
-  '7': 'prov-sudurpashchim',
-};
+const byCode = new Map(provinceImpact.map((p) => [p.code, p]));
+const maxFellows = Math.max(...provinceImpact.map((p) => p.fellows));
+const sans = "'Montserrat', sans-serif";
+const serif = "'Droid Serif', serif";
 
 function provinceCode(feature: Feature): string {
   const props = (feature.properties ?? {}) as Record<string, unknown>;
@@ -102,7 +22,7 @@ function provinceCode(feature: Feature): string {
 }
 
 interface TooltipState {
-  info: ProvInfo | null;
+  info: ProvinceImpact | null;
   x: number;
   y: number;
   visible: boolean;
@@ -144,10 +64,9 @@ export function NepalMap() {
 
       const layer = L.geoJSON(data, {
         style: (feature) => {
-          const code = feature ? provinceCode(feature) : '';
-          const isImpacted = code === '1' || code === '2' || code === '3';
+          const info = feature ? byCode.get(provinceCode(feature)) : undefined;
           return {
-            fillColor: isImpacted ? '#dc2626' : '#475569',
+            fillColor: info ? reachBin(info.fellows).color : '#475569',
             fillOpacity: 1,
             color: '#0f172a',
             weight: 2,
@@ -155,9 +74,8 @@ export function NepalMap() {
           };
         },
         onEachFeature: (feature: Feature, lyr: Layer) => {
-          const code = provinceCode(feature);
-          const isImpacted = code === '1' || code === '2' || code === '3';
-          const info = provData[provMapping[code]];
+          const info = byCode.get(provinceCode(feature));
+          const bin = info ? reachBin(info.fellows) : null;
 
           const positionFrom = (e: LeafletMouseEvent) => {
             const width = mapElRef.current?.clientWidth ?? 0;
@@ -170,7 +88,7 @@ export function NepalMap() {
           lyr.on({
             mouseover: (e: LeafletMouseEvent) => {
               (e.target as ReturnType<typeof L.geoJSON>).setStyle({
-                fillColor: isImpacted ? '#f87171' : '#94a3b8',
+                fillColor: bin ? bin.hover : '#94a3b8',
                 color: '#ffffff',
                 weight: 3,
               });
@@ -186,7 +104,7 @@ export function NepalMap() {
             },
             mouseout: (e: LeafletMouseEvent) => {
               (e.target as ReturnType<typeof L.geoJSON>).setStyle({
-                fillColor: isImpacted ? '#dc2626' : '#475569',
+                fillColor: bin ? bin.color : '#475569',
                 color: '#0f172a',
                 weight: 2,
               });
@@ -195,7 +113,7 @@ export function NepalMap() {
             click: (e: LeafletMouseEvent) => {
               L.DomEvent.stopPropagation(e);
               (e.target as ReturnType<typeof L.geoJSON>).setStyle({
-                fillColor: isImpacted ? '#f87171' : '#94a3b8',
+                fillColor: bin ? bin.hover : '#94a3b8',
                 color: '#ffffff',
                 weight: 3,
               });
@@ -286,8 +204,8 @@ export function NepalMap() {
               lineHeight: 1.6,
             }}
           >
-            Hover or click on the interactive map of Nepal to explore the regions where we are
-            training fellows, building open source tools, and supporting digital literacy.
+            Our {fellowshipCohort.year} Data Fellowship welcomed about {fellowshipCohort.fellowsLabel} fellows
+            from all {fellowshipCohort.provinces} provinces. Hover or tap a province to see where they come from.
           </p>
         </div>
 
@@ -300,38 +218,73 @@ export function NepalMap() {
             />
             <div id="svg-map-tooltip" style={tooltipStyle}>
               {info && (
-                <div style={{ fontFamily: "'Montserrat', sans-serif", padding: '0.15rem', maxWidth: '290px', whiteSpace: 'normal', lineHeight: 1.5 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem', gap: '1.5rem' }}>
-                    <strong style={{ fontSize: '0.88rem', color: '#ffffff', fontWeight: 700, letterSpacing: '-0.01em' }}>{info.title}</strong>
-                    <span style={{ fontSize: '0.58rem', textTransform: 'uppercase', fontWeight: 700, color: info.tagColor, background: info.tagBg, padding: '0.2rem 0.6rem', borderRadius: '100px', letterSpacing: '0.05em', display: 'inline-block' }}>{info.tag}</span>
+                <div style={{ fontFamily: sans, padding: '0.15rem', maxWidth: '290px', whiteSpace: 'normal', lineHeight: 1.5 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', gap: '1rem' }}>
+                    <strong style={{ fontSize: '0.88rem', color: '#ffffff', fontWeight: 700, letterSpacing: '-0.01em' }}>{info.name}</strong>
+                    <span style={{ fontSize: '0.6rem', textTransform: 'uppercase', fontWeight: 700, color: '#ffffff', background: '#dc2626', padding: '0.2rem 0.6rem', borderRadius: '100px', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
+                      {info.fellowsLabel} fellows
+                    </span>
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.5, margin: '0 0 0.75rem 0', fontFamily: "'Droid Serif', serif" }}>{info.desc}</p>
-                  <div style={{ borderTop: '1px solid #475569', paddingTop: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                    <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontFamily: "'Montserrat', sans-serif" }}>
-                      <span style={{ textTransform: 'uppercase', fontWeight: 600, color: '#94a3b8', letterSpacing: '0.05em' }}>Key Program:</span>{' '}
-                      <span style={{ color: '#ffffff', fontWeight: 500, paddingLeft: '0.25rem' }}>{info.m1}</span>
-                    </div>
-                    <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontFamily: "'Montserrat', sans-serif" }}>
-                      <span style={{ textTransform: 'uppercase', fontWeight: 600, color: '#94a3b8', letterSpacing: '0.05em' }}>Impact Focus:</span>{' '}
-                      <span style={{ color: '#ffffff', fontWeight: 500, paddingLeft: '0.25rem' }}>{info.m2}</span>
-                    </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                    {[
+                      ['Share of cohort', info.share],
+                      ['First-generation', info.firstGen],
+                      ['Women', info.women],
+                    ].map(([k, v]) => (
+                      <div key={k} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem' }}>
+                        <span style={{ color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>{k}</span>
+                        <span style={{ color: '#ffffff', fontWeight: 600 }}>{v}</span>
+                      </div>
+                    ))}
                   </div>
+                  <p style={{ fontSize: '0.75rem', color: '#cbd5e1', lineHeight: 1.5, margin: '0.75rem 0 0', paddingTop: '0.6rem', borderTop: '1px solid #475569', fontFamily: serif }}>
+                    Fellows from {info.hubs.join(', ')} and beyond.
+                  </p>
                 </div>
               )}
             </div>
           </div>
 
           {/* Legend */}
-          <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ width: '12px', height: '12px', background: '#dc2626', borderRadius: '50%', display: 'inline-block' }} />
-              <span style={{ fontSize: '0.78rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: '#cbd5e1', letterSpacing: '0.02em' }}>Active Impact (3 Provinces)</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ width: '12px', height: '12px', background: '#475569', borderRadius: '50%', display: 'inline-block' }} />
-              <span style={{ fontSize: '0.78rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: '#94a3b8', letterSpacing: '0.02em' }}>Future Expansion</span>
-            </div>
+          <div style={{ display: 'flex', gap: '1.5rem 2rem', marginTop: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {reachBins.map((b) => (
+              <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ width: '12px', height: '12px', background: b.color, borderRadius: '50%', display: 'inline-block' }} />
+                <span style={{ fontSize: '0.78rem', fontFamily: sans, fontWeight: 600, color: '#cbd5e1', letterSpacing: '0.02em' }}>{b.label}</span>
+              </div>
+            ))}
           </div>
+
+          {/* Cohort summary */}
+          <div className="impact-summary">
+            {[
+              [fellowshipCohort.fellowsLabel, 'Fellows in 2026'],
+              [`${fellowshipCohort.provinces} / 7`, 'Provinces reached'],
+              [fellowshipCohort.womenLabel, 'Women'],
+              [fellowshipCohort.firstGenLabel, 'First-generation students'],
+            ].map(([v, k]) => (
+              <div key={k}>
+                <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, fontFamily: sans, color: '#ffffff', letterSpacing: '-0.02em' }}>{v}</div>
+                <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#94a3b8', fontFamily: sans, fontWeight: 600, marginTop: '0.25rem' }}>{k}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Province breakdown (direct labels; doubles as the map's table view) */}
+          <ul className="impact-list" aria-label="Estimated fellows by province">
+            {provinceImpact.map((p) => (
+              <li key={p.code}>
+                <span className="impact-list-name">{p.name.replace(' Province', '')}</span>
+                <span className="impact-list-track" aria-hidden>
+                  <span style={{ width: `${(p.fellows / maxFellows) * 100}%`, background: reachBin(p.fellows).color }} />
+                </span>
+                <span className="impact-list-value">{p.fellowsLabel}</span>
+              </li>
+            ))}
+          </ul>
+          <p style={{ textAlign: 'center', fontSize: '0.72rem', color: '#64748b', fontFamily: sans, margin: '1.25rem 0 0' }}>
+            Figures are rounded estimates based on fellows&apos; home provinces.
+          </p>
         </div>
       </div>
 
@@ -339,6 +292,17 @@ export function NepalMap() {
         .leaflet-container { background: transparent !important; font-family: 'Montserrat', sans-serif; }
         .leaflet-control-attribution { display: none !important; }
         .leaflet-interactive { outline: none !important; cursor: pointer !important; }
+        .impact-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; margin: 3.5rem auto 0; padding: 2rem 0; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; max-width: 860px; }
+        .impact-list { list-style: none; padding: 0; margin: 2.5rem auto 0; max-width: 640px; display: flex; flex-direction: column; gap: 0.7rem; }
+        .impact-list li { display: grid; grid-template-columns: 8.5rem 1fr 3rem; align-items: center; gap: 1rem; font-family: ${sans}; font-size: 0.8rem; }
+        .impact-list-name { color: #cbd5e1; font-weight: 600; }
+        .impact-list-track { height: 8px; background: #1e293b; border-radius: 4px; overflow: hidden; }
+        .impact-list-track > span { display: block; height: 100%; border-radius: 0 4px 4px 0; }
+        .impact-list-value { color: #ffffff; font-weight: 700; text-align: right; }
+        @media (max-width: 640px) {
+          .impact-summary { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
+          .impact-list li { grid-template-columns: 6.75rem 1fr 2.75rem; gap: 0.75rem; }
+        }
       `}</style>
     </section>
   );

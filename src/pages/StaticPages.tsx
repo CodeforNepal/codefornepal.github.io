@@ -1,6 +1,6 @@
 import { Seo } from '@/components/layout/Seo';
 import { PageLayout } from '@/components/layout/PageLayout';
-import { Prose } from '@/components/pages/Prose';
+import { LegalContent } from '@/components/pages/LegalContent';
 import { AboutContent } from '@/components/pages/AboutContent';
 import { FellowshipContent } from '@/components/pages/FellowshipContent';
 import { HackathonContent } from '@/components/pages/HackathonContent';
@@ -158,24 +158,42 @@ export function TeamPage() {
 }
 
 export function CodeOfConductPage() {
-  const { html } = getRootMarkdown('codeOfConduct');
+  const { title, html } = getRootMarkdown('codeOfConduct');
   return (
     <>
-      <Seo title="Code of Conduct" path="/codeofconduct/" />
+      <Seo
+        title="Code of Conduct"
+        description="The Code for Nepal community code of conduct, adapted from the Contributor Covenant."
+        path="/codeofconduct/"
+      />
       <PageLayout>
-        <Prose html={html} />
+        <LegalContent
+          eyebrow="Community Standards"
+          title={title || 'Code of Conduct'}
+          intro="How we expect members, contributors, and leaders to treat one another in every Code for Nepal space, online and offline."
+          html={html}
+        />
       </PageLayout>
     </>
   );
 }
 
 export function PrivacyPage() {
-  const { html } = getRootMarkdown('privacy');
+  const { title, html } = getRootMarkdown('privacy');
   return (
     <>
-      <Seo title="Privacy Policy" path="/privacy/" />
+      <Seo
+        title="Privacy Policy"
+        description="How Code for Nepal collects and uses information on codefornepal.org."
+        path="/privacy/"
+      />
       <PageLayout>
-        <Prose html={html} />
+        <LegalContent
+          eyebrow="Legal"
+          title={title || 'Privacy Policy'}
+          intro="What information is collected when you visit codefornepal.org, how it is used, and the choices you have."
+          html={html}
+        />
       </PageLayout>
     </>
   );

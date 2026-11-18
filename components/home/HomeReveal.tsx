@@ -13,8 +13,8 @@ export function HomeReveal({ children }: { children: ReactNode }) {
       style={{
         opacity: isScrolled ? 1 : 0,
         transform: isScrolled ? 'translateY(0)' : 'translateY(30px)',
-        transition:
-          'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
+        // No delay: the user is already scrolling into this content.
+        transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
         pointerEvents: isScrolled ? 'auto' : 'none',
       }}
     >
