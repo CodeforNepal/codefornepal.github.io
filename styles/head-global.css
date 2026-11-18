@@ -62,3 +62,57 @@ details summary::-webkit-details-marker {
 details summary {
   list-style: none;
 }
+
+/* Shared listing table (Blog + Projects table views). */
+.list-table-wrap { width: 100%; overflow-x: auto; border: 1px solid #f3f4f6; }
+.list-table { width: 100%; border-collapse: collapse; font-family: 'Droid Serif', 'Georgia', serif; font-size: 0.9rem; color: #374151; }
+.list-table th { text-align: left; padding: 0.85rem 1.25rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #6b7280; white-space: nowrap; }
+.list-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; line-height: 1.55; }
+.list-table tbody tr:last-child td { border-bottom: 0; }
+.list-table tbody tr { transition: background 0.15s; }
+.list-table tbody tr:hover { background: #fafafa; }
+.list-table-title { color: #111827; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+.list-table-title:hover { color: #dc2626; text-decoration: none; }
+@media (max-width: 640px) {
+  .list-table th, .list-table td { padding: 0.75rem 0.85rem; }
+}
+
+/* Shared listing toolbar: controls left, view toggle always pinned right. */
+.list-toolbar { margin-bottom: 1.75rem; }
+.list-toolbar-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 1rem; }
+.list-toolbar-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; min-width: 0; }
+.list-toolbar-summary { margin: 0.9rem 0 0; font-size: 0.82rem; color: #6b7280; font-family: 'Montserrat', sans-serif; }
+.list-search { position: relative; flex: 1 1 240px; max-width: 420px; min-width: 0; }
+.list-search i { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 0.85rem; pointer-events: none; line-height: 1; }
+.list-search input { height: 38px; margin: 0; border: 1px solid #e5e7eb; border-radius: 0; background-color: white; font-size: 0.88rem; font-family: 'Montserrat', sans-serif; color: #111827; outline: none; box-sizing: border-box; transition: border-color 0.2s; }
+.list-search input { display: block; width: 100%; padding: 0 1rem 0 2.5rem; -webkit-appearance: none; appearance: none; }
+.list-search input:focus { border-color: #dc2626; }
+
+/* Site-styled dropdown (components/ui/Dropdown.tsx) — matches .list-search input. */
+.dd { position: relative; flex: 0 0 auto; }
+.dd-trigger { display: inline-flex; align-items: center; justify-content: space-between; gap: 0.75rem; width: 100%; min-width: 9.5rem; height: 38px; margin: 0; padding: 0 0.9rem; border: 1px solid #e5e7eb; border-radius: 0; background: white; color: #111827; font-family: 'Montserrat', sans-serif; font-size: 0.88rem; text-align: left; cursor: pointer; transition: border-color 0.2s; box-sizing: border-box; }
+.dd-trigger:hover { border-color: #d1d5db; }
+.dd-trigger:focus { outline: none; }
+.dd-trigger:focus-visible, .dd.is-open .dd-trigger { border-color: #dc2626; }
+.dd-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-chevron { flex-shrink: 0; font-size: 0.65rem; color: #9ca3af; transition: transform 0.2s, color 0.2s; }
+.dd.is-open .dd-chevron { transform: rotate(180deg); color: #dc2626; }
+.dd-menu { position: absolute; top: calc(100% + 4px); left: 0; right: auto; z-index: 50; min-width: 100%; width: max-content; max-width: min(320px, calc(100vw - 2rem)); background: white; border: 1px solid #e5e7eb; box-shadow: 0 8px 28px rgba(17, 24, 39, 0.1); animation: ddIn 0.14s ease-out; box-sizing: border-box; }
+.dd.align-right .dd-menu { left: auto; right: 0; }
+@keyframes ddIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.dd-search { position: relative; border-bottom: 1px solid #f3f4f6; }
+.dd-search i { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 0.75rem; pointer-events: none; line-height: 1; }
+.dd-search input { display: block; width: 100%; height: 38px; margin: 0; padding: 0 0.9rem 0 2.2rem; border: 0; border-radius: 0; background: transparent; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; color: #111827; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none; }
+.dd-list { list-style: none; margin: 0; padding: 0.3rem 0; max-height: 300px; overflow-y: auto; outline: none; }
+.dd-option { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.9rem; font-family: 'Montserrat', sans-serif; font-size: 0.84rem; color: #374151; cursor: pointer; border-left: 2px solid transparent; }
+.dd-option.is-active { background: #fef2f2; color: #111827; }
+.dd-option.is-selected { color: #dc2626; font-weight: 600; border-left-color: #dc2626; }
+.dd-option-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-option-count { flex-shrink: 0; font-size: 0.72rem; color: #9ca3af; font-weight: 500; }
+.dd-check { flex-shrink: 0; font-size: 0.65rem; color: #dc2626; }
+.dd-empty { padding: 0.75rem 0.9rem; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; color: #9ca3af; }
+.dd-author .dd-trigger { width: 13rem; }
+@media (max-width: 480px) {
+  .dd-author .dd-trigger { width: 100%; }
+  .dd-author { flex: 1 1 10rem; }
+}

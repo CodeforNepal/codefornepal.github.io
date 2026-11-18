@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import Link from '@/components/ui/Link';
+import { useViewMode } from '@/components/ui/ViewToggle';
+import { ListToolbar } from '@/components/ui/ListToolbar';
 import { projects, projectStatuses, type ProjectStatus } from '@/data/projects';
 
 type Filter = 'All' | ProjectStatus;
@@ -21,6 +23,7 @@ function linkLabel(url: string): string {
 /** Ported from projects/index.html. */
 export function ProjectsContent() {
   const [filter, setFilter] = useState<Filter>('All');
+  const [view, setView] = useViewMode('c4n:projects-view');
   const visible = useMemo(
     () => (filter === 'All' ? projects : projects.filter((p) => p.status === filter)),
     [filter],
@@ -54,24 +57,22 @@ export function ProjectsContent() {
       </section>
 
       {/* Projects by Code for Nepal & partners */}
-      <section style={{ padding: '4rem 0 5rem', background: 'white' }}>
+      <section style={{ padding: '3rem 0 5rem', background: 'white' }}>
         <div className="project-container">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', marginBottom: '2.5rem' }}>
-            <div>
-              <h2 style={{ fontSize: 'clamp(1.35rem,3vw,1.75rem)', fontWeight: 700, color: '#111827', margin: '0 0 0.4rem', fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>
-                Projects by Code for Nepal &amp; Partners
-              </h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', margin: 0, fontFamily: "'Droid Serif','Georgia',serif" }}>
-                Showing {visible.length} of {projects.length} projects
-              </p>
-            </div>
-            <div role="tablist" aria-label="Filter projects by status" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.35rem,3vw,1.75rem)', fontWeight: 700, color: '#111827', margin: '0 0 1.5rem', fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>
+            Projects by Code for Nepal &amp; Partners
+          </h2>
+          <ListToolbar
+            view={view}
+            onViewChange={setView}
+            summary={`Showing ${visible.length} of ${projects.length} projects`}
+          >
+            <div role="group" aria-label="Filter projects by status" className="list-toolbar-controls">
               {filters.map((f) => (
                 <button
                   key={f}
                   type="button"
-                  role="tab"
-                  aria-selected={filter === f}
+                  aria-pressed={filter === f}
                   className={`project-filter${filter === f ? ' is-active' : ''}`}
                   onClick={() => setFilter(f)}
                 >
@@ -80,8 +81,64 @@ export function ProjectsContent() {
                 </button>
               ))}
             </div>
-          </div>
+          </ListToolbar>
 
+          {view === 'table' && (
+            <div className="list-table-wrap">
+              <table className="list-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" className="col-about">About</th>
+                    <th scope="col">Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((p) => {
+                    const external = /^https?:/.test(p.link);
+                    return (
+                      <tr key={p.name}>
+                        <td className="col-project">
+                          {p.link ? (
+                            <Link
+                              href={p.link}
+                              className="list-table-title"
+                              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                            >
+                              {p.name}
+                            </Link>
+                          ) : (
+                            <span className="list-table-title">{p.name}</span>
+                          )}
+                        </td>
+                        <td>
+                          <span className={`project-status project-status-${p.status.toLowerCase()}`}>{p.status}</span>
+                        </td>
+                        <td className="col-about">{p.about || 'Details coming soon.'}</td>
+                        <td className="col-link">
+                          {p.link ? (
+                            <Link
+                              href={p.link}
+                              className="project-table-link"
+                              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                            >
+                              {external ? linkLabel(p.link) : 'Read the story'}{' '}
+                              <i className={external ? 'fas fa-external-link-alt' : 'fas fa-arrow-right'} style={{ fontSize: '0.6rem' }} />
+                            </Link>
+                          ) : (
+                            <span style={{ color: '#9ca3af' }}>—</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {view === 'cards' && (
           <div id="projectsGrid">
             {visible.map((p) => {
               const external = /^https?:/.test(p.link);
@@ -116,6 +173,7 @@ export function ProjectsContent() {
               );
             })}
           </div>
+          )}
         </div>
       </section>
 
@@ -159,12 +217,23 @@ export function ProjectsContent() {
         .project-status-pipeline { background: #fffbeb; color: #b45309; }
         .project-status-completed { background: #f3f4f6; color: #4b5563; }
         .project-card-cta { margin-top: 1.25rem; font-family: 'Montserrat',sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #dc2626; display: inline-flex; align-items: center; gap: 0.4rem; overflow-wrap: anywhere; }
-        .project-filter { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: 1px solid #e5e7eb; background: white; color: #4b5563; font-family: 'Montserrat',sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+        .project-filter { display: inline-flex; align-items: center; gap: 0.5rem; height: 38px; padding: 0 1rem; box-sizing: border-box; border: 1px solid #e5e7eb; background: white; color: #4b5563; font-family: 'Montserrat',sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
         .project-filter:hover { border-color: #111827; color: #111827; }
         .project-filter.is-active { background: #111827; border-color: #111827; color: white; }
         .project-filter-count { font-size: 0.68rem; opacity: 0.65; }
+        .list-table .project-status { white-space: nowrap; display: inline-block; }
+        .list-table .col-project { min-width: 12rem; }
+        .list-table .col-about { color: #6b7280; min-width: 16rem; }
+        .list-table .col-link { white-space: nowrap; }
+        .project-table-link { display: inline-flex; align-items: center; gap: 0.35rem; color: #dc2626; font-family: 'Montserrat',sans-serif; font-size: 0.78rem; font-weight: 600; text-decoration: none; }
+        .project-table-link:hover { color: #b91c1c; text-decoration: underline; }
         @media (max-width: 960px) { #projectsGrid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { #projectsGrid { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) {
+          #projectsGrid { grid-template-columns: 1fr; }
+          .list-table .col-link { display: none; }
+          .list-table .col-project { min-width: 8rem; }
+          .list-table .col-about { min-width: 11rem; }
+        }
         @media (max-width: 960px) { .project-container { padding: 0 2.5rem !important; } }
         @media (max-width: 640px) { .project-container { padding: 0 1.5rem !important; } }
       `}</style>

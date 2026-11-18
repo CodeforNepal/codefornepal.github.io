@@ -1,56 +1,33 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Seo } from '@/components/layout/Seo';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { BlogList } from '@/components/blog/BlogList';
-import { NotFoundPage } from './StaticPages';
-import { getAllSummaries, getPageSummaries, getYears, totalPages } from '@/lib/posts';
+import { getAllSummaries, getAuthors, getYears, preloadPostBodies } from '@/lib/posts';
 
-/** Blog index = page 1 (posts 1–50). */
+/** Blog index: every post on one page (table view by default, cards optional). */
 export function BlogPage() {
-  const tp = totalPages();
+  // Visitors on the index usually open a post next; warm the post bodies so the
+  // article renders in one go instead of popping in after the title.
+  useEffect(() => {
+    const id = window.setTimeout(preloadPostBodies, 800);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <>
       <Seo title="Blog" path="/blog/" />
       <PageLayout>
-        <BlogList
-          pagePosts={getPageSummaries(1)}
-          allPosts={getAllSummaries()}
-          years={getYears()}
-          page={1}
-          totalPages={tp}
-          prevPath={null}
-          nextPath={tp > 1 ? '/page/2/' : null}
-        />
+        <BlogList posts={getAllSummaries()} years={getYears()} authors={getAuthors()} />
       </PageLayout>
     </>
   );
 }
 
-/** Pages 2..N of the blog (jekyll-paginate-v2 permalink /page/:num/). Page 1 lives at /blog/. */
-export function PaginatedBlogPage() {
-  const { num } = useParams<{ num: string }>();
-  const page = parseInt(num ?? '', 10);
-  const tp = totalPages();
-
-  if (!Number.isInteger(page) || page < 2 || page > tp) return <NotFoundPage />;
-
-  const prevPath = page === 2 ? '/blog/' : `/page/${page - 1}/`;
-  const nextPath = page < tp ? `/page/${page + 1}/` : null;
-
-  return (
-    <>
-      <Seo title="Blog" path={`/page/${page}/`} />
-      <PageLayout>
-        <BlogList
-          pagePosts={getPageSummaries(page)}
-          allPosts={getAllSummaries()}
-          years={getYears()}
-          page={page}
-          totalPages={tp}
-          prevPath={prevPath}
-          nextPath={nextPath}
-        />
-      </PageLayout>
-    </>
-  );
+/**
+ * Legacy paginated URLs (/page/:num/, from jekyll-paginate-v2). The blog is no
+ * longer paginated, so these redirect to the single blog index.
+ */
+export function LegacyBlogPageRedirect() {
+  return <Navigate to="/blog/" replace />;
 }

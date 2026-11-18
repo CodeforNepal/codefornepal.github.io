@@ -1,73 +1,44 @@
 import { useMemo, useState } from 'react';
 import Link from '@/components/ui/Link';
+import { useViewMode } from '@/components/ui/ViewToggle';
+import { ListToolbar } from '@/components/ui/ListToolbar';
+import { Dropdown } from '@/components/ui/Dropdown';
 import type { PostSummary } from '@/lib/posts';
 
 interface Props {
-  pagePosts: PostSummary[];
-  allPosts: PostSummary[];
+  posts: PostSummary[];
   years: string[];
-  page: number;
-  totalPages: number;
-  prevPath: string | null;
-  nextPath: string | null;
+  authors: { name: string; count: number }[];
 }
 
 /**
- * Ported from blog/index.html. Default view shows the current paginated page (50 posts)
- * with prev/next. Searching or picking a year filters across the FULL corpus (an
- * improvement over the original, which only filtered the current page's cards).
+ * Ported from blog/index.html. Shows every post (no pagination) as a table by
+ * default, with an optional card view. Search, year and author filters apply to both.
  */
-export function BlogList({ pagePosts, allPosts, years, page, totalPages, prevPath, nextPath }: Props) {
+export function BlogList({ posts, years, authors }: Props) {
   const [query, setQuery] = useState('');
   const [year, setYear] = useState('all');
-
-  const filtering = query.trim() !== '' || year !== 'all';
+  const [author, setAuthor] = useState('all');
+  const [view, setView] = useViewMode('c4n:blog-view');
 
   const visible = useMemo(() => {
-    if (!filtering) return pagePosts;
     const q = query.trim().toLowerCase();
-    return allPosts.filter(
-      (p) => (!q || p.titleLower.includes(q)) && (year === 'all' || p.year === year),
+    if (!q && year === 'all' && author === 'all') return posts;
+    return posts.filter(
+      (p) =>
+        (!q || p.titleLower.includes(q)) &&
+        (year === 'all' || p.year === year) &&
+        (author === 'all' || p.author === author),
     );
-  }, [filtering, query, year, pagePosts, allPosts]);
+  }, [query, year, author, posts]);
 
   return (
     <>
-      {/* Header + Search */}
-      <section style={{ padding: '3rem 0 2rem', background: '#f9fafb', borderBottom: '1px solid #f3f4f6' }}>
+      {/* Header */}
+      <section style={{ padding: '3rem 0 2.5rem', background: '#f9fafb', borderBottom: '1px solid #f3f4f6' }}>
         <div className="blog-container">
           <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.35em', color: '#dc2626', marginBottom: '0.75rem', fontFamily: "'Montserrat',sans-serif", fontWeight: 600 }}>Stories &amp; Updates</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem' }}>
-            <h1 style={{ fontSize: 'clamp(1.75rem,4vw,2.75rem)', fontWeight: 700, color: '#111827', margin: 0, fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>Blog</h1>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', width: '100%', maxWidth: '500px', flexWrap: 'wrap' }}>
-              <div style={{ position: 'relative', flex: 1, minWidth: '200px' }}>
-                <i className="fas fa-search" style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', fontSize: '0.85rem' }} />
-                <input
-                  type="text"
-                  id="blogSearch"
-                  placeholder="Search posts..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  style={{ width: '100%', padding: '0.65rem 1rem 0.65rem 2.5rem', border: '1px solid #e5e7eb', background: 'white', fontSize: '0.88rem', fontFamily: "'Montserrat',sans-serif", color: '#111827', outline: 'none', boxSizing: 'border-box' }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = '#dc2626')}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = '#e5e7eb')}
-                />
-              </div>
-              <select
-                id="yearFilter"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                style={{ padding: '0.65rem 2rem 0.65rem 1rem', border: '1px solid #e5e7eb', background: 'white', fontSize: '0.88rem', fontFamily: "'Montserrat',sans-serif", color: '#111827', outline: 'none', cursor: 'pointer', height: '38px', boxSizing: 'border-box' }}
-              >
-                <option value="all">All Years</option>
-                {years.map((yr) => (
-                  <option key={yr} value={yr}>
-                    {yr}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <h1 style={{ fontSize: 'clamp(1.75rem,4vw,2.75rem)', fontWeight: 700, color: '#111827', margin: 0, fontFamily: "'Montserrat',sans-serif", letterSpacing: '-0.02em' }}>Blog</h1>
           <p style={{ margin: '1.25rem 0 0', fontSize: '0.88rem', color: '#6b7280', fontFamily: "'Droid Serif','Georgia',serif", lineHeight: 1.6 }}>
             <i className="fas fa-pen-nib" style={{ color: '#dc2626', marginRight: '0.5rem' }} />
             Want to write a blog or dataviz for Code for Nepal?{' '}
@@ -79,98 +50,121 @@ export function BlogList({ pagePosts, allPosts, years, page, totalPages, prevPat
         </div>
       </section>
 
-      {/* Posts grid */}
-      <section style={{ padding: '4rem 0', background: 'white' }}>
+      {/* Posts */}
+      <section style={{ padding: '3rem 0 4rem', background: 'white' }}>
         <div className="blog-container">
-          <div id="postsGrid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-            {visible.map((post) => (
-              <article
-                key={post.url}
-                className="blog-post-card"
-                style={{ border: '1px solid #f3f4f6', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.07)';
-                  e.currentTarget.style.borderColor = '#e5e7eb';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.borderColor = '#f3f4f6';
-                }}
-              >
-                <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <p style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', margin: '0 0 0.75rem', fontFamily: "'Montserrat',sans-serif" }}>{post.dateFormatted}</p>
-                  <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827', lineHeight: 1.45, margin: '0 0 1rem', fontFamily: "'Montserrat',sans-serif" }}>
-                    <Link
-                      href={post.url}
-                      style={{ color: 'inherit', textDecoration: 'none' }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = '#dc2626')}
-                      onMouseOut={(e) => (e.currentTarget.style.color = '#111827')}
-                    >
-                      {post.title}
+          <ListToolbar
+            view={view}
+            onViewChange={setView}
+            summary={`Showing ${visible.length} of ${posts.length} posts`}
+          >
+            <div className="list-search">
+              <i className="fas fa-search" aria-hidden />
+              <input
+                type="search"
+                id="blogSearch"
+                placeholder="Search posts..."
+                aria-label="Search posts"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+            <Dropdown
+              label="Filter by year"
+              value={year}
+              onChange={setYear}
+              options={[{ value: 'all', label: 'All Years' }, ...years.map((yr) => ({ value: yr, label: yr }))]}
+            />
+            <Dropdown
+              label="Filter by author"
+              className="dd-author"
+              searchable
+              value={author}
+              onChange={setAuthor}
+              options={[
+                { value: 'all', label: 'All Authors' },
+                ...authors.map((a) => ({ value: a.name, label: a.name, count: a.count })),
+              ]}
+            />
+          </ListToolbar>
+
+          {visible.length > 0 && view === 'table' && (
+            <div className="list-table-wrap">
+              <table className="list-table">
+                <thead>
+                  <tr>
+                    <th scope="col" className="col-date">Date</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" className="col-author">Author</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((post) => (
+                    <tr key={post.url}>
+                      <td className="col-date">{post.dateFormatted}</td>
+                      <td>
+                        <Link href={post.url} className="list-table-title">
+                          {post.title}
+                        </Link>
+                      </td>
+                      <td className="col-author">{post.author || '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {visible.length > 0 && view === 'cards' && (
+            <div id="postsGrid">
+              {visible.map((post) => (
+                <article key={post.url} className="blog-post-card">
+                  <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <p style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', margin: '0 0 0.75rem', fontFamily: "'Montserrat',sans-serif" }}>{post.dateFormatted}</p>
+                    <h2 style={{ fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.45, margin: '0 0 1rem', fontFamily: "'Montserrat',sans-serif" }}>
+                      <Link href={post.url} className="blog-card-title">
+                        {post.title}
+                      </Link>
+                    </h2>
+                    <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.7, flex: 1, margin: '0 0 1.5rem', fontFamily: "'Droid Serif','Georgia',serif" }}>{post.excerpt}</p>
+                    <Link href={post.url} className="blog-card-more">
+                      Read more <i className="fas fa-arrow-right" style={{ fontSize: '0.65rem' }} />
                     </Link>
-                  </h2>
-                  <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.7, flex: 1, margin: '0 0 1.5rem', fontFamily: "'Droid Serif','Georgia',serif" }}>{post.excerpt}</p>
-                  <Link
-                    href={post.url}
-                    style={{ fontSize: '0.72rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#dc2626', textDecoration: 'none', fontFamily: "'Montserrat',sans-serif", display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-                    onMouseOver={(e) => (e.currentTarget.style.opacity = '0.7')}
-                    onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
-                  >
-                    Read more <i className="fas fa-arrow-right" style={{ fontSize: '0.65rem' }} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
 
           {visible.length === 0 && (
             <div style={{ textAlign: 'center', padding: '4rem 0', color: '#9ca3af', fontFamily: "'Montserrat',sans-serif", fontSize: '0.9rem' }}>
               <i className="fas fa-search" style={{ fontSize: '2rem', marginBottom: '1rem', display: 'block' }} />
-              No posts found matching your search.
+              No posts found matching your filters.
             </div>
           )}
         </div>
       </section>
 
-      {/* Pagination (only in the default, unfiltered view) */}
-      {!filtering && totalPages > 1 && (
-        <section style={{ padding: '2rem 0 4rem', background: 'white', borderTop: '1px solid #f3f4f6' }}>
-          <div className="blog-container">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              {prevPath && (
-                <Link
-                  href={prevPath}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.25rem', background: '#111827', color: 'white', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', fontFamily: "'Montserrat',sans-serif" }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = '#1f2937')}
-                  onMouseOut={(e) => (e.currentTarget.style.background = '#111827')}
-                >
-                  <i className="fas fa-arrow-left" style={{ fontSize: '0.7rem' }} /> Previous
-                </Link>
-              )}
-              <span style={{ fontSize: '0.78rem', color: '#9ca3af', fontFamily: "'Montserrat',sans-serif" }}>
-                Page {page} of {totalPages}
-              </span>
-              {nextPath && (
-                <Link
-                  href={nextPath}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.25rem', background: '#dc2626', color: 'white', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', fontFamily: "'Montserrat',sans-serif" }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = '#b91c1c')}
-                  onMouseOut={(e) => (e.currentTarget.style.background = '#dc2626')}
-                >
-                  Next <i className="fas fa-arrow-right" style={{ fontSize: '0.7rem' }} />
-                </Link>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
       <style>{`
         .blog-guide-link { color: #dc2626; font-weight: 600; text-decoration: none; }
         .blog-guide-link:hover { color: #b91c1c; text-decoration: underline; }
         .blog-container { max-width: 1300px !important; padding: 0 4rem !important; margin: 0 auto; box-sizing: border-box; }
-        @media (max-width: 960px) { #postsGrid { grid-template-columns: repeat(2, 1fr) !important; } .blog-container { padding: 0 2.5rem !important; } }
-        @media (max-width: 640px) { #postsGrid { grid-template-columns: 1fr !important; } .blog-container { padding: 0 1.5rem !important; } }
+        #postsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .blog-post-card { border: 1px solid #f3f4f6; display: flex; flex-direction: column; overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
+        .blog-post-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: #e5e7eb; }
+        .blog-card-title { color: #111827; text-decoration: none; transition: color 0.2s; }
+        .blog-card-title:hover { color: #dc2626; text-decoration: none; }
+        .blog-card-more { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #dc2626; text-decoration: none; font-family: 'Montserrat',sans-serif; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }
+        .blog-card-more:hover { opacity: 0.7; color: #dc2626; text-decoration: none; }
+        .list-table .col-date { white-space: nowrap; width: 9rem; color: #6b7280; }
+        .list-table .col-author { width: 14rem; color: #6b7280; }
+        @media (max-width: 960px) { #postsGrid { grid-template-columns: repeat(2, 1fr); } .blog-container { padding: 0 2.5rem !important; } }
+        @media (max-width: 640px) {
+          #postsGrid { grid-template-columns: 1fr; }
+          .blog-container { padding: 0 1.5rem !important; }
+          .list-table .col-author { display: none; }
+          .list-table .col-date { width: 6.5rem; }
+        }
       `}</style>
     </>
   );

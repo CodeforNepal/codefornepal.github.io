@@ -15,7 +15,10 @@ import '@/styles/head-global.css';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
+      {/* v7_startTransition: route changes render in a React transition, so while a
+          lazy page chunk loads the current page stays on screen instead of being
+          swapped for the blank Suspense fallback (the "flash" between pages). */}
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <App />
       </BrowserRouter>
     </HelmetProvider>

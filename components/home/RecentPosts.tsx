@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from '@/components/ui/Link';
 
 export interface RecentPost {
@@ -6,6 +7,34 @@ export interface RecentPost {
   dateFormatted: string;
   image?: string;
   excerpt: string;
+}
+
+/**
+ * Card thumbnail. Falls back to a placeholder when the post has no image or the
+ * (often external, years-old) image URL fails to load.
+ */
+function PostThumb({ src, alt }: { src?: string; alt: string }) {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) {
+    return (
+      <div style={{ height: '180px', background: '#f3f4f6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <i className="fas fa-newspaper" style={{ fontSize: '2rem', color: '#d1d5db' }} />
+      </div>
+    );
+  }
+  return (
+    <div style={{ height: '180px', overflow: 'hidden', background: '#f3f4f6' }}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={() => setFailed(true)}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+    </div>
+  );
 }
 
 /**
@@ -66,27 +95,7 @@ export function RecentPosts({ posts }: { posts: RecentPost[] }) {
               onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)')}
               onMouseOut={(e) => (e.currentTarget.style.boxShadow = 'none')}
             >
-              {post.image ? (
-                <div style={{ height: '180px', overflow: 'hidden' }}>
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              ) : (
-                <div
-                  style={{
-                    height: '180px',
-                    background: '#f3f4f6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <i className="fas fa-newspaper" style={{ fontSize: '2rem', color: '#d1d5db' }} />
-                </div>
-              )}
+              <PostThumb src={post.image} alt={post.title} />
 
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <p

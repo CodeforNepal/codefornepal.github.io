@@ -15,7 +15,6 @@ const SITE = {
     "Community of volunteers helping address Nepal's challenges using civic tech to innovate, organize and advocate digital literacy",
   url: 'https://codefornepal.org',
 };
-const PER_PAGE = 50;
 
 function escapeXml(s) {
   return s
@@ -79,8 +78,6 @@ ${entries}
     '/codeofconduct/',
     '/privacy/',
   ];
-  const totalPages = Math.max(1, Math.ceil(posts.length / PER_PAGE));
-  for (let n = 2; n <= totalPages; n++) staticPaths.push(`/page/${n}/`);
 
   const urls = [
     ...staticPaths.map((p) => `  <url><loc>${SITE.url}${p}</loc></url>`),
