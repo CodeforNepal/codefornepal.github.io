@@ -20,3 +20,5 @@ yarn-error.log*
 .sass-cache
 
 todo.txt
+# Fellowship applicant data (contains personal information; never commit)
+*_accepted.csv
