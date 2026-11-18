@@ -33,7 +33,7 @@ export function JoinUsContent() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {cards.map((c) => (
               <a
                 key={c.title}
@@ -59,7 +59,7 @@ export function JoinUsContent() {
             <div style={{ width: '2.5rem', height: '2.5rem', background: '#dc2626', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <i className="fas fa-pen-nib" style={{ color: 'white', fontSize: '1.1rem' }} />
             </div>
-            <div style={{ flex: 1, minWidth: '220px' }}>
+            <div style={{ flex: 1, minWidth: 'min(220px, 100%)' }}>
               <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827', margin: '0 0 0.35rem', fontFamily: "'Montserrat',sans-serif" }}>Write a blog or dataviz</h3>
               <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.6, margin: 0, fontFamily: "'Droid Serif','Georgia',serif" }}>
                 Have a story or chart about Nepal? Consult our contributor guide to learn how to prepare and submit one to Code for Nepal.

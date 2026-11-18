@@ -4,13 +4,21 @@
   font-weight: 200 !important;
 }
 
+// Mobile: never let the page pan sideways or rubber-band past its edges (which
+// exposed a white band). `clip` (unlike `hidden`) doesn't turn <html>/<body> into
+// scroll containers, so window scrolling, scroll events and position:sticky still work.
 html {
   background-color: #111827;
+  overflow-x: clip;
+  overscroll-behavior: none;
 }
 
 body {
   padding-top: 0 !important;
-  overflow-x: hidden;
+  overflow-x: hidden; // fallback for browsers without overflow: clip
+  overflow-x: clip;
+  overscroll-behavior: none;
+  max-width: 100%;
   @extend %base-font-style;
 }
 
@@ -43,13 +51,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  html,
-  body {
-    overscroll-behavior-y: none;
-  }
 }
 
 p {
